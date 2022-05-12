@@ -39,7 +39,7 @@ post:
             requestApprovalTo:
               type: integer
             typeCorrection:
-              type: integer
+              type: string
             qcPassed:
               type: integer
   responses:
