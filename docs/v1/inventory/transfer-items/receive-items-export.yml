@@ -1,7 +1,7 @@
 post:
   tags:
-    - Transfer Item
-  summary: Export transfer items
+    - Receive Item
+  summary: Export receive items
   description:
   requestBody:
     content:

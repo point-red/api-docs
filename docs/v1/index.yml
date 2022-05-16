@@ -18,9 +18,6 @@ info:
     Ex-Module offers two forms of authentication:
       - Local Authentication
       - Json Web Token
-  x-logo:
-    url: http://localhost:3000/assets/logo.png
-    altText: Ex-Module logo
   contact:
     name: API Support
     email: martiendt@gmail.com
@@ -44,3 +41,9 @@ paths:
     $ref: './inventory/transfer-items/transfer-items-by-id.yml'
   /inventory/transfer-items/export:
     $ref: './inventory/transfer-items/transfer-items-export.yml'
+  /inventory/receive-items:
+    $ref: './inventory/transfer-items/receive-items.yml'
+  /inventory/receive-items/{id}:
+    $ref: './inventory/transfer-items/receive-items-by-id.yml'
+  /inventory/receive-items/export:
+    $ref: './inventory/transfer-items/receive-items-export.yml'

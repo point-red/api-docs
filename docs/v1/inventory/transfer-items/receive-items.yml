@@ -1,7 +1,7 @@
 get:
   tags:
-    - Transfer Item
-  summary: Read all transfer items
+    - Receive Item
+  summary: Read all receive items
   description:
   parameters:
     - name: join
@@ -15,7 +15,7 @@ get:
       description: multi value, divide with coma (,)
       schema:
         type: string
-        example: 'transfer_sent.*'
+        example: 'transfer_receive.*'
     - name: sort_by
       in: query
       description: Sort the result by a key
@@ -37,10 +37,6 @@ get:
                 form.number:
                   type: string
                 item.name:
-                  type: string
-                transfer_item_sent.production_number:
-                  type: string
-                transfer_item_sent.expiry_date:
                   type: string
     - name: filter_date_min
       in: query
@@ -67,7 +63,7 @@ get:
       description: multi value, divide with coma (,)
       schema:
         type: string
-        example: 'form,items.item'
+        example: 'form,items.item,from_warehouse,warehouse,transfer_item.form,transfer_item.items'
     - name: page
       in: query
       description: Data page
@@ -119,9 +115,9 @@ get:
                       type: integer
                     warehouse_id:
                       type: integer
-                    to_warehouse_id:
+                    from_warehouse_id:
                       type: integer
-                    driver:
+                    transfer_item_id:
                       type: integer
                     form:
                       type: object
@@ -207,7 +203,7 @@ get:
                         properties:
                           id:
                             type: integer
-                          transfer_item_id:
+                          receive_item_id:
                             type: integer
                           item_id:
                             type: integer
@@ -254,7 +250,7 @@ get:
                                 type: integer
                               require_production_number:
                                 type: integer
-                              equire_expiry_date:
+                              require_expiry_date:
                                 type: integer
                               stock:
                                 type: integer
@@ -280,11 +276,240 @@ get:
                                 type: date
                               label:
                                 type: string
+                    from_warehouse:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        code:
+                          type: string
+                        name:
+                          type: string
+                        address:
+                          type: string
+                        phone:
+                          type: string
+                        notes:
+                          type: string
+                        branch_id:
+                          type: integer
+                        created_by:
+                          type: integer
+                        updated_by:
+                          type: integer
+                        archived_by:
+                          type: integer
+                        created_at:
+                          type: date
+                        updated_at:
+                          type: date
+                        archived_at:
+                          type: date
+                        label:
+                          type: string
+                    warehouse:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        code:
+                          type: string
+                        name:
+                          type: string
+                        address:
+                          type: string
+                        phone:
+                          type: string
+                        notes:
+                          type: string
+                        branch_id:
+                          type: integer
+                        created_by:
+                          type: integer
+                        updated_by:
+                          type: integer
+                        archived_by:
+                          type: integer
+                        created_at:
+                          type: date
+                        updated_at:
+                          type: date
+                        archived_at:
+                          type: date
+                        label:
+                          type: string      
+                    transfer_item:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        warehouse_id:
+                          type: integer
+                        to_warehouse_id:
+                          type: integer
+                        driver:
+                          type: integer
+                        form:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            branch_id:
+                              type: integer
+                            date:
+                              type: date
+                            number:
+                              type: string
+                            edited_number:
+                              type: string
+                            edited_notes:
+                              type: string
+                            notes:
+                              type: string
+                            created_by:
+                              type: integer
+                            updated_by:
+                              type: integer
+                            done:
+                              type: integer
+                            increment:
+                              type: integer
+                            increment_group:
+                              type: integer
+                            formable_id:
+                              type: integer
+                            formable_type:
+                              type: string
+                            request_approval_to:
+                              type: integer
+                            request_approval_at:
+                              type: date
+                            approval_by:
+                              type: integer
+                            approval_at:
+                              type: date
+                            approval_reason:
+                              type: integer
+                            approval_status:
+                              type: integer
+                            request_cancellation_to:
+                              type: integer
+                            request_cancellation_by:
+                              type: integer
+                            request_cancellation_at:
+                              type: date
+                            request_cancellation_reason:
+                              type: string
+                            cancellation_approval_at:
+                              type: date
+                            cancellation_approval_by:
+                              type: integer
+                            cancellation_approval_reason:
+                              type: string
+                            cancellation_status:
+                              type: integer
+                            created_at:
+                              type: date
+                            updated_at:
+                              type: date
+                            request_close_to:
+                              type: integer
+                            request_close_by:
+                              type: integer
+                            request_close_at:
+                              type: date
+                            request_close_reason:
+                              type: string
+                            close_approval_at:
+                              type: date
+                            close_approval_by:
+                              type: integer
+                            close_status:
+                              type: integer
+                        items:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              transfer_item_id:
+                                type: integer
+                              item_id:
+                                type: integer
+                              item_name:
+                                type: string
+                              quantity:
+                                type: integer
+                              expiry_date:
+                                type: date
+                              production_number:
+                                type: string
+                              unit:
+                                type: string
+                              converter:
+                                type: integer
+                              notes:
+                                type: string
+                              stock:
+                                type: integer
+                              balance:
+                                type: integer
+                              item:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                  chart_of_account_id:
+                                    type: integer
+                                  code:
+                                    type: integer
+                                  barcode:
+                                    type: integer
+                                  name:
+                                    type: integer
+                                  size:
+                                    type: integer
+                                  color:
+                                    type: integer
+                                  weight:
+                                    type: integer
+                                  notes:
+                                    type: integer
+                                  taxable:
+                                    type: integer
+                                  require_production_number:
+                                    type: integer
+                                  equire_expiry_date:
+                                    type: integer
+                                  stock:
+                                    type: integer
+                                  stock_reminder:
+                                    type: integer
+                                  unit_default:
+                                    type: integer
+                                  unit_default_purchase:
+                                    type: integer
+                                  unit_default_sales:
+                                    type: integer
+                                  created_by:
+                                    type: integer
+                                  updated_by:
+                                    type: integer
+                                  archived_by:
+                                    type: integer
+                                  created_at:
+                                    type: date
+                                  updated_at:
+                                    type: date
+                                  archived_at:
+                                    type: date
+                                  label:
+                                    type: string
 post:
   tags:
-    - Transfer Item
-  summary: Create new transfer item
-  description: lorem ipsum
+    - Receive Item
+  summary: Create new receive item
   requestBody:
     content:
       'application/json':
@@ -296,15 +521,9 @@ post:
             date:
               type: date
             warehouse_id:
+              type: integer\
+            from_warehouse_id:
               type: integer
-            warehouse_name:
-              type: string
-            to_warehouse_id:
-              type: integer
-            to_warehouse_name:
-              type: string
-            driver:
-              type: string
             notes:
               type: string
             items:
@@ -312,6 +531,10 @@ post:
               items:
                 type: object
                 properties:
+                  id:
+                    type: integer
+                  transfer_item_id:
+                    type: integer
                   item_id:
                     type: integer
                   item_name:
@@ -322,10 +545,12 @@ post:
                     type: integer
                   quantity:
                     type: integer
-                  require_production_number:
-                    type: boolean
-                  require_expiry_date:
-                    type: boolean
+                  production_number:
+                    type: string
+                  expiry_date:
+                    type: date
+                  notes:
+                    type: string
                   stock:
                     type: integer
                   balance:
@@ -378,79 +603,14 @@ post:
                             type: integer
                       item_label:
                         type: string
-                  warehouse_id:
-                    type: integer
-                  index:
-                    type: integer
-                  dna:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        form_id:
-                          type: integer
-                        warehouse_id:
-                          type: integer
-                        item_id:
-                          type: integer
-                        quantity:
-                          type: integer
-                        expiry_date:
-                          type: date
-                        production_number:
-                          type: string
-                        need_recalculate:
-                          type: boolean
-                        quantity_reference:
-                          type: integer
-                        unit_reference:
-                          type: string
-                        converter_reference:
-                          type: integer
-                        is_posted:
-                          type: boolean
-                        created_at:
-                          type: date
-                        updated_at:
-                          type: date
-                        remaining:
-                          type: integer
-                        remainingInUnit:
-                          type: integer
-                      equire_expiry_date:
-                        type: date
-                      stock:
-                        type: integer
-                      stock_reminder:
-                        type: integer
-                      unit_default:
-                        type: integer
-                      unit_default_purchase:
-                        type: integer
-                      unit_default_sales:
-                        type: integer
-                      created_by:
-                        type: integer
-                      updated_by:
-                        type: integer
-                      archived_by:
-                        type: integer
-                      created_at:
-                        type: date
-                      updated_at:
-                        type: date
-                      archived_at:
-                        type: date
-                      label:
-                        type: string
             request_approval_to: 
               type: integer
             approver_name:
               type: string
             approver_email:
               type: string
+            transfer_item_id: 
+              type: integer
   responses:
     '201':
       description: OK
@@ -464,9 +624,9 @@ post:
                 properties:
                   warehouse_id:
                     type: integer
-                  to_warehouse_id:
+                  from_warehouse_id:
                     type: integer
-                  driver:
+                  transfer_item_id:
                     type: integer
                   id:
                     type: string
@@ -585,7 +745,7 @@ post:
                         properties:
                           id:
                             type: integer
-                          transfer_item_id:
+                          receive_item_id:
                             type: integer
                           item_id:
                             type: integer
