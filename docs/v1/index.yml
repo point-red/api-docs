@@ -41,6 +41,12 @@ paths:
     $ref: './inventory/transfer-items/transfer-items-by-id.yml'
   /inventory/transfer-items/export:
     $ref: './inventory/transfer-items/transfer-items-export.yml'
+  /inventory/receive-items:
+    $ref: './inventory/transfer-items/receive-items.yml'
+  /inventory/receive-items/{id}:
+    $ref: './inventory/transfer-items/receive-items-by-id.yml'
+  /inventory/receive-items/export:
+    $ref: './inventory/transfer-items/receive-items-export.yml'
   /api/v1/finance/cash-advances:
     $ref: './finance/cash-advances/cash-advances.yml'
   /api/v1/finance/cash-advances/{id}:
@@ -67,4 +73,3 @@ paths:
     $ref: './finance/reports/reports.yml'
   /api/v1/finance/reports/set-checklist:
     $ref: './finance/reports/reports-set-checklist.yml'
-    
