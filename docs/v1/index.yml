@@ -41,3 +41,30 @@ paths:
     $ref: './inventory/transfer-items/transfer-items-by-id.yml'
   /inventory/transfer-items/export:
     $ref: './inventory/transfer-items/transfer-items-export.yml'
+  /api/v1/finance/cash-advances:
+    $ref: './finance/cash-advances/cash-advances.yml'
+  /api/v1/finance/cash-advances/{id}:
+    $ref: './finance/cash-advances/cash-advances-by-id.yml'
+  /api/v1/finance/cash-advances/{id}/cancellation-approve:
+    $ref: './finance/cash-advances/cash-advances-cancellation-approve.yml'
+  /api/v1/finance/cash-advances/{id}/cancellation-reject:
+    $ref: './finance/cash-advances/cash-advances-cancellation-reject.yml'
+  /api/v1/finance/cash-advances/send-bulk-request-approval:
+    $ref: './finance/cash-advances/cash-advances-send-bulk.yml'
+  /api/v1/approval-with-token/finance/cash-advances:
+    $ref: './finance/cash-advances/cash-advances-approve-by-email.yml'
+  /api/v1/approval-with-token/finance/cash-advances/bulk:
+    $ref: './finance/cash-advances/cash-advances-bulk-approve-by-email.yml'
+  /api/v1/finance/cash-advances/{id}/approve:
+    $ref: './finance/cash-advances/cash-advances-approve.yml'
+  /api/v1/finance/cash-advances/{id}/reject:
+    $ref: './finance/cash-advances/cash-advances-reject.yml'
+  /api/v1/finance/cash-advances/history:
+    $ref: './finance/cash-advances/cash-advances-history.yml'
+  /api/v1/finance/cash-advances/{id}/refund:
+    $ref: './finance/cash-advances/cash-advances-refund.yml'
+  /api/v1/finance/reports:
+    $ref: './finance/reports/reports.yml'
+  /api/v1/finance/reports/set-checklist:
+    $ref: './finance/reports/reports-set-checklist.yml'
+    

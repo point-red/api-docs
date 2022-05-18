@@ -1,0 +1,774 @@
+get:
+  tags:
+    - Cash Advance
+  summary: Read all cash advances
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: join
+      in: query
+      schema:
+        type: string
+        example: form,details,account,employee
+    - name: sort_by
+      in: query
+      schema:
+        type: string
+        example: '-form.number'
+    - name: group_by
+      in: query
+      schema:
+        type: string
+        example: cash_advance.id
+    - name: fields
+      in: query
+      schema:
+        type: string
+        example: cash_advance.*
+    - name: filter_form
+      in: query
+      schema:
+        type: string
+        example: notArchived;null
+    - name: filter_like
+      in: query
+      schema:
+        type: string
+        example: '{}'
+    - name: filter_date_min
+      in: query
+      schema:
+        type: string
+        example: '{"form.date":"20220501 00:00:00"}'
+    - name: filter_date_max
+      in: query
+      schema:
+        type: string
+        example: '{"form.date":"20220514 23:59:59"}'
+    - name: limit
+      in: query
+      schema:
+        type: integer
+        example: '10'
+    - name: includes
+      in: query
+      schema:
+        type: string
+        example: employee;form;details.account;
+    - name: page
+      in: query
+      schema:
+        type: integer
+        example: '1'
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json: 
+          schema:
+              type: object
+              properties:
+                links: 
+                  type: object
+                  properties: 
+                    first: 
+                      type: string
+                    last: 
+                      type: string
+                    prev: 
+                      type: string
+                      format: nullable
+                    next: 
+                      type: string
+                      format: nullable
+                meta: 
+                  type: object
+                  properties: 
+                    current_page: 
+                      type: integer
+                      format: int32
+                    from: 
+                      type: integer
+                      format: int32
+                    last_page: 
+                      type: integer
+                      format: int32
+                    path: 
+                      type: string
+                    per_page: 
+                      type: string
+                    to: 
+                      type: integer
+                      format: int32
+                    total: 
+                      type: integer
+                      format: int32
+                data: 
+                  type: array
+                  items: 
+                    type: object
+                    properties: 
+                      id: 
+                        type: integer
+                        format: int32
+                      payment_type: 
+                        type: string
+                      employee_id: 
+                        type: integer
+                        format: int32
+                      amount: 
+                        type: integer
+                        format: int32
+                      amount_remaining: 
+                        type: integer
+                        format: int32
+                      created_at: 
+                        type: string
+                      archived_at: 
+                        type: string
+                        format: nullable
+                      last_request_approval_at: 
+                        type: string
+                      employee: 
+                        type: object
+                        properties: 
+                          id: 
+                            type: integer
+                            format: int32
+                          code: 
+                            type: string
+                            format: nullable
+                          tax_identification_number: 
+                            type: string
+                            format: nullable
+                          name: 
+                            type: string
+                          address: 
+                            type: string
+                            format: nullable
+                          city: 
+                            type: string
+                            format: nullable
+                          state: 
+                            type: string
+                            format: nullable
+                          country: 
+                            type: string
+                            format: nullable
+                          zip_code: 
+                            type: string
+                            format: nullable
+                          latitude: 
+                            type: string
+                            format: nullable
+                          longitude: 
+                            type: string
+                            format: nullable
+                          phone: 
+                            type: string
+                            format: nullable
+                          phone_cc: 
+                            type: string
+                            format: nullable
+                          email: 
+                            type: string
+                            format: nullable
+                          bpjs: 
+                            type: string
+                            format: nullable
+                          resign_date: 
+                            type: string
+                            format: nullable
+                          personal_identity: 
+                            type: string
+                          last_education: 
+                            type: string
+                            format: nullable
+                          birth_date: 
+                            type: string
+                            format: nullable
+                          birth_place: 
+                            type: string
+                            format: nullable
+                          employee_gender_id: 
+                            type: string
+                            format: nullable
+                          employee_marital_status_id: 
+                            type: string
+                            format: nullable
+                          married_with: 
+                            type: string
+                            format: nullable
+                          employee_religion_id: 
+                            type: string
+                            format: nullable
+                          employee_group_id: 
+                            type: string
+                            format: nullable
+                          employee_status_id: 
+                            type: string
+                            format: nullable
+                          employee_job_location_id: 
+                            type: string
+                            format: nullable
+                          join_date: 
+                            type: string
+                            format: nullable
+                          job_title: 
+                            type: string
+                            format: nullable
+                          kpi_template_id: 
+                            type: string
+                            format: nullable
+                          notes: 
+                            type: string
+                            format: nullable
+                          daily_transport_allowance: 
+                            type: integer
+                            format: int32
+                          functional_allowance: 
+                            type: integer
+                            format: int32
+                          communication_allowance: 
+                            type: integer
+                            format: int32
+                          branch_id: 
+                            type: string
+                            format: nullable
+                          user_id: 
+                            type: string
+                            format: nullable
+                          created_by: 
+                            type: string
+                            format: nullable
+                          updated_by: 
+                            type: string
+                            format: nullable
+                          archived_by: 
+                            type: string
+                            format: nullable
+                          created_at: 
+                            type: string
+                          updated_at: 
+                            type: string
+                          archived_at: 
+                            type: string
+                            format: nullable
+                          label: 
+                            type: string
+                      form: 
+                        type: object
+                        properties: 
+                          id: 
+                            type: integer
+                            format: int32
+                          branch_id: 
+                            type: integer
+                            format: int32
+                          date: 
+                            type: string
+                          number: 
+                            type: string
+                          edited_number: 
+                            type: string
+                            format: nullable
+                          edited_notes: 
+                            type: string
+                            format: nullable
+                          notes: 
+                            type: string
+                            format: nullable
+                          created_by: 
+                            type: integer
+                            format: int32
+                          updated_by: 
+                            type: integer
+                            format: int32
+                          done: 
+                            type: integer
+                            format: int32
+                          increment: 
+                            type: integer
+                            format: int32
+                          increment_group: 
+                            type: integer
+                            format: int32
+                          formable_id: 
+                            type: integer
+                            format: int32
+                          formable_type: 
+                            type: string
+                          request_approval_to: 
+                            type: integer
+                            format: int32
+                          approval_by: 
+                            type: integer
+                            format: int32
+                          approval_at: 
+                            type: string
+                          approval_reason: 
+                            type: string
+                            format: nullable
+                          approval_status: 
+                            type: integer
+                            format: int32
+                          request_cancellation_to: 
+                            type: string
+                            format: nullable
+                          request_cancellation_by: 
+                            type: string
+                            format: nullable
+                          request_cancellation_at: 
+                            type: string
+                            format: nullable
+                          request_cancellation_reason: 
+                            type: string
+                            format: nullable
+                          cancellation_approval_at: 
+                            type: string
+                            format: nullable
+                          cancellation_approval_by: 
+                            type: string
+                            format: nullable
+                          cancellation_approval_reason: 
+                            type: string
+                            format: nullable
+                          cancellation_status: 
+                            type: string
+                            format: nullable
+                          created_at: 
+                            type: string
+                          updated_at: 
+                            type: string
+                      details: 
+                        type: array
+                        items: 
+                          type: object
+                          properties: 
+                            id: 
+                              type: integer
+                              format: int32
+                            cash_advance_id: 
+                              type: integer
+                              format: int32
+                            chart_of_account_id: 
+                              type: integer
+                              format: int32
+                            amount: 
+                              type: integer
+                              format: int32
+                            notes: 
+                              type: string
+                            account: 
+                              type: object
+                              properties: 
+                                id: 
+                                  type: integer
+                                  format: int32
+                                type_id: 
+                                  type: integer
+                                  format: int32
+                                group_id: 
+                                  type: string
+                                  format: nullable
+                                is_sub_ledger: 
+                                  type: integer
+                                  format: int32
+                                sub_ledger: 
+                                  type: string
+                                position: 
+                                  type: string
+                                is_locked: 
+                                  type: integer
+                                  format: int32
+                                cash_flow: 
+                                  type: string
+                                cash_flow_position: 
+                                  type: string
+                                number: 
+                                  type: string
+                                name: 
+                                  type: string
+                                alias: 
+                                  type: string
+                                created_by: 
+                                  type: string
+                                  format: nullable
+                                updated_by: 
+                                  type: string
+                                  format: nullable
+                                archived_by: 
+                                  type: string
+                                  format: nullable
+                                created_at: 
+                                  type: string
+                                updated_at: 
+                                  type: string
+                                archived_at: 
+                                  type: string
+                                  format: nullable
+                                label: 
+                                  type: string
+post:
+  tags:
+    - Cash Advance
+  summary: Create new cash advance
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          properties:
+            increment_group:
+              type: integer
+              example: '202205'
+            date:
+              type: string
+              example: '2022-05-15 09:22:15'
+            payment_type:
+              type: string
+              example: cash
+            employee_id:
+              type: integer
+              example: '1'
+            employee_name:
+              type: string
+              example: John Doe
+            request_approval_to:
+              type: integer
+              example: '3'
+            approver_name:
+              type: string
+              example: admin admin
+            approver_email:
+              type: string
+              example: game.pak.bedjo@gmail.com
+            amount:
+              type: integer
+              example: '0'
+            notes:
+              type: string
+              example: Notes Form
+            activity:
+              type: string
+              example: Created
+            details[0][chart_of_account_id]:
+              type: integer
+              example: '1'
+            details[0][chart_of_account_name]:
+              type: string
+              example: '[11101] KAS KECIL'
+            details[0][amount]:
+              type: integer
+              example: '5000'
+            details[0][notes]:
+              type: string
+              example: Notes
+  security:
+    - bearerAuth: []
+  responses:
+    '201':
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data: 
+                type: object
+                properties: 
+                  payment_type: 
+                    type: string
+                  employee_id: 
+                    type: string
+                  amount: 
+                    type: integer
+                    format: int32
+                  amount_remaining: 
+                    type: integer
+                    format: int32
+                  created_at: 
+                    type: string
+                  id: 
+                    type: integer
+                    format: int32
+                  form: 
+                    type: object
+                    properties: 
+                      id: 
+                        type: integer
+                        format: int32
+                      branch_id: 
+                        type: integer
+                        format: int32
+                      date: 
+                        type: string
+                      number: 
+                        type: string
+                      edited_number: 
+                        type: string
+                        format: nullable
+                      edited_notes: 
+                        type: string
+                        format: nullable
+                      notes: 
+                        type: string
+                      created_by: 
+                        type: integer
+                        format: int32
+                      updated_by: 
+                        type: integer
+                        format: int32
+                      done: 
+                        type: integer
+                        format: int32
+                      increment: 
+                        type: integer
+                        format: int32
+                      increment_group: 
+                        type: integer
+                        format: int32
+                      formable_id: 
+                        type: integer
+                        format: int32
+                      formable_type: 
+                        type: string
+                      request_approval_to: 
+                        type: integer
+                        format: int32
+                      approval_by: 
+                        type: string
+                        format: nullable
+                      approval_at: 
+                        type: string
+                        format: nullable
+                      approval_reason: 
+                        type: string
+                        format: nullable
+                      approval_status: 
+                        type: integer
+                        format: int32
+                      request_cancellation_to: 
+                        type: string
+                        format: nullable
+                      request_cancellation_by: 
+                        type: string
+                        format: nullable
+                      request_cancellation_at: 
+                        type: string
+                        format: nullable
+                      request_cancellation_reason: 
+                        type: string
+                        format: nullable
+                      cancellation_approval_at: 
+                        type: string
+                        format: nullable
+                      cancellation_approval_by: 
+                        type: string
+                        format: nullable
+                      cancellation_approval_reason: 
+                        type: string
+                        format: nullable
+                      cancellation_status: 
+                        type: string
+                        format: nullable
+                      created_at: 
+                        type: string
+                      updated_at: 
+                        type: string
+                  details: 
+                    type: array
+                    items: 
+                      type: object
+                      properties: 
+                        id: 
+                          type: integer
+                          format: int32
+                        cash_advance_id: 
+                          type: integer
+                          format: int32
+                        chart_of_account_id: 
+                          type: integer
+                          format: int32
+                        amount: 
+                          type: integer
+                          format: int32
+                        notes: 
+                          type: string
+                        account: 
+                          type: object
+                          properties: 
+                            id: 
+                              type: integer
+                              format: int32
+                            type_id: 
+                              type: integer
+                              format: int32
+                            group_id: 
+                              type: string
+                              format: nullable
+                            is_sub_ledger: 
+                              type: integer
+                              format: int32
+                            sub_ledger: 
+                              type: string
+                            position: 
+                              type: string
+                            is_locked: 
+                              type: integer
+                              format: int32
+                            cash_flow: 
+                              type: string
+                            cash_flow_position: 
+                              type: string
+                            number: 
+                              type: string
+                            name: 
+                              type: string
+                            alias: 
+                              type: string
+                            created_by: 
+                              type: string
+                              format: nullable
+                            updated_by: 
+                              type: string
+                              format: nullable
+                            archived_by: 
+                              type: string
+                              format: nullable
+                            created_at: 
+                              type: string
+                            updated_at: 
+                              type: string
+                            archived_at: 
+                              type: string
+                              format: nullable
+                            label: 
+                              type: string
+                  employee: 
+                    type: object
+                    properties: 
+                      id: 
+                        type: integer
+                        format: int32
+                      code: 
+                        type: string
+                        format: nullable
+                      tax_identification_number: 
+                        type: string
+                        format: nullable
+                      name: 
+                        type: string
+                      address: 
+                        type: string
+                        format: nullable
+                      city: 
+                        type: string
+                        format: nullable
+                      state: 
+                        type: string
+                        format: nullable
+                      country: 
+                        type: string
+                        format: nullable
+                      zip_code: 
+                        type: string
+                        format: nullable
+                      latitude: 
+                        type: string
+                        format: nullable
+                      longitude: 
+                        type: string
+                        format: nullable
+                      phone: 
+                        type: string
+                        format: nullable
+                      phone_cc: 
+                        type: string
+                        format: nullable
+                      email: 
+                        type: string
+                        format: nullable
+                      bpjs: 
+                        type: string
+                        format: nullable
+                      resign_date: 
+                        type: string
+                        format: nullable
+                      personal_identity: 
+                        type: string
+                      last_education: 
+                        type: string
+                        format: nullable
+                      birth_date: 
+                        type: string
+                        format: nullable
+                      birth_place: 
+                        type: string
+                        format: nullable
+                      employee_gender_id: 
+                        type: string
+                        format: nullable
+                      employee_marital_status_id: 
+                        type: string
+                        format: nullable
+                      married_with: 
+                        type: string
+                        format: nullable
+                      employee_religion_id: 
+                        type: string
+                        format: nullable
+                      employee_group_id: 
+                        type: string
+                        format: nullable
+                      employee_status_id: 
+                        type: string
+                        format: nullable
+                      employee_job_location_id: 
+                        type: string
+                        format: nullable
+                      join_date: 
+                        type: string
+                        format: nullable
+                      job_title: 
+                        type: string
+                        format: nullable
+                      kpi_template_id: 
+                        type: string
+                        format: nullable
+                      notes: 
+                        type: string
+                        format: nullable
+                      daily_transport_allowance: 
+                        type: integer
+                        format: int32
+                      functional_allowance: 
+                        type: integer
+                        format: int32
+                      communication_allowance: 
+                        type: integer
+                        format: int32
+                      branch_id: 
+                        type: string
+                        format: nullable
+                      user_id: 
+                        type: string
+                        format: nullable
+                      created_by: 
+                        type: string
+                        format: nullable
+                      updated_by: 
+                        type: string
+                        format: nullable
+                      archived_by: 
+                        type: string
+                        format: nullable
+                      created_at: 
+                        type: string
+                      updated_at: 
+                        type: string
+                      archived_at: 
+                        type: string
+                        format: nullable
+                      label: 
+                        type: string

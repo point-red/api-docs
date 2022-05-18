@@ -1,0 +1,34 @@
+post:
+  tags:
+    - Cash Advance
+  summary: Send bulk approval cash advance via email
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          properties:
+            bulk_id:
+              type: array
+              items:
+                type: integer
+                example: 7
+            tenant_url:
+              type: string
+              example: http://dev.localhost:8080
+            activity:
+              type: string
+              example: Request approve all
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: Tenant
+      in: header
+      schema:
+        type: string
+      example: dev
+  responses:
+    '204':
+      description: Successful response
+      content:
+        application/json: {}
