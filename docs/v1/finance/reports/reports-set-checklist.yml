@@ -1,0 +1,42 @@
+post:
+  tags:
+    - Cash / Bank Report
+  summary: Set Checklist Record
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          properties:
+            number:
+              type: string
+              example: CASH/IN/22050001
+            report_name:
+              type: string
+              example: CashReport
+            is_checked:
+              type: integer
+              example: '0'
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              number:
+                type: string
+              feature: 
+                type: string
+              is_checked: 
+                type: string
+              updated_at: 
+                type: string
+              created_at: 
+                type: string
+              id: 
+                type: integer
+                format: int32
