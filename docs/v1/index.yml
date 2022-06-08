@@ -73,3 +73,31 @@ paths:
     $ref: './finance/reports/reports.yml'
   /api/v1/finance/reports/set-checklist:
     $ref: './finance/reports/reports-set-checklist.yml'
+  /sales/delivery-orders:
+    $ref: sales/delivery-orders/delivery-orders.yaml
+  /sales/delivery-orders/export:
+    $ref: sales/delivery-orders/delivery-orders_export.yaml
+  /sales/delivery-orders/approval:
+    $ref: sales/delivery-orders/delivery-orders_approval.yaml
+  /sales/delivery-orders/{id}:
+    $ref: sales/delivery-orders/delivery-orders_id.yaml
+  /sales/delivery-orders/{id}/histories:
+    $ref: sales/delivery-orders/delivery-orders_id_histories.yaml
+  /sales/delivery-orders/{id}/approve:
+    $ref: sales/delivery-orders/delivery-orders_id_approve.yaml
+  /sales/delivery-orders/{id}/reject:
+    $ref: sales/delivery-orders/delivery-orders_id_reject.yaml
+  /sales/delivery-orders/{id}/cancellation-approve:
+    $ref: sales/delivery-orders/delivery-orders_id_cancellation-approve.yaml
+  /sales/delivery-orders/{id}/cancellation-reject:
+    $ref: sales/delivery-orders/delivery-orders_id_cancellation-reject.yaml
+  /sales/delivery-orders/{id}/close:
+    $ref: sales/delivery-orders/delivery-orders_id_close.yaml
+  /sales/delivery-orders/{id}/close-approve:
+    $ref: sales/delivery-orders/delivery-orders_id_close-approve.yaml
+  /sales/delivery-orders/{id}/close-reject:
+    $ref: sales/delivery-orders/delivery-orders_id_close-reject.yaml
+  /sales/delivery-orders/approval/send:
+    $ref: sales/delivery-orders/delivery-orders_approval_send.yaml
+  /sales/delivery-orders/approve:
+    $ref: sales/delivery-orders/delivery-orders_approve_by_email.yaml

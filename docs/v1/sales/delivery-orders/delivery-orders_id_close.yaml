@@ -1,0 +1,26 @@
+post:
+  tags:
+    - Delivery Order
+  summary: delivery order - close
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          example:
+            id: 59
+            reason: close reason
+  parameters:
+    - name: id
+      in: path
+      schema:
+        type: string
+      example: 59
+  responses:
+    '204':
+      description: No Content
+      content:
+        application/json:
+          schema:
+            type: object
+          example: {}

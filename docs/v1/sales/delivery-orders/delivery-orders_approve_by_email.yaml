@@ -1,0 +1,19 @@
+post:
+  tags:
+    - Delivery Order
+  summary: delivery order - approve by email
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          example:
+            ids:
+              - 59
+            token: 1d3c927edc7339345ee77fd64e9beeba
+            approver_id: '1'
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json: {}
