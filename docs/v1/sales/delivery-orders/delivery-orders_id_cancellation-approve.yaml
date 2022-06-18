@@ -7,18 +7,19 @@ post:
       application/json:
         schema:
           type: object
+          required: 
+            - id
           properties:
             id:
               type: integer
-              required: true
           example:
             id: 69
   parameters:
     - name: id
       in: path
+      required: true
       schema:
         type: string
-        required: true
       example: 69      
   responses:
     '200':

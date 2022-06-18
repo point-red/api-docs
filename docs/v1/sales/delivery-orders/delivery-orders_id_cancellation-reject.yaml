@@ -7,10 +7,12 @@ post:
       application/json:
         schema:
           type: object
+          required:
+            - id
+            - reason
           properties:
             id:
               type: integer
-              required: true
             reason:
               type: string
               required: true
@@ -20,9 +22,9 @@ post:
   parameters:
     - name: id
       in: path
+      required: true
       schema:
         type: string
-        required: true
       example: 67      
   responses:
     '200':

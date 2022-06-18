@@ -21,7 +21,7 @@ customer_email:
 pricing_group_id:
   type: integer
 request_approval_to:
-  type: strings
+  type: string
 approver_name:
   type: string
 approver_email:

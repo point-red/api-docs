@@ -7,6 +7,8 @@ post:
       application/json:
         schema:
           type: object
+          required:
+            - ids
           properties:
             ids:
               type: array

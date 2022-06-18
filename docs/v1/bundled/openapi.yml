@@ -6630,6 +6630,12 @@ paths:
           application/json:
             schema:
               type: object
+              required:
+                - sales_order_id
+                - warehouse_id
+                - customer_id
+                - request_approval_to
+                - items
               properties:
                 originalData:
                   $ref: '#/components/schemas/original-data'
@@ -6637,6 +6643,13 @@ paths:
                   type: array
                   items:
                     type: object
+                    required:
+                      - sales_order_item_id
+                      - quantity_requested
+                      - quantity_delivered
+                      - quantity_remaining
+                      - unit
+                      - converter
                     properties:
                       allocation_id:
                         type: integer
@@ -6715,7 +6728,7 @@ paths:
                 pricing_group_id:
                   type: integer
                 request_approval_to:
-                  type: strings
+                  type: string
                 approver_name:
                   type: string
                 approver_email:
@@ -6773,106 +6786,6 @@ paths:
                 type_of_tax: exclude
                 items:
                   - sales_order_item_id: 42
-                    item_id: 8
-                    item_name: Bulpoint
-                    item_label: Bulpoint
-                    more: false
-                    units:
-                      - id: 9
-                        label: PCS
-                        name: PCS
-                        converter: 1
-                        disabled: 0
-                        item_id: 8
-                        created_by: 1
-                        updated_by: 1
-                        created_at: '2022-05-13 10:38:19'
-                        updated_at: '2022-05-13 10:38:19'
-                    unit: PCS
-                    converter: 1
-                    quantity_requested: '90'
-                    quantity_delivered: '90'
-                    quantity_remaining: 0
-                    is_quantity_over: false
-                    price: 1000
-                    discount_percent: 0
-                    discount_value: 0
-                    total: 100000
-                    allocation_id: null
-                    notes: null
-                    warehouse_id: 2
-                    warehouse_name: Hanna Schuster
-                  - sales_order_item_id: 43
-                    item_id: 7
-                    item_name: Case
-                    item_label: Case
-                    more: false
-                    units:
-                      - id: 7
-                        label: PCS
-                        name: PCS
-                        converter: 1
-                        disabled: 0
-                        item_id: 7
-                        created_by: 1
-                        updated_by: 1
-                        created_at: '2022-05-13 10:37:43'
-                        updated_at: '2022-05-13 10:37:43'
-                      - id: 8
-                        label: Box
-                        name: Box
-                        converter: 12
-                        disabled: 0
-                        item_id: 7
-                        created_by: 1
-                        updated_by: 1
-                        created_at: '2022-05-13 10:37:43'
-                        updated_at: '2022-05-13 10:37:43'
-                    unit: PCS
-                    converter: 1
-                    quantity_requested: '90'
-                    quantity_delivered: '90'
-                    quantity_remaining: 0
-                    is_quantity_over: false
-                    price: 1000
-                    discount_percent: 0
-                    discount_value: 0
-                    total: 100000
-                    allocation_id: null
-                    notes: null
-                    warehouse_id: 2
-                    warehouse_name: Hanna Schuster
-                  - sales_order_item_id: 44
-                    item_id: 9
-                    item_name: Gelas
-                    item_label: Gelas
-                    more: false
-                    units:
-                      - id: 10
-                        label: PCS
-                        name: PCS
-                        converter: 1
-                        disabled: 0
-                        item_id: 9
-                        created_by: 1
-                        updated_by: 1
-                        created_at: '2022-05-13 10:38:42'
-                        updated_at: '2022-05-13 10:38:42'
-                    unit: PCS
-                    converter: 1
-                    quantity_requested: '90'
-                    quantity_delivered: '90'
-                    quantity_remaining: 0
-                    is_quantity_over: false
-                    price: 1000
-                    discount_percent: 0
-                    discount_value: 0
-                    total: 100000
-                    allocation_id: null
-                    notes: null
-                    warehouse_id: 2
-                    warehouse_name: Hanna Schuster
-                  - sales_order_item_id: 45
                     item_id: 6
                     item_name: Jam
                     item_label: Jam
@@ -6921,173 +6834,7 @@ paths:
                     type: object
                     properties:
                       sales_order:
-                        type: object
-                        properties:
-                          items:
-                            type: array
-                            items:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                sales_order_id:
-                                  type: integer
-                                sales_quotation_item_id:
-                                  type: integer
-                                sales_contract_item_id:
-                                  type: integer
-                                sales_contract_group_item_id:
-                                  type: integer
-                                item_id:
-                                  type: integer
-                                item_name:
-                                  type: string
-                                quantity:
-                                  type: string
-                                unit:
-                                  type: string
-                                converter:
-                                  type: string
-                                price:
-                                  type: string
-                                discount_percent:
-                                  type: string
-                                discount_value:
-                                  type: string
-                                taxable:
-                                  type: string
-                                notes:
-                                  type: string
-                                allocation_id:
-                                  type: integer
-                                quantity_remaining:
-                                  type: string
-                                item:
-                                  type: object
-                                  properties:
-                                    id:
-                                      type: integer
-                                    chart_of_account_id:
-                                      type: integer
-                                    code:
-                                      type: string
-                                    barcode:
-                                      type: string
-                                    name:
-                                      type: string
-                                    size:
-                                      type: string
-                                    color:
-                                      type: string
-                                    weight:
-                                      type: string
-                                    notes:
-                                      type: string
-                                    taxable:
-                                      type: string
-                                    require_production_number:
-                                      type: string
-                                    require_expiry_date:
-                                      type: string
-                                    stock:
-                                      type: string
-                                    stock_reminder:
-                                      type: string
-                                    unit_default:
-                                      type: string
-                                    unit_default_purchase:
-                                      type: string
-                                    unit_default_sales:
-                                      type: string
-                                    created_by:
-                                      type: integer
-                                    updated_by:
-                                      type: integer
-                                    archived_by:
-                                      type: integer
-                                    created_at:
-                                      type: string
-                                    updated_at:
-                                      type: string
-                                    archived_at:
-                                      type: string
-                                    label:
-                                      type: string
-                                    smallest_unit:
-                                      id:
-                                        type: integer
-                                      label:
-                                        type: string
-                                      name:
-                                        type: string
-                                      converter:
-                                        type: string
-                                      disabled:
-                                        type: string
-                                      item_id:
-                                        type: integer
-                                      created_by:
-                                        type: integer
-                                      updated_by:
-                                        type: integer
-                                      created_at:
-                                        type: string
-                                      updated_at:
-                                        type: string
-                                delivery_order_items:
-                                  $ref: '#/components/schemas/delivery-order-items'
-                          id:
-                            type: integer
-                          sales_quotation_id:
-                            type: integer
-                          sales_contract_id:
-                            type: integer
-                          customer_id:
-                            type: integer
-                          customer_name:
-                            type: string
-                          customer_address:
-                            type: string
-                          customer_phone:
-                            type: string
-                          billing_address:
-                            type: string
-                          billing_phone:
-                            type: string
-                          billing_email:
-                            type: string
-                          shipping_address:
-                            type: string
-                          shipping_phone:
-                            type: string
-                          shipping_email:
-                            type: string
-                          warehouse_id:
-                            type: integer
-                          eta:
-                            type: string
-                          cash_only:
-                            type: integer
-                          need_down_payment:
-                            type: integer
-                          delivery_fee:
-                            type: integer
-                          discount_percent:
-                            type: integer
-                          discount_value:
-                            type: integer
-                          type_of_tax:
-                            type: string
-                          tax:
-                            type: integer
-                          amount:
-                            type: integer
-                          created_at:
-                            type: string
-                          updated_at:
-                            type: string
-                          form:
-                            $ref: '#/components/schemas/form'
+                        $ref: '#/components/schemas/sales-order'
                       id:
                         type: integer
                       customer_id:
@@ -8685,22 +8432,83 @@ paths:
       tags:
         - Delivery Order
       summary: delivery order - update
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 59
       requestBody:
         content:
           application/json:
             schema:
               type: object
+              required:
+                - sales_order_id
+                - warehouse_id
+                - customer_id
+                - request_approval_to
+                - date
+                - items
               properties:
                 originalData:
-                  id:
-                    type: integer
-                  $ref: ./components/requests/properties/original-data.yaml
+                  type: object
+                  properties:
+                    increment_group:
+                      type: string
+                    date:
+                      type: string
+                    warehouse_id:
+                      type: integer
+                    warehouse_name:
+                      type: string
+                    customer_id:
+                      type: integer
+                    customer_name:
+                      type: string
+                    customer_label:
+                      type: string
+                    customer_address:
+                      type: string
+                    customer_phone:
+                      type: string
+                    customer_email:
+                      type: string
+                    pricing_group_id:
+                      type: integer
+                    need_down_payment:
+                      type: string
+                    cash_only:
+                      type: string
+                    notes:
+                      type: string
+                    items:
+                      type: array
+                    request_approval_to:
+                      type: integer
+                    approver_name:
+                      type: string
+                    approver_email:
+                      type: string
+                    sales_order_id:
+                      type: integer
+                    id:
+                      type: integer
                 id:
                   type: integer
                 items:
                   type: array
                   items:
                     type: object
+                    required:
+                      - delivery_order_id
+                      - sales_order_item_id
+                      - quantity_requested
+                      - quantity_delivered
+                      - quantity_remaining
+                      - unit
+                      - converter
                     properties:
                       id:
                         type: integer
@@ -8712,8 +8520,36 @@ paths:
                         type: integer
                       allocation:
                         type: string
-                      $ref: >-
-                        ./components/requests/properties/delivery-order-item.yaml
+                      sales_order_item_id:
+                        type: integer
+                      item_id:
+                        type: integer
+                      item_name:
+                        type: string
+                      price:
+                        type: string
+                      discount_percent:
+                        type: string
+                      discount_value:
+                        type: string
+                      unit:
+                        type: string
+                      converter:
+                        type: integer
+                      quantity_requested:
+                        type: integer
+                      quantity_delivered:
+                        type: integer
+                      quantity_remaining:
+                        type: integer
+                      more:
+                        type: boolean
+                      total:
+                        type: integer
+                      item_label:
+                        type: string
+                      is_quantity_over:
+                        type: boolean
                       item:
                         type: object
                         properties:
@@ -8788,7 +8624,7 @@ paths:
                 pricing_group_id:
                   type: integer
                 request_approval_to:
-                  type: strings
+                  type: string
                 approver_name:
                   type: string
                 approver_email:
@@ -9033,78 +8869,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  sales_order:
-                    type: object
-                    properties:
-                      items:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            $ref: >-
-                              ./components/responses/properties/sales-order-item.yaml
-                      $ref: ./components/responses/properties/sales-order.yaml
-                  id:
-                    type: integer
-                  customer_id:
-                    type: integer
-                  warehouse_id:
-                    type: integer
-                  sales_order_id:
-                    type: integer
-                  customer_name:
-                    type: string
-                  customer_address:
-                    type: string
-                  customer_phone:
-                    type: string
-                  form:
-                    $ref: '#/components/schemas/form'
-                  customer:
-                    $ref: '#/components/schemas/customer'
-                  items:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        delivery_order_id:
-                          type: integer
-                        sales_order_item_id:
-                          type: integer
-                        item_id:
-                          type: integer
-                        item_name:
-                          type: string
-                        price:
-                          type: integer
-                        discount_percent:
-                          type: integer
-                        discount_value:
-                          type: integer
-                        taxable:
-                          type: integer
-                        unit:
-                          type: string
-                        converter:
-                          type: integer
-                        notes:
-                          type: string
-                        allocation_id:
-                          type: integer
-                        quantity_requested:
-                          type: integer
-                        quantity_delivered:
-                          type: integer
-                        quantity_remaining:
-                          type: integer
-                        converter_quantity:
-                          type: integer
-                        allocation:
-                          type: string
+                $ref: '#/components/schemas/delivery-order-patch'
               example:
                 warehouse_id: 2
                 customer_id: 11
@@ -9390,15 +9155,21 @@ paths:
       tags:
         - Delivery Order
       summary: delivery order - cancel
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: delivery order id
       requestBody:
         content:
           application/json:
             schema:
               type: object
+              required:
+                - reason
               properties:
                 reason:
                   type: string
-                  required: true
       responses:
         '200':
           description: Successful response
@@ -9417,6 +9188,9 @@ paths:
           example: '-user_activities.date'
         - name: id
           in: path
+          required: true
+          schema:
+            type: string
           example: '66'
         - name: includes
           in: query
@@ -9437,12 +9211,12 @@ paths:
           in: query
           schema:
             type: integer
-          example: '10'
+          example: 10
         - name: page
           in: query
           schema:
             type: integer
-          example: '1'
+          example: 1
       responses:
         '200':
           description: OK
@@ -9450,30 +9224,62 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        table_type:
+                          type: string
+                        table_id:
+                          type: integer
+                        number:
+                          type: string
+                        date:
+                          type: string
+                        user_id:
+                          type: integer
+                        activity:
+                          type: string
+                        formable_id:
+                          type: integer
+                        user:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                            first_name:
+                              type: string
+                            last_name:
+                              type: string
+                            address:
+                              type: string
+                            phone:
+                              type: string
+                            email:
+                              type: string
+                            created_at:
+                              type: string
+                            updated_at:
+                              type: string
+                            branch_id:
+                              type: integer
+                            warehouse_id:
+                              type: integer
+                            full_name:
+                              type: string
+                  links:
+                    $ref: '#/components/schemas/links'
+                  meta:
+                    $ref: '#/components/schemas/meta'
               example:
                 data:
                   - id: 253
-                    table_type: forms
-                    table_id: 110
-                    number: DO22060014
-                    date: '2022-06-04 13:02:40'
-                    user_id: 1
-                    activity: Request Approval
-                    formable_id: 66
-                    user:
-                      id: 1
-                      name: admin
-                      first_name: admin
-                      last_name: admin
-                      address: null
-                      phone: null
-                      email: aininr13@gmail.com
-                      created_at: '2022-05-12 11:32:41'
-                      updated_at: '2022-05-12 11:32:41'
-                      branch_id: null
-                      warehouse_id: null
-                      full_name: admin admin
-                  - id: 252
                     table_type: forms
                     table_id: 110
                     number: DO22060014
@@ -9514,11 +9320,24 @@ paths:
       tags:
         - Delivery Order
       summary: delivery order - create history
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
       requestBody:
         content:
           application/json:
             schema:
               type: object
+              required:
+                - id
+                - activity
+              properties:
+                id:
+                  type: integer
+                activity:
+                  type: string
               example:
                 id: 66
                 activity: Printed
@@ -9529,6 +9348,24 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      table_type:
+                        type: string
+                      table_id:
+                        type: integer
+                      number:
+                        type: string
+                      date:
+                        type: string
+                      user_id:
+                        type: integer
+                      activity:
+                        type: string
+                      id:
+                        type: integer
               example:
                 data:
                   table_type: forms
@@ -9548,26 +9385,17 @@ paths:
           application/json:
             schema:
               type: object
+              required:
+                - id
+              properties:
+                id:
+                  type: string
               example:
                 id: '66'
       parameters:
-        - name: Tenant
-          in: header
-          schema:
-            type: string
-          example: '{{tenant}}'
-        - name: Timezone
-          in: header
-          schema:
-            type: string
-          example: '{{timezone}}'
-        - name: Authorization
-          in: header
-          schema:
-            type: string
-          example: '{{auth_token_su}}'
         - name: id
           in: path
+          required: true
           schema:
             type: string
           example: 66
@@ -9578,6 +9406,37 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  id:
+                    type: integer
+                  customer_id:
+                    type: integer
+                  warehouse_id:
+                    type: integer
+                  sales_order_id:
+                    type: integer
+                  customer_name:
+                    type: string
+                  customer_address:
+                    type: string
+                  customer_phone:
+                    type: string
+                  billing_address:
+                    type: string
+                  billing_phone:
+                    type: string
+                  billing_email:
+                    type: string
+                  shipping_address:
+                    type: string
+                  shipping_phone:
+                    type: string
+                  shipping_email:
+                    type: string
+                  form:
+                    $ref: '#/components/schemas/form'
+                  sales_order:
+                    $ref: '#/components/schemas/sales-order'
               example:
                 data:
                   id: 66
@@ -10204,32 +10063,21 @@ paths:
           application/json:
             schema:
               type: object
+              required:
+                - id
+                - reason
+              properties:
+                id:
+                  type: string
+                reason:
+                  type: string
               example:
                 id: 69
                 reason: reason delivery order rejected
       parameters:
-        - name: Tenant
-          in: header
-          schema:
-            type: string
-          example: '{{tenant}}'
-        - name: Timezone
-          in: header
-          schema:
-            type: string
-          example: '{{timezone}}'
-        - name: Authorization
-          in: header
-          schema:
-            type: string
-          example: '{{auth_token_su}}'
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
         - name: id
           in: path
+          required: true
           schema:
             type: string
           example: 69
@@ -10240,6 +10088,38 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      customer_id:
+                        type: integer
+                      warehouse_id:
+                        type: integer
+                      sales_order_id:
+                        type: integer
+                      customer_name:
+                        type: string
+                      customer_address:
+                        type: string
+                      customer_phone:
+                        type: string
+                      billing_address:
+                        type: string
+                      billing_phone:
+                        type: string
+                      billing_email:
+                        type: string
+                      shipping_address:
+                        type: string
+                      shipping_phone:
+                        type: string
+                      shipping_email:
+                        type: string
+                      form:
+                        $ref: '#/components/schemas/form'
               example:
                 data:
                   id: 69
@@ -10304,18 +10184,19 @@ paths:
           application/json:
             schema:
               type: object
+              required:
+                - id
               properties:
                 id:
                   type: integer
-                  required: true
               example:
                 id: 69
       parameters:
         - name: id
           in: path
+          required: true
           schema:
             type: string
-            required: true
           example: 69
       responses:
         '200':
@@ -10361,58 +10242,62 @@ paths:
                       sales_order:
                         type: object
                         properties:
-                          id:
-                            type: integer
-                          sales_quotation_id:
-                            type: integer
-                          sales_contract_id:
-                            type: integer
-                          customer_id:
-                            type: integer
-                          customer_name:
-                            type: string
-                          customer_address:
-                            type: string
-                          customer_phone:
-                            type: string
-                          billing_address:
-                            type: string
-                          billing_phone:
-                            type: string
-                          billing_email:
-                            type: string
-                          shipping_address:
-                            type: string
-                          shipping_phone:
-                            type: string
-                          shipping_email:
-                            type: string
-                          warehouse_id:
-                            type: integer
-                          eta:
-                            type: string
-                          cash_only:
-                            type: integer
-                          need_down_payment:
-                            type: integer
-                          delivery_fee:
-                            type: integer
-                          discount_percent:
-                            type: integer
-                          discount_value:
-                            type: integer
-                          type_of_tax:
-                            type: string
-                          tax:
-                            type: integer
-                          amount:
-                            type: integer
-                          created_at:
-                            type: string
-                          updated_at:
-                            type: string
-                          form:
-                            $ref: '#/components/schemas/form'
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            sales_quotation_id:
+                              type: integer
+                            sales_contract_id:
+                              type: integer
+                            customer_id:
+                              type: integer
+                            customer_name:
+                              type: string
+                            customer_address:
+                              type: string
+                            customer_phone:
+                              type: string
+                            billing_address:
+                              type: string
+                            billing_phone:
+                              type: string
+                            billing_email:
+                              type: string
+                            shipping_address:
+                              type: string
+                            shipping_phone:
+                              type: string
+                            shipping_email:
+                              type: string
+                            warehouse_id:
+                              type: integer
+                            eta:
+                              type: string
+                            cash_only:
+                              type: integer
+                            need_down_payment:
+                              type: integer
+                            delivery_fee:
+                              type: integer
+                            discount_percent:
+                              type: integer
+                            discount_value:
+                              type: integer
+                            type_of_tax:
+                              type: string
+                            tax:
+                              type: integer
+                            amount:
+                              type: integer
+                            created_at:
+                              type: string
+                            updated_at:
+                              type: string
+                            form:
+                              $ref: '#/components/schemas/form'
+                            items:
+                              $ref: '#/components/schemas/sales-order-items'
               example:
                 data:
                   id: 69
@@ -10543,10 +10428,12 @@ paths:
           application/json:
             schema:
               type: object
+              required:
+                - id
+                - reason
               properties:
                 id:
                   type: integer
-                  required: true
                 reason:
                   type: string
                   required: true
@@ -10556,9 +10443,9 @@ paths:
       parameters:
         - name: id
           in: path
+          required: true
           schema:
             type: string
-            required: true
           example: 67
       responses:
         '200':
@@ -10662,23 +10549,24 @@ paths:
           application/json:
             schema:
               type: object
+              required:
+                - reason
+              properties:
+                reason:
+                  type: string
               example:
                 id: 59
                 reason: close reason
       parameters:
         - name: id
           in: path
+          required: true
           schema:
             type: string
           example: 59
       responses:
         '204':
           description: No Content
-          content:
-            application/json:
-              schema:
-                type: object
-              example: {}
   /sales/delivery-orders/{id}/close-approve:
     post:
       tags:
@@ -10689,31 +10577,17 @@ paths:
           application/json:
             schema:
               type: object
+              required:
+                - id
+              properties:
+                id:
+                  type: string
               example:
                 id: 59
       parameters:
-        - name: Tenant
-          in: header
-          schema:
-            type: string
-          example: '{{tenant}}'
-        - name: Timezone
-          in: header
-          schema:
-            type: string
-          example: '{{timezone}}'
-        - name: Authorization
-          in: header
-          schema:
-            type: string
-          example: '{{auth_token_su}}'
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
         - name: id
           in: path
+          required: true
           schema:
             type: string
           example: 59
@@ -10724,6 +10598,94 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  id:
+                    type: integer
+                  customer_id:
+                    type: integer
+                  warehouse_id:
+                    type: integer
+                  sales_order_id:
+                    type: integer
+                  customer_name:
+                    type: string
+                  customer_address:
+                    type: string
+                  customer_phone:
+                    type: string
+                  billing_address:
+                    type: string
+                  billing_phone:
+                    type: string
+                  billing_email:
+                    type: string
+                  shipping_address:
+                    type: string
+                  shipping_phone:
+                    type: string
+                  shipping_email:
+                    type: string
+                  form:
+                    $ref: '#/components/schemas/form'
+                  sales_order:
+                    type: object
+                    properties:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        sales_quotation_id:
+                          type: integer
+                        sales_contract_id:
+                          type: integer
+                        customer_id:
+                          type: integer
+                        customer_name:
+                          type: string
+                        customer_address:
+                          type: string
+                        customer_phone:
+                          type: string
+                        billing_address:
+                          type: string
+                        billing_phone:
+                          type: string
+                        billing_email:
+                          type: string
+                        shipping_address:
+                          type: string
+                        shipping_phone:
+                          type: string
+                        shipping_email:
+                          type: string
+                        warehouse_id:
+                          type: integer
+                        eta:
+                          type: string
+                        cash_only:
+                          type: integer
+                        need_down_payment:
+                          type: integer
+                        delivery_fee:
+                          type: integer
+                        discount_percent:
+                          type: integer
+                        discount_value:
+                          type: integer
+                        type_of_tax:
+                          type: string
+                        tax:
+                          type: integer
+                        amount:
+                          type: integer
+                        created_at:
+                          type: string
+                        updated_at:
+                          type: string
+                        form:
+                          $ref: '#/components/schemas/form'
+                        items:
+                          $ref: '#/components/schemas/sales-order-items'
               example:
                 id: 59
                 customer_id: 11
@@ -10852,32 +10814,18 @@ paths:
           application/json:
             schema:
               type: object
+              required:
+                - id
+              properties:
+                id:
+                  type: string
               example:
                 id: 57
                 reason: close reject reason
       parameters:
-        - name: Tenant
-          in: header
-          schema:
-            type: string
-          example: '{{tenant}}'
-        - name: Timezone
-          in: header
-          schema:
-            type: string
-          example: '{{timezone}}'
-        - name: Authorization
-          in: header
-          schema:
-            type: string
-          example: '{{auth_token_su}}'
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
         - name: id
           in: path
+          required: true
           schema:
             type: string
           example: 57
@@ -10888,6 +10836,35 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  id:
+                    type: integer
+                  customer_id:
+                    type: integer
+                  warehouse_id:
+                    type: integer
+                  sales_order_id:
+                    type: integer
+                  customer_name:
+                    type: string
+                  customer_address:
+                    type: string
+                  customer_phone:
+                    type: string
+                  billing_address:
+                    type: string
+                  billing_phone:
+                    type: string
+                  billing_email:
+                    type: string
+                  shipping_address:
+                    type: string
+                  shipping_phone:
+                    type: string
+                  shipping_email:
+                    type: string
+                  form:
+                    $ref: '#/components/schemas/form'
               example:
                 id: 57
                 customer_id: 12
@@ -10951,6 +10928,8 @@ paths:
           application/json:
             schema:
               type: object
+              required:
+                - ids
               properties:
                 ids:
                   type: array
@@ -10977,6 +10956,10 @@ paths:
           application/json:
             schema:
               type: object
+              required:
+                - ids
+                - token
+                - approver_id
               properties:
                 ids:
                   type: array
@@ -11389,3 +11372,239 @@ components:
             type: string
           updated_at:
             type: string
+    sales-order-item:
+      type: object
+      properties:
+        id:
+          type: string
+        sales_order_id:
+          type: integer
+        sales_quotation_item_id:
+          type: integer
+        sales_contract_item_id:
+          type: integer
+        sales_contract_group_item_id:
+          type: integer
+        item_id:
+          type: integer
+        item_name:
+          type: string
+        quantity:
+          type: string
+        unit:
+          type: string
+        converter:
+          type: string
+        price:
+          type: string
+        discount_percent:
+          type: string
+        discount_value:
+          type: string
+        taxable:
+          type: string
+        notes:
+          type: string
+        allocation_id:
+          type: integer
+        quantity_remaining:
+          type: string
+        item:
+          type: object
+          properties:
+            id:
+              type: integer
+            chart_of_account_id:
+              type: integer
+            code:
+              type: string
+            barcode:
+              type: string
+            name:
+              type: string
+            size:
+              type: string
+            color:
+              type: string
+            weight:
+              type: string
+            notes:
+              type: string
+            taxable:
+              type: string
+            require_production_number:
+              type: string
+            require_expiry_date:
+              type: string
+            stock:
+              type: string
+            stock_reminder:
+              type: string
+            unit_default:
+              type: string
+            unit_default_purchase:
+              type: string
+            unit_default_sales:
+              type: string
+            created_by:
+              type: integer
+            updated_by:
+              type: integer
+            archived_by:
+              type: integer
+            created_at:
+              type: string
+            updated_at:
+              type: string
+            archived_at:
+              type: string
+            label:
+              type: string
+            smallest_unit:
+              id:
+                type: integer
+              label:
+                type: string
+              name:
+                type: string
+              converter:
+                type: string
+              disabled:
+                type: string
+              item_id:
+                type: integer
+              created_by:
+                type: integer
+              updated_by:
+                type: integer
+              created_at:
+                type: string
+              updated_at:
+                type: string
+        delivery_order_items:
+          $ref: '#/components/schemas/delivery-order-items'
+    sales-order-items:
+      type: array
+      items:
+        $ref: '#/components/schemas/sales-order-item'
+    sales-order:
+      type: object
+      properties:
+        id:
+          type: integer
+        sales_quotation_id:
+          type: integer
+        sales_contract_id:
+          type: integer
+        customer_id:
+          type: integer
+        customer_name:
+          type: string
+        customer_address:
+          type: string
+        customer_phone:
+          type: string
+        billing_address:
+          type: string
+        billing_phone:
+          type: string
+        billing_email:
+          type: string
+        shipping_address:
+          type: string
+        shipping_phone:
+          type: string
+        shipping_email:
+          type: string
+        warehouse_id:
+          type: integer
+        eta:
+          type: string
+        cash_only:
+          type: integer
+        need_down_payment:
+          type: integer
+        delivery_fee:
+          type: integer
+        discount_percent:
+          type: integer
+        discount_value:
+          type: integer
+        type_of_tax:
+          type: string
+        tax:
+          type: integer
+        amount:
+          type: integer
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        form:
+          $ref: '#/components/schemas/form'
+        items:
+          $ref: '#/components/schemas/sales-order-items'
+    delivery-order-patch:
+      type: object
+      properties:
+        id:
+          type: integer
+        customer_id:
+          type: integer
+        warehouse_id:
+          type: integer
+        sales_order_id:
+          type: integer
+        customer_name:
+          type: string
+        customer_address:
+          type: string
+        customer_phone:
+          type: string
+        form:
+          $ref: '#/components/schemas/form'
+        customer:
+          $ref: '#/components/schemas/customer'
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              delivery_order_id:
+                type: integer
+              sales_order_item_id:
+                type: integer
+              item_id:
+                type: integer
+              item_name:
+                type: string
+              price:
+                type: integer
+              discount_percent:
+                type: integer
+              discount_value:
+                type: integer
+              taxable:
+                type: integer
+              unit:
+                type: string
+              converter:
+                type: integer
+              notes:
+                type: string
+              allocation_id:
+                type: integer
+              quantity_requested:
+                type: integer
+              quantity_delivered:
+                type: integer
+              quantity_remaining:
+                type: integer
+              converter_quantity:
+                type: integer
+              allocation:
+                type: string
+        sales_order:
+          $ref: '#/components/schemas/sales-order'

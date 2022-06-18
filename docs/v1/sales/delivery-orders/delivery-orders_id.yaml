@@ -303,16 +303,69 @@ patch:
   tags:
     - Delivery Order
   summary: delivery order - update
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      example: 59
   requestBody:
     content:
       application/json:
         schema:
           type: object
+          required:
+            - sales_order_id
+            - warehouse_id
+            - customer_id
+            - request_approval_to
+            - date
+            - items          
           properties:
             originalData:
-              id:
-                type: integer
-              $ref: './components/requests/properties/original-data.yaml'
+              type: object
+              properties:
+                increment_group:
+                  type: string
+                date:
+                  type: string
+                warehouse_id:
+                  type: integer
+                warehouse_name:
+                  type: string
+                customer_id:
+                  type: integer
+                customer_name:
+                  type: string
+                customer_label:
+                  type: string
+                customer_address:
+                  type: string
+                customer_phone:
+                  type: string
+                customer_email:
+                  type: string
+                pricing_group_id:
+                  type: integer
+                need_down_payment:
+                  type: string
+                cash_only:
+                  type: string
+                notes:
+                  type: string
+                items:
+                  type: array
+                request_approval_to:
+                  type: integer
+                approver_name:
+                  type: string
+                approver_email:
+                  type: string
+                sales_order_id:
+                  type: integer
+                id:
+                  type: integer
             id:
               type: integer
             $ref: './components/requests/properties/delivery-order-form.yaml'
@@ -320,6 +373,14 @@ patch:
               type: array
               items:
                 type: object
+                required:
+                  - delivery_order_id
+                  - sales_order_item_id
+                  - quantity_requested
+                  - quantity_delivered
+                  - quantity_remaining
+                  - unit
+                  - converter
                 properties:
                   id:
                     type: integer
@@ -331,7 +392,36 @@ patch:
                     type: integer
                   allocation:
                     type: string
-                  $ref: './components/requests/properties/delivery-order-item.yaml'
+                  sales_order_item_id:
+                    type: integer
+                  item_id:
+                    type: integer
+                  item_name:
+                    type: string
+                  price:
+                    type: string
+                  discount_percent:
+                    type: string
+                  discount_value:
+                    type: string
+                  unit:
+                    type: string
+                  converter:
+                    type: integer
+                  quantity_requested:
+                    type: integer
+                  quantity_delivered:
+                    type: integer
+                  quantity_remaining:
+                    type: integer
+                  more:
+                    type: boolean
+                  total:
+                    type: integer
+                  item_label:
+                    type: string
+                  is_quantity_over:
+                    type: boolean
                   item:
                     type: object
                     properties:
@@ -616,19 +706,7 @@ patch:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              $ref: './components/responses/properties/delivery-order.yaml'
-              sales_order:
-                    type: object
-                    properties:
-                      items:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            $ref: './components/responses/properties/sales-order-item.yaml'
-                      $ref: './components/responses/properties/sales-order.yaml'
+            $ref: './components/responses/properties/delivery-order-patch.yaml'
           example:
             warehouse_id: 2
             customer_id: 11
@@ -914,15 +992,21 @@ delete:
   tags:
     - Delivery Order
   summary: delivery order - cancel
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: delivery order id
   requestBody:
     content:
       application/json:
         schema:
           type: object
+          required:
+            - reason
           properties:
             reason:
               type: string
-              required: true
   responses:
     '200':
       description: Successful response

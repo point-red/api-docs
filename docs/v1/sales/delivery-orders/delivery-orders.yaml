@@ -283,6 +283,12 @@ post:
       application/json:
         schema:
           type: object
+          required:
+            - sales_order_id
+            - warehouse_id
+            - customer_id
+            - request_approval_to
+            - items
           properties:
             originalData:
               $ref: './components/requests/properties/original-data.yaml'
@@ -291,6 +297,13 @@ post:
               type: array
               items:
                 type: object
+                required:
+                  - sales_order_item_id
+                  - quantity_requested
+                  - quantity_delivered
+                  - quantity_remaining
+                  - unit
+                  - converter
                 properties:
                   $ref: './components/requests/properties/delivery-order-item.yaml'
                   allocation_id:
@@ -363,106 +376,6 @@ post:
             type_of_tax: exclude
             items:
               - sales_order_item_id: 42
-                item_id: 8
-                item_name: Bulpoint
-                item_label: Bulpoint
-                more: false
-                units:
-                  - id: 9
-                    label: PCS
-                    name: PCS
-                    converter: 1
-                    disabled: 0
-                    item_id: 8
-                    created_by: 1
-                    updated_by: 1
-                    created_at: '2022-05-13 10:38:19'
-                    updated_at: '2022-05-13 10:38:19'
-                unit: PCS
-                converter: 1
-                quantity_requested: '90'
-                quantity_delivered: '90'
-                quantity_remaining: 0
-                is_quantity_over: false
-                price: 1000
-                discount_percent: 0
-                discount_value: 0
-                total: 100000
-                allocation_id: null
-                notes: null
-                warehouse_id: 2
-                warehouse_name: Hanna Schuster
-              - sales_order_item_id: 43
-                item_id: 7
-                item_name: Case
-                item_label: Case
-                more: false
-                units:
-                  - id: 7
-                    label: PCS
-                    name: PCS
-                    converter: 1
-                    disabled: 0
-                    item_id: 7
-                    created_by: 1
-                    updated_by: 1
-                    created_at: '2022-05-13 10:37:43'
-                    updated_at: '2022-05-13 10:37:43'
-                  - id: 8
-                    label: Box
-                    name: Box
-                    converter: 12
-                    disabled: 0
-                    item_id: 7
-                    created_by: 1
-                    updated_by: 1
-                    created_at: '2022-05-13 10:37:43'
-                    updated_at: '2022-05-13 10:37:43'
-                unit: PCS
-                converter: 1
-                quantity_requested: '90'
-                quantity_delivered: '90'
-                quantity_remaining: 0
-                is_quantity_over: false
-                price: 1000
-                discount_percent: 0
-                discount_value: 0
-                total: 100000
-                allocation_id: null
-                notes: null
-                warehouse_id: 2
-                warehouse_name: Hanna Schuster
-              - sales_order_item_id: 44
-                item_id: 9
-                item_name: Gelas
-                item_label: Gelas
-                more: false
-                units:
-                  - id: 10
-                    label: PCS
-                    name: PCS
-                    converter: 1
-                    disabled: 0
-                    item_id: 9
-                    created_by: 1
-                    updated_by: 1
-                    created_at: '2022-05-13 10:38:42'
-                    updated_at: '2022-05-13 10:38:42'
-                unit: PCS
-                converter: 1
-                quantity_requested: '90'
-                quantity_delivered: '90'
-                quantity_remaining: 0
-                is_quantity_over: false
-                price: 1000
-                discount_percent: 0
-                discount_value: 0
-                total: 100000
-                allocation_id: null
-                notes: null
-                warehouse_id: 2
-                warehouse_name: Hanna Schuster
-              - sales_order_item_id: 45
                 item_id: 6
                 item_name: Jam
                 item_label: Jam
@@ -512,15 +425,7 @@ post:
                 properties:
                   $ref: './components/responses/properties/delivery-order.yaml'
                   sales_order:
-                    type: object
-                    properties:
-                      items:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            $ref: './components/responses/properties/sales-order-item.yaml'
-                      $ref: './components/responses/properties/sales-order.yaml'
+                    $ref: './components/responses/properties/sales-order.yaml'
           example:
             data:
               warehouse_id: 2

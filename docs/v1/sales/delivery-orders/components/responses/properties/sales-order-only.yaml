@@ -52,5 +52,3 @@ properties:
     type: string
   form:
     $ref: './form.yaml'
-  items:
-    $ref: './sales-order-items.yaml'

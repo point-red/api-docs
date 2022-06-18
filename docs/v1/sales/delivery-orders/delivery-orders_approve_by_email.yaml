@@ -7,6 +7,10 @@ post:
       application/json:
         schema:
           type: object
+          required:
+            - ids
+            - token
+            - approver_id
           properties:
             ids:
               type: array
