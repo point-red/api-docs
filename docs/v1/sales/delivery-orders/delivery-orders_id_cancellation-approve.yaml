@@ -7,33 +7,18 @@ post:
       application/json:
         schema:
           type: object
+          properties:
+            id:
+              type: integer
+              required: true
           example:
             id: 69
   parameters:
-    - name: Tenant
-      in: header
-      schema:
-        type: string
-      example: '{{tenant}}'
-    - name: Timezone
-      in: header
-      schema:
-        type: string
-      example: '{{timezone}}'
-    - name: Authorization
-      in: header
-      schema:
-        type: string
-      example: '{{auth_token_su}}'
-    - name: Accept
-      in: header
-      schema:
-        type: string
-      example: application/json
     - name: id
       in: path
       schema:
         type: string
+        required: true
       example: 69      
   responses:
     '200':
@@ -42,6 +27,44 @@ post:
         application/json:
           schema:
             type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  customer_id:
+                    type: integer
+                  warehouse_id:
+                    type: integer
+                  sales_order_id:
+                    type: integer
+                  customer_name:
+                    type: string
+                  customer_address:
+                    type: string
+                  customer_phone:
+                    type: string
+                  billing_address:
+                    type: string
+                  billing_phone:
+                    type: string
+                  billing_email:
+                    type: string
+                  shipping_address:
+                    type: string
+                  shipping_phone:
+                    type: string
+                  shipping_email:
+                    type: string   
+                  form:
+                    $ref: './components/responses/properties/form.yaml'   
+                  delivery_notes:
+                    type: array 
+                  sales_order:
+                    type: object
+                    properties:
+                      $ref: './components/responses/properties/sales-order.yaml'        
           example:
             data:
               id: 69

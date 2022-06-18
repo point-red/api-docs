@@ -6408,2135 +6408,20 @@ paths:
       responses:
         '200':
           description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Transfer-Encoding:
-              schema:
-                type: string
-                example: chunked
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            Keep-Alive:
-              schema:
-                type: string
-                example: timeout=60
-            Vary:
-              schema:
-                type: string
-                example: Accept-Encoding
-            Cache-Control:
-              schema:
-                type: string
-                example: no-cache, private
-            Date:
-              schema:
-                type: string
-                example: Tue, 07 Jun 2022 15:02:52 GMT
-            X-RateLimit-Limit:
-              schema:
-                type: integer
-                example: '300'
-            X-RateLimit-Remaining:
-              schema:
-                type: integer
-                example: '299'
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-            Access-Control-Allow-Methods:
-              schema:
-                type: string
-                example: GET, POST, PUT, PATCH, DELETE, OPTIONS
-            Access-Control-Allow-Headers:
-              schema:
-                type: string
-                example: >-
-                  Tenant, Authorization, Content-Type, X-Requested-With, Origin,
-                  Timezone
-            Access-Control-Allow-Credentials:
-              schema:
-                type: boolean
-                example: 'true'
-            Access-Control-Max-Age:
-              schema:
-                type: integer
-                example: '86400'
-            X-Frame-Options:
-              schema:
-                type: string
-                example: DENY
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            X-XSS-Protection:
-              schema:
-                type: string
-                example: 1; mode=block
-            Content-Encoding:
-              schema:
-                type: string
-                example: gzip
           content:
             application/json:
               schema:
                 type: object
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/meta'
+                  links:
+                    $ref: '#/components/schemas/links'
+                  data:
+                    $ref: '#/components/schemas/delivery-orders'
               example:
                 data:
                   - id: 66
-                    customer_id: 11
-                    warehouse_id: 2
-                    sales_order_id: 12
-                    customer_name: AINI
-                    customer_address: null
-                    customer_phone: null
-                    billing_address: null
-                    billing_phone: null
-                    billing_email: null
-                    shipping_address: null
-                    shipping_phone: null
-                    shipping_email: null
-                    form:
-                      id: 110
-                      branch_id: 2
-                      date: '2022-06-04 12:56:26'
-                      number: DO22060014
-                      edited_number: null
-                      edited_notes: null
-                      notes: null
-                      created_by: 1
-                      updated_by: 1
-                      done: 0
-                      increment: 14
-                      increment_group: 202206
-                      formable_id: 66
-                      formable_type: SalesDeliveryOrder
-                      request_approval_to: 1
-                      approval_by: null
-                      approval_at: null
-                      approval_reason: null
-                      approval_status: 0
-                      request_cancellation_to: null
-                      request_cancellation_by: null
-                      request_cancellation_at: null
-                      request_cancellation_reason: null
-                      cancellation_approval_at: null
-                      cancellation_approval_by: null
-                      cancellation_approval_reason: null
-                      cancellation_status: null
-                      created_at: '2022-06-04 12:56:55'
-                      updated_at: '2022-06-04 12:56:55'
-                      request_approval_at: '2022-06-04 12:56:26'
-                      request_close_to: null
-                      request_close_by: null
-                      request_close_at: null
-                      request_close_reason: null
-                      close_approval_at: null
-                      close_approval_by: null
-                      close_approval_reason: null
-                      close_status: null
-                    customer:
-                      id: 11
-                      code: CUST-0123
-                      tax_identification_number: null
-                      name: AINI
-                      address: null
-                      city: null
-                      state: null
-                      country: null
-                      zip_code: null
-                      latitude: null
-                      longitude: null
-                      phone: null
-                      phone_cc: null
-                      email: null
-                      notes: null
-                      credit_limit: 0
-                      branch_id: 2
-                      created_by: 1
-                      updated_by: 1
-                      archived_by: null
-                      pricing_group_id: 1
-                      created_at: '2022-05-18 09:49:41'
-                      updated_at: '2022-05-18 09:49:41'
-                      archived_at: null
-                      label: '[CUST-0123] AINI'
-                    warehouse:
-                      id: 2
-                      code: 10689-1080
-                      name: Hanna Schuster
-                      address: |-
-                        28491 Morissette Drives Apt. 364
-                        Port Juwan, LA 19032
-                      phone: '+5993089919718'
-                      notes: >-
-                        Perferendis ipsam omnis rerum amet ex maiores animi. Ad
-                        rerum et ut rerum. Natus expedita voluptatem optio ipsa.
-                      branch_id: 2
-                      created_by: null
-                      updated_by: null
-                      archived_by: null
-                      created_at: '2022-05-12 11:33:49'
-                      updated_at: '2022-05-12 11:33:49'
-                      archived_at: null
-                      label: '[10689-1080] Hanna Schuster'
-                    items:
-                      - id: 162
-                        delivery_order_id: 66
-                        sales_order_item_id: 26
-                        item_id: 8
-                        item_name: Bulpoint
-                        price: 10000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 100
-                        quantity_delivered: 20
-                        quantity_remaining: 80
-                        converter_quantity: null
-                        item:
-                          id: 8
-                          chart_of_account_id: 9
-                          code: B-12931
-                          barcode: null
-                          name: Bulpoint
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 100
-                          stock_reminder: 0
-                          unit_default: 9
-                          unit_default_purchase: 9
-                          unit_default_sales: 9
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:38:19'
-                          updated_at: '2022-06-03 09:39:33'
-                          archived_at: null
-                          label: '[B-12931] Bulpoint'
-                        allocation: null
-                      - id: 163
-                        delivery_order_id: 66
-                        sales_order_item_id: 27
-                        item_id: 7
-                        item_name: Case
-                        price: 10000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 100
-                        quantity_delivered: 20
-                        quantity_remaining: 80
-                        converter_quantity: null
-                        item:
-                          id: 7
-                          chart_of_account_id: 9
-                          code: B-1202
-                          barcode: null
-                          name: Case
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 0
-                          require_expiry_date: 0
-                          stock: 0
-                          stock_reminder: 0
-                          unit_default: 7
-                          unit_default_purchase: 8
-                          unit_default_sales: 7
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:37:43'
-                          updated_at: '2022-05-13 10:37:43'
-                          archived_at: null
-                          label: '[B-1202] Case'
-                        allocation: null
-                      - id: 164
-                        delivery_order_id: 66
-                        sales_order_item_id: 28
-                        item_id: 9
-                        item_name: Gelas
-                        price: 10000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 100
-                        quantity_delivered: 20
-                        quantity_remaining: 80
-                        converter_quantity: null
-                        item:
-                          id: 9
-                          chart_of_account_id: 9
-                          code: B-1282192
-                          barcode: null
-                          name: Gelas
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 0
-                          stock_reminder: 0
-                          unit_default: 10
-                          unit_default_purchase: 10
-                          unit_default_sales: 10
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:38:42'
-                          updated_at: '2022-05-13 10:38:42'
-                          archived_at: null
-                          label: '[B-1282192] Gelas'
-                        allocation: null
-                      - id: 165
-                        delivery_order_id: 66
-                        sales_order_item_id: 29
-                        item_id: 6
-                        item_name: Jam
-                        price: 10000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 100
-                        quantity_delivered: 20
-                        quantity_remaining: 80
-                        converter_quantity: null
-                        item:
-                          id: 6
-                          chart_of_account_id: 9
-                          code: B-1203812
-                          barcode: null
-                          name: Jam
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 0
-                          stock_reminder: 0
-                          unit_default: 6
-                          unit_default_purchase: 6
-                          unit_default_sales: 6
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:36:58'
-                          updated_at: '2022-05-13 10:36:58'
-                          archived_at: null
-                          label: '[B-1203812] Jam'
-                        allocation: null
-                  - id: 65
-                    customer_id: 13
-                    warehouse_id: 2
-                    sales_order_id: 13
-                    customer_name: GRACE
-                    customer_address: null
-                    customer_phone: null
-                    billing_address: null
-                    billing_phone: null
-                    billing_email: null
-                    shipping_address: null
-                    shipping_phone: null
-                    shipping_email: null
-                    form:
-                      id: 109
-                      branch_id: 2
-                      date: '2022-06-04 12:56:00'
-                      number: DO22060013
-                      edited_number: null
-                      edited_notes: null
-                      notes: null
-                      created_by: 1
-                      updated_by: 1
-                      done: 0
-                      increment: 13
-                      increment_group: 202206
-                      formable_id: 65
-                      formable_type: SalesDeliveryOrder
-                      request_approval_to: 1
-                      approval_by: null
-                      approval_at: null
-                      approval_reason: null
-                      approval_status: 0
-                      request_cancellation_to: null
-                      request_cancellation_by: null
-                      request_cancellation_at: null
-                      request_cancellation_reason: null
-                      cancellation_approval_at: null
-                      cancellation_approval_by: null
-                      cancellation_approval_reason: null
-                      cancellation_status: null
-                      created_at: '2022-06-04 12:56:20'
-                      updated_at: '2022-06-04 12:56:20'
-                      request_approval_at: '2022-06-04 12:56:00'
-                      request_close_to: null
-                      request_close_by: null
-                      request_close_at: null
-                      request_close_reason: null
-                      close_approval_at: null
-                      close_approval_by: null
-                      close_approval_reason: null
-                      close_status: null
-                    customer:
-                      id: 13
-                      code: CUST-19302
-                      tax_identification_number: null
-                      name: GRACE
-                      address: null
-                      city: null
-                      state: null
-                      country: null
-                      zip_code: null
-                      latitude: null
-                      longitude: null
-                      phone: null
-                      phone_cc: null
-                      email: null
-                      notes: null
-                      credit_limit: 0
-                      branch_id: 2
-                      created_by: 1
-                      updated_by: 1
-                      archived_by: null
-                      pricing_group_id: null
-                      created_at: '2022-05-18 09:52:05'
-                      updated_at: '2022-05-18 09:52:05'
-                      archived_at: null
-                      label: '[CUST-19302] GRACE'
-                    warehouse:
-                      id: 2
-                      code: 10689-1080
-                      name: Hanna Schuster
-                      address: |-
-                        28491 Morissette Drives Apt. 364
-                        Port Juwan, LA 19032
-                      phone: '+5993089919718'
-                      notes: >-
-                        Perferendis ipsam omnis rerum amet ex maiores animi. Ad
-                        rerum et ut rerum. Natus expedita voluptatem optio ipsa.
-                      branch_id: 2
-                      created_by: null
-                      updated_by: null
-                      archived_by: null
-                      created_at: '2022-05-12 11:33:49'
-                      updated_at: '2022-05-12 11:33:49'
-                      archived_at: null
-                      label: '[10689-1080] Hanna Schuster'
-                    items:
-                      - id: 159
-                        delivery_order_id: 65
-                        sales_order_item_id: 30
-                        item_id: 8
-                        item_name: Bulpoint
-                        price: 100000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 100
-                        quantity_delivered: 30
-                        quantity_remaining: 70
-                        converter_quantity: null
-                        item:
-                          id: 8
-                          chart_of_account_id: 9
-                          code: B-12931
-                          barcode: null
-                          name: Bulpoint
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 100
-                          stock_reminder: 0
-                          unit_default: 9
-                          unit_default_purchase: 9
-                          unit_default_sales: 9
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:38:19'
-                          updated_at: '2022-06-03 09:39:33'
-                          archived_at: null
-                          label: '[B-12931] Bulpoint'
-                        allocation: null
-                      - id: 160
-                        delivery_order_id: 65
-                        sales_order_item_id: 31
-                        item_id: 6
-                        item_name: Jam
-                        price: 100000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 100
-                        quantity_delivered: 30
-                        quantity_remaining: 70
-                        converter_quantity: null
-                        item:
-                          id: 6
-                          chart_of_account_id: 9
-                          code: B-1203812
-                          barcode: null
-                          name: Jam
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 0
-                          stock_reminder: 0
-                          unit_default: 6
-                          unit_default_purchase: 6
-                          unit_default_sales: 6
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:36:58'
-                          updated_at: '2022-05-13 10:36:58'
-                          archived_at: null
-                          label: '[B-1203812] Jam'
-                        allocation: null
-                      - id: 161
-                        delivery_order_id: 65
-                        sales_order_item_id: 32
-                        item_id: 9
-                        item_name: Gelas
-                        price: 100000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 100
-                        quantity_delivered: 30
-                        quantity_remaining: 70
-                        converter_quantity: null
-                        item:
-                          id: 9
-                          chart_of_account_id: 9
-                          code: B-1282192
-                          barcode: null
-                          name: Gelas
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 0
-                          stock_reminder: 0
-                          unit_default: 10
-                          unit_default_purchase: 10
-                          unit_default_sales: 10
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:38:42'
-                          updated_at: '2022-05-13 10:38:42'
-                          archived_at: null
-                          label: '[B-1282192] Gelas'
-                        allocation: null
-                  - id: 64
-                    customer_id: 11
-                    warehouse_id: 2
-                    sales_order_id: 16
-                    customer_name: AINI
-                    customer_address: null
-                    customer_phone: null
-                    billing_address: null
-                    billing_phone: null
-                    billing_email: null
-                    shipping_address: null
-                    shipping_phone: null
-                    shipping_email: null
-                    form:
-                      id: 108
-                      branch_id: 2
-                      date: '2022-06-04 12:55:36'
-                      number: DO22060012
-                      edited_number: null
-                      edited_notes: null
-                      notes: null
-                      created_by: 1
-                      updated_by: 1
-                      done: 0
-                      increment: 12
-                      increment_group: 202206
-                      formable_id: 64
-                      formable_type: SalesDeliveryOrder
-                      request_approval_to: 1
-                      approval_by: null
-                      approval_at: null
-                      approval_reason: null
-                      approval_status: 0
-                      request_cancellation_to: null
-                      request_cancellation_by: null
-                      request_cancellation_at: null
-                      request_cancellation_reason: null
-                      cancellation_approval_at: null
-                      cancellation_approval_by: null
-                      cancellation_approval_reason: null
-                      cancellation_status: null
-                      created_at: '2022-06-04 12:55:55'
-                      updated_at: '2022-06-04 12:55:55'
-                      request_approval_at: '2022-06-04 12:55:36'
-                      request_close_to: null
-                      request_close_by: null
-                      request_close_at: null
-                      request_close_reason: null
-                      close_approval_at: null
-                      close_approval_by: null
-                      close_approval_reason: null
-                      close_status: null
-                    customer:
-                      id: 11
-                      code: CUST-0123
-                      tax_identification_number: null
-                      name: AINI
-                      address: null
-                      city: null
-                      state: null
-                      country: null
-                      zip_code: null
-                      latitude: null
-                      longitude: null
-                      phone: null
-                      phone_cc: null
-                      email: null
-                      notes: null
-                      credit_limit: 0
-                      branch_id: 2
-                      created_by: 1
-                      updated_by: 1
-                      archived_by: null
-                      pricing_group_id: 1
-                      created_at: '2022-05-18 09:49:41'
-                      updated_at: '2022-05-18 09:49:41'
-                      archived_at: null
-                      label: '[CUST-0123] AINI'
-                    warehouse:
-                      id: 2
-                      code: 10689-1080
-                      name: Hanna Schuster
-                      address: |-
-                        28491 Morissette Drives Apt. 364
-                        Port Juwan, LA 19032
-                      phone: '+5993089919718'
-                      notes: >-
-                        Perferendis ipsam omnis rerum amet ex maiores animi. Ad
-                        rerum et ut rerum. Natus expedita voluptatem optio ipsa.
-                      branch_id: 2
-                      created_by: null
-                      updated_by: null
-                      archived_by: null
-                      created_at: '2022-05-12 11:33:49'
-                      updated_at: '2022-05-12 11:33:49'
-                      archived_at: null
-                      label: '[10689-1080] Hanna Schuster'
-                    items:
-                      - id: 157
-                        delivery_order_id: 64
-                        sales_order_item_id: 37
-                        item_id: 8
-                        item_name: Bulpoint
-                        price: 10000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 100
-                        quantity_delivered: 50
-                        quantity_remaining: 50
-                        converter_quantity: null
-                        item:
-                          id: 8
-                          chart_of_account_id: 9
-                          code: B-12931
-                          barcode: null
-                          name: Bulpoint
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 100
-                          stock_reminder: 0
-                          unit_default: 9
-                          unit_default_purchase: 9
-                          unit_default_sales: 9
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:38:19'
-                          updated_at: '2022-06-03 09:39:33'
-                          archived_at: null
-                          label: '[B-12931] Bulpoint'
-                        allocation: null
-                      - id: 158
-                        delivery_order_id: 64
-                        sales_order_item_id: 38
-                        item_id: 7
-                        item_name: Case
-                        price: 10000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 100
-                        quantity_delivered: 50
-                        quantity_remaining: 50
-                        converter_quantity: null
-                        item:
-                          id: 7
-                          chart_of_account_id: 9
-                          code: B-1202
-                          barcode: null
-                          name: Case
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 0
-                          require_expiry_date: 0
-                          stock: 0
-                          stock_reminder: 0
-                          unit_default: 7
-                          unit_default_purchase: 8
-                          unit_default_sales: 7
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:37:43'
-                          updated_at: '2022-05-13 10:37:43'
-                          archived_at: null
-                          label: '[B-1202] Case'
-                        allocation: null
-                  - id: 63
-                    customer_id: 13
-                    warehouse_id: 2
-                    sales_order_id: 17
-                    customer_name: GRACE
-                    customer_address: null
-                    customer_phone: null
-                    billing_address: null
-                    billing_phone: null
-                    billing_email: null
-                    shipping_address: null
-                    shipping_phone: null
-                    shipping_email: null
-                    form:
-                      id: 107
-                      branch_id: 2
-                      date: '2022-06-04 12:44:45'
-                      number: DO22060011
-                      edited_number: null
-                      edited_notes: null
-                      notes: null
-                      created_by: 1
-                      updated_by: 1
-                      done: 0
-                      increment: 11
-                      increment_group: 202206
-                      formable_id: 63
-                      formable_type: SalesDeliveryOrder
-                      request_approval_to: 1
-                      approval_by: null
-                      approval_at: null
-                      approval_reason: null
-                      approval_status: 0
-                      request_cancellation_to: null
-                      request_cancellation_by: null
-                      request_cancellation_at: null
-                      request_cancellation_reason: null
-                      cancellation_approval_at: null
-                      cancellation_approval_by: null
-                      cancellation_approval_reason: null
-                      cancellation_status: null
-                      created_at: '2022-06-04 12:45:03'
-                      updated_at: '2022-06-04 12:45:03'
-                      request_approval_at: '2022-06-04 12:44:45'
-                      request_close_to: null
-                      request_close_by: null
-                      request_close_at: null
-                      request_close_reason: null
-                      close_approval_at: null
-                      close_approval_by: null
-                      close_approval_reason: null
-                      close_status: null
-                    customer:
-                      id: 13
-                      code: CUST-19302
-                      tax_identification_number: null
-                      name: GRACE
-                      address: null
-                      city: null
-                      state: null
-                      country: null
-                      zip_code: null
-                      latitude: null
-                      longitude: null
-                      phone: null
-                      phone_cc: null
-                      email: null
-                      notes: null
-                      credit_limit: 0
-                      branch_id: 2
-                      created_by: 1
-                      updated_by: 1
-                      archived_by: null
-                      pricing_group_id: null
-                      created_at: '2022-05-18 09:52:05'
-                      updated_at: '2022-05-18 09:52:05'
-                      archived_at: null
-                      label: '[CUST-19302] GRACE'
-                    warehouse:
-                      id: 2
-                      code: 10689-1080
-                      name: Hanna Schuster
-                      address: |-
-                        28491 Morissette Drives Apt. 364
-                        Port Juwan, LA 19032
-                      phone: '+5993089919718'
-                      notes: >-
-                        Perferendis ipsam omnis rerum amet ex maiores animi. Ad
-                        rerum et ut rerum. Natus expedita voluptatem optio ipsa.
-                      branch_id: 2
-                      created_by: null
-                      updated_by: null
-                      archived_by: null
-                      created_at: '2022-05-12 11:33:49'
-                      updated_at: '2022-05-12 11:33:49'
-                      archived_at: null
-                      label: '[10689-1080] Hanna Schuster'
-                    items:
-                      - id: 154
-                        delivery_order_id: 63
-                        sales_order_item_id: 39
-                        item_id: 8
-                        item_name: Bulpoint
-                        price: 10000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 100
-                        quantity_delivered: 10
-                        quantity_remaining: 90
-                        converter_quantity: null
-                        item:
-                          id: 8
-                          chart_of_account_id: 9
-                          code: B-12931
-                          barcode: null
-                          name: Bulpoint
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 100
-                          stock_reminder: 0
-                          unit_default: 9
-                          unit_default_purchase: 9
-                          unit_default_sales: 9
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:38:19'
-                          updated_at: '2022-06-03 09:39:33'
-                          archived_at: null
-                          label: '[B-12931] Bulpoint'
-                        allocation: null
-                      - id: 155
-                        delivery_order_id: 63
-                        sales_order_item_id: 40
-                        item_id: 7
-                        item_name: Case
-                        price: 10000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 100
-                        quantity_delivered: 10
-                        quantity_remaining: 90
-                        converter_quantity: null
-                        item:
-                          id: 7
-                          chart_of_account_id: 9
-                          code: B-1202
-                          barcode: null
-                          name: Case
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 0
-                          require_expiry_date: 0
-                          stock: 0
-                          stock_reminder: 0
-                          unit_default: 7
-                          unit_default_purchase: 8
-                          unit_default_sales: 7
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:37:43'
-                          updated_at: '2022-05-13 10:37:43'
-                          archived_at: null
-                          label: '[B-1202] Case'
-                        allocation: null
-                      - id: 156
-                        delivery_order_id: 63
-                        sales_order_item_id: 41
-                        item_id: 9
-                        item_name: Gelas
-                        price: 10000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 100
-                        quantity_delivered: 10
-                        quantity_remaining: 90
-                        converter_quantity: null
-                        item:
-                          id: 9
-                          chart_of_account_id: 9
-                          code: B-1282192
-                          barcode: null
-                          name: Gelas
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 0
-                          stock_reminder: 0
-                          unit_default: 10
-                          unit_default_purchase: 10
-                          unit_default_sales: 10
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:38:42'
-                          updated_at: '2022-05-13 10:38:42'
-                          archived_at: null
-                          label: '[B-1282192] Gelas'
-                        allocation: null
-                  - id: 62
-                    customer_id: 13
-                    warehouse_id: 2
-                    sales_order_id: 17
-                    customer_name: GRACE
-                    customer_address: null
-                    customer_phone: null
-                    billing_address: null
-                    billing_phone: null
-                    billing_email: null
-                    shipping_address: null
-                    shipping_phone: null
-                    shipping_email: null
-                    form:
-                      id: 106
-                      branch_id: 2
-                      date: '2022-06-04 12:44:21'
-                      number: DO22060010
-                      edited_number: null
-                      edited_notes: null
-                      notes: null
-                      created_by: 1
-                      updated_by: 1
-                      done: 0
-                      increment: 10
-                      increment_group: 202206
-                      formable_id: 62
-                      formable_type: SalesDeliveryOrder
-                      request_approval_to: 1
-                      approval_by: null
-                      approval_at: null
-                      approval_reason: null
-                      approval_status: 0
-                      request_cancellation_to: null
-                      request_cancellation_by: null
-                      request_cancellation_at: null
-                      request_cancellation_reason: null
-                      cancellation_approval_at: null
-                      cancellation_approval_by: null
-                      cancellation_approval_reason: null
-                      cancellation_status: null
-                      created_at: '2022-06-04 12:44:40'
-                      updated_at: '2022-06-04 12:44:40'
-                      request_approval_at: '2022-06-04 12:44:21'
-                      request_close_to: null
-                      request_close_by: null
-                      request_close_at: null
-                      request_close_reason: null
-                      close_approval_at: null
-                      close_approval_by: null
-                      close_approval_reason: null
-                      close_status: null
-                    customer:
-                      id: 13
-                      code: CUST-19302
-                      tax_identification_number: null
-                      name: GRACE
-                      address: null
-                      city: null
-                      state: null
-                      country: null
-                      zip_code: null
-                      latitude: null
-                      longitude: null
-                      phone: null
-                      phone_cc: null
-                      email: null
-                      notes: null
-                      credit_limit: 0
-                      branch_id: 2
-                      created_by: 1
-                      updated_by: 1
-                      archived_by: null
-                      pricing_group_id: null
-                      created_at: '2022-05-18 09:52:05'
-                      updated_at: '2022-05-18 09:52:05'
-                      archived_at: null
-                      label: '[CUST-19302] GRACE'
-                    warehouse:
-                      id: 2
-                      code: 10689-1080
-                      name: Hanna Schuster
-                      address: |-
-                        28491 Morissette Drives Apt. 364
-                        Port Juwan, LA 19032
-                      phone: '+5993089919718'
-                      notes: >-
-                        Perferendis ipsam omnis rerum amet ex maiores animi. Ad
-                        rerum et ut rerum. Natus expedita voluptatem optio ipsa.
-                      branch_id: 2
-                      created_by: null
-                      updated_by: null
-                      archived_by: null
-                      created_at: '2022-05-12 11:33:49'
-                      updated_at: '2022-05-12 11:33:49'
-                      archived_at: null
-                      label: '[10689-1080] Hanna Schuster'
-                    items:
-                      - id: 151
-                        delivery_order_id: 62
-                        sales_order_item_id: 39
-                        item_id: 8
-                        item_name: Bulpoint
-                        price: 10000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 100
-                        quantity_delivered: 10
-                        quantity_remaining: 90
-                        converter_quantity: null
-                        item:
-                          id: 8
-                          chart_of_account_id: 9
-                          code: B-12931
-                          barcode: null
-                          name: Bulpoint
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 100
-                          stock_reminder: 0
-                          unit_default: 9
-                          unit_default_purchase: 9
-                          unit_default_sales: 9
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:38:19'
-                          updated_at: '2022-06-03 09:39:33'
-                          archived_at: null
-                          label: '[B-12931] Bulpoint'
-                        allocation: null
-                      - id: 152
-                        delivery_order_id: 62
-                        sales_order_item_id: 40
-                        item_id: 7
-                        item_name: Case
-                        price: 10000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 100
-                        quantity_delivered: 10
-                        quantity_remaining: 90
-                        converter_quantity: null
-                        item:
-                          id: 7
-                          chart_of_account_id: 9
-                          code: B-1202
-                          barcode: null
-                          name: Case
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 0
-                          require_expiry_date: 0
-                          stock: 0
-                          stock_reminder: 0
-                          unit_default: 7
-                          unit_default_purchase: 8
-                          unit_default_sales: 7
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:37:43'
-                          updated_at: '2022-05-13 10:37:43'
-                          archived_at: null
-                          label: '[B-1202] Case'
-                        allocation: null
-                      - id: 153
-                        delivery_order_id: 62
-                        sales_order_item_id: 41
-                        item_id: 9
-                        item_name: Gelas
-                        price: 10000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 100
-                        quantity_delivered: 10
-                        quantity_remaining: 90
-                        converter_quantity: null
-                        item:
-                          id: 9
-                          chart_of_account_id: 9
-                          code: B-1282192
-                          barcode: null
-                          name: Gelas
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 0
-                          stock_reminder: 0
-                          unit_default: 10
-                          unit_default_purchase: 10
-                          unit_default_sales: 10
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:38:42'
-                          updated_at: '2022-05-13 10:38:42'
-                          archived_at: null
-                          label: '[B-1282192] Gelas'
-                        allocation: null
-                  - id: 61
-                    customer_id: 12
-                    warehouse_id: 2
-                    sales_order_id: 18
-                    customer_name: PINNAPLE
-                    customer_address: null
-                    customer_phone: null
-                    billing_address: null
-                    billing_phone: null
-                    billing_email: null
-                    shipping_address: null
-                    shipping_phone: null
-                    shipping_email: null
-                    form:
-                      id: 105
-                      branch_id: 2
-                      date: '2022-06-04 12:43:27'
-                      number: DO22060009
-                      edited_number: null
-                      edited_notes: null
-                      notes: null
-                      created_by: 1
-                      updated_by: 1
-                      done: 0
-                      increment: 9
-                      increment_group: 202206
-                      formable_id: 61
-                      formable_type: SalesDeliveryOrder
-                      request_approval_to: 1
-                      approval_by: 1
-                      approval_at: '2022-06-04 07:28:36'
-                      approval_reason: Rejected by email
-                      approval_status: -1
-                      request_cancellation_to: null
-                      request_cancellation_by: null
-                      request_cancellation_at: null
-                      request_cancellation_reason: null
-                      cancellation_approval_at: null
-                      cancellation_approval_by: null
-                      cancellation_approval_reason: null
-                      cancellation_status: null
-                      created_at: '2022-06-04 12:44:16'
-                      updated_at: '2022-06-04 14:28:36'
-                      request_approval_at: '2022-06-04 12:43:27'
-                      request_close_to: null
-                      request_close_by: null
-                      request_close_at: null
-                      request_close_reason: null
-                      close_approval_at: null
-                      close_approval_by: null
-                      close_approval_reason: null
-                      close_status: null
-                    customer:
-                      id: 12
-                      code: CUST-002
-                      tax_identification_number: null
-                      name: PINNAPLE
-                      address: null
-                      city: null
-                      state: null
-                      country: null
-                      zip_code: null
-                      latitude: null
-                      longitude: null
-                      phone: null
-                      phone_cc: null
-                      email: null
-                      notes: null
-                      credit_limit: 0
-                      branch_id: 2
-                      created_by: 1
-                      updated_by: 1
-                      archived_by: null
-                      pricing_group_id: null
-                      created_at: '2022-05-18 09:51:29'
-                      updated_at: '2022-05-18 09:51:29'
-                      archived_at: null
-                      label: '[CUST-002] PINNAPLE'
-                    warehouse:
-                      id: 2
-                      code: 10689-1080
-                      name: Hanna Schuster
-                      address: |-
-                        28491 Morissette Drives Apt. 364
-                        Port Juwan, LA 19032
-                      phone: '+5993089919718'
-                      notes: >-
-                        Perferendis ipsam omnis rerum amet ex maiores animi. Ad
-                        rerum et ut rerum. Natus expedita voluptatem optio ipsa.
-                      branch_id: 2
-                      created_by: null
-                      updated_by: null
-                      archived_by: null
-                      created_at: '2022-05-12 11:33:49'
-                      updated_at: '2022-05-12 11:33:49'
-                      archived_at: null
-                      label: '[10689-1080] Hanna Schuster'
-                    items:
-                      - id: 147
-                        delivery_order_id: 61
-                        sales_order_item_id: 42
-                        item_id: 8
-                        item_name: Bulpoint
-                        price: 1000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 90
-                        quantity_delivered: 45
-                        quantity_remaining: 45
-                        converter_quantity: null
-                        item:
-                          id: 8
-                          chart_of_account_id: 9
-                          code: B-12931
-                          barcode: null
-                          name: Bulpoint
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 100
-                          stock_reminder: 0
-                          unit_default: 9
-                          unit_default_purchase: 9
-                          unit_default_sales: 9
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:38:19'
-                          updated_at: '2022-06-03 09:39:33'
-                          archived_at: null
-                          label: '[B-12931] Bulpoint'
-                        allocation: null
-                      - id: 148
-                        delivery_order_id: 61
-                        sales_order_item_id: 43
-                        item_id: 7
-                        item_name: Case
-                        price: 1000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 90
-                        quantity_delivered: 20
-                        quantity_remaining: 70
-                        converter_quantity: null
-                        item:
-                          id: 7
-                          chart_of_account_id: 9
-                          code: B-1202
-                          barcode: null
-                          name: Case
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 0
-                          require_expiry_date: 0
-                          stock: 0
-                          stock_reminder: 0
-                          unit_default: 7
-                          unit_default_purchase: 8
-                          unit_default_sales: 7
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:37:43'
-                          updated_at: '2022-05-13 10:37:43'
-                          archived_at: null
-                          label: '[B-1202] Case'
-                        allocation: null
-                      - id: 149
-                        delivery_order_id: 61
-                        sales_order_item_id: 44
-                        item_id: 9
-                        item_name: Gelas
-                        price: 1000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 90
-                        quantity_delivered: 20
-                        quantity_remaining: 70
-                        converter_quantity: null
-                        item:
-                          id: 9
-                          chart_of_account_id: 9
-                          code: B-1282192
-                          barcode: null
-                          name: Gelas
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 0
-                          stock_reminder: 0
-                          unit_default: 10
-                          unit_default_purchase: 10
-                          unit_default_sales: 10
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:38:42'
-                          updated_at: '2022-05-13 10:38:42'
-                          archived_at: null
-                          label: '[B-1282192] Gelas'
-                        allocation: null
-                      - id: 150
-                        delivery_order_id: 61
-                        sales_order_item_id: 45
-                        item_id: 6
-                        item_name: Jam
-                        price: 1000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 90
-                        quantity_delivered: 20
-                        quantity_remaining: 70
-                        converter_quantity: null
-                        item:
-                          id: 6
-                          chart_of_account_id: 9
-                          code: B-1203812
-                          barcode: null
-                          name: Jam
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 0
-                          stock_reminder: 0
-                          unit_default: 6
-                          unit_default_purchase: 6
-                          unit_default_sales: 6
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:36:58'
-                          updated_at: '2022-05-13 10:36:58'
-                          archived_at: null
-                          label: '[B-1203812] Jam'
-                        allocation: null
-                  - id: 60
-                    customer_id: 11
-                    warehouse_id: 2
-                    sales_order_id: 22
-                    customer_name: AINI
-                    customer_address: null
-                    customer_phone: null
-                    billing_address: null
-                    billing_phone: null
-                    billing_email: null
-                    shipping_address: null
-                    shipping_phone: null
-                    shipping_email: null
-                    form:
-                      id: 104
-                      branch_id: 2
-                      date: '2022-06-04 12:43:06'
-                      number: DO22060008
-                      edited_number: null
-                      edited_notes: null
-                      notes: null
-                      created_by: 1
-                      updated_by: 1
-                      done: 0
-                      increment: 8
-                      increment_group: 202206
-                      formable_id: 60
-                      formable_type: SalesDeliveryOrder
-                      request_approval_to: 1
-                      approval_by: 1
-                      approval_at: '2022-06-04 07:28:54'
-                      approval_reason: null
-                      approval_status: 1
-                      request_cancellation_to: null
-                      request_cancellation_by: null
-                      request_cancellation_at: null
-                      request_cancellation_reason: null
-                      cancellation_approval_at: null
-                      cancellation_approval_by: null
-                      cancellation_approval_reason: null
-                      cancellation_status: null
-                      created_at: '2022-06-04 12:43:22'
-                      updated_at: '2022-06-04 14:28:54'
-                      request_approval_at: '2022-06-04 12:43:06'
-                      request_close_to: null
-                      request_close_by: null
-                      request_close_at: null
-                      request_close_reason: null
-                      close_approval_at: null
-                      close_approval_by: null
-                      close_approval_reason: null
-                      close_status: null
-                    customer:
-                      id: 11
-                      code: CUST-0123
-                      tax_identification_number: null
-                      name: AINI
-                      address: null
-                      city: null
-                      state: null
-                      country: null
-                      zip_code: null
-                      latitude: null
-                      longitude: null
-                      phone: null
-                      phone_cc: null
-                      email: null
-                      notes: null
-                      credit_limit: 0
-                      branch_id: 2
-                      created_by: 1
-                      updated_by: 1
-                      archived_by: null
-                      pricing_group_id: 1
-                      created_at: '2022-05-18 09:49:41'
-                      updated_at: '2022-05-18 09:49:41'
-                      archived_at: null
-                      label: '[CUST-0123] AINI'
-                    warehouse:
-                      id: 2
-                      code: 10689-1080
-                      name: Hanna Schuster
-                      address: |-
-                        28491 Morissette Drives Apt. 364
-                        Port Juwan, LA 19032
-                      phone: '+5993089919718'
-                      notes: >-
-                        Perferendis ipsam omnis rerum amet ex maiores animi. Ad
-                        rerum et ut rerum. Natus expedita voluptatem optio ipsa.
-                      branch_id: 2
-                      created_by: null
-                      updated_by: null
-                      archived_by: null
-                      created_at: '2022-05-12 11:33:49'
-                      updated_at: '2022-05-12 11:33:49'
-                      archived_at: null
-                      label: '[10689-1080] Hanna Schuster'
-                    items:
-                      - id: 146
-                        delivery_order_id: 60
-                        sales_order_item_id: 54
-                        item_id: 8
-                        item_name: Bulpoint
-                        price: 10
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 5
-                        quantity_delivered: 1
-                        quantity_remaining: 4
-                        converter_quantity: null
-                        item:
-                          id: 8
-                          chart_of_account_id: 9
-                          code: B-12931
-                          barcode: null
-                          name: Bulpoint
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 100
-                          stock_reminder: 0
-                          unit_default: 9
-                          unit_default_purchase: 9
-                          unit_default_sales: 9
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:38:19'
-                          updated_at: '2022-06-03 09:39:33'
-                          archived_at: null
-                          label: '[B-12931] Bulpoint'
-                        allocation: null
-                  - id: 59
-                    customer_id: 11
-                    warehouse_id: 2
-                    sales_order_id: 23
-                    customer_name: AINI
-                    customer_address: null
-                    customer_phone: null
-                    billing_address: null
-                    billing_phone: null
-                    billing_email: null
-                    shipping_address: null
-                    shipping_phone: null
-                    shipping_email: null
-                    form:
-                      id: 103
-                      branch_id: 2
-                      date: '2022-06-03 11:01:01'
-                      number: DO22060007
-                      edited_number: null
-                      edited_notes: null
-                      notes: null
-                      created_by: 1
-                      updated_by: 1
-                      done: 0
-                      increment: 7
-                      increment_group: 202206
-                      formable_id: 59
-                      formable_type: SalesDeliveryOrder
-                      request_approval_to: 1
-                      approval_by: 1
-                      approval_at: '2022-06-04 00:30:50'
-                      approval_reason: null
-                      approval_status: 1
-                      request_cancellation_to: null
-                      request_cancellation_by: null
-                      request_cancellation_at: null
-                      request_cancellation_reason: null
-                      cancellation_approval_at: null
-                      cancellation_approval_by: null
-                      cancellation_approval_reason: null
-                      cancellation_status: null
-                      created_at: '2022-06-03 11:01:27'
-                      updated_at: '2022-06-04 07:30:50'
-                      request_approval_at: '2022-06-03 11:01:01'
-                      request_close_to: null
-                      request_close_by: null
-                      request_close_at: null
-                      request_close_reason: null
-                      close_approval_at: null
-                      close_approval_by: null
-                      close_approval_reason: null
-                      close_status: null
-                    customer:
-                      id: 11
-                      code: CUST-0123
-                      tax_identification_number: null
-                      name: AINI
-                      address: null
-                      city: null
-                      state: null
-                      country: null
-                      zip_code: null
-                      latitude: null
-                      longitude: null
-                      phone: null
-                      phone_cc: null
-                      email: null
-                      notes: null
-                      credit_limit: 0
-                      branch_id: 2
-                      created_by: 1
-                      updated_by: 1
-                      archived_by: null
-                      pricing_group_id: 1
-                      created_at: '2022-05-18 09:49:41'
-                      updated_at: '2022-05-18 09:49:41'
-                      archived_at: null
-                      label: '[CUST-0123] AINI'
-                    warehouse:
-                      id: 2
-                      code: 10689-1080
-                      name: Hanna Schuster
-                      address: |-
-                        28491 Morissette Drives Apt. 364
-                        Port Juwan, LA 19032
-                      phone: '+5993089919718'
-                      notes: >-
-                        Perferendis ipsam omnis rerum amet ex maiores animi. Ad
-                        rerum et ut rerum. Natus expedita voluptatem optio ipsa.
-                      branch_id: 2
-                      created_by: null
-                      updated_by: null
-                      archived_by: null
-                      created_at: '2022-05-12 11:33:49'
-                      updated_at: '2022-05-12 11:33:49'
-                      archived_at: null
-                      label: '[10689-1080] Hanna Schuster'
-                    items:
-                      - id: 143
-                        delivery_order_id: 59
-                        sales_order_item_id: 55
-                        item_id: 8
-                        item_name: Bulpoint
-                        price: 10000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 5
-                        quantity_delivered: 5
-                        quantity_remaining: 0
-                        converter_quantity: null
-                        item:
-                          id: 8
-                          chart_of_account_id: 9
-                          code: B-12931
-                          barcode: null
-                          name: Bulpoint
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 100
-                          stock_reminder: 0
-                          unit_default: 9
-                          unit_default_purchase: 9
-                          unit_default_sales: 9
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:38:19'
-                          updated_at: '2022-06-03 09:39:33'
-                          archived_at: null
-                          label: '[B-12931] Bulpoint'
-                        allocation: null
-                      - id: 144
-                        delivery_order_id: 59
-                        sales_order_item_id: 56
-                        item_id: 7
-                        item_name: Case
-                        price: 10000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 5
-                        quantity_delivered: 5
-                        quantity_remaining: 0
-                        converter_quantity: null
-                        item:
-                          id: 7
-                          chart_of_account_id: 9
-                          code: B-1202
-                          barcode: null
-                          name: Case
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 0
-                          require_expiry_date: 0
-                          stock: 0
-                          stock_reminder: 0
-                          unit_default: 7
-                          unit_default_purchase: 8
-                          unit_default_sales: 7
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:37:43'
-                          updated_at: '2022-05-13 10:37:43'
-                          archived_at: null
-                          label: '[B-1202] Case'
-                        allocation: null
-                      - id: 145
-                        delivery_order_id: 59
-                        sales_order_item_id: 57
-                        item_id: 9
-                        item_name: Gelas
-                        price: 10000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 5
-                        quantity_delivered: 5
-                        quantity_remaining: 0
-                        converter_quantity: null
-                        item:
-                          id: 9
-                          chart_of_account_id: 9
-                          code: B-1282192
-                          barcode: null
-                          name: Gelas
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 0
-                          stock_reminder: 0
-                          unit_default: 10
-                          unit_default_purchase: 10
-                          unit_default_sales: 10
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:38:42'
-                          updated_at: '2022-05-13 10:38:42'
-                          archived_at: null
-                          label: '[B-1282192] Gelas'
-                        allocation: null
-                  - id: 58
-                    customer_id: 12
-                    warehouse_id: 2
-                    sales_order_id: 25
-                    customer_name: PINNAPLE
-                    customer_address: null
-                    customer_phone: null
-                    billing_address: null
-                    billing_phone: null
-                    billing_email: null
-                    shipping_address: null
-                    shipping_phone: null
-                    shipping_email: null
-                    form:
-                      id: 102
-                      branch_id: 2
-                      date: '2022-06-03 11:00:36'
-                      number: DO22060006
-                      edited_number: null
-                      edited_notes: null
-                      notes: null
-                      created_by: 1
-                      updated_by: 1
-                      done: 0
-                      increment: 6
-                      increment_group: 202206
-                      formable_id: 58
-                      formable_type: SalesDeliveryOrder
-                      request_approval_to: 1
-                      approval_by: 1
-                      approval_at: '2022-06-04 00:30:49'
-                      approval_reason: null
-                      approval_status: 1
-                      request_cancellation_to: null
-                      request_cancellation_by: null
-                      request_cancellation_at: null
-                      request_cancellation_reason: null
-                      cancellation_approval_at: null
-                      cancellation_approval_by: null
-                      cancellation_approval_reason: null
-                      cancellation_status: null
-                      created_at: '2022-06-03 11:00:56'
-                      updated_at: '2022-06-04 07:30:49'
-                      request_approval_at: '2022-06-03 11:00:36'
-                      request_close_to: null
-                      request_close_by: null
-                      request_close_at: null
-                      request_close_reason: null
-                      close_approval_at: null
-                      close_approval_by: null
-                      close_approval_reason: null
-                      close_status: null
-                    customer:
-                      id: 12
-                      code: CUST-002
-                      tax_identification_number: null
-                      name: PINNAPLE
-                      address: null
-                      city: null
-                      state: null
-                      country: null
-                      zip_code: null
-                      latitude: null
-                      longitude: null
-                      phone: null
-                      phone_cc: null
-                      email: null
-                      notes: null
-                      credit_limit: 0
-                      branch_id: 2
-                      created_by: 1
-                      updated_by: 1
-                      archived_by: null
-                      pricing_group_id: null
-                      created_at: '2022-05-18 09:51:29'
-                      updated_at: '2022-05-18 09:51:29'
-                      archived_at: null
-                      label: '[CUST-002] PINNAPLE'
-                    warehouse:
-                      id: 2
-                      code: 10689-1080
-                      name: Hanna Schuster
-                      address: |-
-                        28491 Morissette Drives Apt. 364
-                        Port Juwan, LA 19032
-                      phone: '+5993089919718'
-                      notes: >-
-                        Perferendis ipsam omnis rerum amet ex maiores animi. Ad
-                        rerum et ut rerum. Natus expedita voluptatem optio ipsa.
-                      branch_id: 2
-                      created_by: null
-                      updated_by: null
-                      archived_by: null
-                      created_at: '2022-05-12 11:33:49'
-                      updated_at: '2022-05-12 11:33:49'
-                      archived_at: null
-                      label: '[10689-1080] Hanna Schuster'
-                    items:
-                      - id: 139
-                        delivery_order_id: 58
-                        sales_order_item_id: 61
-                        item_id: 8
-                        item_name: Bulpoint
-                        price: 1000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 2
-                        quantity_delivered: 2
-                        quantity_remaining: 0
-                        converter_quantity: null
-                        item:
-                          id: 8
-                          chart_of_account_id: 9
-                          code: B-12931
-                          barcode: null
-                          name: Bulpoint
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 100
-                          stock_reminder: 0
-                          unit_default: 9
-                          unit_default_purchase: 9
-                          unit_default_sales: 9
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:38:19'
-                          updated_at: '2022-06-03 09:39:33'
-                          archived_at: null
-                          label: '[B-12931] Bulpoint'
-                        allocation: null
-                      - id: 140
-                        delivery_order_id: 58
-                        sales_order_item_id: 62
-                        item_id: 7
-                        item_name: Case
-                        price: 1000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 2
-                        quantity_delivered: 2
-                        quantity_remaining: 0
-                        converter_quantity: null
-                        item:
-                          id: 7
-                          chart_of_account_id: 9
-                          code: B-1202
-                          barcode: null
-                          name: Case
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 0
-                          require_expiry_date: 0
-                          stock: 0
-                          stock_reminder: 0
-                          unit_default: 7
-                          unit_default_purchase: 8
-                          unit_default_sales: 7
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:37:43'
-                          updated_at: '2022-05-13 10:37:43'
-                          archived_at: null
-                          label: '[B-1202] Case'
-                        allocation: null
-                      - id: 141
-                        delivery_order_id: 58
-                        sales_order_item_id: 63
-                        item_id: 6
-                        item_name: Jam
-                        price: 1000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 2
-                        quantity_delivered: 2
-                        quantity_remaining: 0
-                        converter_quantity: null
-                        item:
-                          id: 6
-                          chart_of_account_id: 9
-                          code: B-1203812
-                          barcode: null
-                          name: Jam
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 0
-                          stock_reminder: 0
-                          unit_default: 6
-                          unit_default_purchase: 6
-                          unit_default_sales: 6
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:36:58'
-                          updated_at: '2022-05-13 10:36:58'
-                          archived_at: null
-                          label: '[B-1203812] Jam'
-                        allocation: null
-                      - id: 142
-                        delivery_order_id: 58
-                        sales_order_item_id: 64
-                        item_id: 9
-                        item_name: Gelas
-                        price: 1000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 2
-                        quantity_delivered: 2
-                        quantity_remaining: 0
-                        converter_quantity: null
-                        item:
-                          id: 9
-                          chart_of_account_id: 9
-                          code: B-1282192
-                          barcode: null
-                          name: Gelas
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 0
-                          stock_reminder: 0
-                          unit_default: 10
-                          unit_default_purchase: 10
-                          unit_default_sales: 10
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:38:42'
-                          updated_at: '2022-05-13 10:38:42'
-                          archived_at: null
-                          label: '[B-1282192] Gelas'
-                        allocation: null
-                  - id: 57
                     customer_id: 12
                     warehouse_id: 2
                     sales_order_id: 25
@@ -8679,92 +6564,6 @@ paths:
                         allocation: null
                       - id: 136
                         delivery_order_id: 57
-                        sales_order_item_id: 62
-                        item_id: 7
-                        item_name: Case
-                        price: 1000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 3
-                        quantity_delivered: 1
-                        quantity_remaining: 2
-                        converter_quantity: null
-                        item:
-                          id: 7
-                          chart_of_account_id: 9
-                          code: B-1202
-                          barcode: null
-                          name: Case
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 0
-                          require_expiry_date: 0
-                          stock: 0
-                          stock_reminder: 0
-                          unit_default: 7
-                          unit_default_purchase: 8
-                          unit_default_sales: 7
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:37:43'
-                          updated_at: '2022-05-13 10:37:43'
-                          archived_at: null
-                          label: '[B-1202] Case'
-                        allocation: null
-                      - id: 137
-                        delivery_order_id: 57
-                        sales_order_item_id: 63
-                        item_id: 6
-                        item_name: Jam
-                        price: 1000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 3
-                        quantity_delivered: 1
-                        quantity_remaining: 2
-                        converter_quantity: null
-                        item:
-                          id: 6
-                          chart_of_account_id: 9
-                          code: B-1203812
-                          barcode: null
-                          name: Jam
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 0
-                          stock_reminder: 0
-                          unit_default: 6
-                          unit_default_purchase: 6
-                          unit_default_sales: 6
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:36:58'
-                          updated_at: '2022-05-13 10:36:58'
-                          archived_at: null
-                          label: '[B-1203812] Jam'
-                        allocation: null
-                      - id: 138
-                        delivery_order_id: 57
                         sales_order_item_id: 64
                         item_id: 9
                         item_name: Gelas
@@ -8831,6 +6630,103 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                originalData:
+                  $ref: '#/components/schemas/original-data'
+                items:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      allocation_id:
+                        type: integer
+                      notes:
+                        type: string
+                      warehouse_id:
+                        type: integer
+                      warehouse_name:
+                        type: string
+                      units:
+                        $ref: '#/components/schemas/units'
+                      sales_order_item_id:
+                        type: integer
+                      item_id:
+                        type: integer
+                      item_name:
+                        type: string
+                      price:
+                        type: string
+                      discount_percent:
+                        type: string
+                      discount_value:
+                        type: string
+                      unit:
+                        type: string
+                      converter:
+                        type: integer
+                      quantity_requested:
+                        type: integer
+                      quantity_delivered:
+                        type: integer
+                      quantity_remaining:
+                        type: integer
+                      more:
+                        type: boolean
+                      total:
+                        type: integer
+                      item_label:
+                        type: string
+                      is_quantity_over:
+                        type: boolean
+                need_down_payment:
+                  type: string
+                cash_only:
+                  type: string
+                notes:
+                  type: string
+                discount_percent:
+                  type: string
+                discount_value:
+                  type: string
+                type_of_tax:
+                  type: string
+                request_approval_at:
+                  type: string
+                increment_group:
+                  type: string
+                date:
+                  type: string
+                warehouse_id:
+                  type: integer
+                warehouse_name:
+                  type: string
+                customer_id:
+                  type: integer
+                customer_name:
+                  type: string
+                customer_label:
+                  type: string
+                customer_address:
+                  type: string
+                customer_phone:
+                  type: string
+                customer_email:
+                  type: string
+                pricing_group_id:
+                  type: integer
+                request_approval_to:
+                  type: strings
+                approver_name:
+                  type: string
+                approver_email:
+                  type: string
+                sales_order_id:
+                  type: integer
+                errors:
+                  type: object
+                  properties:
+                    errors:
+                      type: object
               example:
                 originalData:
                   increment_group: '202206'
@@ -9016,81 +6912,241 @@ paths:
       responses:
         '201':
           description: Created
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Transfer-Encoding:
-              schema:
-                type: string
-                example: chunked
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            Keep-Alive:
-              schema:
-                type: string
-                example: timeout=60
-            Cache-Control:
-              schema:
-                type: string
-                example: no-cache, private
-            Date:
-              schema:
-                type: string
-                example: Tue, 07 Jun 2022 15:06:15 GMT
-            X-RateLimit-Limit:
-              schema:
-                type: integer
-                example: '300'
-            X-RateLimit-Remaining:
-              schema:
-                type: integer
-                example: '299'
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-            Access-Control-Allow-Methods:
-              schema:
-                type: string
-                example: GET, POST, PUT, PATCH, DELETE, OPTIONS
-            Access-Control-Allow-Headers:
-              schema:
-                type: string
-                example: >-
-                  Tenant, Authorization, Content-Type, X-Requested-With, Origin,
-                  Timezone
-            Access-Control-Allow-Credentials:
-              schema:
-                type: boolean
-                example: 'true'
-            Access-Control-Max-Age:
-              schema:
-                type: integer
-                example: '86400'
-            X-Frame-Options:
-              schema:
-                type: string
-                example: DENY
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            X-XSS-Protection:
-              schema:
-                type: string
-                example: 1; mode=block
           content:
             application/json:
               schema:
                 type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      sales_order:
+                        type: object
+                        properties:
+                          items:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                sales_order_id:
+                                  type: integer
+                                sales_quotation_item_id:
+                                  type: integer
+                                sales_contract_item_id:
+                                  type: integer
+                                sales_contract_group_item_id:
+                                  type: integer
+                                item_id:
+                                  type: integer
+                                item_name:
+                                  type: string
+                                quantity:
+                                  type: string
+                                unit:
+                                  type: string
+                                converter:
+                                  type: string
+                                price:
+                                  type: string
+                                discount_percent:
+                                  type: string
+                                discount_value:
+                                  type: string
+                                taxable:
+                                  type: string
+                                notes:
+                                  type: string
+                                allocation_id:
+                                  type: integer
+                                quantity_remaining:
+                                  type: string
+                                item:
+                                  type: object
+                                  properties:
+                                    id:
+                                      type: integer
+                                    chart_of_account_id:
+                                      type: integer
+                                    code:
+                                      type: string
+                                    barcode:
+                                      type: string
+                                    name:
+                                      type: string
+                                    size:
+                                      type: string
+                                    color:
+                                      type: string
+                                    weight:
+                                      type: string
+                                    notes:
+                                      type: string
+                                    taxable:
+                                      type: string
+                                    require_production_number:
+                                      type: string
+                                    require_expiry_date:
+                                      type: string
+                                    stock:
+                                      type: string
+                                    stock_reminder:
+                                      type: string
+                                    unit_default:
+                                      type: string
+                                    unit_default_purchase:
+                                      type: string
+                                    unit_default_sales:
+                                      type: string
+                                    created_by:
+                                      type: integer
+                                    updated_by:
+                                      type: integer
+                                    archived_by:
+                                      type: integer
+                                    created_at:
+                                      type: string
+                                    updated_at:
+                                      type: string
+                                    archived_at:
+                                      type: string
+                                    label:
+                                      type: string
+                                    smallest_unit:
+                                      id:
+                                        type: integer
+                                      label:
+                                        type: string
+                                      name:
+                                        type: string
+                                      converter:
+                                        type: string
+                                      disabled:
+                                        type: string
+                                      item_id:
+                                        type: integer
+                                      created_by:
+                                        type: integer
+                                      updated_by:
+                                        type: integer
+                                      created_at:
+                                        type: string
+                                      updated_at:
+                                        type: string
+                                delivery_order_items:
+                                  $ref: '#/components/schemas/delivery-order-items'
+                          id:
+                            type: integer
+                          sales_quotation_id:
+                            type: integer
+                          sales_contract_id:
+                            type: integer
+                          customer_id:
+                            type: integer
+                          customer_name:
+                            type: string
+                          customer_address:
+                            type: string
+                          customer_phone:
+                            type: string
+                          billing_address:
+                            type: string
+                          billing_phone:
+                            type: string
+                          billing_email:
+                            type: string
+                          shipping_address:
+                            type: string
+                          shipping_phone:
+                            type: string
+                          shipping_email:
+                            type: string
+                          warehouse_id:
+                            type: integer
+                          eta:
+                            type: string
+                          cash_only:
+                            type: integer
+                          need_down_payment:
+                            type: integer
+                          delivery_fee:
+                            type: integer
+                          discount_percent:
+                            type: integer
+                          discount_value:
+                            type: integer
+                          type_of_tax:
+                            type: string
+                          tax:
+                            type: integer
+                          amount:
+                            type: integer
+                          created_at:
+                            type: string
+                          updated_at:
+                            type: string
+                          form:
+                            $ref: '#/components/schemas/form'
+                      id:
+                        type: integer
+                      customer_id:
+                        type: integer
+                      warehouse_id:
+                        type: integer
+                      sales_order_id:
+                        type: integer
+                      customer_name:
+                        type: string
+                      customer_address:
+                        type: string
+                      customer_phone:
+                        type: string
+                      form:
+                        $ref: '#/components/schemas/form'
+                      customer:
+                        $ref: '#/components/schemas/customer'
+                      items:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            delivery_order_id:
+                              type: integer
+                            sales_order_item_id:
+                              type: integer
+                            item_id:
+                              type: integer
+                            item_name:
+                              type: string
+                            price:
+                              type: integer
+                            discount_percent:
+                              type: integer
+                            discount_value:
+                              type: integer
+                            taxable:
+                              type: integer
+                            unit:
+                              type: string
+                            converter:
+                              type: integer
+                            notes:
+                              type: string
+                            allocation_id:
+                              type: integer
+                            quantity_requested:
+                              type: integer
+                            quantity_delivered:
+                              type: integer
+                            quantity_remaining:
+                              type: integer
+                            converter_quantity:
+                              type: integer
+                            allocation:
+                              type: string
               example:
                 data:
                   warehouse_id: 2
@@ -9952,42 +8008,6 @@ paths:
                       allocation: null
                     - id: 171
                       delivery_order_id: 68
-                      sales_order_item_id: 43
-                      item_id: 7
-                      item_name: Case
-                      price: 1000
-                      discount_percent: 0
-                      discount_value: 0
-                      taxable: 1
-                      unit: PCS
-                      converter: 1
-                      notes: null
-                      allocation_id: null
-                      quantity_requested: 90
-                      quantity_delivered: 90
-                      quantity_remaining: 0
-                      converter_quantity: null
-                      allocation: null
-                    - id: 172
-                      delivery_order_id: 68
-                      sales_order_item_id: 44
-                      item_id: 9
-                      item_name: Gelas
-                      price: 1000
-                      discount_percent: 0
-                      discount_value: 0
-                      taxable: 1
-                      unit: PCS
-                      converter: 1
-                      notes: null
-                      allocation_id: null
-                      quantity_requested: 90
-                      quantity_delivered: 90
-                      quantity_remaining: 0
-                      converter_quantity: null
-                      allocation: null
-                    - id: 173
-                      delivery_order_id: 68
                       sales_order_item_id: 45
                       item_id: 6
                       item_name: Jam
@@ -10057,6 +8077,12 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      url:
+                        type: string
               example:
                 data:
                   url: https://project-cendekia.site/download?key=d5spyNjujUdFYBM0
@@ -10128,6 +8154,13 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/delivery-orders'
+                  meta:
+                    $ref: '#/components/schemas/meta'
+                  links:
+                    $ref: '#/components/schemas/links'
               example:
                 data:
                   - id: 29
@@ -10231,49 +8264,6 @@ paths:
                     items:
                       - id: 61
                         delivery_order_id: 29
-                        sales_order_item_id: 20
-                        item_id: 8
-                        item_name: Bulpoint
-                        price: 10000
-                        discount_percent: 0
-                        discount_value: 0
-                        taxable: 1
-                        unit: PCS
-                        converter: 1
-                        notes: null
-                        allocation_id: null
-                        quantity_requested: 10
-                        quantity_delivered: 10
-                        quantity_remaining: 0
-                        converter_quantity: null
-                        item:
-                          id: 8
-                          chart_of_account_id: 9
-                          code: B-12931
-                          barcode: null
-                          name: Bulpoint
-                          size: null
-                          color: null
-                          weight: null
-                          notes: null
-                          taxable: 1
-                          require_production_number: 1
-                          require_expiry_date: 1
-                          stock: 100
-                          stock_reminder: 0
-                          unit_default: 9
-                          unit_default_purchase: 9
-                          unit_default_sales: 9
-                          created_by: 1
-                          updated_by: 1
-                          archived_by: null
-                          created_at: '2022-05-13 10:38:19'
-                          updated_at: '2022-06-03 09:39:33'
-                          archived_at: null
-                          label: '[B-12931] Bulpoint'
-                        allocation: null
-                      - id: 62
-                        delivery_order_id: 29
                         sales_order_item_id: 21
                         item_id: 7
                         item_name: Case
@@ -10364,6 +8354,87 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      billing_address:
+                        type: string
+                      billing_phone:
+                        type: string
+                      billing_email:
+                        type: string
+                      shipping_address:
+                        type: string
+                      shipping_phone:
+                        type: string
+                      shipping_email:
+                        type: string
+                      archives:
+                        type: array
+                      sales_order:
+                        type: object
+                        properties:
+                          $ref: ./components/responses/properties/sales-order.yaml
+                      id:
+                        type: integer
+                      customer_id:
+                        type: integer
+                      warehouse_id:
+                        type: integer
+                      sales_order_id:
+                        type: integer
+                      customer_name:
+                        type: string
+                      customer_address:
+                        type: string
+                      customer_phone:
+                        type: string
+                      form:
+                        $ref: '#/components/schemas/form'
+                      customer:
+                        $ref: '#/components/schemas/customer'
+                      items:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            delivery_order_id:
+                              type: integer
+                            sales_order_item_id:
+                              type: integer
+                            item_id:
+                              type: integer
+                            item_name:
+                              type: string
+                            price:
+                              type: integer
+                            discount_percent:
+                              type: integer
+                            discount_value:
+                              type: integer
+                            taxable:
+                              type: integer
+                            unit:
+                              type: string
+                            converter:
+                              type: integer
+                            notes:
+                              type: string
+                            allocation_id:
+                              type: integer
+                            quantity_requested:
+                              type: integer
+                            quantity_delivered:
+                              type: integer
+                            quantity_remaining:
+                              type: integer
+                            converter_quantity:
+                              type: integer
+                            allocation:
+                              type: string
               example:
                 data:
                   id: 66
@@ -10427,135 +8498,6 @@ paths:
                     label: '[10689-1080] Hanna Schuster'
                   items:
                     - id: 162
-                      delivery_order_id: 66
-                      sales_order_item_id: 26
-                      item_id: 8
-                      item_name: Bulpoint
-                      price: 10000
-                      discount_percent: 0
-                      discount_value: 0
-                      taxable: 1
-                      unit: PCS
-                      converter: 1
-                      notes: null
-                      allocation_id: null
-                      quantity_requested: 100
-                      quantity_delivered: 20
-                      quantity_remaining: 80
-                      converter_quantity: null
-                      item:
-                        id: 8
-                        chart_of_account_id: 9
-                        code: B-12931
-                        barcode: null
-                        name: Bulpoint
-                        size: null
-                        color: null
-                        weight: null
-                        notes: null
-                        taxable: 1
-                        require_production_number: 1
-                        require_expiry_date: 1
-                        stock: 100
-                        stock_reminder: 0
-                        unit_default: 9
-                        unit_default_purchase: 9
-                        unit_default_sales: 9
-                        created_by: 1
-                        updated_by: 1
-                        archived_by: null
-                        created_at: '2022-05-13 10:38:19'
-                        updated_at: '2022-06-03 09:39:33'
-                        archived_at: null
-                        label: '[B-12931] Bulpoint'
-                      allocation: null
-                    - id: 163
-                      delivery_order_id: 66
-                      sales_order_item_id: 27
-                      item_id: 7
-                      item_name: Case
-                      price: 10000
-                      discount_percent: 0
-                      discount_value: 0
-                      taxable: 1
-                      unit: PCS
-                      converter: 1
-                      notes: null
-                      allocation_id: null
-                      quantity_requested: 100
-                      quantity_delivered: 20
-                      quantity_remaining: 80
-                      converter_quantity: null
-                      item:
-                        id: 7
-                        chart_of_account_id: 9
-                        code: B-1202
-                        barcode: null
-                        name: Case
-                        size: null
-                        color: null
-                        weight: null
-                        notes: null
-                        taxable: 1
-                        require_production_number: 0
-                        require_expiry_date: 0
-                        stock: 0
-                        stock_reminder: 0
-                        unit_default: 7
-                        unit_default_purchase: 8
-                        unit_default_sales: 7
-                        created_by: 1
-                        updated_by: 1
-                        archived_by: null
-                        created_at: '2022-05-13 10:37:43'
-                        updated_at: '2022-05-13 10:37:43'
-                        archived_at: null
-                        label: '[B-1202] Case'
-                      allocation: null
-                    - id: 164
-                      delivery_order_id: 66
-                      sales_order_item_id: 28
-                      item_id: 9
-                      item_name: Gelas
-                      price: 10000
-                      discount_percent: 0
-                      discount_value: 0
-                      taxable: 1
-                      unit: PCS
-                      converter: 1
-                      notes: null
-                      allocation_id: null
-                      quantity_requested: 100
-                      quantity_delivered: 20
-                      quantity_remaining: 80
-                      converter_quantity: null
-                      item:
-                        id: 9
-                        chart_of_account_id: 9
-                        code: B-1282192
-                        barcode: null
-                        name: Gelas
-                        size: null
-                        color: null
-                        weight: null
-                        notes: null
-                        taxable: 1
-                        require_production_number: 1
-                        require_expiry_date: 1
-                        stock: 0
-                        stock_reminder: 0
-                        unit_default: 10
-                        unit_default_purchase: 10
-                        unit_default_sales: 10
-                        created_by: 1
-                        updated_by: 1
-                        archived_by: null
-                        created_at: '2022-05-13 10:38:42'
-                        updated_at: '2022-05-13 10:38:42'
-                        archived_at: null
-                        label: '[B-1282192] Gelas'
-                      allocation: null
-                    - id: 165
                       delivery_order_id: 66
                       sales_order_item_id: 29
                       item_id: 6
@@ -10748,6 +8690,116 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                originalData:
+                  id:
+                    type: integer
+                  $ref: ./components/requests/properties/original-data.yaml
+                id:
+                  type: integer
+                items:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      delivery_order_id:
+                        type: integer
+                      taxable:
+                        type: integer
+                      converter_quantity:
+                        type: integer
+                      allocation:
+                        type: string
+                      $ref: >-
+                        ./components/requests/properties/delivery-order-item.yaml
+                      item:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          chart_of_account_id:
+                            type: integer
+                          code:
+                            type: string
+                          barcode:
+                            type: string
+                          name:
+                            type: string
+                          size:
+                            type: string
+                          color:
+                            type: string
+                          weight:
+                            type: string
+                          notes:
+                            type: string
+                          taxable:
+                            type: string
+                          require_production_number:
+                            type: integer
+                          require_expiry_date:
+                            type: integer
+                          stock:
+                            type: integer
+                          stock_reminder:
+                            type: integer
+                          unit_default:
+                            type: integer
+                          unit_default_purchase:
+                            type: integer
+                          unit_default_sales:
+                            type: integer
+                          created_by:
+                            type: integer
+                          updated_by:
+                            type: integer
+                          archived_by:
+                            type: integer
+                          created_at:
+                            type: string
+                          updated_at:
+                            type: string
+                          archived_at:
+                            type: string
+                          label:
+                            type: string
+                increment_group:
+                  type: string
+                date:
+                  type: string
+                warehouse_id:
+                  type: integer
+                warehouse_name:
+                  type: string
+                customer_id:
+                  type: integer
+                customer_name:
+                  type: string
+                customer_label:
+                  type: string
+                customer_address:
+                  type: string
+                customer_phone:
+                  type: string
+                customer_email:
+                  type: string
+                pricing_group_id:
+                  type: integer
+                request_approval_to:
+                  type: strings
+                approver_name:
+                  type: string
+                approver_email:
+                  type: string
+                sales_order_id:
+                  type: integer
+                errors:
+                  type: object
+                  properties:
+                    errors:
+                      type: object
               example:
                 originalData:
                   id: 66
@@ -10975,12 +9027,6 @@ paths:
                 sales_order_id: 12
                 errors:
                   errors: {}
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
       responses:
         '200':
           description: OK
@@ -10988,6 +9034,77 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  sales_order:
+                    type: object
+                    properties:
+                      items:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            $ref: >-
+                              ./components/responses/properties/sales-order-item.yaml
+                      $ref: ./components/responses/properties/sales-order.yaml
+                  id:
+                    type: integer
+                  customer_id:
+                    type: integer
+                  warehouse_id:
+                    type: integer
+                  sales_order_id:
+                    type: integer
+                  customer_name:
+                    type: string
+                  customer_address:
+                    type: string
+                  customer_phone:
+                    type: string
+                  form:
+                    $ref: '#/components/schemas/form'
+                  customer:
+                    $ref: '#/components/schemas/customer'
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        delivery_order_id:
+                          type: integer
+                        sales_order_item_id:
+                          type: integer
+                        item_id:
+                          type: integer
+                        item_name:
+                          type: string
+                        price:
+                          type: integer
+                        discount_percent:
+                          type: integer
+                        discount_value:
+                          type: integer
+                        taxable:
+                          type: integer
+                        unit:
+                          type: string
+                        converter:
+                          type: integer
+                        notes:
+                          type: string
+                        allocation_id:
+                          type: integer
+                        quantity_requested:
+                          type: integer
+                        quantity_delivered:
+                          type: integer
+                        quantity_remaining:
+                          type: integer
+                        converter_quantity:
+                          type: integer
+                        allocation:
+                          type: string
               example:
                 warehouse_id: 2
                 customer_id: 11
@@ -11024,378 +9141,6 @@ paths:
                   updated_at: '2022-06-07 22:07:28'
                   items:
                     - id: 26
-                      sales_order_id: 12
-                      sales_quotation_item_id: null
-                      sales_contract_item_id: null
-                      sales_contract_group_item_id: null
-                      item_id: 8
-                      item_name: Bulpoint
-                      quantity: 100
-                      unit: PCS
-                      converter: 1
-                      price: 10000
-                      discount_percent: 0
-                      discount_value: 0
-                      taxable: 1
-                      notes: null
-                      allocation_id: null
-                      quantity_remaining: '100.000000000000000000000000000000'
-                      item:
-                        id: 8
-                        chart_of_account_id: 9
-                        code: B-12931
-                        barcode: null
-                        name: Bulpoint
-                        size: null
-                        color: null
-                        weight: null
-                        notes: null
-                        taxable: 1
-                        require_production_number: 1
-                        require_expiry_date: 1
-                        stock: 100
-                        stock_reminder: 0
-                        unit_default: 9
-                        unit_default_purchase: 9
-                        unit_default_sales: 9
-                        created_by: 1
-                        updated_by: 1
-                        archived_by: null
-                        created_at: '2022-05-13 10:38:19'
-                        updated_at: '2022-06-03 09:39:33'
-                        archived_at: null
-                        label: '[B-12931] Bulpoint'
-                        smallest_unit:
-                          id: 9
-                          label: PCS
-                          name: PCS
-                          converter: 1
-                          disabled: 0
-                          item_id: 8
-                          created_by: 1
-                          updated_by: 1
-                          created_at: '2022-05-13 10:38:19'
-                          updated_at: '2022-05-13 10:38:19'
-                      delivery_order_items:
-                        - id: 174
-                          delivery_order_id: 69
-                          sales_order_item_id: 26
-                          item_id: 8
-                          item_name: Bulpoint
-                          price: 10000
-                          discount_percent: 0
-                          discount_value: 0
-                          taxable: 1
-                          unit: PCS
-                          converter: 1
-                          notes: null
-                          allocation_id: null
-                          quantity_requested: 100
-                          quantity_delivered: 20
-                          quantity_remaining: 80
-                          converter_quantity: null
-                          delivery_order:
-                            id: 69
-                            customer_id: 11
-                            warehouse_id: 2
-                            sales_order_id: 12
-                            customer_name: AINI
-                            customer_address: null
-                            customer_phone: null
-                            billing_address: null
-                            billing_phone: null
-                            billing_email: null
-                            shipping_address: null
-                            shipping_phone: null
-                            shipping_email: null
-                            form:
-                              id: 114
-                              branch_id: 2
-                              date: '2022-06-04 12:56:26'
-                              number: DO22060014
-                              edited_number: null
-                              edited_notes: null
-                              notes: null
-                              created_by: 2
-                              updated_by: 2
-                              done: 0
-                              increment: 14
-                              increment_group: 202206
-                              formable_id: 69
-                              formable_type: SalesDeliveryOrder
-                              request_approval_to: 1
-                              approval_by: null
-                              approval_at: null
-                              approval_reason: null
-                              approval_status: 0
-                              request_cancellation_to: null
-                              request_cancellation_by: null
-                              request_cancellation_at: null
-                              request_cancellation_reason: null
-                              cancellation_approval_at: null
-                              cancellation_approval_by: null
-                              cancellation_approval_reason: null
-                              cancellation_status: null
-                              created_at: '2022-06-07 22:07:28'
-                              updated_at: '2022-06-07 22:07:28'
-                              request_approval_at: null
-                              request_close_to: null
-                              request_close_by: null
-                              request_close_at: null
-                              request_close_reason: null
-                              close_approval_at: null
-                              close_approval_by: null
-                              close_approval_reason: null
-                              close_status: null
-                    - id: 27
-                      sales_order_id: 12
-                      sales_quotation_item_id: null
-                      sales_contract_item_id: null
-                      sales_contract_group_item_id: null
-                      item_id: 7
-                      item_name: Case
-                      quantity: 100
-                      unit: PCS
-                      converter: 1
-                      price: 10000
-                      discount_percent: 0
-                      discount_value: 0
-                      taxable: 1
-                      notes: null
-                      allocation_id: null
-                      quantity_remaining: '100.000000000000000000000000000000'
-                      item:
-                        id: 7
-                        chart_of_account_id: 9
-                        code: B-1202
-                        barcode: null
-                        name: Case
-                        size: null
-                        color: null
-                        weight: null
-                        notes: null
-                        taxable: 1
-                        require_production_number: 0
-                        require_expiry_date: 0
-                        stock: 0
-                        stock_reminder: 0
-                        unit_default: 7
-                        unit_default_purchase: 8
-                        unit_default_sales: 7
-                        created_by: 1
-                        updated_by: 1
-                        archived_by: null
-                        created_at: '2022-05-13 10:37:43'
-                        updated_at: '2022-05-13 10:37:43'
-                        archived_at: null
-                        label: '[B-1202] Case'
-                        smallest_unit:
-                          id: 7
-                          label: PCS
-                          name: PCS
-                          converter: 1
-                          disabled: 0
-                          item_id: 7
-                          created_by: 1
-                          updated_by: 1
-                          created_at: '2022-05-13 10:37:43'
-                          updated_at: '2022-05-13 10:37:43'
-                      delivery_order_items:
-                        - id: 175
-                          delivery_order_id: 69
-                          sales_order_item_id: 27
-                          item_id: 7
-                          item_name: Case
-                          price: 10000
-                          discount_percent: 0
-                          discount_value: 0
-                          taxable: 1
-                          unit: PCS
-                          converter: 1
-                          notes: null
-                          allocation_id: null
-                          quantity_requested: 100
-                          quantity_delivered: 20
-                          quantity_remaining: 80
-                          converter_quantity: null
-                          delivery_order:
-                            id: 69
-                            customer_id: 11
-                            warehouse_id: 2
-                            sales_order_id: 12
-                            customer_name: AINI
-                            customer_address: null
-                            customer_phone: null
-                            billing_address: null
-                            billing_phone: null
-                            billing_email: null
-                            shipping_address: null
-                            shipping_phone: null
-                            shipping_email: null
-                            form:
-                              id: 114
-                              branch_id: 2
-                              date: '2022-06-04 12:56:26'
-                              number: DO22060014
-                              edited_number: null
-                              edited_notes: null
-                              notes: null
-                              created_by: 2
-                              updated_by: 2
-                              done: 0
-                              increment: 14
-                              increment_group: 202206
-                              formable_id: 69
-                              formable_type: SalesDeliveryOrder
-                              request_approval_to: 1
-                              approval_by: null
-                              approval_at: null
-                              approval_reason: null
-                              approval_status: 0
-                              request_cancellation_to: null
-                              request_cancellation_by: null
-                              request_cancellation_at: null
-                              request_cancellation_reason: null
-                              cancellation_approval_at: null
-                              cancellation_approval_by: null
-                              cancellation_approval_reason: null
-                              cancellation_status: null
-                              created_at: '2022-06-07 22:07:28'
-                              updated_at: '2022-06-07 22:07:28'
-                              request_approval_at: null
-                              request_close_to: null
-                              request_close_by: null
-                              request_close_at: null
-                              request_close_reason: null
-                              close_approval_at: null
-                              close_approval_by: null
-                              close_approval_reason: null
-                              close_status: null
-                    - id: 28
-                      sales_order_id: 12
-                      sales_quotation_item_id: null
-                      sales_contract_item_id: null
-                      sales_contract_group_item_id: null
-                      item_id: 9
-                      item_name: Gelas
-                      quantity: 100
-                      unit: PCS
-                      converter: 1
-                      price: 10000
-                      discount_percent: 0
-                      discount_value: 0
-                      taxable: 1
-                      notes: null
-                      allocation_id: null
-                      quantity_remaining: '100.000000000000000000000000000000'
-                      item:
-                        id: 9
-                        chart_of_account_id: 9
-                        code: B-1282192
-                        barcode: null
-                        name: Gelas
-                        size: null
-                        color: null
-                        weight: null
-                        notes: null
-                        taxable: 1
-                        require_production_number: 1
-                        require_expiry_date: 1
-                        stock: 0
-                        stock_reminder: 0
-                        unit_default: 10
-                        unit_default_purchase: 10
-                        unit_default_sales: 10
-                        created_by: 1
-                        updated_by: 1
-                        archived_by: null
-                        created_at: '2022-05-13 10:38:42'
-                        updated_at: '2022-05-13 10:38:42'
-                        archived_at: null
-                        label: '[B-1282192] Gelas'
-                        smallest_unit:
-                          id: 10
-                          label: PCS
-                          name: PCS
-                          converter: 1
-                          disabled: 0
-                          item_id: 9
-                          created_by: 1
-                          updated_by: 1
-                          created_at: '2022-05-13 10:38:42'
-                          updated_at: '2022-05-13 10:38:42'
-                      delivery_order_items:
-                        - id: 176
-                          delivery_order_id: 69
-                          sales_order_item_id: 28
-                          item_id: 9
-                          item_name: Gelas
-                          price: 10000
-                          discount_percent: 0
-                          discount_value: 0
-                          taxable: 1
-                          unit: PCS
-                          converter: 1
-                          notes: null
-                          allocation_id: null
-                          quantity_requested: 100
-                          quantity_delivered: 20
-                          quantity_remaining: 80
-                          converter_quantity: null
-                          delivery_order:
-                            id: 69
-                            customer_id: 11
-                            warehouse_id: 2
-                            sales_order_id: 12
-                            customer_name: AINI
-                            customer_address: null
-                            customer_phone: null
-                            billing_address: null
-                            billing_phone: null
-                            billing_email: null
-                            shipping_address: null
-                            shipping_phone: null
-                            shipping_email: null
-                            form:
-                              id: 114
-                              branch_id: 2
-                              date: '2022-06-04 12:56:26'
-                              number: DO22060014
-                              edited_number: null
-                              edited_notes: null
-                              notes: null
-                              created_by: 2
-                              updated_by: 2
-                              done: 0
-                              increment: 14
-                              increment_group: 202206
-                              formable_id: 69
-                              formable_type: SalesDeliveryOrder
-                              request_approval_to: 1
-                              approval_by: null
-                              approval_at: null
-                              approval_reason: null
-                              approval_status: 0
-                              request_cancellation_to: null
-                              request_cancellation_by: null
-                              request_cancellation_at: null
-                              request_cancellation_reason: null
-                              cancellation_approval_at: null
-                              cancellation_approval_by: null
-                              cancellation_approval_reason: null
-                              cancellation_status: null
-                              created_at: '2022-06-07 22:07:28'
-                              updated_at: '2022-06-07 22:07:28'
-                              request_approval_at: null
-                              request_close_to: null
-                              request_close_by: null
-                              request_close_at: null
-                              request_close_reason: null
-                              close_approval_at: null
-                              close_approval_by: null
-                              close_approval_reason: null
-                              close_status: null
-                    - id: 29
                       sales_order_id: 12
                       sales_quotation_item_id: null
                       sales_contract_item_id: null
@@ -11641,67 +9386,19 @@ paths:
                     quantity_delivered: 20
                     quantity_remaining: 80
                     converter_quantity: null
-                  - id: 175
-                    delivery_order_id: 69
-                    sales_order_item_id: 27
-                    item_id: 7
-                    item_name: Case
-                    price: 10000
-                    discount_percent: 0
-                    discount_value: 0
-                    taxable: 1
-                    unit: PCS
-                    converter: 1
-                    notes: null
-                    allocation_id: null
-                    quantity_requested: 100
-                    quantity_delivered: 20
-                    quantity_remaining: 80
-                    converter_quantity: null
-                  - id: 176
-                    delivery_order_id: 69
-                    sales_order_item_id: 28
-                    item_id: 9
-                    item_name: Gelas
-                    price: 10000
-                    discount_percent: 0
-                    discount_value: 0
-                    taxable: 1
-                    unit: PCS
-                    converter: 1
-                    notes: null
-                    allocation_id: null
-                    quantity_requested: 100
-                    quantity_delivered: 20
-                    quantity_remaining: 80
-                    converter_quantity: null
-                  - id: 177
-                    delivery_order_id: 69
-                    sales_order_item_id: 29
-                    item_id: 6
-                    item_name: Jam
-                    price: 10000
-                    discount_percent: 0
-                    discount_value: 0
-                    taxable: 1
-                    unit: PCS
-                    converter: 1
-                    notes: null
-                    allocation_id: null
-                    quantity_requested: 100
-                    quantity_delivered: 20
-                    quantity_remaining: 80
-                    converter_quantity: null
     delete:
       tags:
         - Delivery Order
       summary: delivery order - cancel
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  required: true
       responses:
         '200':
           description: Successful response
@@ -12607,33 +10304,18 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                id:
+                  type: integer
+                  required: true
               example:
                 id: 69
       parameters:
-        - name: Tenant
-          in: header
-          schema:
-            type: string
-          example: '{{tenant}}'
-        - name: Timezone
-          in: header
-          schema:
-            type: string
-          example: '{{timezone}}'
-        - name: Authorization
-          in: header
-          schema:
-            type: string
-          example: '{{auth_token_su}}'
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
         - name: id
           in: path
           schema:
             type: string
+            required: true
           example: 69
       responses:
         '200':
@@ -12642,6 +10324,95 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      customer_id:
+                        type: integer
+                      warehouse_id:
+                        type: integer
+                      sales_order_id:
+                        type: integer
+                      customer_name:
+                        type: string
+                      customer_address:
+                        type: string
+                      customer_phone:
+                        type: string
+                      billing_address:
+                        type: string
+                      billing_phone:
+                        type: string
+                      billing_email:
+                        type: string
+                      shipping_address:
+                        type: string
+                      shipping_phone:
+                        type: string
+                      shipping_email:
+                        type: string
+                      form:
+                        $ref: '#/components/schemas/form'
+                      delivery_notes:
+                        type: array
+                      sales_order:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          sales_quotation_id:
+                            type: integer
+                          sales_contract_id:
+                            type: integer
+                          customer_id:
+                            type: integer
+                          customer_name:
+                            type: string
+                          customer_address:
+                            type: string
+                          customer_phone:
+                            type: string
+                          billing_address:
+                            type: string
+                          billing_phone:
+                            type: string
+                          billing_email:
+                            type: string
+                          shipping_address:
+                            type: string
+                          shipping_phone:
+                            type: string
+                          shipping_email:
+                            type: string
+                          warehouse_id:
+                            type: integer
+                          eta:
+                            type: string
+                          cash_only:
+                            type: integer
+                          need_down_payment:
+                            type: integer
+                          delivery_fee:
+                            type: integer
+                          discount_percent:
+                            type: integer
+                          discount_value:
+                            type: integer
+                          type_of_tax:
+                            type: string
+                          tax:
+                            type: integer
+                          amount:
+                            type: integer
+                          created_at:
+                            type: string
+                          updated_at:
+                            type: string
+                          form:
+                            $ref: '#/components/schemas/form'
               example:
                 data:
                   id: 69
@@ -12772,34 +10543,22 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                id:
+                  type: integer
+                  required: true
+                reason:
+                  type: string
+                  required: true
               example:
                 id: 67
                 reason: cancellation reject reason
       parameters:
-        - name: Tenant
-          in: header
-          schema:
-            type: string
-          example: '{{tenant}}'
-        - name: Timezone
-          in: header
-          schema:
-            type: string
-          example: '{{timezone}}'
-        - name: Authorization
-          in: header
-          schema:
-            type: string
-          example: '{{auth_token_su}}'
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
         - name: id
           in: path
           schema:
             type: string
+            required: true
           example: 67
       responses:
         '200':
@@ -12808,6 +10567,37 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  id:
+                    type: integer
+                  customer_id:
+                    type: integer
+                  warehouse_id:
+                    type: integer
+                  sales_order_id:
+                    type: integer
+                  customer_name:
+                    type: string
+                  customer_address:
+                    type: string
+                  customer_phone:
+                    type: string
+                  billing_address:
+                    type: string
+                  billing_phone:
+                    type: string
+                  billing_email:
+                    type: string
+                  shipping_address:
+                    type: string
+                  shipping_phone:
+                    type: string
+                  shipping_email:
+                    type: string
+                  form:
+                    $ref: '#/components/schemas/form'
+                  delivery_notes:
+                    type: array
               example:
                 id: 67
                 customer_id: 12
@@ -13161,6 +10951,14 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
               example:
                 ids:
                   - id: 31
@@ -13179,6 +10977,18 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                ids:
+                  type: array
+                  required: true
+                  items:
+                    type: integer
+                token:
+                  type: string
+                  required: true
+                approver_id:
+                  type: string
+                  required: true
               example:
                 ids:
                   - 59
@@ -13189,4 +10999,393 @@ paths:
           description: Successful response
           content:
             application/json: {}
-components: {}
+components:
+  schemas:
+    meta:
+      type: object
+      properties:
+        current_page:
+          type: integer
+        from:
+          type: integer
+        last_page:
+          type: integer
+        path:
+          type: string
+        per_page:
+          type: integer
+        to:
+          type: integer
+        total:
+          type: integer
+    links:
+      type: object
+      properties:
+        first:
+          type: string
+        last:
+          type: string
+        prev:
+          type: string
+        next:
+          type: string
+    form:
+      type: object
+      properties:
+        id:
+          type: integer
+        branch_id:
+          type: integer
+        date:
+          type: integer
+        number:
+          type: string
+        edited_number:
+          type: string
+        edited_notes:
+          type: string
+        notes:
+          type: string
+        created_by:
+          type: integer
+        updated_by:
+          type: integer
+        done:
+          type: integer
+        increment:
+          type: integer
+        increment_group:
+          type: integer
+        formable_id:
+          type: integer
+        formable_type:
+          type: string
+        request_approval_to:
+          type: integer
+        approval_by:
+          type: integer
+        approval_at:
+          type: string
+        approval_reason:
+          type: string
+        approval_status:
+          type: integer
+        request_cancellation_to:
+          type: integer
+        request_cancellation_by:
+          type: integer
+        request_cancellation_at:
+          type: string
+        request_cancellation_reason:
+          type: integer
+        cancellation_approval_at:
+          type: string
+        cancellation_approval_by:
+          type: integer
+        cancellation_approval_reason:
+          type: string
+        cancellation_status:
+          type: integer
+        created_at:
+          type: integer
+        updated_at:
+          type: string
+        request_approval_at:
+          type: string
+        request_close_to:
+          type: string
+        request_close_by:
+          type: integer
+        request_close_at:
+          type: string
+        request_close_reason:
+          type: string
+        close_approval_at:
+          type: string
+        close_approval_by:
+          type: integer
+        close_approval_reason:
+          type: string
+        close_status:
+          type: integer
+    customer:
+      type: object
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        tax_identification_number:
+          type: string
+        name:
+          type: string
+        address:
+          type: string
+        city:
+          type: integer
+        state:
+          type: integer
+        country:
+          type: integer
+        zip_code:
+          type: string
+        latitude:
+          type: string
+        longitude:
+          type: string
+        phone:
+          type: string
+        phone_cc:
+          type: string
+        email:
+          type: string
+        notes:
+          type: string
+        credit_limit:
+          type: string
+        branch_id:
+          type: integer
+        created_by:
+          type: integer
+        updated_by:
+          type: integer
+        archived_by:
+          type: integer
+        pricing_group_id:
+          type: integer
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        archived_at:
+          type: string
+        label:
+          type: string
+    warehouse:
+      type: object
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        name:
+          type: string
+        address:
+          type: string
+        phone:
+          type: string
+        notes:
+          type: string
+        branch_id:
+          type: integer
+        created_by:
+          type: integer
+        updated_by:
+          type: integer
+        archived_by:
+          type: integer
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        archived_at:
+          type: string
+        label:
+          type: string
+    delivery-order-items:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          delivery_order_id:
+            type: integer
+          sales_order_item_id:
+            type: integer
+          item_id:
+            type: integer
+          item_name:
+            type: string
+          price:
+            type: string
+          discount_percent:
+            type: string
+          discount_value:
+            type: string
+          taxable:
+            type: string
+          unit:
+            type: string
+          converter:
+            type: string
+          notes:
+            type: string
+          allocation_id:
+            type: integer
+          quantity_requested:
+            type: integer
+          quantity_delivered:
+            type: integer
+          quantity_remaining:
+            type: integer
+          converter_quantity:
+            type: integer
+          item:
+            type: object
+            properties:
+              id:
+                type: integer
+              chart_of_account_id:
+                type: integer
+              code:
+                type: string
+              barcode:
+                type: string
+              name:
+                type: string
+              size:
+                type: string
+              color:
+                type: string
+              weight:
+                type: string
+              notes:
+                type: string
+              taxable:
+                type: string
+              require_production_number:
+                type: string
+              require_expiry_date:
+                type: string
+              stock:
+                type: integer
+              stock_reminder:
+                type: integer
+              unit_default:
+                type: string
+              unit_default_purchase:
+                type: string
+              unit_default_sales:
+                type: string
+              created_by:
+                type: integer
+              updated_by:
+                type: integer
+              archived_by:
+                type: integer
+              created_at:
+                type: string
+              updated_at:
+                type: string
+              archived_at:
+                type: string
+              label:
+                type: string
+            allocation:
+              type: string
+    delivery-orders:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          customer_id:
+            type: integer
+          warehouse_id:
+            type: integer
+          sales_order_id:
+            type: integer
+          customer_name:
+            type: string
+          customer_address:
+            type: string
+          customer_phone:
+            type: string
+          billing_address:
+            type: string
+          billing_phone:
+            type: string
+          billing_email:
+            type: string
+          shipping_address:
+            type: string
+          shipping_phone:
+            type: string
+          shipping_email:
+            type: string
+          form:
+            $ref: '#/components/schemas/form'
+          customer:
+            $ref: '#/components/schemas/customer'
+          warehouse:
+            $ref: '#/components/schemas/warehouse'
+          items:
+            $ref: '#/components/schemas/delivery-order-items'
+    original-data:
+      type: object
+      properties:
+        increment_group:
+          type: string
+        date:
+          type: string
+        warehouse_id:
+          type: integer
+        warehouse_name:
+          type: string
+        customer_id:
+          type: integer
+        customer_name:
+          type: string
+        customer_label:
+          type: string
+        customer_address:
+          type: string
+        customer_phone:
+          type: string
+        customer_email:
+          type: string
+        pricing_group_id:
+          type: integer
+        need_down_payment:
+          type: string
+        cash_only:
+          type: string
+        notes:
+          type: string
+        items:
+          type: array
+        request_approval_to:
+          type: integer
+        approver_name:
+          type: string
+        approver_email:
+          type: string
+        sales_order_id:
+          type: integer
+    units:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          label:
+            type: string
+          name:
+            type: string
+          converter:
+            type: string
+          disabled:
+            type: string
+          item_id:
+            type: integer
+          created_by:
+            type: string
+          updated_by:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string

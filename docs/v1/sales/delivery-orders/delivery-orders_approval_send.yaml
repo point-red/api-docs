@@ -7,6 +7,14 @@ post:
       application/json:
         schema:
           type: object
+          properties:
+            ids:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
           example:
             ids:
               - id: 31

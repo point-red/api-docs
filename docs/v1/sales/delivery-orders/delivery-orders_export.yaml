@@ -50,6 +50,12 @@ get:
         application/json:
           schema:
             type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  url:
+                    type: string
           example:
             data:
               url: https://project-cendekia.site/download?key=d5spyNjujUdFYBM0

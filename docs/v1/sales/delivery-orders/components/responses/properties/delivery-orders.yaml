@@ -1,0 +1,38 @@
+type: array
+items:
+  type: object
+  properties:
+    id:
+      type: integer
+    customer_id:
+      type: integer
+    warehouse_id:
+      type: integer
+    sales_order_id:
+      type: integer
+    customer_name:
+      type: string
+    customer_address:
+      type: string
+    customer_phone:
+      type: string
+    billing_address:
+      type: string
+    billing_phone:
+      type: string
+    billing_email:
+      type: string
+    shipping_address:
+      type: string
+    shipping_phone:
+      type: string
+    shipping_email:
+      type: string
+    form:
+      $ref: './form.yaml'
+    customer:
+      $ref: './customer.yaml'
+    warehouse:
+      $ref: './warehouse.yaml'
+    items:
+      $ref: './delivery-order-items.yaml'

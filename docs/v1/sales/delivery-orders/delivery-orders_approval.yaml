@@ -65,6 +65,13 @@ get:
         application/json:
           schema:
             type: object
+            properties:
+              data:
+                $ref: './components/responses/properties/delivery-orders.yaml'
+              meta:
+                $ref: './components/responses/properties/meta.yaml'
+              links:
+                $ref: './components/responses/properties/links.yaml'
           example:
             data:
               - id: 29
@@ -167,49 +174,6 @@ get:
                   label: '[10689-1080] Hanna Schuster'
                 items:
                   - id: 61
-                    delivery_order_id: 29
-                    sales_order_item_id: 20
-                    item_id: 8
-                    item_name: Bulpoint
-                    price: 10000
-                    discount_percent: 0
-                    discount_value: 0
-                    taxable: 1
-                    unit: PCS
-                    converter: 1
-                    notes: null
-                    allocation_id: null
-                    quantity_requested: 10
-                    quantity_delivered: 10
-                    quantity_remaining: 0
-                    converter_quantity: null
-                    item:
-                      id: 8
-                      chart_of_account_id: 9
-                      code: B-12931
-                      barcode: null
-                      name: Bulpoint
-                      size: null
-                      color: null
-                      weight: null
-                      notes: null
-                      taxable: 1
-                      require_production_number: 1
-                      require_expiry_date: 1
-                      stock: 100
-                      stock_reminder: 0
-                      unit_default: 9
-                      unit_default_purchase: 9
-                      unit_default_sales: 9
-                      created_by: 1
-                      updated_by: 1
-                      archived_by: null
-                      created_at: '2022-05-13 10:38:19'
-                      updated_at: '2022-06-03 09:39:33'
-                      archived_at: null
-                      label: '[B-12931] Bulpoint'
-                    allocation: null
-                  - id: 62
                     delivery_order_id: 29
                     sales_order_item_id: 21
                     item_id: 7

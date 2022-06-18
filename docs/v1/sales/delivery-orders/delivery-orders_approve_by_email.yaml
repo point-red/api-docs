@@ -7,6 +7,18 @@ post:
       application/json:
         schema:
           type: object
+          properties:
+            ids:
+              type: array
+              required: true
+              items:
+                type: integer
+            token:
+              type: string
+              required: true
+            approver_id:
+              type: string
+              required: true
           example:
             ids:
               - 59
