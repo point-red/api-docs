@@ -1,0 +1,1014 @@
+get:
+  tags:
+    - Delivery Order
+  summary: delivery order - show
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: delivery order id
+    - name: with_archives
+      in: query
+      schema:
+        type: boolean
+      example: 'true'
+    - name: with_origin
+      in: query
+      schema:
+        type: boolean
+      example: 'true'
+    - name: includes
+      in: query
+      schema:
+        type: string
+      example: >-
+        customer;warehouse;items.item;items.allocation;salesOrder.form;form.createdBy;form.requestApprovalTo;form.branch
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  $ref: './components/responses/properties/delivery-order.yaml'
+                  billing_address:
+                    type: string
+                  billing_phone:
+                    type: string
+                  billing_email:
+                    type: string
+                  shipping_address:
+                    type: string
+                  shipping_phone:
+                    type: string
+                  shipping_email:
+                    type: string
+                  archives:
+                    type: array
+                  sales_order:
+                    type: object
+                    properties:
+                      $ref: './components/responses/properties/sales-order.yaml'
+          example:
+            data:
+              id: 66
+              customer_id: 11
+              warehouse_id: 2
+              sales_order_id: 12
+              customer_name: AINI
+              customer_address: null
+              customer_phone: null
+              billing_address: null
+              billing_phone: null
+              billing_email: null
+              shipping_address: null
+              shipping_phone: null
+              shipping_email: null
+              archives: []
+              customer:
+                id: 11
+                code: CUST-0123
+                tax_identification_number: null
+                name: AINI
+                address: null
+                city: null
+                state: null
+                country: null
+                zip_code: null
+                latitude: null
+                longitude: null
+                phone: null
+                phone_cc: null
+                email: null
+                notes: null
+                credit_limit: 0
+                branch_id: 2
+                created_by: 1
+                updated_by: 1
+                archived_by: null
+                pricing_group_id: 1
+                created_at: '2022-05-18 09:49:41'
+                updated_at: '2022-05-18 09:49:41'
+                archived_at: null
+                label: '[CUST-0123] AINI'
+              warehouse:
+                id: 2
+                code: 10689-1080
+                name: Hanna Schuster
+                address: |-
+                  28491 Morissette Drives Apt. 364
+                  Port Juwan, LA 19032
+                phone: '+5993089919718'
+                notes: >-
+                  Perferendis ipsam omnis rerum amet ex maiores animi. Ad rerum
+                  et ut rerum. Natus expedita voluptatem optio ipsa.
+                branch_id: 2
+                created_by: null
+                updated_by: null
+                archived_by: null
+                created_at: '2022-05-12 11:33:49'
+                updated_at: '2022-05-12 11:33:49'
+                archived_at: null
+                label: '[10689-1080] Hanna Schuster'
+              items:
+                - id: 162
+                  delivery_order_id: 66
+                  sales_order_item_id: 29
+                  item_id: 6
+                  item_name: Jam
+                  price: 10000
+                  discount_percent: 0
+                  discount_value: 0
+                  taxable: 1
+                  unit: PCS
+                  converter: 1
+                  notes: null
+                  allocation_id: null
+                  quantity_requested: 100
+                  quantity_delivered: 20
+                  quantity_remaining: 80
+                  converter_quantity: null
+                  item:
+                    id: 6
+                    chart_of_account_id: 9
+                    code: B-1203812
+                    barcode: null
+                    name: Jam
+                    size: null
+                    color: null
+                    weight: null
+                    notes: null
+                    taxable: 1
+                    require_production_number: 1
+                    require_expiry_date: 1
+                    stock: 0
+                    stock_reminder: 0
+                    unit_default: 6
+                    unit_default_purchase: 6
+                    unit_default_sales: 6
+                    created_by: 1
+                    updated_by: 1
+                    archived_by: null
+                    created_at: '2022-05-13 10:36:58'
+                    updated_at: '2022-05-13 10:36:58'
+                    archived_at: null
+                    label: '[B-1203812] Jam'
+                  allocation: null
+              sales_order:
+                id: 12
+                sales_quotation_id: null
+                sales_contract_id: null
+                customer_id: 11
+                customer_name: AINI
+                customer_address: null
+                customer_phone: null
+                billing_address: null
+                billing_phone: null
+                billing_email: null
+                shipping_address: null
+                shipping_phone: null
+                shipping_email: null
+                warehouse_id: null
+                eta: '-0001-11-30 06:42:04'
+                cash_only: 0
+                need_down_payment: 0
+                delivery_fee: 0
+                discount_percent: 0
+                discount_value: 0
+                type_of_tax: exclude
+                tax: 400000
+                amount: 4400000
+                created_at: '2022-06-07 22:03:26'
+                updated_at: '2022-06-07 22:03:26'
+                form:
+                  id: 41
+                  branch_id: 2
+                  date: '2022-05-18 09:52:13'
+                  number: SO22050009
+                  edited_number: null
+                  edited_notes: null
+                  notes: null
+                  created_by: 1
+                  updated_by: 1
+                  done: 0
+                  increment: 9
+                  increment_group: 202205
+                  formable_id: 12
+                  formable_type: SalesOrder
+                  request_approval_to: 1
+                  approval_by: 1
+                  approval_at: '2022-05-18 02:53:07'
+                  approval_reason: null
+                  approval_status: 1
+                  request_cancellation_to: null
+                  request_cancellation_by: null
+                  request_cancellation_at: null
+                  request_cancellation_reason: null
+                  cancellation_approval_at: null
+                  cancellation_approval_by: null
+                  cancellation_approval_reason: null
+                  cancellation_status: null
+                  created_at: '2022-05-18 09:53:04'
+                  updated_at: '2022-06-04 12:56:55'
+                  request_approval_at: null
+                  request_close_to: null
+                  request_close_by: null
+                  request_close_at: null
+                  request_close_reason: null
+                  close_approval_at: null
+                  close_approval_by: null
+                  close_approval_reason: null
+                  close_status: null
+              form:
+                id: 110
+                branch_id: 2
+                date: '2022-06-04 12:56:26'
+                number: DO22060014
+                edited_number: null
+                edited_notes: null
+                notes: null
+                created_by:
+                  id: 1
+                  name: admin
+                  first_name: admin
+                  last_name: admin
+                  address: null
+                  phone: null
+                  email: aininr13@gmail.com
+                  created_at: '2022-05-12 11:32:41'
+                  updated_at: '2022-05-12 11:32:41'
+                  branch_id: null
+                  warehouse_id: null
+                  full_name: admin admin
+                updated_by: 1
+                done: 0
+                increment: 14
+                increment_group: 202206
+                formable_id: 66
+                formable_type: SalesDeliveryOrder
+                request_approval_to:
+                  id: 1
+                  name: admin
+                  first_name: admin
+                  last_name: admin
+                  address: null
+                  phone: null
+                  email: aininr13@gmail.com
+                  created_at: '2022-05-12 11:32:41'
+                  updated_at: '2022-05-12 11:32:41'
+                  branch_id: null
+                  warehouse_id: null
+                  full_name: admin admin
+                approval_by: null
+                approval_at: null
+                approval_reason: null
+                approval_status: 0
+                request_cancellation_to: null
+                request_cancellation_by: null
+                request_cancellation_at: null
+                request_cancellation_reason: null
+                cancellation_approval_at: null
+                cancellation_approval_by: null
+                cancellation_approval_reason: null
+                cancellation_status: null
+                created_at: '2022-06-04 12:56:55'
+                updated_at: '2022-06-04 12:56:55'
+                request_approval_at: '2022-06-04 12:56:26'
+                request_close_to: null
+                request_close_by: null
+                request_close_at: null
+                request_close_reason: null
+                close_approval_at: null
+                close_approval_by: null
+                close_approval_reason: null
+                close_status: null
+                branch:
+                  id: 2
+                  name: Harold Bechtelar
+                  address: |-
+                    9031 Oma Rapids Suite 267
+                    Cruickshankchester, MD 77841
+                  phone: '+5328350598643'
+                  created_by: null
+                  updated_by: null
+                  archived_by: null
+                  created_at: '2022-05-12 11:33:49'
+                  updated_at: '2022-05-12 11:33:49'
+                  archived_at: null
+patch:
+  tags:
+    - Delivery Order
+  summary: delivery order - update
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      example: 59
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - sales_order_id
+            - warehouse_id
+            - customer_id
+            - request_approval_to
+            - date
+            - items          
+          properties:
+            originalData:
+              type: object
+              properties:
+                increment_group:
+                  type: string
+                date:
+                  type: string
+                warehouse_id:
+                  type: integer
+                warehouse_name:
+                  type: string
+                customer_id:
+                  type: integer
+                customer_name:
+                  type: string
+                customer_label:
+                  type: string
+                customer_address:
+                  type: string
+                customer_phone:
+                  type: string
+                customer_email:
+                  type: string
+                pricing_group_id:
+                  type: integer
+                need_down_payment:
+                  type: string
+                cash_only:
+                  type: string
+                notes:
+                  type: string
+                items:
+                  type: array
+                request_approval_to:
+                  type: integer
+                approver_name:
+                  type: string
+                approver_email:
+                  type: string
+                sales_order_id:
+                  type: integer
+                id:
+                  type: integer
+            id:
+              type: integer
+            $ref: './components/requests/properties/delivery-order-form.yaml'
+            items:
+              type: array
+              items:
+                type: object
+                required:
+                  - delivery_order_id
+                  - sales_order_item_id
+                  - quantity_requested
+                  - quantity_delivered
+                  - quantity_remaining
+                  - unit
+                  - converter
+                properties:
+                  id:
+                    type: integer
+                  delivery_order_id:
+                    type: integer
+                  taxable:
+                    type: integer
+                  converter_quantity:
+                    type: integer
+                  allocation:
+                    type: string
+                  sales_order_item_id:
+                    type: integer
+                  item_id:
+                    type: integer
+                  item_name:
+                    type: string
+                  price:
+                    type: string
+                  discount_percent:
+                    type: string
+                  discount_value:
+                    type: string
+                  unit:
+                    type: string
+                  converter:
+                    type: integer
+                  quantity_requested:
+                    type: integer
+                  quantity_delivered:
+                    type: integer
+                  quantity_remaining:
+                    type: integer
+                  more:
+                    type: boolean
+                  total:
+                    type: integer
+                  item_label:
+                    type: string
+                  is_quantity_over:
+                    type: boolean
+                  item:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      chart_of_account_id:
+                        type: integer
+                      code:
+                        type: string
+                      barcode:
+                        type: string
+                      name:
+                        type: string
+                      size:
+                        type: string
+                      color:
+                        type: string
+                      weight:
+                        type: string
+                      notes:
+                        type: string
+                      taxable:
+                        type: string
+                      require_production_number:
+                        type: integer
+                      require_expiry_date:
+                        type: integer
+                      stock:
+                        type: integer
+                      stock_reminder:
+                        type: integer
+                      unit_default:
+                        type: integer
+                      unit_default_purchase:
+                        type: integer
+                      unit_default_sales:
+                        type: integer
+                      created_by:
+                        type: integer
+                      updated_by:
+                        type: integer
+                      archived_by:
+                        type: integer
+                      created_at:
+                        type: string
+                      updated_at:
+                        type: string
+                      archived_at:
+                        type: string
+                      label:
+                        type: string
+          example:
+            originalData:
+              id: 66
+              increment_group: '202206'
+              date: '2022-06-07 22:07:21'
+              warehouse_id: null
+              warehouse_name: null
+              customer_id: null
+              customer_name: null
+              customer_label: null
+              customer_address: null
+              customer_phone: null
+              customer_email: null
+              pricing_group_id: 1
+              notes: null
+              items: []
+              request_approval_to: null
+              approver_name: null
+              approver_email: null
+              sales_order_id: null
+            id: 66
+            increment_group: '202206'
+            date: '2022-06-04 12:56:26'
+            warehouse_id: 2
+            warehouse_name: Hanna Schuster
+            customer_id: 11
+            customer_name: AINI
+            customer_label: '[CUST-0123] AINI'
+            customer_address: null
+            customer_phone: null
+            customer_email: null
+            pricing_group_id: 1
+            items:
+              - id: 162
+                delivery_order_id: 66
+                sales_order_item_id: 26
+                item_id: 8
+                item_name: Bulpoint
+                price: 10000
+                discount_percent: 0
+                discount_value: 0
+                taxable: 1
+                unit: PCS
+                converter: 1
+                notes: null
+                allocation_id: null
+                quantity_requested: '100'
+                quantity_delivered: '20'
+                quantity_remaining: 80
+                converter_quantity: null
+                item:
+                  id: 8
+                  chart_of_account_id: 9
+                  code: B-12931
+                  barcode: null
+                  name: Bulpoint
+                  size: null
+                  color: null
+                  weight: null
+                  notes: null
+                  taxable: 1
+                  require_production_number: 1
+                  require_expiry_date: 1
+                  stock: 100
+                  stock_reminder: 0
+                  unit_default: 9
+                  unit_default_purchase: 9
+                  unit_default_sales: 9
+                  created_by: 1
+                  updated_by: 1
+                  archived_by: null
+                  created_at: '2022-05-13 10:38:19'
+                  updated_at: '2022-06-03 09:39:33'
+                  archived_at: null
+                  label: '[B-12931] Bulpoint'
+                allocation: null
+                more: false
+                total: null
+                item_label: Bulpoint
+                is_quantity_over: false
+              - id: 163
+                delivery_order_id: 66
+                sales_order_item_id: 27
+                item_id: 7
+                item_name: Case
+                price: 10000
+                discount_percent: 0
+                discount_value: 0
+                taxable: 1
+                unit: PCS
+                converter: 1
+                notes: null
+                allocation_id: null
+                quantity_requested: '100'
+                quantity_delivered: '20'
+                quantity_remaining: 80
+                converter_quantity: null
+                item:
+                  id: 7
+                  chart_of_account_id: 9
+                  code: B-1202
+                  barcode: null
+                  name: Case
+                  size: null
+                  color: null
+                  weight: null
+                  notes: null
+                  taxable: 1
+                  require_production_number: 0
+                  require_expiry_date: 0
+                  stock: 0
+                  stock_reminder: 0
+                  unit_default: 7
+                  unit_default_purchase: 8
+                  unit_default_sales: 7
+                  created_by: 1
+                  updated_by: 1
+                  archived_by: null
+                  created_at: '2022-05-13 10:37:43'
+                  updated_at: '2022-05-13 10:37:43'
+                  archived_at: null
+                  label: '[B-1202] Case'
+                allocation: null
+                more: false
+                total: null
+                item_label: Case
+                is_quantity_over: false
+              - id: 164
+                delivery_order_id: 66
+                sales_order_item_id: 28
+                item_id: 9
+                item_name: Gelas
+                price: 10000
+                discount_percent: 0
+                discount_value: 0
+                taxable: 1
+                unit: PCS
+                converter: 1
+                notes: null
+                allocation_id: null
+                quantity_requested: '100'
+                quantity_delivered: '20'
+                quantity_remaining: 80
+                converter_quantity: null
+                item:
+                  id: 9
+                  chart_of_account_id: 9
+                  code: B-1282192
+                  barcode: null
+                  name: Gelas
+                  size: null
+                  color: null
+                  weight: null
+                  notes: null
+                  taxable: 1
+                  require_production_number: 1
+                  require_expiry_date: 1
+                  stock: 0
+                  stock_reminder: 0
+                  unit_default: 10
+                  unit_default_purchase: 10
+                  unit_default_sales: 10
+                  created_by: 1
+                  updated_by: 1
+                  archived_by: null
+                  created_at: '2022-05-13 10:38:42'
+                  updated_at: '2022-05-13 10:38:42'
+                  archived_at: null
+                  label: '[B-1282192] Gelas'
+                allocation: null
+                more: false
+                total: null
+                item_label: Gelas
+                is_quantity_over: false
+              - id: 165
+                delivery_order_id: 66
+                sales_order_item_id: 29
+                item_id: 6
+                item_name: Jam
+                price: 10000
+                discount_percent: 0
+                discount_value: 0
+                taxable: 1
+                unit: PCS
+                converter: 1
+                notes: null
+                allocation_id: null
+                quantity_requested: '100'
+                quantity_delivered: '20'
+                quantity_remaining: 80
+                converter_quantity: null
+                item:
+                  id: 6
+                  chart_of_account_id: 9
+                  code: B-1203812
+                  barcode: null
+                  name: Jam
+                  size: null
+                  color: null
+                  weight: null
+                  notes: null
+                  taxable: 1
+                  require_production_number: 1
+                  require_expiry_date: 1
+                  stock: 0
+                  stock_reminder: 0
+                  unit_default: 6
+                  unit_default_purchase: 6
+                  unit_default_sales: 6
+                  created_by: 1
+                  updated_by: 1
+                  archived_by: null
+                  created_at: '2022-05-13 10:36:58'
+                  updated_at: '2022-05-13 10:36:58'
+                  archived_at: null
+                  label: '[B-1203812] Jam'
+                allocation: null
+                more: false
+                total: null
+                item_label: Jam
+                is_quantity_over: false
+            request_approval_to: 1
+            approver_name: admin admin
+            approver_email: aininr13@gmail.com
+            sales_order_id: 12
+            errors:
+              errors: {}
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components/responses/properties/delivery-order-patch.yaml'
+          example:
+            warehouse_id: 2
+            customer_id: 11
+            customer_name: AINI
+            customer_address: null
+            customer_phone: null
+            sales_order_id: 12
+            id: 69
+            sales_order:
+              id: 12
+              sales_quotation_id: null
+              sales_contract_id: null
+              customer_id: 11
+              customer_name: AINI
+              customer_address: null
+              customer_phone: null
+              billing_address: null
+              billing_phone: null
+              billing_email: null
+              shipping_address: null
+              shipping_phone: null
+              shipping_email: null
+              warehouse_id: null
+              eta: '-0001-11-30 06:42:04'
+              cash_only: 0
+              need_down_payment: 0
+              delivery_fee: 0
+              discount_percent: 0
+              discount_value: 0
+              type_of_tax: exclude
+              tax: 400000
+              amount: 4400000
+              created_at: '2022-06-07 22:07:28'
+              updated_at: '2022-06-07 22:07:28'
+              items:
+                - id: 26
+                  sales_order_id: 12
+                  sales_quotation_item_id: null
+                  sales_contract_item_id: null
+                  sales_contract_group_item_id: null
+                  item_id: 6
+                  item_name: Jam
+                  quantity: 100
+                  unit: PCS
+                  converter: 1
+                  price: 10000
+                  discount_percent: 0
+                  discount_value: 0
+                  taxable: 1
+                  notes: null
+                  allocation_id: null
+                  quantity_remaining: '100.000000000000000000000000000000'
+                  item:
+                    id: 6
+                    chart_of_account_id: 9
+                    code: B-1203812
+                    barcode: null
+                    name: Jam
+                    size: null
+                    color: null
+                    weight: null
+                    notes: null
+                    taxable: 1
+                    require_production_number: 1
+                    require_expiry_date: 1
+                    stock: 0
+                    stock_reminder: 0
+                    unit_default: 6
+                    unit_default_purchase: 6
+                    unit_default_sales: 6
+                    created_by: 1
+                    updated_by: 1
+                    archived_by: null
+                    created_at: '2022-05-13 10:36:58'
+                    updated_at: '2022-05-13 10:36:58'
+                    archived_at: null
+                    label: '[B-1203812] Jam'
+                    smallest_unit:
+                      id: 6
+                      label: PCS
+                      name: PCS
+                      converter: 1
+                      disabled: 0
+                      item_id: 6
+                      created_by: 1
+                      updated_by: 1
+                      created_at: '2022-05-13 10:36:58'
+                      updated_at: '2022-05-13 10:36:58'
+                  delivery_order_items:
+                    - id: 177
+                      delivery_order_id: 69
+                      sales_order_item_id: 29
+                      item_id: 6
+                      item_name: Jam
+                      price: 10000
+                      discount_percent: 0
+                      discount_value: 0
+                      taxable: 1
+                      unit: PCS
+                      converter: 1
+                      notes: null
+                      allocation_id: null
+                      quantity_requested: 100
+                      quantity_delivered: 20
+                      quantity_remaining: 80
+                      converter_quantity: null
+                      delivery_order:
+                        id: 69
+                        customer_id: 11
+                        warehouse_id: 2
+                        sales_order_id: 12
+                        customer_name: AINI
+                        customer_address: null
+                        customer_phone: null
+                        billing_address: null
+                        billing_phone: null
+                        billing_email: null
+                        shipping_address: null
+                        shipping_phone: null
+                        shipping_email: null
+                        form:
+                          id: 114
+                          branch_id: 2
+                          date: '2022-06-04 12:56:26'
+                          number: DO22060014
+                          edited_number: null
+                          edited_notes: null
+                          notes: null
+                          created_by: 2
+                          updated_by: 2
+                          done: 0
+                          increment: 14
+                          increment_group: 202206
+                          formable_id: 69
+                          formable_type: SalesDeliveryOrder
+                          request_approval_to: 1
+                          approval_by: null
+                          approval_at: null
+                          approval_reason: null
+                          approval_status: 0
+                          request_cancellation_to: null
+                          request_cancellation_by: null
+                          request_cancellation_at: null
+                          request_cancellation_reason: null
+                          cancellation_approval_at: null
+                          cancellation_approval_by: null
+                          cancellation_approval_reason: null
+                          cancellation_status: null
+                          created_at: '2022-06-07 22:07:28'
+                          updated_at: '2022-06-07 22:07:28'
+                          request_approval_at: null
+                          request_close_to: null
+                          request_close_by: null
+                          request_close_at: null
+                          request_close_reason: null
+                          close_approval_at: null
+                          close_approval_by: null
+                          close_approval_reason: null
+                          close_status: null
+              form:
+                id: 41
+                branch_id: 2
+                date: '2022-05-18 09:52:13'
+                number: SO22050009
+                edited_number: null
+                edited_notes: null
+                notes: null
+                created_by: 1
+                updated_by: 2
+                done: false
+                increment: 9
+                increment_group: 202205
+                formable_id: 12
+                formable_type: SalesOrder
+                request_approval_to: 1
+                approval_by: 1
+                approval_at: '2022-05-18 02:53:07'
+                approval_reason: null
+                approval_status: 1
+                request_cancellation_to: null
+                request_cancellation_by: null
+                request_cancellation_at: null
+                request_cancellation_reason: null
+                cancellation_approval_at: null
+                cancellation_approval_by: null
+                cancellation_approval_reason: null
+                cancellation_status: null
+                created_at: '2022-05-18 09:53:04'
+                updated_at: '2022-06-07 22:07:28'
+                request_approval_at: null
+                request_close_to: null
+                request_close_by: null
+                request_close_at: null
+                request_close_reason: null
+                close_approval_at: null
+                close_approval_by: null
+                close_approval_reason: null
+                close_status: null
+            form:
+              id: 114
+              branch_id: 2
+              date: '2022-06-04 12:56:26'
+              number: DO22060014
+              edited_number: null
+              edited_notes: null
+              notes: null
+              created_by: 2
+              updated_by: 2
+              done: 0
+              increment: 14
+              increment_group: 202206
+              formable_id: 69
+              formable_type: SalesDeliveryOrder
+              request_approval_to: 1
+              approval_by: null
+              approval_at: null
+              approval_reason: null
+              approval_status: 0
+              request_cancellation_to: null
+              request_cancellation_by: null
+              request_cancellation_at: null
+              request_cancellation_reason: null
+              cancellation_approval_at: null
+              cancellation_approval_by: null
+              cancellation_approval_reason: null
+              cancellation_status: null
+              created_at: '2022-06-07 22:07:28'
+              updated_at: '2022-06-07 22:07:28'
+              request_approval_at: null
+              request_close_to: null
+              request_close_by: null
+              request_close_at: null
+              request_close_reason: null
+              close_approval_at: null
+              close_approval_by: null
+              close_approval_reason: null
+              close_status: null
+            customer:
+              id: 11
+              code: CUST-0123
+              tax_identification_number: null
+              name: AINI
+              address: null
+              city: null
+              state: null
+              country: null
+              zip_code: null
+              latitude: null
+              longitude: null
+              phone: null
+              phone_cc: null
+              email: null
+              notes: null
+              credit_limit: 0
+              branch_id: 2
+              created_by: 1
+              updated_by: 1
+              archived_by: null
+              pricing_group_id: 1
+              created_at: '2022-05-18 09:49:41'
+              updated_at: '2022-05-18 09:49:41'
+              archived_at: null
+              label: '[CUST-0123] AINI'
+            items:
+              - id: 174
+                delivery_order_id: 69
+                sales_order_item_id: 26
+                item_id: 8
+                item_name: Bulpoint
+                price: 10000
+                discount_percent: 0
+                discount_value: 0
+                taxable: 1
+                unit: PCS
+                converter: 1
+                notes: null
+                allocation_id: null
+                quantity_requested: 100
+                quantity_delivered: 20
+                quantity_remaining: 80
+                converter_quantity: null
+delete:
+  tags:
+    - Delivery Order
+  summary: delivery order - cancel
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: delivery order id
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - reason
+          properties:
+            reason:
+              type: string
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json: {}

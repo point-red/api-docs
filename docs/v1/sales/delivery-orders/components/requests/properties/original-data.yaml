@@ -1,0 +1,40 @@
+type: object
+properties:
+  increment_group:
+    type: string
+  date:
+    type: string
+  warehouse_id:
+    type: integer
+  warehouse_name:
+    type: string
+  customer_id:
+    type: integer
+  customer_name:
+    type: string
+  customer_label:
+    type: string
+  customer_address:
+    type: string
+  customer_phone:
+    type: string
+  customer_email:
+    type: string
+  pricing_group_id:
+    type: integer
+  need_down_payment:
+    type: string
+  cash_only:
+    type: string
+  notes:
+    type: string
+  items:
+    type: array
+  request_approval_to:
+    type: integer
+  approver_name:
+    type: string
+  approver_email:
+    type: string
+  sales_order_id:
+    type: integer

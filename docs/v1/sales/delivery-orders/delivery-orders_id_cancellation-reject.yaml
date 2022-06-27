@@ -1,0 +1,120 @@
+post:
+  tags:
+    - Delivery Order
+  summary: delivery order - cancel reject
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - id
+            - reason
+          properties:
+            id:
+              type: integer
+            reason:
+              type: string
+              required: true
+          example:
+            id: 67
+            reason: cancellation reject reason
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      example: 67      
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              customer_id:
+                type: integer
+              warehouse_id:
+                type: integer
+              sales_order_id:
+                type: integer
+              customer_name:
+                type: string
+              customer_address:
+                type: string
+              customer_phone:
+                type: string
+              billing_address:
+                type: string
+              billing_phone:
+                type: string
+              billing_email:
+                type: string
+              shipping_address:
+                type: string
+              shipping_phone:
+                type: string
+              shipping_email:
+                type: string   
+              form:
+                $ref: './components/responses/properties/form.yaml'   
+              delivery_notes:
+                type: array 
+          example:
+            id: 67
+            customer_id: 12
+            warehouse_id: 2
+            sales_order_id: 18
+            customer_name: PINNAPLE
+            customer_address: null
+            customer_phone: null
+            billing_address: null
+            billing_phone: null
+            billing_email: null
+            shipping_address: null
+            shipping_phone: null
+            shipping_email: null
+            form:
+              id: 112
+              branch_id: 2
+              date: '2022-06-07 22:05:04'
+              number: DO22060015
+              edited_number: null
+              edited_notes: null
+              notes: null
+              created_by: 2
+              updated_by: 1
+              done: 0
+              increment: 15
+              increment_group: 202206
+              formable_id: 67
+              formable_type: SalesDeliveryOrder
+              request_approval_to: 1
+              approval_by: null
+              approval_at: null
+              approval_reason: null
+              approval_status: 0
+              request_cancellation_to: 1
+              request_cancellation_by: 1
+              request_cancellation_at: '2022-06-07 15:16:30'
+              request_cancellation_reason: cancellation request reason
+              cancellation_approval_at: '2022-06-07T15:17:29.029641Z'
+              cancellation_approval_by: 1
+              cancellation_approval_reason: cancellation reject reason
+              cancellation_status: -1
+              created_at: '2022-06-07 22:05:31'
+              updated_at: '2022-06-07 22:17:29'
+              request_approval_at: '2022-06-07 22:05:04'
+              request_close_to: null
+              request_close_by: null
+              request_close_at: null
+              request_close_reason: null
+              close_approval_at: null
+              close_approval_by: null
+              close_approval_reason: null
+              close_status: null
+            delivery_notes: []

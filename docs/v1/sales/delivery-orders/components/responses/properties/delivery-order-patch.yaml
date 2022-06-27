@@ -1,0 +1,63 @@
+type: object
+properties:
+  id:
+    type: integer
+  customer_id:
+    type: integer
+  warehouse_id:
+    type: integer
+  sales_order_id:
+    type: integer
+  customer_name:
+    type: string
+  customer_address:
+    type: string
+  customer_phone:
+    type: string
+  form:
+    $ref: './form.yaml'
+  customer:
+    $ref: './customer.yaml'
+  items:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        delivery_order_id:
+          type: integer
+        sales_order_item_id:
+          type: integer
+        item_id:
+          type: integer
+        item_name:
+          type: string
+        price:
+          type: integer
+        discount_percent:
+          type: integer
+        discount_value:
+          type: integer
+        taxable:
+          type: integer
+        unit:
+          type: string
+        converter:
+          type: integer
+        notes:
+          type: string
+        allocation_id:
+          type: integer
+        quantity_requested:
+          type: integer
+        quantity_delivered:
+          type: integer
+        quantity_remaining:
+          type: integer
+        converter_quantity:
+          type: integer
+        allocation:
+          type: string
+  sales_order:
+    $ref: './sales-order.yaml'
