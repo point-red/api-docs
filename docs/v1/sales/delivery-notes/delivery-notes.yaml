@@ -1,0 +1,1305 @@
+get:
+  tags:
+    - Delivery Order
+  summary: delivery order - all
+  parameters:
+    - name: join
+      in: query
+      schema:
+        type: string
+      example: form,customer,items,item
+    - name: fields
+      in: query
+      schema:
+        type: string
+      example: sales_delivery_order.*
+    - name: sort_by
+      in: query
+      schema:
+        type: string
+      example: '-form.number'
+    - name: group_by
+      in: query
+      schema:
+        type: string
+      example: form.id
+    - name: filter_form
+      in: query
+      schema:
+        type: string
+      example: notArchived;null
+    - name: filter_like
+      in: query
+      schema:
+        type: string
+      example: '{}'
+    - name: filter_date_min
+      in: query
+      schema:
+        type: string
+      example: '{"form.date":"2022-05-01 00:00:00"}'
+    - name: filter_date_max
+      in: query
+      schema:
+        type: string
+      example: '{"form.date":"2022-06-08 23:59:59"}'
+    - name: limit
+      in: query
+      schema:
+        type: integer
+      example: '10'
+    - name: includes
+      in: query
+      schema:
+        type: string
+      example: form;customer;warehouse;items.item;items.allocation
+    - name: page
+      in: query
+      schema:
+        type: integer
+      example: '1'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              meta:
+                $ref: ./components/responses/properties/meta.yaml
+              links:
+                $ref: ./components/responses/properties/links.yaml
+              data:
+                $ref: ./components/responses/properties/delivery-orders.yaml
+          example:
+            data:
+              - id: 66
+                customer_id: 12
+                warehouse_id: 2
+                sales_order_id: 25
+                customer_name: PINNAPLE
+                customer_address: null
+                customer_phone: null
+                billing_address: null
+                billing_phone: null
+                billing_email: null
+                shipping_address: null
+                shipping_phone: null
+                shipping_email: null
+                form:
+                  id: 101
+                  branch_id: 2
+                  date: '2022-06-03 10:42:48'
+                  number: DO22060005
+                  edited_number: null
+                  edited_notes: null
+                  notes: null
+                  created_by: 1
+                  updated_by: 1
+                  done: 0
+                  increment: 5
+                  increment_group: 202206
+                  formable_id: 57
+                  formable_type: SalesDeliveryOrder
+                  request_approval_to: 1
+                  approval_by: 1
+                  approval_at: '2022-06-03 03:44:08'
+                  approval_reason: null
+                  approval_status: 1
+                  request_cancellation_to: null
+                  request_cancellation_by: null
+                  request_cancellation_at: null
+                  request_cancellation_reason: null
+                  cancellation_approval_at: null
+                  cancellation_approval_by: null
+                  cancellation_approval_reason: null
+                  cancellation_status: null
+                  created_at: '2022-06-03 10:44:04'
+                  updated_at: '2022-06-03 10:44:08'
+                  request_approval_at: '2022-06-03 10:42:48'
+                  request_close_to: null
+                  request_close_by: null
+                  request_close_at: null
+                  request_close_reason: null
+                  close_approval_at: null
+                  close_approval_by: null
+                  close_approval_reason: null
+                  close_status: null
+                customer:
+                  id: 12
+                  code: CUST-002
+                  tax_identification_number: null
+                  name: PINNAPLE
+                  address: null
+                  city: null
+                  state: null
+                  country: null
+                  zip_code: null
+                  latitude: null
+                  longitude: null
+                  phone: null
+                  phone_cc: null
+                  email: null
+                  notes: null
+                  credit_limit: 0
+                  branch_id: 2
+                  created_by: 1
+                  updated_by: 1
+                  archived_by: null
+                  pricing_group_id: null
+                  created_at: '2022-05-18 09:51:29'
+                  updated_at: '2022-05-18 09:51:29'
+                  archived_at: null
+                  label: '[CUST-002] PINNAPLE'
+                warehouse:
+                  id: 2
+                  code: 10689-1080
+                  name: Hanna Schuster
+                  address: |-
+                    28491 Morissette Drives Apt. 364
+                    Port Juwan, LA 19032
+                  phone: '+5993089919718'
+                  notes: >-
+                    Perferendis ipsam omnis rerum amet ex maiores animi. Ad
+                    rerum et ut rerum. Natus expedita voluptatem optio ipsa.
+                  branch_id: 2
+                  created_by: null
+                  updated_by: null
+                  archived_by: null
+                  created_at: '2022-05-12 11:33:49'
+                  updated_at: '2022-05-12 11:33:49'
+                  archived_at: null
+                  label: '[10689-1080] Hanna Schuster'
+                items:
+                  - id: 135
+                    delivery_order_id: 57
+                    sales_order_item_id: 61
+                    item_id: 8
+                    item_name: Bulpoint
+                    price: 1000
+                    discount_percent: 0
+                    discount_value: 0
+                    taxable: 1
+                    unit: PCS
+                    converter: 1
+                    notes: null
+                    allocation_id: null
+                    quantity_requested: 3
+                    quantity_delivered: 1
+                    quantity_remaining: 2
+                    converter_quantity: null
+                    item:
+                      id: 8
+                      chart_of_account_id: 9
+                      code: B-12931
+                      barcode: null
+                      name: Bulpoint
+                      size: null
+                      color: null
+                      weight: null
+                      notes: null
+                      taxable: 1
+                      require_production_number: 1
+                      require_expiry_date: 1
+                      stock: 100
+                      stock_reminder: 0
+                      unit_default: 9
+                      unit_default_purchase: 9
+                      unit_default_sales: 9
+                      created_by: 1
+                      updated_by: 1
+                      archived_by: null
+                      created_at: '2022-05-13 10:38:19'
+                      updated_at: '2022-06-03 09:39:33'
+                      archived_at: null
+                      label: '[B-12931] Bulpoint'
+                    allocation: null
+                  - id: 136
+                    delivery_order_id: 57
+                    sales_order_item_id: 64
+                    item_id: 9
+                    item_name: Gelas
+                    price: 1000
+                    discount_percent: 0
+                    discount_value: 0
+                    taxable: 1
+                    unit: PCS
+                    converter: 1
+                    notes: null
+                    allocation_id: null
+                    quantity_requested: 3
+                    quantity_delivered: 1
+                    quantity_remaining: 2
+                    converter_quantity: null
+                    item:
+                      id: 9
+                      chart_of_account_id: 9
+                      code: B-1282192
+                      barcode: null
+                      name: Gelas
+                      size: null
+                      color: null
+                      weight: null
+                      notes: null
+                      taxable: 1
+                      require_production_number: 1
+                      require_expiry_date: 1
+                      stock: 0
+                      stock_reminder: 0
+                      unit_default: 10
+                      unit_default_purchase: 10
+                      unit_default_sales: 10
+                      created_by: 1
+                      updated_by: 1
+                      archived_by: null
+                      created_at: '2022-05-13 10:38:42'
+                      updated_at: '2022-05-13 10:38:42'
+                      archived_at: null
+                      label: '[B-1282192] Gelas'
+                    allocation: null
+            links:
+              first: >-
+                https://project-cendekia.site/api/v1/sales/delivery-orders?page=1
+              last: >-
+                https://project-cendekia.site/api/v1/sales/delivery-orders?page=4
+              prev: null
+              next: >-
+                https://project-cendekia.site/api/v1/sales/delivery-orders?page=2
+            meta:
+              current_page: 1
+              from: 1
+              last_page: 4
+              path: https://project-cendekia.site/api/v1/sales/delivery-orders
+              per_page: '10'
+              to: 10
+              total: 36
+post:
+  tags:
+    - Delivery Order
+  summary: delivery order - create
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - sales_order_id
+            - warehouse_id
+            - customer_id
+            - request_approval_to
+            - items
+          properties:
+            originalData:
+              $ref: './components/requests/properties/original-data.yaml'
+            $ref: './components/requests/properties/delivery-order-form.yaml'
+            items:
+              type: array
+              items:
+                type: object
+                required:
+                  - sales_order_item_id
+                  - quantity_requested
+                  - quantity_delivered
+                  - quantity_remaining
+                  - unit
+                  - converter
+                properties:
+                  $ref: './components/requests/properties/delivery-order-item.yaml'
+                  allocation_id:
+                    type: integer
+                  notes:
+                    type: string
+                  warehouse_id:
+                    type: integer
+                  warehouse_name:
+                    type: string
+                  units:
+                    $ref: './components/requests/properties/units.yaml'
+            need_down_payment:
+              type: string
+            cash_only:
+              type: string
+            notes:
+              type: string
+            discount_percent:
+              type: string
+            discount_value:
+              type: string
+            type_of_tax:
+              type: string
+            request_approval_at:
+              type: string
+          example:
+            originalData:
+              increment_group: '202206'
+              date: '2022-06-07 22:05:04'
+              warehouse_id: null
+              warehouse_name: null
+              customer_id: null
+              customer_name: null
+              customer_label: null
+              customer_address: null
+              customer_phone: null
+              customer_email: null
+              pricing_group_id: 1
+              need_down_payment: 0
+              cash_only: false
+              notes: null
+              discount_percent: 0
+              discount_value: 0
+              tax_base: 0
+              tax: 0
+              type_of_tax: exclude
+              items: []
+              request_approval_to: null
+              request_approval_at: '2022-06-07 22:05:04'
+              approver_name: null
+              approver_email: null
+              sales_order_id: null
+            increment_group: '202206'
+            date: '2022-06-07 22:05:04'
+            warehouse_id: 2
+            warehouse_name: Hanna Schuster
+            customer_id: 12
+            customer_name: PINNAPLE
+            customer_label: '[CUST-002] PINNAPLE'
+            customer_address: null
+            customer_phone: null
+            customer_email: null
+            pricing_group_id: 1
+            need_down_payment: 0
+            cash_only: false
+            notes: null
+            discount_percent: 0
+            discount_value: 0
+            type_of_tax: exclude
+            items:
+              - sales_order_item_id: 42
+                item_id: 6
+                item_name: Jam
+                item_label: Jam
+                more: false
+                units:
+                  - id: 6
+                    label: PCS
+                    name: PCS
+                    converter: 1
+                    disabled: 0
+                    item_id: 6
+                    created_by: 1
+                    updated_by: 1
+                    created_at: '2022-05-13 10:36:58'
+                    updated_at: '2022-05-13 10:36:58'
+                unit: PCS
+                converter: 1
+                quantity_requested: '90'
+                quantity_delivered: '90'
+                quantity_remaining: 0
+                is_quantity_over: false
+                price: 1000
+                discount_percent: 0
+                discount_value: 0
+                total: 100000
+                allocation_id: null
+                notes: null
+                warehouse_id: 2
+                warehouse_name: Hanna Schuster
+            request_approval_to: 1
+            request_approval_at: '2022-06-07 22:05:04'
+            approver_name: admin admin
+            approver_email: aininr13@gmail.com
+            sales_order_id: 18
+            errors:
+              errors: {}
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  $ref: './components/responses/properties/delivery-order.yaml'
+                  sales_order:
+                    $ref: './components/responses/properties/sales-order.yaml'
+          example:
+            data:
+              warehouse_id: 2
+              customer_id: 12
+              customer_name: PINNAPLE
+              customer_address: null
+              customer_phone: null
+              sales_order_id: 18
+              id: 68
+              sales_order:
+                id: 18
+                sales_quotation_id: null
+                sales_contract_id: null
+                customer_id: 12
+                customer_name: PINNAPLE
+                customer_address: null
+                customer_phone: null
+                billing_address: null
+                billing_phone: null
+                billing_email: null
+                shipping_address: null
+                shipping_phone: null
+                shipping_email: null
+                warehouse_id: null
+                eta: '-0001-11-30 06:42:04'
+                cash_only: 0
+                need_down_payment: 0
+                delivery_fee: 0
+                discount_percent: 0
+                discount_value: 0
+                type_of_tax: exclude
+                tax: 40000
+                amount: 440000
+                created_at: '2022-06-07 22:06:15'
+                updated_at: '2022-06-07 22:06:15'
+                items:
+                  - id: 42
+                    sales_order_id: 18
+                    sales_quotation_item_id: null
+                    sales_contract_item_id: null
+                    sales_contract_group_item_id: null
+                    item_id: 8
+                    item_name: Bulpoint
+                    quantity: 100
+                    unit: PCS
+                    converter: 1
+                    price: 1000
+                    discount_percent: 0
+                    discount_value: 0
+                    taxable: 1
+                    notes: null
+                    allocation_id: null
+                    quantity_remaining: '100.000000000000000000000000000000'
+                    item:
+                      id: 8
+                      chart_of_account_id: 9
+                      code: B-12931
+                      barcode: null
+                      name: Bulpoint
+                      size: null
+                      color: null
+                      weight: null
+                      notes: null
+                      taxable: 1
+                      require_production_number: 1
+                      require_expiry_date: 1
+                      stock: 100
+                      stock_reminder: 0
+                      unit_default: 9
+                      unit_default_purchase: 9
+                      unit_default_sales: 9
+                      created_by: 1
+                      updated_by: 1
+                      archived_by: null
+                      created_at: '2022-05-13 10:38:19'
+                      updated_at: '2022-06-03 09:39:33'
+                      archived_at: null
+                      label: '[B-12931] Bulpoint'
+                      smallest_unit:
+                        id: 9
+                        label: PCS
+                        name: PCS
+                        converter: 1
+                        disabled: 0
+                        item_id: 8
+                        created_by: 1
+                        updated_by: 1
+                        created_at: '2022-05-13 10:38:19'
+                        updated_at: '2022-05-13 10:38:19'
+                    delivery_order_items:
+                      - id: 99
+                        delivery_order_id: 41
+                        sales_order_item_id: 42
+                        item_id: 8
+                        item_name: Bulpoint
+                        price: 1000
+                        discount_percent: 0
+                        discount_value: 0
+                        taxable: 1
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        allocation_id: null
+                        quantity_requested: 100
+                        quantity_delivered: 10
+                        quantity_remaining: 90
+                        converter_quantity: null
+                        delivery_order:
+                          id: 41
+                          customer_id: 12
+                          warehouse_id: 2
+                          sales_order_id: 18
+                          customer_name: PINNAPLE
+                          customer_address: null
+                          customer_phone: null
+                          billing_address: null
+                          billing_phone: null
+                          billing_email: null
+                          shipping_address: null
+                          shipping_phone: null
+                          shipping_email: null
+                          form:
+                            id: 61
+                            branch_id: 2
+                            date: '2022-05-24 11:06:27'
+                            number: DO22050014
+                            edited_number: null
+                            edited_notes: null
+                            notes: null
+                            created_by: 1
+                            updated_by: 1
+                            done: 0
+                            increment: 14
+                            increment_group: 202205
+                            formable_id: 41
+                            formable_type: SalesDeliveryOrder
+                            request_approval_to: 1
+                            approval_by: 1
+                            approval_at: '2022-05-24 04:08:12'
+                            approval_reason: null
+                            approval_status: 1
+                            request_cancellation_to: null
+                            request_cancellation_by: null
+                            request_cancellation_at: null
+                            request_cancellation_reason: null
+                            cancellation_approval_at: null
+                            cancellation_approval_by: null
+                            cancellation_approval_reason: null
+                            cancellation_status: null
+                            created_at: '2022-05-24 11:06:48'
+                            updated_at: '2022-05-24 11:08:12'
+                            request_approval_at: '2022-05-24 11:06:27'
+                            request_close_to: null
+                            request_close_by: null
+                            request_close_at: null
+                            request_close_reason: null
+                            close_approval_at: null
+                            close_approval_by: null
+                            close_approval_reason: null
+                            close_status: null
+                      - id: 147
+                        delivery_order_id: 61
+                        sales_order_item_id: 42
+                        item_id: 8
+                        item_name: Bulpoint
+                        price: 1000
+                        discount_percent: 0
+                        discount_value: 0
+                        taxable: 1
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        allocation_id: null
+                        quantity_requested: 90
+                        quantity_delivered: 45
+                        quantity_remaining: 45
+                        converter_quantity: null
+                      - id: 166
+                        delivery_order_id: 67
+                        sales_order_item_id: 42
+                        item_id: 8
+                        item_name: Bulpoint
+                        price: 1000
+                        discount_percent: 0
+                        discount_value: 0
+                        taxable: 1
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        allocation_id: null
+                        quantity_requested: 90
+                        quantity_delivered: 90
+                        quantity_remaining: 0
+                        converter_quantity: null
+                      - id: 170
+                        delivery_order_id: 68
+                        sales_order_item_id: 42
+                        item_id: 8
+                        item_name: Bulpoint
+                        price: 1000
+                        discount_percent: 0
+                        discount_value: 0
+                        taxable: 1
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        allocation_id: null
+                        quantity_requested: 90
+                        quantity_delivered: 90
+                        quantity_remaining: 0
+                        converter_quantity: null
+                  - id: 43
+                    sales_order_id: 18
+                    sales_quotation_item_id: null
+                    sales_contract_item_id: null
+                    sales_contract_group_item_id: null
+                    item_id: 7
+                    item_name: Case
+                    quantity: 100
+                    unit: PCS
+                    converter: 1
+                    price: 1000
+                    discount_percent: 0
+                    discount_value: 0
+                    taxable: 1
+                    notes: null
+                    allocation_id: null
+                    quantity_remaining: '100.000000000000000000000000000000'
+                    item:
+                      id: 7
+                      chart_of_account_id: 9
+                      code: B-1202
+                      barcode: null
+                      name: Case
+                      size: null
+                      color: null
+                      weight: null
+                      notes: null
+                      taxable: 1
+                      require_production_number: 0
+                      require_expiry_date: 0
+                      stock: 0
+                      stock_reminder: 0
+                      unit_default: 7
+                      unit_default_purchase: 8
+                      unit_default_sales: 7
+                      created_by: 1
+                      updated_by: 1
+                      archived_by: null
+                      created_at: '2022-05-13 10:37:43'
+                      updated_at: '2022-05-13 10:37:43'
+                      archived_at: null
+                      label: '[B-1202] Case'
+                      smallest_unit:
+                        id: 7
+                        label: PCS
+                        name: PCS
+                        converter: 1
+                        disabled: 0
+                        item_id: 7
+                        created_by: 1
+                        updated_by: 1
+                        created_at: '2022-05-13 10:37:43'
+                        updated_at: '2022-05-13 10:37:43'
+                    delivery_order_items:
+                      - id: 100
+                        delivery_order_id: 41
+                        sales_order_item_id: 43
+                        item_id: 7
+                        item_name: Case
+                        price: 1000
+                        discount_percent: 0
+                        discount_value: 0
+                        taxable: 1
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        allocation_id: null
+                        quantity_requested: 100
+                        quantity_delivered: 10
+                        quantity_remaining: 90
+                        converter_quantity: null
+                        delivery_order:
+                          id: 41
+                          customer_id: 12
+                          warehouse_id: 2
+                          sales_order_id: 18
+                          customer_name: PINNAPLE
+                          customer_address: null
+                          customer_phone: null
+                          billing_address: null
+                          billing_phone: null
+                          billing_email: null
+                          shipping_address: null
+                          shipping_phone: null
+                          shipping_email: null
+                          form:
+                            id: 61
+                            branch_id: 2
+                            date: '2022-05-24 11:06:27'
+                            number: DO22050014
+                            edited_number: null
+                            edited_notes: null
+                            notes: null
+                            created_by: 1
+                            updated_by: 1
+                            done: 0
+                            increment: 14
+                            increment_group: 202205
+                            formable_id: 41
+                            formable_type: SalesDeliveryOrder
+                            request_approval_to: 1
+                            approval_by: 1
+                            approval_at: '2022-05-24 04:08:12'
+                            approval_reason: null
+                            approval_status: 1
+                            request_cancellation_to: null
+                            request_cancellation_by: null
+                            request_cancellation_at: null
+                            request_cancellation_reason: null
+                            cancellation_approval_at: null
+                            cancellation_approval_by: null
+                            cancellation_approval_reason: null
+                            cancellation_status: null
+                            created_at: '2022-05-24 11:06:48'
+                            updated_at: '2022-05-24 11:08:12'
+                            request_approval_at: '2022-05-24 11:06:27'
+                            request_close_to: null
+                            request_close_by: null
+                            request_close_at: null
+                            request_close_reason: null
+                            close_approval_at: null
+                            close_approval_by: null
+                            close_approval_reason: null
+                            close_status: null
+                      - id: 148
+                        delivery_order_id: 61
+                        sales_order_item_id: 43
+                        item_id: 7
+                        item_name: Case
+                        price: 1000
+                        discount_percent: 0
+                        discount_value: 0
+                        taxable: 1
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        allocation_id: null
+                        quantity_requested: 90
+                        quantity_delivered: 20
+                        quantity_remaining: 70
+                        converter_quantity: null
+                      - id: 167
+                        delivery_order_id: 67
+                        sales_order_item_id: 43
+                        item_id: 7
+                        item_name: Case
+                        price: 1000
+                        discount_percent: 0
+                        discount_value: 0
+                        taxable: 1
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        allocation_id: null
+                        quantity_requested: 90
+                        quantity_delivered: 90
+                        quantity_remaining: 0
+                        converter_quantity: null
+                      - id: 171
+                        delivery_order_id: 68
+                        sales_order_item_id: 43
+                        item_id: 7
+                        item_name: Case
+                        price: 1000
+                        discount_percent: 0
+                        discount_value: 0
+                        taxable: 1
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        allocation_id: null
+                        quantity_requested: 90
+                        quantity_delivered: 90
+                        quantity_remaining: 0
+                        converter_quantity: null
+                  - id: 44
+                    sales_order_id: 18
+                    sales_quotation_item_id: null
+                    sales_contract_item_id: null
+                    sales_contract_group_item_id: null
+                    item_id: 9
+                    item_name: Gelas
+                    quantity: 100
+                    unit: PCS
+                    converter: 1
+                    price: 1000
+                    discount_percent: 0
+                    discount_value: 0
+                    taxable: 1
+                    notes: null
+                    allocation_id: null
+                    quantity_remaining: '100.000000000000000000000000000000'
+                    item:
+                      id: 9
+                      chart_of_account_id: 9
+                      code: B-1282192
+                      barcode: null
+                      name: Gelas
+                      size: null
+                      color: null
+                      weight: null
+                      notes: null
+                      taxable: 1
+                      require_production_number: 1
+                      require_expiry_date: 1
+                      stock: 0
+                      stock_reminder: 0
+                      unit_default: 10
+                      unit_default_purchase: 10
+                      unit_default_sales: 10
+                      created_by: 1
+                      updated_by: 1
+                      archived_by: null
+                      created_at: '2022-05-13 10:38:42'
+                      updated_at: '2022-05-13 10:38:42'
+                      archived_at: null
+                      label: '[B-1282192] Gelas'
+                      smallest_unit:
+                        id: 10
+                        label: PCS
+                        name: PCS
+                        converter: 1
+                        disabled: 0
+                        item_id: 9
+                        created_by: 1
+                        updated_by: 1
+                        created_at: '2022-05-13 10:38:42'
+                        updated_at: '2022-05-13 10:38:42'
+                    delivery_order_items:
+                      - id: 101
+                        delivery_order_id: 41
+                        sales_order_item_id: 44
+                        item_id: 9
+                        item_name: Gelas
+                        price: 1000
+                        discount_percent: 0
+                        discount_value: 0
+                        taxable: 1
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        allocation_id: null
+                        quantity_requested: 100
+                        quantity_delivered: 10
+                        quantity_remaining: 90
+                        converter_quantity: null
+                        delivery_order:
+                          id: 41
+                          customer_id: 12
+                          warehouse_id: 2
+                          sales_order_id: 18
+                          customer_name: PINNAPLE
+                          customer_address: null
+                          customer_phone: null
+                          billing_address: null
+                          billing_phone: null
+                          billing_email: null
+                          shipping_address: null
+                          shipping_phone: null
+                          shipping_email: null
+                          form:
+                            id: 61
+                            branch_id: 2
+                            date: '2022-05-24 11:06:27'
+                            number: DO22050014
+                            edited_number: null
+                            edited_notes: null
+                            notes: null
+                            created_by: 1
+                            updated_by: 1
+                            done: 0
+                            increment: 14
+                            increment_group: 202205
+                            formable_id: 41
+                            formable_type: SalesDeliveryOrder
+                            request_approval_to: 1
+                            approval_by: 1
+                            approval_at: '2022-05-24 04:08:12'
+                            approval_reason: null
+                            approval_status: 1
+                            request_cancellation_to: null
+                            request_cancellation_by: null
+                            request_cancellation_at: null
+                            request_cancellation_reason: null
+                            cancellation_approval_at: null
+                            cancellation_approval_by: null
+                            cancellation_approval_reason: null
+                            cancellation_status: null
+                            created_at: '2022-05-24 11:06:48'
+                            updated_at: '2022-05-24 11:08:12'
+                            request_approval_at: '2022-05-24 11:06:27'
+                            request_close_to: null
+                            request_close_by: null
+                            request_close_at: null
+                            request_close_reason: null
+                            close_approval_at: null
+                            close_approval_by: null
+                            close_approval_reason: null
+                            close_status: null
+                      - id: 149
+                        delivery_order_id: 61
+                        sales_order_item_id: 44
+                        item_id: 9
+                        item_name: Gelas
+                        price: 1000
+                        discount_percent: 0
+                        discount_value: 0
+                        taxable: 1
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        allocation_id: null
+                        quantity_requested: 90
+                        quantity_delivered: 20
+                        quantity_remaining: 70
+                        converter_quantity: null
+                      - id: 168
+                        delivery_order_id: 67
+                        sales_order_item_id: 44
+                        item_id: 9
+                        item_name: Gelas
+                        price: 1000
+                        discount_percent: 0
+                        discount_value: 0
+                        taxable: 1
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        allocation_id: null
+                        quantity_requested: 90
+                        quantity_delivered: 90
+                        quantity_remaining: 0
+                        converter_quantity: null
+                      - id: 172
+                        delivery_order_id: 68
+                        sales_order_item_id: 44
+                        item_id: 9
+                        item_name: Gelas
+                        price: 1000
+                        discount_percent: 0
+                        discount_value: 0
+                        taxable: 1
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        allocation_id: null
+                        quantity_requested: 90
+                        quantity_delivered: 90
+                        quantity_remaining: 0
+                        converter_quantity: null
+                  - id: 45
+                    sales_order_id: 18
+                    sales_quotation_item_id: null
+                    sales_contract_item_id: null
+                    sales_contract_group_item_id: null
+                    item_id: 6
+                    item_name: Jam
+                    quantity: 100
+                    unit: PCS
+                    converter: 1
+                    price: 1000
+                    discount_percent: 0
+                    discount_value: 0
+                    taxable: 1
+                    notes: null
+                    allocation_id: null
+                    quantity_remaining: '100.000000000000000000000000000000'
+                    item:
+                      id: 6
+                      chart_of_account_id: 9
+                      code: B-1203812
+                      barcode: null
+                      name: Jam
+                      size: null
+                      color: null
+                      weight: null
+                      notes: null
+                      taxable: 1
+                      require_production_number: 1
+                      require_expiry_date: 1
+                      stock: 0
+                      stock_reminder: 0
+                      unit_default: 6
+                      unit_default_purchase: 6
+                      unit_default_sales: 6
+                      created_by: 1
+                      updated_by: 1
+                      archived_by: null
+                      created_at: '2022-05-13 10:36:58'
+                      updated_at: '2022-05-13 10:36:58'
+                      archived_at: null
+                      label: '[B-1203812] Jam'
+                      smallest_unit:
+                        id: 6
+                        label: PCS
+                        name: PCS
+                        converter: 1
+                        disabled: 0
+                        item_id: 6
+                        created_by: 1
+                        updated_by: 1
+                        created_at: '2022-05-13 10:36:58'
+                        updated_at: '2022-05-13 10:36:58'
+                    delivery_order_items:
+                      - id: 102
+                        delivery_order_id: 41
+                        sales_order_item_id: 45
+                        item_id: 6
+                        item_name: Jam
+                        price: 1000
+                        discount_percent: 0
+                        discount_value: 0
+                        taxable: 1
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        allocation_id: null
+                        quantity_requested: 100
+                        quantity_delivered: 10
+                        quantity_remaining: 90
+                        converter_quantity: null
+                        delivery_order:
+                          id: 41
+                          customer_id: 12
+                          warehouse_id: 2
+                          sales_order_id: 18
+                          customer_name: PINNAPLE
+                          customer_address: null
+                          customer_phone: null
+                          billing_address: null
+                          billing_phone: null
+                          billing_email: null
+                          shipping_address: null
+                          shipping_phone: null
+                          shipping_email: null
+                          form:
+                            id: 61
+                            branch_id: 2
+                            date: '2022-05-24 11:06:27'
+                            number: DO22050014
+                            edited_number: null
+                            edited_notes: null
+                            notes: null
+                            created_by: 1
+                            updated_by: 1
+                            done: 0
+                            increment: 14
+                            increment_group: 202205
+                            formable_id: 41
+                            formable_type: SalesDeliveryOrder
+                            request_approval_to: 1
+                            approval_by: 1
+                            approval_at: '2022-05-24 04:08:12'
+                            approval_reason: null
+                            approval_status: 1
+                            request_cancellation_to: null
+                            request_cancellation_by: null
+                            request_cancellation_at: null
+                            request_cancellation_reason: null
+                            cancellation_approval_at: null
+                            cancellation_approval_by: null
+                            cancellation_approval_reason: null
+                            cancellation_status: null
+                            created_at: '2022-05-24 11:06:48'
+                            updated_at: '2022-05-24 11:08:12'
+                            request_approval_at: '2022-05-24 11:06:27'
+                            request_close_to: null
+                            request_close_by: null
+                            request_close_at: null
+                            request_close_reason: null
+                            close_approval_at: null
+                            close_approval_by: null
+                            close_approval_reason: null
+                            close_status: null
+                      - id: 150
+                        delivery_order_id: 61
+                        sales_order_item_id: 45
+                        item_id: 6
+                        item_name: Jam
+                        price: 1000
+                        discount_percent: 0
+                        discount_value: 0
+                        taxable: 1
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        allocation_id: null
+                        quantity_requested: 90
+                        quantity_delivered: 20
+                        quantity_remaining: 70
+                        converter_quantity: null
+                      - id: 169
+                        delivery_order_id: 67
+                        sales_order_item_id: 45
+                        item_id: 6
+                        item_name: Jam
+                        price: 1000
+                        discount_percent: 0
+                        discount_value: 0
+                        taxable: 1
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        allocation_id: null
+                        quantity_requested: 90
+                        quantity_delivered: 90
+                        quantity_remaining: 0
+                        converter_quantity: null
+                      - id: 173
+                        delivery_order_id: 68
+                        sales_order_item_id: 45
+                        item_id: 6
+                        item_name: Jam
+                        price: 1000
+                        discount_percent: 0
+                        discount_value: 0
+                        taxable: 1
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        allocation_id: null
+                        quantity_requested: 90
+                        quantity_delivered: 90
+                        quantity_remaining: 0
+                        converter_quantity: null
+                form:
+                  id: 52
+                  branch_id: 2
+                  date: '2022-05-18 14:54:05'
+                  number: SO22050015
+                  edited_number: null
+                  edited_notes: null
+                  notes: null
+                  created_by: 1
+                  updated_by: 2
+                  done: false
+                  increment: 15
+                  increment_group: 202205
+                  formable_id: 18
+                  formable_type: SalesOrder
+                  request_approval_to: 1
+                  approval_by: 1
+                  approval_at: '2022-05-18 07:56:02'
+                  approval_reason: null
+                  approval_status: 1
+                  request_cancellation_to: null
+                  request_cancellation_by: null
+                  request_cancellation_at: null
+                  request_cancellation_reason: null
+                  cancellation_approval_at: null
+                  cancellation_approval_by: null
+                  cancellation_approval_reason: null
+                  cancellation_status: null
+                  created_at: '2022-05-18 14:54:59'
+                  updated_at: '2022-06-07 22:06:15'
+                  request_approval_at: null
+                  request_close_to: null
+                  request_close_by: null
+                  request_close_at: null
+                  request_close_reason: null
+                  close_approval_at: null
+                  close_approval_by: null
+                  close_approval_reason: null
+                  close_status: null
+              form:
+                id: 113
+                branch_id: 2
+                date: '2022-06-07 22:05:04'
+                number: DO22060016
+                edited_number: null
+                edited_notes: null
+                notes: null
+                created_by: 2
+                updated_by: 2
+                done: 0
+                increment: 16
+                increment_group: 202206
+                formable_id: 68
+                formable_type: SalesDeliveryOrder
+                request_approval_to: 1
+                approval_by: null
+                approval_at: null
+                approval_reason: null
+                approval_status: 0
+                request_cancellation_to: null
+                request_cancellation_by: null
+                request_cancellation_at: null
+                request_cancellation_reason: null
+                cancellation_approval_at: null
+                cancellation_approval_by: null
+                cancellation_approval_reason: null
+                cancellation_status: null
+                created_at: '2022-06-07 22:06:15'
+                updated_at: '2022-06-07 22:06:15'
+                request_approval_at: '2022-06-07 22:05:04'
+                request_close_to: null
+                request_close_by: null
+                request_close_at: null
+                request_close_reason: null
+                close_approval_at: null
+                close_approval_by: null
+                close_approval_reason: null
+                close_status: null
+              customer:
+                id: 12
+                code: CUST-002
+                tax_identification_number: null
+                name: PINNAPLE
+                address: null
+                city: null
+                state: null
+                country: null
+                zip_code: null
+                latitude: null
+                longitude: null
+                phone: null
+                phone_cc: null
+                email: null
+                notes: null
+                credit_limit: 0
+                branch_id: 2
+                created_by: 1
+                updated_by: 1
+                archived_by: null
+                pricing_group_id: null
+                created_at: '2022-05-18 09:51:29'
+                updated_at: '2022-05-18 09:51:29'
+                archived_at: null
+                label: '[CUST-002] PINNAPLE'
+              items:
+                - id: 170
+                  delivery_order_id: 68
+                  sales_order_item_id: 42
+                  item_id: 8
+                  item_name: Bulpoint
+                  price: 1000
+                  discount_percent: 0
+                  discount_value: 0
+                  taxable: 1
+                  unit: PCS
+                  converter: 1
+                  notes: null
+                  allocation_id: null
+                  quantity_requested: 90
+                  quantity_delivered: 90
+                  quantity_remaining: 0
+                  converter_quantity: null
+                  allocation: null
+                - id: 171
+                  delivery_order_id: 68
+                  sales_order_item_id: 45
+                  item_id: 6
+                  item_name: Jam
+                  price: 1000
+                  discount_percent: 0
+                  discount_value: 0
+                  taxable: 1
+                  unit: PCS
+                  converter: 1
+                  notes: null
+                  allocation_id: null
+                  quantity_requested: 90
+                  quantity_delivered: 90
+                  quantity_remaining: 0
+                  converter_quantity: null
+                  allocation: null
