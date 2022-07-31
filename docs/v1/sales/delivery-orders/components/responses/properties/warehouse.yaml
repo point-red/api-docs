@@ -1,0 +1,30 @@
+type: object
+properties:
+  id:
+    type: integer
+  code:
+    type: string
+  name:
+    type: string
+  address:
+    type: string
+  phone:
+    type: string
+  notes:
+    type: string
+  branch_id:
+    type: integer
+  created_by:
+    type: integer
+  updated_by:
+    type: integer
+  archived_by:
+    type: integer
+  created_at:
+    type: string
+  updated_at:
+    type: string
+  archived_at:
+    type: string
+  label:
+    type: string

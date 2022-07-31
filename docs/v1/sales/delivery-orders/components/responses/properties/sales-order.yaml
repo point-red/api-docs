@@ -1,0 +1,56 @@
+type: object
+properties:
+  id:
+    type: integer
+  sales_quotation_id:
+    type: integer
+  sales_contract_id:
+    type: integer
+  customer_id:
+    type: integer
+  customer_name:
+    type: string
+  customer_address:
+    type: string
+  customer_phone:
+    type: string
+  billing_address:
+    type: string
+  billing_phone:
+    type: string
+  billing_email:
+    type: string
+  shipping_address:
+    type: string
+  shipping_phone:
+    type: string
+  shipping_email:
+    type: string
+  warehouse_id:
+    type: integer
+  eta:
+    type: string
+  cash_only:
+    type: integer
+  need_down_payment:
+    type: integer
+  delivery_fee:
+    type: integer
+  discount_percent:
+    type: integer
+  discount_value:
+    type: integer
+  type_of_tax:
+    type: string
+  tax:
+    type: integer
+  amount:
+    type: integer
+  created_at:
+    type: string
+  updated_at:
+    type: string
+  form:
+    $ref: './form.yaml'
+  items:
+    $ref: './sales-order-items.yaml'

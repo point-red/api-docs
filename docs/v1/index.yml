@@ -41,3 +41,63 @@ paths:
     $ref: './inventory/transfer-items/transfer-items-by-id.yml'
   /inventory/transfer-items/export:
     $ref: './inventory/transfer-items/transfer-items-export.yml'
+  /inventory/receive-items:
+    $ref: './inventory/transfer-items/receive-items.yml'
+  /inventory/receive-items/{id}:
+    $ref: './inventory/transfer-items/receive-items-by-id.yml'
+  /inventory/receive-items/export:
+    $ref: './inventory/transfer-items/receive-items-export.yml'
+  /api/v1/finance/cash-advances:
+    $ref: './finance/cash-advances/cash-advances.yml'
+  /api/v1/finance/cash-advances/{id}:
+    $ref: './finance/cash-advances/cash-advances-by-id.yml'
+  /api/v1/finance/cash-advances/{id}/cancellation-approve:
+    $ref: './finance/cash-advances/cash-advances-cancellation-approve.yml'
+  /api/v1/finance/cash-advances/{id}/cancellation-reject:
+    $ref: './finance/cash-advances/cash-advances-cancellation-reject.yml'
+  /api/v1/finance/cash-advances/send-bulk-request-approval:
+    $ref: './finance/cash-advances/cash-advances-send-bulk.yml'
+  /api/v1/approval-with-token/finance/cash-advances:
+    $ref: './finance/cash-advances/cash-advances-approve-by-email.yml'
+  /api/v1/approval-with-token/finance/cash-advances/bulk:
+    $ref: './finance/cash-advances/cash-advances-bulk-approve-by-email.yml'
+  /api/v1/finance/cash-advances/{id}/approve:
+    $ref: './finance/cash-advances/cash-advances-approve.yml'
+  /api/v1/finance/cash-advances/{id}/reject:
+    $ref: './finance/cash-advances/cash-advances-reject.yml'
+  /api/v1/finance/cash-advances/history:
+    $ref: './finance/cash-advances/cash-advances-history.yml'
+  /api/v1/finance/cash-advances/{id}/refund:
+    $ref: './finance/cash-advances/cash-advances-refund.yml'
+  /api/v1/finance/reports:
+    $ref: './finance/reports/reports.yml'
+  /api/v1/finance/reports/set-checklist:
+    $ref: './finance/reports/reports-set-checklist.yml'
+  /sales/delivery-orders:
+    $ref: sales/delivery-orders/delivery-orders.yaml
+  /sales/delivery-orders/export:
+    $ref: sales/delivery-orders/delivery-orders_export.yaml
+  /sales/delivery-orders/approval:
+    $ref: sales/delivery-orders/delivery-orders_approval.yaml
+  /sales/delivery-orders/{id}:
+    $ref: sales/delivery-orders/delivery-orders_id.yaml
+  /sales/delivery-orders/{id}/histories:
+    $ref: sales/delivery-orders/delivery-orders_id_histories.yaml
+  /sales/delivery-orders/{id}/approve:
+    $ref: sales/delivery-orders/delivery-orders_id_approve.yaml
+  /sales/delivery-orders/{id}/reject:
+    $ref: sales/delivery-orders/delivery-orders_id_reject.yaml
+  /sales/delivery-orders/{id}/cancellation-approve:
+    $ref: sales/delivery-orders/delivery-orders_id_cancellation-approve.yaml
+  /sales/delivery-orders/{id}/cancellation-reject:
+    $ref: sales/delivery-orders/delivery-orders_id_cancellation-reject.yaml
+  /sales/delivery-orders/{id}/close:
+    $ref: sales/delivery-orders/delivery-orders_id_close.yaml
+  /sales/delivery-orders/{id}/close-approve:
+    $ref: sales/delivery-orders/delivery-orders_id_close-approve.yaml
+  /sales/delivery-orders/{id}/close-reject:
+    $ref: sales/delivery-orders/delivery-orders_id_close-reject.yaml
+  /sales/delivery-orders/approval/send:
+    $ref: sales/delivery-orders/delivery-orders_approval_send.yaml
+  /sales/delivery-orders/approve:
+    $ref: sales/delivery-orders/delivery-orders_approve_by_email.yaml

@@ -1,0 +1,91 @@
+type: array
+items:
+  type: object
+  properties:
+    id:
+      type: integer
+    delivery_order_id:
+      type: integer
+    sales_order_item_id:
+      type: integer
+    item_id:
+      type: integer
+    item_name:
+      type: string
+    price:
+      type: string
+    discount_percent:
+      type: string
+    discount_value:
+      type: string
+    taxable:
+      type: string
+    unit:
+      type: string
+    converter:
+      type: string
+    notes:
+      type: string
+    allocation_id:
+      type: integer
+    quantity_requested:
+      type: integer
+    quantity_delivered:
+      type: integer
+    quantity_remaining:
+      type: integer
+    converter_quantity:
+      type: integer
+    item:
+      type: object
+      properties:
+        id:
+          type: integer
+        chart_of_account_id:
+          type: integer
+        code:
+          type: string
+        barcode:
+          type: string
+        name:
+          type: string
+        size:
+          type: string
+        color:
+          type: string
+        weight:
+          type: string
+        notes:
+          type: string
+        taxable:
+          type: string
+        require_production_number:
+          type: string
+        require_expiry_date:
+          type: string
+        stock:
+          type: integer
+        stock_reminder:
+          type: integer
+        unit_default:
+          type: string
+        unit_default_purchase:
+          type: string
+        unit_default_sales:
+          type: string
+        created_by:
+          type: integer
+        updated_by:
+          type: integer
+        archived_by:
+          type: integer
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        archived_at:
+          type: string
+        label:
+          type: string
+      allocation:
+        type: string
