@@ -1,0 +1,14 @@
+type: object
+properties:
+  id:
+    type: integer
+  code:
+    type: string
+  name:
+    type: string
+  notes:
+    type: string
+  branch_id:
+    type: integer
+  label:
+    type: string

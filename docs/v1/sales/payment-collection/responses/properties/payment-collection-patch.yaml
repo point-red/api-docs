@@ -1,0 +1,16 @@
+type: object
+properties:
+  id:
+    type: integer
+  customer_id:
+    type: integer
+  customer_name:
+    type: string
+  due_date:
+    type: string
+  payment_type:
+    type: string
+  amount:
+    type: integer
+  form:
+    $ref: './form.yaml'

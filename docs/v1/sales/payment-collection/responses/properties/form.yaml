@@ -1,0 +1,78 @@
+type: object
+properties:
+  id:
+    type: integer
+  branch_id:
+    type: integer
+  date:
+    type: integer
+  number:
+    type: string
+  edited_number:
+    type: string
+  edited_notes:
+    type: string
+  notes:
+    type: string
+  created_by:
+    type: integer
+  updated_by:
+    type: integer
+  done:
+    type: integer
+  increment:
+    type: integer
+  increment_group:
+    type: integer
+  formable_id:
+    type: integer
+  formable_type:
+    type: string
+  request_approval_to:
+    type: integer
+  approval_by:
+    type: integer
+  approval_at:
+    type: string
+  approval_reason:
+    type: string
+  approval_status:
+    type: integer
+  request_cancellation_to:
+    type: integer
+  request_cancellation_by:
+    type: integer
+  request_cancellation_at:
+    type: string
+  request_cancellation_reason:
+    type: integer
+  cancellation_approval_at:
+    type: string
+  cancellation_approval_by:
+    type: integer
+  cancellation_approval_reason:
+    type: string
+  cancellation_status:
+    type: integer
+  created_at:
+    type: integer
+  updated_at:
+    type: string
+  request_approval_at:
+    type: string
+  request_close_to:
+    type: string
+  request_close_by:
+    type: integer
+  request_close_at:
+    type: string
+  request_close_reason:
+    type: string
+  close_approval_at:
+    type: string
+  close_approval_by:
+    type: integer
+  close_approval_reason:
+    type: string
+  close_status:
+    type: integer
