@@ -1,0 +1,64 @@
+get:
+  tags:
+    - Payment Collection
+  summary: payment collection - all approval
+  parameters:
+    - name: limit
+      in: query
+      schema:
+        type: integer
+      example: '10'
+    - name: page
+      in: query
+      schema:
+        type: integer
+      example: '1'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  date:
+                    type: string
+                  number:
+                    type: string
+                  customer:
+                    type: string
+                  amount:
+                    type: integer
+                  last_request_date:
+                    type: string
+                  approval_status:
+                    type: integer
+              meta:
+                $ref: './components/responses/properties/meta.yaml'
+              links:
+                $ref: './components/responses/properties/links.yaml'
+          example:
+            data:
+              - id: 81
+                date: '2022-07-22 19:17:39'
+                number: 'PC22070023'
+                customer: 'Customer'
+                amount: 1155000
+                last_request_date: 2022-07-28 09:25:08
+                approval_status: 0
+              - id: 79
+                date: '2022-07-21 22:00:24'
+                number: 'PC22070021'
+                customer: 'CUSTOMER 2'
+                amount: 33000
+                last_request_date: '2022-07-28 09:22:39'
+                approval_status: 0
+            links:
+                $ref: './components/responses/properties/links.yaml'
+              meta:
+                $ref: './components/responses/properties/meta.yaml'

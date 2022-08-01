@@ -1,0 +1,105 @@
+post:
+  tags:
+    - Payment Collection
+  summary: payment collection - get references
+  parameters:
+    - name: customer_id
+      in: path
+      required: true
+      schema:
+        type: integer
+      example: 2      
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  salesInvoice:
+                    type: array
+                      items:
+                        type: object
+                        properties:
+                          date:
+                            type: string
+                          number: 
+                            type: string
+                          notes:
+                            type: string
+                          id:
+                            type: integer
+                          amount:
+                            type: integer
+                          collected:
+                            type: integer
+                          toCollect:
+                            type: integer
+                  salesDownPayment:
+                    type: array
+                      items:
+                        type: object
+                        properties:
+                          date:
+                            type: string
+                          number: 
+                            type: string
+                          notes:
+                            type: string
+                          id:
+                            type: integer
+                          amount:
+                            type: integer
+                          collected:
+                            type: integer
+                          toCollect:
+                            type: integer
+                  salesReturn:
+                    type: array
+                      items:
+                        type: object
+                        properties:
+                          date:
+                            type: string
+                          number: 
+                            type: string
+                          notes:
+                            type: string
+                          id:
+                            type: integer
+                          amount:
+                            type: integer
+                          collected:
+                            type: integer
+                          toCollect:
+                            type: integer
+          example:
+            data:
+              salesInvoice:
+                - date: '2022-06-23 17:57:39'
+                  number: ''SI2206010''
+                  notes: null
+                  id: 12
+                  amount: 2673000
+                  collected: 1550000
+                  toCollect: 1123000
+              salesDownPayment:
+                - date: '2022-06-23 17:57:39'
+                  number: 'DP2206010'
+                  notes: null
+                  id: 12
+                  amount: 2673000
+                  collected: 1550000
+                  toCollect: 1123000
+              salesReturn:
+                - date: '2022-06-23 17:57:39'
+                  number: 'SR2206010'
+                  notes: null
+                  id: 12
+                  amount: 2673000
+                  collected: 1550000
+                  toCollect: 1123000
