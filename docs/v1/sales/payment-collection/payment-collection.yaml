@@ -192,83 +192,63 @@ post:
             - request_approval_to
             - details
           properties:
-            originalData:
-              $ref: './components/requests/properties/original-data.yaml'
-            $ref: './components/requests/properties/payment-collection-form.yaml'
-            details:
-              type: array
-                salesInvoice:
-                  type: object
-                  properties:
-                    date:
-                      type: date
-                    chart_of_account_id:
-                      type: integer
-                    chart_of_account_name:
-                      type: string
-                    amount:
-                      type: integer
-                    allocation_id:
-                      type: integer
-                    allocation_name:
-                      type: string
-                    notes:
-                      type: string
-                    is_debit:
-                      type: integer
-                    available:
-                      type: integer
-                    amount:
-                      type: integer
-                    referenceable_form_date:
-                      type: date
-                    referenceable_form_number:
-                      type: string
-                    referenceable_form_notes:
-                      type: string
-                    referenceable_id:
-                      type: integer
-                    referenceable_type:
-                      type: string
-            customer_id:
-              type: integer
-            customer_name:
-              type: string
-            customer_label:
-              type: string
-            customer_address:
-              type: string
-            customer_phone:
-              type: string
-            increment_group:
-              type: string
-            date:
-              type: date
-            due_date:
-              type: date
-            payment_type:
-              type: string
-            request_approval_to:
-              type: integer
-            approver_name:
-              type: string
-            approver_email:
-              type: string
-            notes:
-              type: string
-            amount:
-              type: integer
-            total_invoice:
-              type: integer
-            total_down_payment:
-              type: integer
-            total_return:
-              type: integer
-            total_other:
-              type: integer
-            total_amount:
-              type: integer
+            $ref: './components/requests/properties/payment-collection.yaml'
           example:
+            originalData:
+              customer_id: null
+              customer_name: null
+              customer_label: null
+              customer_address: null
+              customer_phone: null
+              customer_email: null
+              references: null
+              increment_group: '202208'
+              date: '2022-08-01 10:18:22'
+              due_date: '2022-08-01 10:18:22'
+              payment_type: 'cash'
+              request_approval_to: null
+              approver_name: null
+              approver_email: null
+              notes: ''
+              amount: 0
+              total_invoice: 0
+              total_down_payment: 0
+              total_return: 0
+              total_other: 0
+              total_amount: 0
+              others:
+                - chart_of_account_id: null
+                  chart_of_account_name: null
+                  amount: null
+                  allocation_id: null
+                  allocation_name: null
+                  notes: null
+                  is_debit: 0
+              details:
+                - date: null
+                  chart_of_account_id: null
+                  chart_of_account_name: null
+                  available: null
+                  amount: null
+                  allocation_id: null
+                  allocation_name: null
+                  referenceable_form_date: null
+                  referenceable_form_number: null
+                  referenceable_form_notes: null
+                  referenceable_id: null
+                  referenceable_type: null
+                - date: '2022-06-23 17:57:39'
+                  chart_of_account_id: null
+                  chart_of_account_name: null
+                  available: '1123000'
+                  amount: '1123000'
+                  allocation_id: null
+                  allocation_name: null
+                  referenceable_form_date: '2022-06-23 17:57:39'
+                  referenceable_form_number: 'SI2206010'
+                  referenceable_form_notes: null
+                  referenceable_id: 12
+                  referenceable_type: 'SalesInvoice'
             customer_id: 4
             customer_name: 'CUSTOMER TEST MIRNA'
             customer_label: '[003] CUSTOMER TEST MIRNA'

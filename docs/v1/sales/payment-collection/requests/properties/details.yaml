@@ -3,20 +3,20 @@ details:
   items:
     type: object
     properties:
-      id:
-        type: integer
-      sales_payment_collection_id:
-        type: integer
+      date:
+        type: date
       chart_of_account_id:
         type: integer
+      chart_of_account_name:
+        type: string
       allocation_id:
         type: integer
+      allocation_name:
+        type: string
       available:
         type: integer
       amount:
         type: integer
-      notes:
-        type: string
       referenceable_form_date:
         type: string
       referenceable_form_number:
@@ -27,7 +27,3 @@ details:
         type: integer
       referenceable_type:
         type: string
-      chart_of_account:
-        $ref: './chart_of_account.yaml'
-      allocation:
-        $ref: './allocation.yaml'

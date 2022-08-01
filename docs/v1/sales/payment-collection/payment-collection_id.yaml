@@ -34,25 +34,7 @@ get:
               data:
                 type: object
                 properties:
-                  $ref: './components/responses/properties/payment-collection.yaml'
-                  billing_address:
-                    type: string
-                  billing_phone:
-                    type: string
-                  billing_email:
-                    type: string
-                  shipping_address:
-                    type: string
-                  shipping_phone:
-                    type: string
-                  shipping_email:
-                    type: string
-                  archives:
-                    type: array
-                  sales_order:
-                    type: object
-                    properties:
-                      $ref: './components/responses/properties/sales-order.yaml'
+                  $ref: './components/responses/properties/payment-collection.yaml'                  
           example:
             data:
               id: 88
@@ -259,7 +241,7 @@ patch:
             $ref: './components/requests/properties/payment-collection-form.yaml'
             details:
               type: array
-                salesInvoice:
+                items:
                   type: object
                   properties:
                     date:
