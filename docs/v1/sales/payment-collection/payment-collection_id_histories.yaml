@@ -1,0 +1,196 @@
+get:
+  tags:
+    - Payment Collection
+  summary: payment collection - show histories
+  parameters:
+    - name: sort_by
+      in: query
+      schema:
+        type: string
+      example: '-user_activities.date'
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '66'
+    - name: includes
+      in: query
+      schema:
+        type: string
+      example: user
+    - name: filter_like
+      in: query
+      schema:
+        type: string
+      example: '{}'
+    - name: or_filter_where_has_like[]
+      in: query
+      schema:
+        type: string
+      example: '{user:{}}'
+    - name: limit
+      in: query
+      schema:
+        type: integer
+      example: 10
+    - name: page
+      in: query
+      schema:
+        type: integer
+      example: 1
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    table_type:
+                      type: string
+                    table_id:
+                      type: integer
+                    number:
+                      type: string
+                    date:
+                      type: string
+                    user_id:
+                      type: integer
+                    activity:
+                      type: string
+                    formable_id:
+                      type: integer
+                    user:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        address:
+                          type: string
+                        phone:
+                          type: string
+                        email:
+                          type: string
+                        created_at:
+                          type: string
+                        updated_at:
+                          type: string
+                        branch_id:
+                          type: integer
+                        warehouse_id:
+                          type: integer
+                        full_name:
+                          type: string
+              links:
+                $ref: './components/responses/properties/links.yaml'
+              meta:
+                $ref: './components/responses/properties/meta.yaml'
+          example:
+            data:
+            - id: 180
+              table_type: 'PaymentCollection'
+              table_id: 91
+              number: 'PC22080003'
+              date: '2022-08-01 02:25:21'
+              user_id: 1
+              activity: 'Created'
+              formable_id: 5
+              user:
+                id: 1
+                name: 'admin'
+                first_name: 'admin'
+                last_name: 'admin'
+                address: null
+                phone: null
+                email: 'admin@point.com'
+                created_at: '2022-06-07 10:07:29'
+                updated_at: '2022-06-07 10:07:29'
+                branch_id: 1
+                warehouse_id: 1
+                full_name: 'admin admin'
+          links:
+            first: http://example.com/api/v1/sales/payment-collection/91/histories?page=1
+            last: http://example.com/api/v1/sales/payment-collection/91/histories?page=1
+            prev: null
+            next: null
+          meta:
+            current_page: 1
+            from: 1
+            last_page: 1
+            path: http://example.com/api/v1/sales/payment-collection/91/histories
+            per_page: 10
+            to: 1
+            total: 1
+post:
+  tags:
+    - Payment Collection
+  summary: payment collection - create history
+  parameters:
+    - name: id
+      in: path
+      type: string
+      required: true
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - id
+            - activity
+          properties:
+            id:
+              type: integer
+            activity:
+              type: string
+          example:
+            id: 66
+            activity: Approved
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  table_type:
+                    type: string
+                  table_id:
+                    type: integer
+                  number:
+                    type: string
+                  date:
+                    type: string
+                  user_id:
+                    type: integer
+                  activity:
+                    type: string
+                  id:
+                    type: integer
+          example:
+            data:
+              table_type: forms
+              table_id: 110
+              number: null
+              date: '2022-08-01 02:25:21'
+              user_id: 1
+              activity: Approved
+              id: 66

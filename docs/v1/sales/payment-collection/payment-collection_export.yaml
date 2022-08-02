@@ -1,0 +1,39 @@
+get:
+  tags:
+    - Payment Collection
+  summary: payment collection - export
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+          data:
+            type: object
+            properties:
+              ids:
+                type: array
+                items:
+                  type: integer
+              date_start:
+                type: string
+              date_end:
+                type: string
+              tenant_name:
+                type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  url:
+                    type: string
+          example:
+            data:
+              url: https://example.com/download?key=d5spyNjujUdFYBM0

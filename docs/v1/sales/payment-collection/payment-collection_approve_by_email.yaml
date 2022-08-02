@@ -1,0 +1,35 @@
+post:
+  tags:
+    - Payment Collection
+  summary: payment collection - approve by email
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - ids
+            - token
+            - approver_id
+          properties:
+            ids:
+              type: array
+              required: true
+              items:
+                type: integer
+            token:
+              type: string
+              required: true
+            approver_id:
+              type: string
+              required: true
+          example:
+            ids:
+              - 59
+            token: 1d3c927edc7339345ee77fd64e9beeba
+            approver_id: '1'
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json: {}

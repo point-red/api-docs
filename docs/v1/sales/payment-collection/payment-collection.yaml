@@ -1,0 +1,368 @@
+get:
+  tags:
+    - Payment Collection
+  summary: payment collection - all
+  parameters:
+    - name: join
+      in: query
+      schema:
+        type: string
+      example: formcustomer
+    - name: fields
+      in: query
+      schema:
+        type: string
+      example: sales_payment_collection.*
+    - name: sort_by
+      in: query
+      schema:
+        type: string
+      example: '-form.number'
+    - name: group_by
+      in: query
+      schema:
+        type: string
+      example: form.id
+    - name: filter_form
+      in: query
+      schema:
+        type: string
+      example: notArchived;null
+    - name: filter_like
+      in: query
+      schema:
+        type: string
+      example: '{}'
+    - name: filter_date_min
+      in: query
+      schema:
+        type: string
+      example: '{form.date:2022-05-01 00:00:00}'
+    - name: filter_date_max
+      in: query
+      schema:
+        type: string
+      example: '{form.date:2022-06-08 23:59:59}'
+    - name: limit
+      in: query
+      schema:
+        type: integer
+      example: '10'
+    - name: includes
+      in: query
+      schema:
+        type: string
+      example: form;customer;details;details.referenceable;details.referenceable.form
+    - name: page
+      in: query
+      schema:
+        type: integer
+      example: '1'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              meta:
+                $ref: ./components/responses/properties/meta.yaml
+              links:
+                $ref: ./components/responses/properties/links.yaml
+              data:
+                $ref: ./components/responses/properties/payment-collections.yaml
+          example:
+            data:
+              - id: 87
+                payment_type: 'cash'
+                due_date: '2022-07-29 20:06:27'
+                payment_account_id: null
+                amount: 100000
+                supplier_id: 0
+                supplier_name: ''
+                payment_id: null
+                customer_id: 1
+                customer_name: 'Chasity Gutkowski'
+                form:
+                  id: 333
+                  branch_id: 1
+                  date: '2022-07-29 20:06:27'
+                  number: 'PC22070027'
+                  edited_number: null
+                  edited_notes: null
+                  notes: 'Some notes'
+                  created_by: 1
+                  updated_by: 1
+                  done: 0
+                  increment: 27
+                  increment_group: 202207
+                  formable_id: 87
+                  formable_type: 'PaymentCollection'
+                  request_approval_to: 2
+                  approval_by: 1
+                  approval_at: '2022-07-29 15:37:22'
+                  approval_reason: 'Some reason'
+                  approval_status: -1
+                  request_cancellation_to: null
+                  request_cancellation_by: null
+                  request_cancellation_at: null
+                  request_cancellation_reason: null
+                  cancellation_approval_at: null
+                  cancellation_approval_by: null
+                  cancellation_approval_reason: null
+                  cancellation_status: null
+                  created_at: '2022-07-29 20:06:42'
+                  updated_at: '2022-07-29 23:37:22'
+                  request_close_to: null
+                  request_close_by: null
+                  request_close_at: null
+                  request_close_reason: null
+                  close_approval_at: null
+                  close_approval_by: null
+                  close_status: null
+                customer:
+                  id: 1
+                  code: 'C-1'
+                  tax_identification_number: null
+                  name: 'Customer'
+                  address: null
+                  city: null
+                  state: null
+                  country: null
+                  zip_code: null
+                  latitude: null
+                  longitude: null
+                  phone: null
+                  phone_cc: null
+                  email: null
+                  notes: null
+                  credit_limit: 0
+                  branch_id: 1
+                  created_by: 1
+                  updated_by: 1
+                  archived_by: null
+                  pricing_group_id: 1
+                  created_at: '2022-06-13 18:40:45'
+                  updated_at: '2022-06-13 18:40:45'
+                  archived_at: null
+                  label: '[C-1] Customer'
+                details:
+                  - id: 159
+                    sales_payment_collection_id: 87
+                    chart_of_account_id: null
+                    allocation_id: null
+                    available: 100000
+                    amount: 100000
+                    notes: null
+                    referenceable_form_date: '2022-07-22 19:16:08'
+                    referenceable_form_number: 'SI2207015'
+                    referenceable_form_notes: 'some notes'
+                    referenceable_id: 1
+                    referenceable_type: 'SalesInvoice'
+                    referenceable: null
+            links:
+              first: >-
+                https://example.com/api/v1/sales/payment-collection?page=1
+              last: >-
+                https://example.com/api/v1/sales/payment-collection?page=4
+              prev: null
+              next: >-
+                https://example.com/api/v1/sales/payment-collection?page=2
+            meta:
+              current_page: 1
+              from: 1
+              last_page: 4
+              path: https://example.com/api/v1/sales/payment-collection
+              per_page: '10'
+              to: 10
+              total: 27
+post:
+  tags:
+    - Payment Collection
+  summary: payment collection - create
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - customer_id
+            - payment_type
+            - request_approval_to
+            - details
+          properties:
+            $ref: './components/requests/properties/payment-collection.yaml'
+          example:
+            originalData:
+              customer_id: null
+              customer_name: null
+              customer_label: null
+              customer_address: null
+              customer_phone: null
+              customer_email: null
+              references: null
+              increment_group: '202208'
+              date: '2022-08-01 10:18:22'
+              due_date: '2022-08-01 10:18:22'
+              payment_type: 'cash'
+              request_approval_to: null
+              approver_name: null
+              approver_email: null
+              notes: ''
+              amount: 0
+              total_invoice: 0
+              total_down_payment: 0
+              total_return: 0
+              total_other: 0
+              total_amount: 0
+              others:
+                - chart_of_account_id: null
+                  chart_of_account_name: null
+                  amount: null
+                  allocation_id: null
+                  allocation_name: null
+                  notes: null
+                  is_debit: 0
+              details:
+                - date: null
+                  chart_of_account_id: null
+                  chart_of_account_name: null
+                  available: null
+                  amount: null
+                  allocation_id: null
+                  allocation_name: null
+                  referenceable_form_date: null
+                  referenceable_form_number: null
+                  referenceable_form_notes: null
+                  referenceable_id: null
+                  referenceable_type: null
+                - date: '2022-06-23 17:57:39'
+                  chart_of_account_id: null
+                  chart_of_account_name: null
+                  available: '1123000'
+                  amount: '1123000'
+                  allocation_id: null
+                  allocation_name: null
+                  referenceable_form_date: '2022-06-23 17:57:39'
+                  referenceable_form_number: 'SI2206010'
+                  referenceable_form_notes: null
+                  referenceable_id: 12
+                  referenceable_type: 'SalesInvoice'
+            customer_id: 4
+            customer_name: 'CUSTOMER TEST MIRNA'
+            customer_label: '[003] CUSTOMER TEST MIRNA'
+            customer_address: 'JALAN MUSI 21'
+            customer_phone: '087851858365'
+            increment_group: '202208'
+            date: '2022-08-01 01:11:12'
+            due_date: '2022-08-01 01:11:12'
+            payment_type: 'cash'
+            request_approval_to: 1
+            approver_name: 'admin admin'
+            approver_email: 'admin@point.com'
+            notes: 'notes'
+            amount: 36760
+            total_invoice: 0
+            total_down_payment: 0
+            total_return: 0
+            total_other: 30000
+            total_amount: 0
+            details:
+              - chart_of_account_id: 87
+                chart_of_account_name: '[41106] PENDAPATAN LAIN-LAIN'
+                amount: 50000
+                allocation_id: 1
+                allocation_name: 'test'
+                notes: null
+                is_debit: 0
+              - chart_of_account_id: 88
+                chart_of_account_name: '[41200] BEBAN POKOK PENJUALAN'
+                amount: 20000
+                allocation_id: 1
+                allocation_name: 'test'
+                notes: null
+                is_debit: 1
+              - date: '2022-07-21 12:28:36'
+                chart_of_account_id: null
+                chart_of_account_name: null
+                available: 56760
+                amount: 56760
+                allocation_id: null
+                allocation_name: null
+                referenceable_form_date: '2022-07-21 12:28:36'
+                referenceable_form_number: 'SI2207012'
+                referenceable_form_notes: 'MIRNA TEST PAYMENT COLLECTION'
+                referenceable_id: 28
+                referenceable_type: 'SalesInvoice'
+              - date: '2022-08-01 00:52:42'
+                chart_of_account_id: null
+                chart_of_account_name: null
+                available: 200000
+                amount: 50000
+                allocation_id: null
+                allocation_name: null
+                referenceable_form_date: '2022-08-01 00:52:42'
+                referenceable_form_number: 'DP22080001'
+                referenceable_form_notes: '-'
+                referenceable_id: '16'
+                referenceable_type: 'SalesDownPayment'
+            errors:
+              errors: {}
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  $ref: './components/responses/properties/payment-collection.yaml'
+          example:
+            data:
+              customer_id: 4
+              customer_name: 'CUSTOMER TEST MIRNA'
+              due_date: '2022-08-01 01:11:12'
+              payment_type: 'cash'
+              amount: 36760
+              id: 88
+              form:
+                id: 342
+                branch_id: 1
+                date: '2022-08-01 01:11:12'
+                number: 'PC22080001'
+                edited_number: null
+                edited_notes: null
+                notes: 'notes'
+                created_by: 1
+                updated_by: 1
+                done: 0
+                increment: 1
+                increment_group: '202208'
+                formable_id: 88
+                formable_type: 'PaymentCollection'
+                request_approval_to: 1
+                approval_by: null
+                approval_at: null
+                approval_reason: null
+                approval_status: 0
+                request_cancellation_to: null
+                request_cancellation_by: null
+                request_cancellation_at: null
+                request_cancellation_reason: null
+                cancellation_approval_at: null
+                cancellation_approval_by: null
+                cancellation_approval_reason: null
+                cancellation_status: null
+                created_at: '2022-08-01 01:12:17'
+                updated_at: '2022-08-01 01:12:17'
+                request_close_to: null
+                request_close_by: null
+                request_close_at: null
+                request_close_reason: null
+                close_approval_at: null
+                close_approval_by: null
+                close_status: null              

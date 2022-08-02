@@ -1,0 +1,36 @@
+type: object
+properties:
+  id:
+    type: integer
+  type_id:
+    type: integer
+  group_id:
+    type: integer
+  is_sub_ledger:
+    type: integer
+  sub_ledger:
+    type: string
+  position:
+    type: string
+  is_locked:
+    type: integer
+  cash_flow:
+    type: string
+  cash_flow_position:
+    type: string
+  number:
+    type: string
+  name:
+    type: string
+  alias:
+    type: string
+  created_by:
+    type: integer
+  updated_by:
+    type: integer
+  archived_by:
+    type: integer
+  label:
+    type: string
+  type:
+    $ref: './type.yaml'

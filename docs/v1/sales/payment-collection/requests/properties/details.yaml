@@ -1,0 +1,29 @@
+details:
+  type: array
+  items:
+    type: object
+    properties:
+      date:
+        type: date
+      chart_of_account_id:
+        type: integer
+      chart_of_account_name:
+        type: string
+      allocation_id:
+        type: integer
+      allocation_name:
+        type: string
+      available:
+        type: integer
+      amount:
+        type: integer
+      referenceable_form_date:
+        type: string
+      referenceable_form_number:
+        type: string
+      referenceable_form_notes:
+        type: string
+      referenceable_id:
+        type: integer
+      referenceable_type:
+        type: string

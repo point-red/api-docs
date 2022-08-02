@@ -1,0 +1,33 @@
+details:
+  type: array
+  items:
+    type: object
+    properties:
+      id:
+        type: integer
+      sales_payment_collection_id:
+        type: integer
+      chart_of_account_id:
+        type: integer
+      allocation_id:
+        type: integer
+      available:
+        type: integer
+      amount:
+        type: integer
+      notes:
+        type: string
+      referenceable_form_date:
+        type: string
+      referenceable_form_number:
+        type: string
+      referenceable_form_notes:
+        type: string
+      referenceable_id:
+        type: integer
+      referenceable_type:
+        type: string
+      chart_of_account:
+        $ref: './chart_of_account.yaml'
+      allocation:
+        $ref: './allocation.yaml'

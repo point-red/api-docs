@@ -1,0 +1,450 @@
+get:
+  tags:
+    - Payment Collection
+  summary: payment collection - show
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: payment collection id
+    - name: with_archives
+      in: query
+      schema:
+        type: boolean
+      example: 'true'
+    - name: with_origin
+      in: query
+      schema:
+        type: boolean
+      example: 'true'
+    - name: includes
+      in: query
+      schema:
+        type: string
+      example: >-
+        form;customer;details;details.chartOfAccount;details.chartOfAccount.type;details.allocation;form.createdBy;form.requestApprovalTo;form.branch
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  $ref: './components/responses/properties/payment-collection.yaml'                  
+          example:
+            data:
+              id: 88
+              payment_type: 'cash'
+              due_date: '2022-08-01 01:11:12'
+              payment_account_id: null
+              amount: 36760
+              supplier_id: 0
+              supplier_name: 
+              payment_id: null
+              customer_id: 4
+              customer_name: 'CUSTOMER TEST MIRNA'
+              form:
+              - id: 342
+                branch_id: 1
+                date: '2022-08-01 01:11:12'
+                number: 'PC22080001'
+                edited_number: null
+                edited_notes: null
+                notes: 'notes'
+                created_by:
+                  id: 1
+                  name: 'admin'
+                  first_name: 'admin'
+                  last_name: 'admin'
+                  address: null
+                  phone: null
+                  email: 'admin@point.com'
+                  created_at: '2022-06-07 10:07:29'
+                  updated_at: '2022-06-07 10:07:29'
+                  branch_id: 1
+                  warehouse_id: 1
+                  full_name: 'admin admin'
+                updated_by: 1
+                done: 0
+                increment: 1
+                increment_group: '202208'
+                formable_id: 88
+                formable_type: 'PaymentCollection'
+                request_approval_to:
+                  id: 1
+                  name: 'admin'
+                  first_name: 'admin'
+                  last_name: 'admin'
+                  address: null
+                  phone: null
+                  email: 'admin@point.com'
+                  created_at: '2022-06-07 10:07:29'
+                  updated_at: '2022-06-07 10:07:29'
+                  branch_id: 1
+                  warehouse_id: 1
+                  full_name: 'admin admin'
+                approval_by: null
+                approval_at: null
+                approval_reason: null
+                approval_status: 0
+                request_cancellation_to: null
+                request_cancellation_by: null
+                request_cancellation_at: null
+                request_cancellation_reason: null
+                cancellation_approval_at: null
+                cancellation_approval_by: null
+                cancellation_approval_reason: null
+                cancellation_status: null
+                created_at: 2022-08-01 01:12:17
+                updated_at: 2022-08-01 01:12:17
+                request_close_to: null
+                request_close_by: null
+                request_close_at: null
+                request_close_reason: null
+                close_approval_at: null
+                close_approval_by: null
+                close_status: null
+                branch:
+                  id: 1
+                  name: 'CENTRAL'
+                  address: null
+                  phone: null
+                  created_by: null
+                  updated_by: null
+                  archived_by: null
+                  created_at: '2022-06-07 10:07:38'
+                  updated_at: '2022-06-07 10:07:38'
+                  archived_at: null
+              customer:
+                id: 4
+                code: '003'
+                tax_identification_number: null
+                name: 'CUSTOMER TEST MIRNA'
+                address: 'JALAN MUSI 21'
+                city: null
+                state: null
+                country: null
+                zip_code: null
+                latitude: null
+                longitude: null
+                phone: '087851858365'
+                phone_cc: null
+                email: 'AAINFO.24@GMAIL.COM'
+                notes: null
+                credit_limit: 0
+                branch_id: 1
+                created_by: 1
+                updated_by: 1
+                archived_by: null
+                pricing_group_id: 1
+                created_at: '2022-06-30 12:14:36'
+                updated_at: '2022-06-30 12:14:36'
+                archived_at: null
+                label: '[003] CUSTOMER TEST MIRNA'
+              details:
+                - id: 160
+                  sales_payment_collection_id: 88
+                  chart_of_account_id: 87
+                  allocation_id: 1
+                  available: null
+                  amount: 50000
+                  notes: null
+                  referenceable_form_date: null
+                  referenceable_form_number: null
+                  referenceable_form_notes: null
+                  referenceable_id: null
+                  referenceable_type: null
+                  chart_of_account:
+                    id: 87
+                    type_id: 29
+                    group_id: null
+                    is_sub_ledger: 0
+                    sub_ledger: 
+                    position: 'CREDIT'
+                    is_locked: 0
+                    cash_flow: ''
+                    cash_flow_position: ''
+                    number: 41106
+                    name: 'OTHER INCOME'
+                    alias: 'PENDAPATAN LAIN-LAIN'
+                    created_by: 1
+                    updated_by: 1
+                    archived_by: null
+                    created_at: '2022-06-12 18:42:47'
+                    updated_at: '2022-06-12 18:42:47'
+                    archived_at: null
+                    label: '[41106] PENDAPATAN LAIN-LAIN'
+                    type:
+                      id: 29
+                      name: 'OTHER INCOME'
+                      alias: 'PENDAPATAN LAIN-LAIN'
+                      is_debit: 0
+                      created_by: null
+                      updated_by: null
+                      created_at: '2022-06-07 10:07:38'
+                      updated_at: '2022-06-07 10:07:38'
+                  allocation:
+                    id: 1
+                    code: null
+                    name: 'test'
+                    notes: null
+                    branch_id: null
+                    created_by: 1
+                    updated_by: 1
+                    archived_by: null
+                    created_at: '2022-06-12 18:43:35'
+                    updated_at: '2022-06-12 18:43:35'
+                    archived_at: null
+                    label: 'test'
+                - id: 162
+                  sales_payment_collection_id: 88
+                  chart_of_account_id: null
+                  allocation_id: null
+                  available: 56760
+                  amount: 56760
+                  notes: null
+                  referenceable_form_date: '2022-07-21 12:28:36'
+                  referenceable_form_number: 'SI2207012'
+                  referenceable_form_notes: 'MIRNA TEST PAYMENT COLLECTION'
+                  referenceable_id: 28
+                  referenceable_type: 'SalesInvoice'
+                  chart_of_account: null
+                  allocation: null
+patch:
+  tags:
+    - Payment Collection
+  summary: payment collection - update
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      example: 59
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - customer_id
+            - payment_type
+            - request_approval_to
+            - details      
+          properties:
+            originalData:
+              $ref: './components/requests/properties/original-data.yaml'
+            $ref: './components/requests/properties/payment-collection-form.yaml'
+            details:
+              type: array
+                items:
+                  type: object
+                  properties:
+                    date:
+                      type: date
+                    chart_of_account_id:
+                      type: integer
+                    chart_of_account_name:
+                      type: string
+                    amount:
+                      type: integer
+                    allocation_id:
+                      type: integer
+                    allocation_name:
+                      type: string
+                    notes:
+                      type: string
+                    is_debit:
+                      type: integer
+                    available:
+                      type: integer
+                    amount:
+                      type: integer
+                    referenceable_form_date:
+                      type: date
+                    referenceable_form_number:
+                      type: string
+                    referenceable_form_notes:
+                      type: string
+                    referenceable_id:
+                      type: integer
+                    referenceable_type:
+                      type: string
+            customer_id:
+              type: integer
+            customer_name:
+              type: string
+            customer_label:
+              type: string
+            customer_address:
+              type: string
+            customer_phone:
+              type: string
+            increment_group:
+              type: string
+            date:
+              type: date
+            due_date:
+              type: date
+            payment_type:
+              type: string
+            request_approval_to:
+              type: integer
+            approver_name:
+              type: string
+            approver_email:
+              type: string
+            notes:
+              type: string
+            amount:
+              type: integer
+            total_invoice:
+              type: integer
+            total_down_payment:
+              type: integer
+            total_return:
+              type: integer
+            total_other:
+              type: integer
+            total_amount:
+              type: integer
+          example:
+            customer_id: 4
+            customer_name: 'CUSTOMER TEST MIRNA'
+            customer_label: '[003] CUSTOMER TEST MIRNA'
+            customer_address: 'JALAN MUSI 21'
+            customer_phone: '087851858365'
+            increment_group: '202208'
+            date: '2022-08-01 01:11:12'
+            due_date: '2022-08-01 01:11:12'
+            payment_type: 'cash'
+            request_approval_to: 1
+            approver_name: 'admin admin'
+            approver_email: 'admin@point.com'
+            notes: 'notes'
+            amount: 36760
+            total_invoice: 0
+            total_down_payment: 0
+            total_return: 0
+            total_other: 30000
+            total_amount: 0
+            details:
+              - chart_of_account_id: 87
+                chart_of_account_name: '[41106] PENDAPATAN LAIN-LAIN'
+                amount: 50000
+                allocation_id: 1
+                allocation_name: 'test'
+                notes: null
+                is_debit: 0
+              - chart_of_account_id: 88
+                chart_of_account_name: '[41200] BEBAN POKOK PENJUALAN'
+                amount: 20000
+                allocation_id: 1
+                allocation_name: 'test'
+                notes: null
+                is_debit: 1
+              - date: '2022-07-21 12:28:36'
+                chart_of_account_id: null
+                chart_of_account_name: null
+                available: 56760
+                amount: 56760
+                allocation_id: null
+                allocation_name: null
+                referenceable_form_date: '2022-07-21 12:28:36'
+                referenceable_form_number: 'SI2207012'
+                referenceable_form_notes: 'MIRNA TEST PAYMENT COLLECTION'
+                referenceable_id: 28
+                referenceable_type: 'SalesInvoice'
+              - date: '2022-08-01 00:52:42'
+                chart_of_account_id: null
+                chart_of_account_name: null
+                available: 200000
+                amount: 50000
+                allocation_id: null
+                allocation_name: null
+                referenceable_form_date: '2022-08-01 00:52:42'
+                referenceable_form_number: 'DP22080001'
+                referenceable_form_notes: '-'
+                referenceable_id: '16'
+                referenceable_type: 'SalesDownPayment'
+            errors:
+              errors: {}
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components/responses/properties/payment-collection-patch.yaml'
+          example:
+            customer_id: 4
+            customer_name: 'CUSTOMER TEST MIRNA'
+            due_date: '2022-08-01 02:02:31'
+            payment_type: 'cash'
+            amount: 56760
+            id: 89
+            form:
+              id: 343
+              branch_id: 1
+              date: '2022-08-01 02:02:31'
+              number: 'PC22080001'
+              edited_number: null
+              edited_notes: null
+              notes: 'notes update'
+              created_by: 1
+              updated_by: 1
+              done: 0
+              increment: 1
+              increment_group: '202208'
+              formable_id: 89
+              formable_type: 'PaymentCollection'
+              request_approval_to: 1
+              approval_by: null
+              approval_at: null
+              approval_reason: null
+              approval_status: 0
+              request_cancellation_to: null
+              request_cancellation_by: null
+              request_cancellation_at: null
+              request_cancellation_reason: null
+              cancellation_approval_at: null
+              cancellation_approval_by: null
+              cancellation_approval_reason: null
+              cancellation_status: null
+              created_at: '2022-08-01 02:03:00'
+              updated_at: '2022-08-01 02:03:00'
+              request_close_to: null
+              request_close_by: null
+              request_close_at: null
+              request_close_reason: null
+              close_approval_at: null
+              close_approval_by: null
+              close_status: null
+delete:
+  tags:
+    - Payment Collection
+  summary: payment collection - cancel
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: payment collection id
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - reason
+          properties:
+            reason:
+              type: string
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json: {}
