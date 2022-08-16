@@ -1,0 +1,101 @@
+post:
+  tags:
+    - Stock Correction
+  summary: Create stock correction
+  description:
+  requestBody:
+    content:
+      'application/json':
+        schema:
+          type: object
+          properties:
+            warehouseId:
+              type: integer
+            dueDate:
+              type: date
+            items:
+              type: array
+              items:
+                type: object
+                properties:
+                  itemId:
+                    type: integer
+                  unit:
+                    type: string
+                  converter:
+                    type: integer
+                  stockCorrection:
+                    type: integer
+                  notes:
+                    type: string
+                  expiryDate:
+                    type: date
+                  productionNumber:
+                    type: string
+                  allocationId:
+                    type: integer
+            notes: 
+              type: string
+            requestApprovalTo:
+              type: integer
+            typeCorrection:
+              type: string
+            qcPassed:
+              type: integer
+  responses:
+    '201':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  stockCorrection:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        warehouseId:
+                          type: integer
+                        typeCorrection:
+                          type: string
+                        qcPassed:
+                          type: boolean
+                  stockCorrectionForm:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      done:
+                        type: boolean
+                      approvalStatus:
+                        type: integer
+                      branchId:
+                        type: integer
+                      date:
+                        type: date
+                      number:
+                        type: string
+                      notes:
+                        type: string
+                      createdBy:
+                        type: integer
+                      updatedBy:
+                        type: integer
+                      incrementNumber:
+                        type: integer
+                      incrementGroup:
+                        type: string
+                      formableId:
+                        type: integer
+                      formableType:
+                        type: string
+                      requestApprovalTo:
+                        type: integer
+                      updatedAt:
+                        type: date
+                      createdAt:
+                        type: date
