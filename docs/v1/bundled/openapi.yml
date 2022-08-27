@@ -11674,6 +11674,992 @@ paths:
                     updated_at: "2022-07-17 21:44:57"
                     updated_by: 1
                   warehouse_id: 2
+  /sales/delivery-notes/{id}:
+    get:
+      tags:
+        - Delivery Note
+      summary: delivery note - show
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: delivery note id
+        - name: with_archives
+          in: query
+          schema:
+            type: boolean
+          example: 'true'
+        - name: with_origin
+          in: query
+          schema:
+            type: boolean
+          example: 'true'
+        - name: includes
+          in: query
+          schema:
+            type: string
+          example: >-
+            customer;warehouse;items.item;items.allocation;form.createdBy;form.requestApprovalTo;form.branch
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      billing_address:
+                        type: string
+                      billing_email:
+                        type: string
+                      billing_phone:
+                        type: string
+                      customer:
+                        $ref: '#/components/schemas/customer'
+                      customer_address:
+                        type: string
+                      customer_id:
+                        type: integer
+                      customer_name:
+                        type: string
+                      customer_phone:
+                        type: string
+                      delivery_order_id:
+                        type: integer
+                      driver:
+                        type: string
+                      license_plate:
+                        type: string
+                      form:
+                        $ref: '#/components/schemas/form'
+                      id:
+                        type: integer
+                      items:
+                        type: object
+                      shipping_address:
+                        type: string
+                      shipping_email:
+                        type: string
+                      shipping_phone:
+                        type: string
+                      warehouse:
+                        $ref: '#/components/schemas/warehouse'
+                      warehouse_id:
+                        type: integer
+              example:
+                data:
+                  billing_address: null
+                  billing_email: null
+                  billing_phone: null
+                  customer:
+                    address: "customer addresss"
+                    archived_at: null
+                    archived_by: null
+                    branch_id: 1
+                    city: null
+                    code: "Cust 001"
+                    country: null
+                    created_at: "2022-07-17 21:42:31"
+                    created_by: 1
+                    credit_limit: 0
+                    email: "cust@email.com"
+                    id: 1
+                    label: "[Cust 001] Customer 001"
+                    latitude: null
+                    longitude: null
+                    name: "Customer 001"
+                    notes: null
+                    phone: "0811112223333"
+                    phone_cc: null
+                    pricing_group_id: 1
+                    state: null
+                    tax_identification_number: null
+                    updated_at: "2022-07-17 21:42:31"
+                    updated_by: 1
+                    zip_code: null
+                  customer_address: null
+                  customer_id: 1
+                  customer_name: "Customer 001"
+                  customer_phone: null
+                  delivery_order_id: 2
+                  driver: "asdad"
+                  form:
+                    approval_at: null
+                    approval_by: null
+                    approval_reason: null
+                    approval_status: 0
+                    branch_id: 2
+                    cancellation_approval_at: null
+                    cancellation_approval_by: null
+                    cancellation_approval_reason: null
+                    cancellation_status: null
+                    close_approval_at: null
+                    close_approval_by: null
+                    close_approval_reason: null
+                    close_status: null
+                    created_at: "2022-07-26 07:06:51"
+                    created_by: 1
+                    date: "2022-07-26 07:06:22"
+                    done: 0
+                    edited_notes: null
+                    edited_number: null
+                    formable_id: 3
+                    formable_type: "SalesDeliveryNote"
+                    id: 13
+                    increment: 3
+                    increment_group: 202207
+                    notes: null
+                    number: "DN22070003"
+                    request_approval_at: null
+                    request_approval_to: 1
+                    request_cancellation_at: null
+                    request_cancellation_by: null
+                    request_cancellation_reason: null
+                    request_cancellation_to: null
+                    request_close_at: null
+                    request_close_by: null
+                    request_close_reason: null
+                    request_close_to: null
+                    updated_at: "2022-07-26 07:06:51"
+                    updated_by: 1
+                  id: 3
+                  items:
+                    - allocation: null
+                      allocation_id: null
+                      converter: 1
+                      delivery_note_id: 3
+                      delivery_order_item_id: 3
+                      discount_percent: 0
+                      discount_value: 0
+                      expiry_date: "2022-07-17 00:00:00"
+                      gross_weight: null
+                      id: 5
+                      item_id: 1
+                      item_name: "Kopi ABC"
+                      net_weight: null
+                      notes: null
+                      price: 1100
+                      production_number: "K0117"
+                      quantity: 3
+                      quantity_remaining: 7
+                      tare_weight: null
+                      taxable: 1
+                      unit: "PCS"
+                  license_plate: "asdasd"
+                  shipping_address: null
+                  shipping_email: null
+                  shipping_phone: null
+                  warehouse:
+                    address: "Local House Address"
+                    archived_at: null
+                    archived_by: null
+                    branch_id: 2
+                    code: null
+                    created_at: "2022-07-17 21:44:57"
+                    created_by: 1
+                    id: 2
+                    label: "Local House"
+                    name: "Local House"
+                    notes: null
+                    phone: "08129871235"
+                    updated_at: "2022-07-17 21:44:57"
+                    updated_by: 1
+                  warehouse_id: 2
+    patch:
+      tags:
+        - Delivery Note
+      summary: delivery note - update
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 59
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - delivery_order_id
+                - warehouse_id
+                - customer_id
+                - items
+              properties:
+                originalData:
+                  type: object
+                  properties:
+                    cash_only:
+                      type: integer
+                    customer_address:
+                      type: string
+                    customer_email:
+                      type: string
+                    customer_id:
+                      type: integer
+                    customer_label:
+                      type: string
+                    customer_name:
+                      type: string
+                    customer_phone:
+                      type: string
+                    date:
+                      type: string
+                    delivery_order_item_id:
+                      type: integer
+                    discount_percent:
+                      type: string
+                    discount_value:
+                      type: string
+                    driver:
+                      type: string
+                    license_plate:
+                      type: string
+                    increment_group:
+                      type: string
+                    items:
+                      type: object
+                    need_down_payment:
+                      type: integer
+                    notes:
+                      type: string
+                    pricing_group_id:
+                      type: integer
+                    tax:
+                      type: integer
+                    tax_base:
+                      type: integer
+                    type_of_tax:
+                      type: string
+                    warehouse_id:
+                      type: integer
+                    warehouse_name:
+                      type: string
+                cash_only:
+                  type: integer
+                customer_address:
+                  type: string
+                customer_email:
+                  type: string
+                customer_id:
+                  type: integer
+                customer_label:
+                  type: string
+                customer_name:
+                  type: string
+                customer_phone:
+                  type: string
+                date:
+                  type: string
+                delivery_order_item_id:
+                  type: integer
+                discount_percent:
+                  type: string
+                discount_value:
+                  type: string
+                driver:
+                  type: string
+                license_plate:
+                  type: string
+                increment_group:
+                  type: string
+                items:
+                  type: object
+                need_down_payment:
+                  type: integer
+                notes:
+                  type: string
+                pricing_group_id:
+                  type: integer
+                tax:
+                  type: integer
+                tax_base:
+                  type: integer
+                type_of_tax:
+                  type: string
+                warehouse_id:
+                  type: integer
+                warehouse_name:
+                  type: string
+              example:
+                originalData:
+                  approver_email: null
+                  approver_name: null
+                  cash_only: false
+                  customer_address: null
+                  customer_email: null
+                  customer_id: null
+                  customer_label: null
+                  customer_name: null
+                  customer_phone: null
+                  date: "2022-07-26 07:06:22"
+                  delivery_order_id: null
+                  discount_percent: 0
+                  discount_value: 0
+                  driver: null
+                  increment_group: "202207"
+                  items: []
+                  license_plate: null
+                  need_down_payment: 0
+                  notes: null
+                  pricing_group_id: 1
+                  request_approval_to: null
+                  tax: 0
+                  tax_base: 0
+                  type_of_tax: "exclude"
+                  warehouse_id: null
+                  warehouse_name: null
+                cash_only: false
+                customer_address: null
+                customer_email: null
+                customer_id: 1
+                customer_label: "[Cust 001] Customer 001"
+                customer_name: "Customer 001"
+                customer_phone: null
+                date: "2022-07-26 07:06:22"
+                delivery_order_id: 2
+                discount_percent: 0
+                discount_value: 0
+                driver: "asdad"
+                license_plate: "asdasd"
+                increment_group: "202207"
+                need_down_payment: 0
+                notes: null
+                pricing_group_id: 1
+                request_approval_to: 1
+                type_of_tax: "exclude"
+                warehouse_id: 2
+                warehouse_name: "Local House"
+                items:
+                  - allocation_id: null
+                    converter: 1
+                    delivery_order_item_id: 3
+                    discount_percent: 0
+                    discount_value: 0
+                    dna:
+                      - converter_reference: "1.000000000000000000000000000000"
+                        created_at: "2022-07-18 07:02:14"
+                        expiry_date: "2022-07-17 00:00:00"
+                        form_id: 9
+                        id: 25
+                        is_posted: 0
+                        item_id: 1
+                        need_recalculate: 0
+                        production_number: "K0117"
+                        quantity: "3"
+                        quantity_reference: "50.000000000000000000000000000000"
+                        remaining: 27
+                        remainingInUnit: 27
+                        unitRemaining: 24
+                        unit_reference: "PCS"
+                        updated_at: "2022-07-18 07:02:14"
+                        warehouse_id: 2
+                    item:
+                      - archived_at: null
+                        archived_by: null
+                        barcode: null
+                        chart_of_account_id: 14
+                        code: "Kopi01"
+                        color: null
+                        created_at: "2022-07-17 21:46:57"
+                        created_by: 1
+                        id: 1
+                        label: "[Kopi01] Kopi ABC"
+                        name: "Kopi ABC"
+                        notes: null
+                        require_expiry_date: 1
+                        require_production_number: 1
+                        size: null
+                        stock: 177
+                        stock_reminder: 0
+                        taxable: 1
+                        unit:
+                          - converter: 1
+                            created_at: "2022-07-17 21:46:58"
+                            created_by: 1
+                            disabled: 0
+                            id: 1
+                            item_id: 1
+                            label: "PCS"
+                            name: "PCS"
+                            updated_at: "2022-07-17 21:46:58"
+                            updated_by: 1
+                        unit_default: 1
+                        unit_default_purchase: 1
+                        unit_default_sales: 1
+                        units:
+                          - converter: 1
+                            created_at: "2022-07-17 21:46:58"
+                            created_by: 1
+                            disabled: 0
+                            id: 1
+                            item_id: 1
+                            label: "PCS"
+                            name: "PCS"
+                            updated_at: "2022-07-17 21:46:58"
+                            updated_by: 1
+                        updated_at: "2022-07-25 14:17:23"
+                        updated_by: 1
+                        weight: null
+                    item_id: 1
+                    item_label: "Kopi ABC"
+                    item_name: "Kopi ABC"
+                    max_input: 10
+                    more: false
+                    notes: null
+                    price: 1100
+                    quantity: "3"
+                    quantity_remaining: 7
+                    quantity_requested: 10
+                    require_expiry_date: 1
+                    require_production_number: 1
+                    total: null
+                    unit: "PCS"
+                    warehouse_id: 2
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      billing_address:
+                        type: string
+                      billing_email:
+                        type: string
+                      billing_phone:
+                        type: string
+                      customer:
+                        $ref: '#/components/schemas/customer'
+                      customer_address:
+                        type: string
+                      customer_id:
+                        type: integer
+                      customer_name:
+                        type: string
+                      customer_phone:
+                        type: string
+                      delivery_order_id:
+                        type: integer
+                      driver:
+                        type: string
+                      license_plate:
+                        type: string
+                      form:
+                        $ref: '#/components/schemas/form'
+                      id:
+                        type: integer
+                      items:
+                        type: object
+                      shipping_address:
+                        type: string
+                      shipping_email:
+                        type: string
+                      shipping_phone:
+                        type: string
+                      warehouse:
+                        $ref: '#/components/schemas/warehouse'
+                      warehouse_id:
+                        type: integer
+              example:
+                data:
+                  billing_address: null
+                  billing_email: null
+                  billing_phone: null
+                  customer:
+                    address: "customer addresss"
+                    archived_at: null
+                    archived_by: null
+                    branch_id: 1
+                    city: null
+                    code: "Cust 001"
+                    country: null
+                    created_at: "2022-07-17 21:42:31"
+                    created_by: 1
+                    credit_limit: 0
+                    email: "cust@email.com"
+                    id: 1
+                    label: "[Cust 001] Customer 001"
+                    latitude: null
+                    longitude: null
+                    name: "Customer 001"
+                    notes: null
+                    phone: "0811112223333"
+                    phone_cc: null
+                    pricing_group_id: 1
+                    state: null
+                    tax_identification_number: null
+                    updated_at: "2022-07-17 21:42:31"
+                    updated_by: 1
+                    zip_code: null
+                  customer_address: null
+                  customer_id: 1
+                  customer_name: "Customer 001"
+                  customer_phone: null
+                  delivery_order_id: 2
+                  driver: "asdad"
+                  form:
+                    approval_at: null
+                    approval_by: null
+                    approval_reason: null
+                    approval_status: 0
+                    branch_id: 2
+                    cancellation_approval_at: null
+                    cancellation_approval_by: null
+                    cancellation_approval_reason: null
+                    cancellation_status: null
+                    close_approval_at: null
+                    close_approval_by: null
+                    close_approval_reason: null
+                    close_status: null
+                    created_at: "2022-07-26 07:06:51"
+                    created_by: 1
+                    date: "2022-07-26 07:06:22"
+                    done: 0
+                    edited_notes: null
+                    edited_number: null
+                    formable_id: 3
+                    formable_type: "SalesDeliveryNote"
+                    id: 13
+                    increment: 3
+                    increment_group: 202207
+                    notes: null
+                    number: "DN22070003"
+                    request_approval_at: null
+                    request_approval_to: 1
+                    request_cancellation_at: null
+                    request_cancellation_by: null
+                    request_cancellation_reason: null
+                    request_cancellation_to: null
+                    request_close_at: null
+                    request_close_by: null
+                    request_close_reason: null
+                    request_close_to: null
+                    updated_at: "2022-07-26 07:06:51"
+                    updated_by: 1
+                  id: 3
+                  items:
+                    - allocation: null
+                      allocation_id: null
+                      converter: 1
+                      delivery_note_id: 3
+                      delivery_order_item_id: 3
+                      discount_percent: 0
+                      discount_value: 0
+                      expiry_date: "2022-07-17 00:00:00"
+                      gross_weight: null
+                      id: 5
+                      item_id: 1
+                      item_name: "Kopi ABC"
+                      net_weight: null
+                      notes: null
+                      price: 1100
+                      production_number: "K0117"
+                      quantity: 3
+                      quantity_remaining: 7
+                      tare_weight: null
+                      taxable: 1
+                      unit: "PCS"
+                  license_plate: "asdasd"
+                  shipping_address: null
+                  shipping_email: null
+                  shipping_phone: null
+                  warehouse:
+                    address: "Local House Address"
+                    archived_at: null
+                    archived_by: null
+                    branch_id: 2
+                    code: null
+                    created_at: "2022-07-17 21:44:57"
+                    created_by: 1
+                    id: 2
+                    label: "Local House"
+                    name: "Local House"
+                    notes: null
+                    phone: "08129871235"
+                    updated_at: "2022-07-17 21:44:57"
+                    updated_by: 1
+                  warehouse_id: 2
+  /sales/delivery-notes/{id}/approve:
+    post:
+      tags:
+        - Delivery Note
+      summary: delivery note - approve
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 66
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      billing_address:
+                        type: string
+                      billing_email:
+                        type: string
+                      billing_phone:
+                        type: string
+                      customer:
+                        $ref: '#/components/schemas/customer'
+                      customer_address:
+                        type: string
+                      customer_id:
+                        type: integer
+                      customer_name:
+                        type: string
+                      customer_phone:
+                        type: string
+                      delivery_order_id:
+                        type: integer
+                      driver:
+                        type: string
+                      license_plate:
+                        type: string
+                      form:
+                        $ref: '#/components/schemas/form'
+                      id:
+                        type: integer
+                      items:
+                        type: object
+                      shipping_address:
+                        type: string
+                      shipping_email:
+                        type: string
+                      shipping_phone:
+                        type: string
+                      warehouse:
+                        $ref: '#/components/schemas/warehouse'
+                      warehouse_id:
+                        type: integer
+              example:
+                data:
+                  billing_address: null
+                  billing_email: null
+                  billing_phone: null
+                  customer:
+                    address: "customer addresss"
+                    archived_at: null
+                    archived_by: null
+                    branch_id: 1
+                    city: null
+                    code: "Cust 001"
+                    country: null
+                    created_at: "2022-07-17 21:42:31"
+                    created_by: 1
+                    credit_limit: 0
+                    email: "cust@email.com"
+                    id: 1
+                    label: "[Cust 001] Customer 001"
+                    latitude: null
+                    longitude: null
+                    name: "Customer 001"
+                    notes: null
+                    phone: "0811112223333"
+                    phone_cc: null
+                    pricing_group_id: 1
+                    state: null
+                    tax_identification_number: null
+                    updated_at: "2022-07-17 21:42:31"
+                    updated_by: 1
+                    zip_code: null
+                  customer_address: null
+                  customer_id: 1
+                  customer_name: "Customer 001"
+                  customer_phone: null
+                  delivery_order_id: 2
+                  driver: "asdad"
+                  form:
+                    approval_at: null
+                    approval_by: null
+                    approval_reason: null
+                    approval_status: 0
+                    branch_id: 2
+                    cancellation_approval_at: null
+                    cancellation_approval_by: null
+                    cancellation_approval_reason: null
+                    cancellation_status: null
+                    close_approval_at: null
+                    close_approval_by: null
+                    close_approval_reason: null
+                    close_status: null
+                    created_at: "2022-07-26 07:06:51"
+                    created_by: 1
+                    date: "2022-07-26 07:06:22"
+                    done: 0
+                    edited_notes: null
+                    edited_number: null
+                    formable_id: 3
+                    formable_type: "SalesDeliveryNote"
+                    id: 13
+                    increment: 3
+                    increment_group: 202207
+                    notes: null
+                    number: "DN22070003"
+                    request_approval_at: null
+                    request_approval_to: 1
+                    request_cancellation_at: null
+                    request_cancellation_by: null
+                    request_cancellation_reason: null
+                    request_cancellation_to: null
+                    request_close_at: null
+                    request_close_by: null
+                    request_close_reason: null
+                    request_close_to: null
+                    updated_at: "2022-07-26 07:06:51"
+                    updated_by: 1
+                  id: 3
+                  items:
+                    - allocation: null
+                      allocation_id: null
+                      converter: 1
+                      delivery_note_id: 3
+                      delivery_order_item_id: 3
+                      discount_percent: 0
+                      discount_value: 0
+                      expiry_date: "2022-07-17 00:00:00"
+                      gross_weight: null
+                      id: 5
+                      item_id: 1
+                      item_name: "Kopi ABC"
+                      net_weight: null
+                      notes: null
+                      price: 1100
+                      production_number: "K0117"
+                      quantity: 3
+                      quantity_remaining: 7
+                      tare_weight: null
+                      taxable: 1
+                      unit: "PCS"
+                  license_plate: "asdasd"
+                  shipping_address: null
+                  shipping_email: null
+                  shipping_phone: null
+                  warehouse:
+                    address: "Local House Address"
+                    archived_at: null
+                    archived_by: null
+                    branch_id: 2
+                    code: null
+                    created_at: "2022-07-17 21:44:57"
+                    created_by: 1
+                    id: 2
+                    label: "Local House"
+                    name: "Local House"
+                    notes: null
+                    phone: "08129871235"
+                    updated_at: "2022-07-17 21:44:57"
+                    updated_by: 1
+                  warehouse_id: 2
+  /sales/delivery-notes/{id}/reject:
+    post:
+      tags:
+        - Delivery Note
+      summary: delivery note - reject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - reason
+              properties:
+                reason:
+                  type: string
+              example:
+                reason: reason delivery note rejected
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 69
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      billing_address:
+                        type: string
+                      billing_email:
+                        type: string
+                      billing_phone:
+                        type: string
+                      customer:
+                        $ref: '#/components/schemas/customer'
+                      customer_address:
+                        type: string
+                      customer_id:
+                        type: integer
+                      customer_name:
+                        type: string
+                      customer_phone:
+                        type: string
+                      delivery_order_id:
+                        type: integer
+                      driver:
+                        type: string
+                      license_plate:
+                        type: string
+                      form:
+                        $ref: '#/components/schemas/form'
+                      id:
+                        type: integer
+                      items:
+                        type: object
+                      shipping_address:
+                        type: string
+                      shipping_email:
+                        type: string
+                      shipping_phone:
+                        type: string
+                      warehouse:
+                        $ref: '#/components/schemas/warehouse'
+                      warehouse_id:
+                        type: integer
+              example:
+                data:
+                  billing_address: null
+                  billing_email: null
+                  billing_phone: null
+                  customer:
+                    address: "customer addresss"
+                    archived_at: null
+                    archived_by: null
+                    branch_id: 1
+                    city: null
+                    code: "Cust 001"
+                    country: null
+                    created_at: "2022-07-17 21:42:31"
+                    created_by: 1
+                    credit_limit: 0
+                    email: "cust@email.com"
+                    id: 1
+                    label: "[Cust 001] Customer 001"
+                    latitude: null
+                    longitude: null
+                    name: "Customer 001"
+                    notes: null
+                    phone: "0811112223333"
+                    phone_cc: null
+                    pricing_group_id: 1
+                    state: null
+                    tax_identification_number: null
+                    updated_at: "2022-07-17 21:42:31"
+                    updated_by: 1
+                    zip_code: null
+                  customer_address: null
+                  customer_id: 1
+                  customer_name: "Customer 001"
+                  customer_phone: null
+                  delivery_order_id: 2
+                  driver: "asdad"
+                  form:
+                    approval_at: null
+                    approval_by: null
+                    approval_reason: null
+                    approval_status: 0
+                    branch_id: 2
+                    cancellation_approval_at: null
+                    cancellation_approval_by: null
+                    cancellation_approval_reason: null
+                    cancellation_status: null
+                    close_approval_at: null
+                    close_approval_by: null
+                    close_approval_reason: null
+                    close_status: null
+                    created_at: "2022-07-26 07:06:51"
+                    created_by: 1
+                    date: "2022-07-26 07:06:22"
+                    done: 0
+                    edited_notes: null
+                    edited_number: null
+                    formable_id: 3
+                    formable_type: "SalesDeliveryNote"
+                    id: 13
+                    increment: 3
+                    increment_group: 202207
+                    notes: null
+                    number: "DN22070003"
+                    request_approval_at: null
+                    request_approval_to: 1
+                    request_cancellation_at: null
+                    request_cancellation_by: null
+                    request_cancellation_reason: null
+                    request_cancellation_to: null
+                    request_close_at: null
+                    request_close_by: null
+                    request_close_reason: null
+                    request_close_to: null
+                    updated_at: "2022-07-26 07:06:51"
+                    updated_by: 1
+                  id: 3
+                  items:
+                    - allocation: null
+                      allocation_id: null
+                      converter: 1
+                      delivery_note_id: 3
+                      delivery_order_item_id: 3
+                      discount_percent: 0
+                      discount_value: 0
+                      expiry_date: "2022-07-17 00:00:00"
+                      gross_weight: null
+                      id: 5
+                      item_id: 1
+                      item_name: "Kopi ABC"
+                      net_weight: null
+                      notes: null
+                      price: 1100
+                      production_number: "K0117"
+                      quantity: 3
+                      quantity_remaining: 7
+                      tare_weight: null
+                      taxable: 1
+                      unit: "PCS"
+                  license_plate: "asdasd"
+                  shipping_address: null
+                  shipping_email: null
+                  shipping_phone: null
+                  warehouse:
+                    address: "Local House Address"
+                    archived_at: null
+                    archived_by: null
+                    branch_id: 2
+                    code: null
+                    created_at: "2022-07-17 21:44:57"
+                    created_by: 1
+                    id: 2
+                    label: "Local House"
+                    name: "Local House"
+                    notes: null
+                    phone: "08129871235"
+                    updated_at: "2022-07-17 21:44:57"
+                    updated_by: 1
+                  warehouse_id: 2
   /sales/delivery-notes/export:
     get:
       tags:
