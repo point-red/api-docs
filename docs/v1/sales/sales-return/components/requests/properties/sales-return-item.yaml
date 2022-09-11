@@ -1,0 +1,28 @@
+sales_invoice_item_id:
+  type: integer
+item_id:
+  type: integer
+item_name:
+  type: string
+price:
+  type: string
+discount_percent:
+  type: string
+discount_value:
+  type: string
+unit:
+  type: string
+converter:
+  type: integer
+quantity_sales:
+  type: integer
+quantity:
+  type: integer
+more:
+  type: boolean
+total:
+  type: integer
+allocation_id:
+  type: integer
+notes:
+  type: string

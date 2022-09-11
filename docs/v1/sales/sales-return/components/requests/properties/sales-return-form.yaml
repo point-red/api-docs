@@ -1,0 +1,31 @@
+increment_group:
+  type: string
+date:
+  type: string
+warehouse_id:
+  type: integer
+customer_id:
+  type: integer
+customer_name:
+  type: string
+customer_label:
+  type: string
+customer_address:
+  type: string
+customer_phone:
+  type: string
+customer_email:
+  type: string
+request_approval_to:
+  type: string
+approver_name:
+  type: string
+approver_email:
+  type: string
+sales_invoice_id:
+  type: integer
+errors:
+  type: object
+  properties:
+    errors:
+      type: object

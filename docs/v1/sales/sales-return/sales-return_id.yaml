@@ -1,0 +1,191 @@
+get:
+  tags:
+    - Sales Return
+  summary: sales return - show
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: sales return id
+    - name: with_archives
+      in: query
+      schema:
+        type: boolean
+      example: 'true'
+    - name: with_origin
+      in: query
+      schema:
+        type: boolean
+      example: 'true'
+    - name: includes
+      in: query
+      schema:
+        type: string
+      example: >-
+        customer;items.item;items.allocation;items.salesInvoiceItem;salesInvoice.form;form.createdBy;form.requestApprovalTo;form.branch
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  $ref: './components/responses/properties/sales-return.yaml'
+          example:
+            data:
+              id: 14
+              sales_invoice_id: 33
+              customer_id: 1
+              customer_name: 'Customer'
+              customer_address: null
+              customer_phone: null
+              tax: 500
+              amount: 5500
+              warehouse_id: 1
+              archives: []
+              customer:
+                id: 1
+                code: 'C-1'
+                tax_identification_number: null
+                name: 'Customer'
+                address: null
+                city: null
+                state: null
+                country: null
+                zip_code: null
+                latitude: null
+                longitude: null
+                phone: null
+                phone_cc: null
+                email: null
+                notes: null
+                credit_limit: 0
+                branch_id: 1
+                created_by: 1
+                updated_by: 1
+                archived_by: null
+                pricing_group_id: 1
+                created_at: '2022-06-13 18:40:45'
+                updated_at: '2022-06-13 18:40:45'
+                archived_at: null
+                label: '[C-1] Customer'
+              items:
+                - id: 12
+                  sales_return_id: 14
+                  sales_invoice_item_id: 32
+                  item_id: 1
+                  item_name: 'Kopi'
+                  quantity_sales: 7
+                  quantity: 1
+                  price: 5000
+                  discount_percent: 0
+                  discount_value: 0
+                  unit: 'PCS'
+                  converter: 1
+                  expiry_date: null
+                  production_number: null
+                  notes: null
+                  allocation_id: 1
+                  item:
+                    id: 1
+                    chart_of_account_id: 14
+                    code: 'BNF01'
+                    barcode: null
+                    name: 'Kopi'
+                    size: null
+                    color: null
+                    weight: null
+                    notes: null
+                    taxable: 1
+                    require_production_number: 0
+                    require_expiry_date: 0
+                    stock: 35493
+                    stock_reminder: 0
+                    unit_default: 1
+                    unit_default_purchase: 1
+                    unit_default_sales: 1
+                    created_by: 1
+                    updated_by: 1
+                    archived_by: null
+                    created_at: '2022-06-13 18:39:26'
+                    updated_at: '2022-09-07 22:45:50'
+                    archived_at: null
+                    label: '[BNF01] Kopi'
+              form:
+                id: 351
+                branch_id: 1
+                date: '2022-09-11 12:36:14'
+                number: 'SR22090010'
+                edited_number: null
+                edited_notes: null
+                notes: null
+                created_by:
+                  id: 1
+                  name: admin
+                  first_name: admin
+                  last_name: admin
+                  address: null
+                  phone: null
+                  email: admin@point.com
+                  created_at: '2022-05-12 11:32:41'
+                  updated_at: '2022-05-12 11:32:41'
+                  branch_id: null
+                  warehouse_id: null
+                  full_name: admin admin
+                updated_by: 1
+                done: 0
+                increment: 10
+                increment_group: 202209
+                formable_id: 14
+                formable_type: SalesReturn
+                request_approval_to:
+                  id: 1
+                  name: admin
+                  first_name: admin
+                  last_name: admin
+                  address: null
+                  phone: null
+                  email: admin@point.com
+                  created_at: '2022-05-12 11:32:41'
+                  updated_at: '2022-05-12 11:32:41'
+                  branch_id: null
+                  warehouse_id: null
+                  full_name: admin admin
+                approval_by: null
+                approval_at: null
+                approval_reason: null
+                approval_status: 0
+                request_cancellation_to: null
+                request_cancellation_by: null
+                request_cancellation_at: null
+                request_cancellation_reason: null
+                cancellation_approval_at: null
+                cancellation_approval_by: null
+                cancellation_approval_reason: null
+                cancellation_status: null
+                created_at: '2022-09-11 12:36:42'
+                updated_at: '2022-09-11 12:36:42'
+                request_approval_at: '2022-09-11 12:36:42'
+                request_close_to: null
+                request_close_by: null
+                request_close_at: null
+                request_close_reason: null
+                close_approval_at: null
+                close_approval_by: null
+                close_approval_reason: null
+                close_status: null
+                branch:
+                  id: 1
+                  name: 'CENTRAL'
+                  address: null
+                  phone: null
+                  created_by: null
+                  updated_by: null
+                  archived_by: null
+                  created_at: '2022-06-07 10:07:38'
+                  updated_at: '2022-06-07 10:07:38'
+                  archived_at: null
