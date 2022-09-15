@@ -1,0 +1,24 @@
+type: array
+items:
+  type: object
+  properties:
+    id:
+      type: integer
+    label:
+      type: string
+    name:
+      type: string
+    converter:
+      type: string
+    disabled:
+      type: string
+    item_id:
+      type: integer
+    created_by:
+      type: string
+    updated_by:
+      type: string
+    created_at:
+      type: string
+    updated_at:
+      type: string
