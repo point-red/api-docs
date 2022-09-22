@@ -101,3 +101,13 @@ paths:
     $ref: sales/delivery-orders/delivery-orders_approval_send.yaml
   /sales/delivery-orders/approve:
     $ref: sales/delivery-orders/delivery-orders_approve_by_email.yaml
+  /sales/delivery-notes:
+    $ref: sales/delivery-notes/delivery-notes.yaml
+  /sales/delivery-notes/{id}:
+    $ref: sales/delivery-notes/delivery-notes_id.yaml
+  /sales/delivery-notes/{id}/approve:
+    $ref: sales/delivery-notes/delivery-notes_id_approve.yaml
+  /sales/delivery-notes/{id}/reject:
+    $ref: sales/delivery-notes/delivery-notes_id_reject.yaml
+  /sales/delivery-notes/export:
+    $ref: sales/delivery-notes/delivery-notes_export.yaml
