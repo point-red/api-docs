@@ -101,3 +101,9 @@ paths:
     $ref: sales/delivery-orders/delivery-orders_approval_send.yaml
   /sales/delivery-orders/approve:
     $ref: sales/delivery-orders/delivery-orders_approve_by_email.yaml
+  /accounting/memo-journals:
+    $ref: './accounting/memo-journals/memo-journals.yml'
+  /accounting/memo-journals/{id}:
+    $ref: './accounting/memo-journals/memo-journals-by-id.yml'
+  /accounting/memo-journals/export:
+    $ref: './accounting/memo-journals/memo-journals-export.yml'
