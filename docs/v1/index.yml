@@ -111,3 +111,9 @@ paths:
     $ref: sales/delivery-notes/delivery-notes_id_reject.yaml
   /sales/delivery-notes/export:
     $ref: sales/delivery-notes/delivery-notes_export.yaml
+  /accounting/memo-journals:
+    $ref: './accounting/memo-journals/memo-journals.yml'
+  /accounting/memo-journals/{id}:
+    $ref: './accounting/memo-journals/memo-journals-by-id.yml'
+  /accounting/memo-journals/export:
+    $ref: './accounting/memo-journals/memo-journals-export.yml'

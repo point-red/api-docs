@@ -1,0 +1,714 @@
+get:
+  tags:
+    - Memo Journal
+  summary: Read all Memo Journals
+  description:
+  parameters:
+    - name: join
+      in: query
+      description: multi value, divide with coma (,)
+      schema:
+        type: string
+        example: 'form,items'
+    - name: fields
+      in: query
+      description: multi value, divide with coma (,)
+      schema:
+        type: string
+        example: 'memo_journal.*'
+    - name: sort_by
+      in: query
+      description: Sort the result by a key
+      schema:
+        type: string
+        default: 'name'
+        example: '-form.number'
+    - name: group_by
+      in: query
+      description: Group the result by a key
+      schema:
+        type: string
+        example: '-form.id'
+    - name: filter_like
+      in: query
+      schema:
+        type: object
+        properties:
+                form.number:
+                  type: string
+                form.notes:
+                  type: string
+    - name: filter_date_min
+      in: query
+      schema:
+        type: object
+        properties:
+                form.date:
+                  type: date
+    - name: filter_date_max
+      in: query
+      schema:
+        type: object
+        properties:
+                form.date:
+                  type: date
+    - name: limit
+      in: query
+      description: Data limit
+      schema:
+        type: integer
+        example: 10
+    - name: includes
+      in: query
+      description: multi value, divide with coma (,)
+      schema:
+        type: string
+        example: 'form;items.chart_of_account;items.form;items.masterable'
+    - name: page
+      in: query
+      description: Data page
+      schema:
+        type: integer
+        example: 1
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              meta:
+                type: object
+                properties:
+                  current_page:
+                    type: integer
+                  from:
+                    type: integer
+                  last_page:
+                    type: integer
+                  path:
+                    type: string
+                  per_page:
+                    type: integer
+                  to:
+                    type: integer
+                  total:
+                    type: integer
+              links:
+                type: object
+                properties:
+                  first:
+                    type: string
+                  last:
+                    type: string
+                  prev:
+                    type: string
+                  next:
+                    type: string
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    form:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        branch_id:
+                          type: integer
+                        date:
+                          type: date
+                        number:
+                          type: string
+                        edited_number:
+                          type: string
+                        edited_notes:
+                          type: string
+                        notes:
+                          type: string
+                        created_by:
+                          type: integer
+                        updated_by:
+                          type: integer
+                        done:
+                          type: integer
+                        increment:
+                          type: integer
+                        increment_group:
+                          type: integer
+                        formable_id:
+                          type: integer
+                        formable_type:
+                          type: string
+                        request_approval_to:
+                          type: integer
+                        request_approval_at:
+                          type: date
+                        approval_by:
+                          type: integer
+                        approval_at:
+                          type: date
+                        approval_reason:
+                          type: integer
+                        approval_status:
+                          type: integer
+                        request_cancellation_to:
+                          type: integer
+                        request_cancellation_by:
+                          type: integer
+                        request_cancellation_at:
+                          type: date
+                        request_cancellation_reason:
+                          type: string
+                        cancellation_approval_at:
+                          type: date
+                        cancellation_approval_by:
+                          type: integer
+                        cancellation_approval_reason:
+                          type: string
+                        cancellation_status:
+                          type: integer
+                        created_at:
+                          type: date
+                        updated_at:
+                          type: date
+                        request_close_to:
+                          type: integer
+                        request_close_by:
+                          type: integer
+                        request_close_at:
+                          type: date
+                        request_close_reason:
+                          type: string
+                        close_approval_at:
+                          type: date
+                        close_approval_by:
+                          type: integer
+                        close_status:
+                          type: integer
+                    items:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          memo_journal_id:
+                            type: integer
+                          chart_of_account_id:
+                            type: integer
+                          chart_of_account_name:
+                            type: string
+                          form_id:
+                            type: integer
+                          masterable_id:
+                            type: integer
+                          masterable_type:
+                            type: string
+                          debit:
+                            type: float
+                          credit:
+                            type: float
+                          notes:
+                            type: string
+                          chart_of_account:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              type_id:
+                                type: integer
+                              group_id:
+                                type: integer
+                              is_sub_ledger:
+                                type: boolean
+                              sub_ledger:
+                                type: string
+                              position:
+                                type: string
+                              is_locked:
+                                type: boolean
+                              cash_flow:
+                                type: string
+                              cash_flow_position:
+                                type: string
+                              number:
+                                type: string
+                              name:
+                                type: string
+                              alias:
+                                type: string
+                              created_by:
+                                type: integer
+                              updated_by:
+                                type: integer
+                              archived_by:
+                                type: integer
+                              created_at:
+                                type: date
+                              updated_at:
+                                type: date
+                              archived_at:
+                                type: date
+                              label:
+                                type: string
+                          form:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              branch_id:
+                                type: integer
+                              date:
+                                type: date
+                              number:
+                                type: string
+                              edited_number:
+                                type: string
+                              edited_notes:
+                                type: string
+                              notes:
+                                type: string
+                              created_by:
+                                type: integer
+                              updated_by:
+                                type: integer
+                              done:
+                                type: integer
+                              increment:
+                                type: integer
+                              increment_group:
+                                type: integer
+                              formable_id:
+                                type: integer
+                              formable_type:
+                                type: string
+                              request_approval_to:
+                                type: integer
+                              request_approval_at:
+                                type: date
+                              approval_by:
+                                type: integer
+                              approval_at:
+                                type: date
+                              approval_reason:
+                                type: integer
+                              approval_status:
+                                type: integer
+                              request_cancellation_to:
+                                type: integer
+                              request_cancellation_by:
+                                type: integer
+                              request_cancellation_at:
+                                type: date
+                              request_cancellation_reason:
+                                type: string
+                              cancellation_approval_at:
+                                type: date
+                              cancellation_approval_by:
+                                type: integer
+                              cancellation_approval_reason:
+                                type: string
+                              cancellation_status:
+                                type: integer
+                              created_at:
+                                type: date
+                              updated_at:
+                                type: date
+                              request_close_to:
+                                type: integer
+                              request_close_by:
+                                type: integer
+                              request_close_at:
+                                type: date
+                              request_close_reason:
+                                type: string
+                              close_approval_at:
+                                type: date
+                              close_approval_by:
+                                type: integer
+                              close_status:
+                                type: integer
+                          masterable:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              chart_of_account_id:
+                                type: integer
+                              code:
+                                type: integer
+                              barcode:
+                                type: integer
+                              name:
+                                type: integer
+                              size:
+                                type: integer
+                              color:
+                                type: integer
+                              weight:
+                                type: integer
+                              notes:
+                                type: integer
+                              taxable:
+                                type: integer
+                              require_production_number:
+                                type: integer
+                              equire_expiry_date:
+                                type: integer
+                              stock:
+                                type: integer
+                              stock_reminder:
+                                type: integer
+                              unit_default:
+                                type: integer
+                              unit_default_purchase:
+                                type: integer
+                              unit_default_sales:
+                                type: integer
+                              created_by:
+                                type: integer
+                              updated_by:
+                                type: integer
+                              archived_by:
+                                type: integer
+                              created_at:
+                                type: date
+                              updated_at:
+                                type: date
+                              archived_at:
+                                type: date
+                              label:
+                                type: string
+post:
+  tags:
+    - Memo Journal
+  summary: Create new Memo Journal
+  description:
+  requestBody:
+    content:
+      'application/json':
+        schema:
+          type: object
+          properties:
+            increment_group:
+              type: string
+            date:
+              type: date
+            notes:
+              type: string
+            items:
+              type: array
+              items:
+                type: object
+                properties:
+                  chart_of_account_id:
+                    type: integer
+                  chart_of_account_name:
+                    type: string
+                  masterable_id:
+                    type: integer
+                  masterable_type:
+                    type: string
+                  form_id:
+                    type: integer
+                  credit:
+                    type: float
+                  debit:
+                    type: float
+                  notes:
+                    type: string
+            request_approval_to: 
+              type: integer
+            approver_name:
+              type: string
+            approver_email:
+              type: string
+  responses:
+    '201':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  form:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        branch_id:
+                          type: integer
+                        date:
+                          type: date
+                        number:
+                          type: string
+                        edited_number:
+                          type: string
+                        edited_notes:
+                          type: string
+                        notes:
+                          type: string
+                        created_by:
+                          type: integer
+                        updated_by:
+                          type: integer
+                        done:
+                          type: integer
+                        increment:
+                          type: integer
+                        increment_group:
+                          type: integer
+                        formable_id:
+                          type: integer
+                        formable_type:
+                          type: string
+                        request_approval_to:
+                          type: integer
+                        request_approval_at:
+                          type: date
+                        approval_by:
+                          type: integer
+                        approval_at:
+                          type: date
+                        approval_reason:
+                          type: integer
+                        approval_status:
+                          type: integer
+                        request_cancellation_to:
+                          type: integer
+                        request_cancellation_by:
+                          type: integer
+                        request_cancellation_at:
+                          type: date
+                        request_cancellation_reason:
+                          type: string
+                        cancellation_approval_at:
+                          type: date
+                        cancellation_approval_by:
+                          type: integer
+                        cancellation_approval_reason:
+                          type: string
+                        cancellation_status:
+                          type: integer
+                        created_at:
+                          type: date
+                        updated_at:
+                          type: date
+                        request_close_to:
+                          type: integer
+                        request_close_by:
+                          type: integer
+                        request_close_at:
+                          type: date
+                        request_close_reason:
+                          type: string
+                        close_approval_at:
+                          type: date
+                        close_approval_by:
+                          type: integer
+                        close_status:
+                          type: integer
+                  items:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          memo_journal_id:
+                            type: integer
+                          chart_of_account_id:
+                            type: integer
+                          chart_of_account_name:
+                            type: string
+                          form_id:
+                            type: integer
+                          masterable_id:
+                            type: integer
+                          masterable_type:
+                            type: string
+                          debit:
+                            type: float
+                          credit:
+                            type: float
+                          notes:
+                            type: string
+                          chart_of_account:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              type_id:
+                                type: integer
+                              group_id:
+                                type: integer
+                              is_sub_ledger:
+                                type: boolean
+                              sub_ledger:
+                                type: string
+                              position:
+                                type: string
+                              is_locked:
+                                type: boolean
+                              cash_flow:
+                                type: string
+                              cash_flow_position:
+                                type: string
+                              number:
+                                type: string
+                              name:
+                                type: string
+                              alias:
+                                type: string
+                              created_by:
+                                type: integer
+                              updated_by:
+                                type: integer
+                              archived_by:
+                                type: integer
+                              created_at:
+                                type: date
+                              updated_at:
+                                type: date
+                              archived_at:
+                                type: date
+                              label:
+                                type: string
+                          form:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              branch_id:
+                                type: integer
+                              date:
+                                type: date
+                              number:
+                                type: string
+                              edited_number:
+                                type: string
+                              edited_notes:
+                                type: string
+                              notes:
+                                type: string
+                              created_by:
+                                type: integer
+                              updated_by:
+                                type: integer
+                              done:
+                                type: integer
+                              increment:
+                                type: integer
+                              increment_group:
+                                type: integer
+                              formable_id:
+                                type: integer
+                              formable_type:
+                                type: string
+                              request_approval_to:
+                                type: integer
+                              request_approval_at:
+                                type: date
+                              approval_by:
+                                type: integer
+                              approval_at:
+                                type: date
+                              approval_reason:
+                                type: integer
+                              approval_status:
+                                type: integer
+                              request_cancellation_to:
+                                type: integer
+                              request_cancellation_by:
+                                type: integer
+                              request_cancellation_at:
+                                type: date
+                              request_cancellation_reason:
+                                type: string
+                              cancellation_approval_at:
+                                type: date
+                              cancellation_approval_by:
+                                type: integer
+                              cancellation_approval_reason:
+                                type: string
+                              cancellation_status:
+                                type: integer
+                              created_at:
+                                type: date
+                              updated_at:
+                                type: date
+                              request_close_to:
+                                type: integer
+                              request_close_by:
+                                type: integer
+                              request_close_at:
+                                type: date
+                              request_close_reason:
+                                type: string
+                              close_approval_at:
+                                type: date
+                              close_approval_by:
+                                type: integer
+                              close_status:
+                                type: integer
+                          masterable:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              chart_of_account_id:
+                                type: integer
+                              code:
+                                type: integer
+                              barcode:
+                                type: integer
+                              name:
+                                type: integer
+                              size:
+                                type: integer
+                              color:
+                                type: integer
+                              weight:
+                                type: integer
+                              notes:
+                                type: integer
+                              taxable:
+                                type: integer
+                              require_production_number:
+                                type: integer
+                              equire_expiry_date:
+                                type: integer
+                              stock:
+                                type: integer
+                              stock_reminder:
+                                type: integer
+                              unit_default:
+                                type: integer
+                              unit_default_purchase:
+                                type: integer
+                              unit_default_sales:
+                                type: integer
+                              created_by:
+                                type: integer
+                              updated_by:
+                                type: integer
+                              archived_by:
+                                type: integer
+                              created_at:
+                                type: date
+                              updated_at:
+                                type: date
+                              archived_at:
+                                type: date
+                              label:
+                                type: string
