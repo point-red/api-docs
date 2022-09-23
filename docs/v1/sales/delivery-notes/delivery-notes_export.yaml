@@ -1,0 +1,61 @@
+get:
+  tags:
+    - Delivery Note
+  summary: delivery note - export
+  parameters:
+    - name: join
+      in: query
+      schema:
+        type: string
+      example: ' form,customer,items,item'
+    - name: fields
+      in: query
+      schema:
+        type: string
+      example: ' sales_delivery_note.*;sales_delivery_note_item.*'
+    - name: sort_by
+      in: query
+      schema:
+        type: string
+      example: ' -form.number'
+    - name: filter_form
+      in: query
+      schema:
+        type: string
+      example: ' notArchived;null'
+    - name: filter_like
+      in: query
+      schema:
+        type: string
+      example: ' {}'
+    - name: filter_date_min
+      in: query
+      schema:
+        type: string
+      example: ' {"form.date":"2022-06-01 00:00:00"}'
+    - name: filter_date_max
+      in: query
+      schema:
+        type: string
+      example: ' {"form.date":"2022-06-07 23:59:59"}'
+    - name: includes
+      in: query
+      schema:
+        type: string
+      example: ' form;customer;warehouse;items.item'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  url:
+                    type: string
+          example:
+            data:
+              url: https://point.red/download?key=d5spyNjujUdFYBM0
