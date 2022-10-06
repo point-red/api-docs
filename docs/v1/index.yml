@@ -109,6 +109,12 @@ paths:
     $ref: sales/delivery-notes/delivery-notes_id_approve.yaml
   /sales/delivery-notes/{id}/reject:
     $ref: sales/delivery-notes/delivery-notes_id_reject.yaml
+  /sales/delivery-notes/{id}/cancellation-approve:
+    $ref: sales/delivery-notes/delivery-notes_id_cancellation-approve.yaml
+  /sales/delivery-notes/{id}/cancellation-reject:
+    $ref: sales/delivery-notes/delivery-notes_id_cancellation-reject.yaml
+  /sales/delivery-notes/{id}/histories:
+    $ref: sales/delivery-notes/delivery-notes_id_histories.yaml
   /sales/delivery-notes/export:
     $ref: sales/delivery-notes/delivery-notes_export.yaml
   /accounting/memo-journals:

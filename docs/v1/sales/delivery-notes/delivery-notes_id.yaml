@@ -611,3 +611,27 @@ patch:
                 updated_at: "2022-07-17 21:44:57"
                 updated_by: 1
               warehouse_id: 2
+delete:
+  tags:
+    - Delivery Note
+  summary: delivery Note - cancel
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: delivery note id
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - reason
+          properties:
+            reason:
+              type: string
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json: {}
