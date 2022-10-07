@@ -1,0 +1,16 @@
+type: array
+items:
+  type: object
+  properties:
+    id:
+      type: integer
+    warehouse_id:
+      type: integer
+    employee_id:
+      type: integer
+    form:
+      $ref: '../../../../../sales/delivery-orders/components/responses/properties/form.yaml'
+    warehouse:
+      $ref: '../../../../../sales/delivery-orders/components/responses/properties/warehouse.yaml'
+    items:
+      $ref: './inventory-usage-items.yaml'

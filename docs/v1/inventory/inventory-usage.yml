@@ -1,0 +1,1648 @@
+openapi: 3.0.0
+info:
+  title: point_inventory-usage_p1
+  version: 1.0.0
+servers:
+  - url: http://{{base_url}}
+paths:
+  /inventory/usages/46/approve:
+    post:
+      tags:
+        - default
+      summary: inventory usage - approve
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                id: '46'
+      parameters:
+        - name: Tenant
+          in: header
+          schema:
+            type: string
+          example: '{{tenant}}'
+        - name: Timezone
+          in: header
+          schema:
+            type: string
+          example: '{{timezone}}'
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{auth_token}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.22.0
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 07 Oct 2022 06:57:27 GMT
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '300'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '299'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+                example: GET, POST, PUT, PATCH, DELETE, OPTIONS
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+                example: >-
+                  Tenant, Authorization, Content-Type, X-Requested-With, Origin,
+                  Timezone
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            Access-Control-Max-Age:
+              schema:
+                type: integer
+                example: '86400'
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  id: 46
+                  warehouse_id: 1
+                  employee_id: 1
+                  form:
+                    id: 38
+                    branch_id: 1
+                    date: '2022-10-07 13:51:46'
+                    number: IU22100007
+                    edited_number: null
+                    edited_notes: null
+                    notes: null
+                    created_by: 1
+                    updated_by: 1
+                    done: 0
+                    increment: 7
+                    increment_group: 202210
+                    formable_id: 46
+                    formable_type: InventoryUsage
+                    request_approval_to: 1
+                    approval_by: 1
+                    approval_at: '2022-10-07T06:57:27.659339Z'
+                    approval_reason: null
+                    approval_status: 1
+                    request_cancellation_to: null
+                    request_cancellation_by: null
+                    request_cancellation_at: null
+                    request_cancellation_reason: null
+                    cancellation_approval_at: null
+                    cancellation_approval_by: null
+                    cancellation_approval_reason: null
+                    cancellation_status: null
+                    created_at: '2022-10-07 13:52:29'
+                    updated_at: '2022-10-07 13:57:27'
+                    request_close_to: null
+                    request_close_by: null
+                    request_close_at: null
+                    request_close_reason: null
+                    close_approval_at: null
+                    close_approval_by: null
+                    close_status: null
+                    request_approval_at: null
+                    close_approval_reason: null
+                  items:
+                    - id: 26
+                      inventory_usage_id: 46
+                      item_id: 7
+                      allocation_id: 1
+                      chart_of_account_id: 123
+                      quantity: 2
+                      expiry_date: '2022-10-07 13:57:27'
+                      production_number: null
+                      unit: PCS
+                      converter: 1
+                      notes: null
+                      item:
+                        id: 7
+                        chart_of_account_id: 14
+                        code: null
+                        barcode: null
+                        name: kopi janji manis
+                        size: null
+                        color: null
+                        weight: null
+                        notes: null
+                        taxable: 1
+                        require_production_number: 0
+                        require_expiry_date: 0
+                        stock: 541
+                        stock_reminder: 0
+                        unit_default: 7
+                        unit_default_purchase: 7
+                        unit_default_sales: 7
+                        created_by: 1
+                        updated_by: 1
+                        archived_by: null
+                        created_at: '2022-09-30 09:03:42'
+                        updated_at: '2022-10-03 12:14:15'
+                        archived_at: null
+                        label: kopi janji manis
+                      inventory_usage:
+                        id: 46
+                        warehouse_id: 1
+                        employee_id: 1
+                        warehouse:
+                          id: 1
+                          code: null
+                          name: CENTRAL WAREHOUSE
+                          address: null
+                          phone: null
+                          notes: null
+                          branch_id: 1
+                          created_by: null
+                          updated_by: null
+                          archived_by: null
+                          created_at: '2022-09-26 08:14:40'
+                          updated_at: '2022-09-26 08:14:40'
+                          archived_at: null
+                          label: CENTRAL WAREHOUSE
+  /inventory/usages/47/reject:
+    post:
+      tags:
+        - default
+      summary: inventory usage - reject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                id: 47
+                reason: reject with note
+      parameters:
+        - name: Tenant
+          in: header
+          schema:
+            type: string
+          example: '{{tenant}}'
+        - name: Timezone
+          in: header
+          schema:
+            type: string
+          example: '{{timezone}}'
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{auth_token}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.22.0
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 07 Oct 2022 06:59:50 GMT
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '300'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '299'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+                example: GET, POST, PUT, PATCH, DELETE, OPTIONS
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+                example: >-
+                  Tenant, Authorization, Content-Type, X-Requested-With, Origin,
+                  Timezone
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            Access-Control-Max-Age:
+              schema:
+                type: integer
+                example: '86400'
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  id: 47
+                  warehouse_id: 1
+                  employee_id: 1
+                  form:
+                    id: 39
+                    branch_id: 1
+                    date: '2022-10-07 13:51:46'
+                    number: IU22100008
+                    edited_number: null
+                    edited_notes: null
+                    notes: null
+                    created_by: 1
+                    updated_by: 1
+                    done: 0
+                    increment: 8
+                    increment_group: 202210
+                    formable_id: 47
+                    formable_type: InventoryUsage
+                    request_approval_to: 1
+                    approval_by: 1
+                    approval_at: '2022-10-07T06:59:50.484977Z'
+                    approval_reason: reject with note
+                    approval_status: -1
+                    request_cancellation_to: null
+                    request_cancellation_by: null
+                    request_cancellation_at: null
+                    request_cancellation_reason: null
+                    cancellation_approval_at: null
+                    cancellation_approval_by: null
+                    cancellation_approval_reason: null
+                    cancellation_status: null
+                    created_at: '2022-10-07 13:52:49'
+                    updated_at: '2022-10-07 13:59:50'
+                    request_close_to: null
+                    request_close_by: null
+                    request_close_at: null
+                    request_close_reason: null
+                    close_approval_at: null
+                    close_approval_by: null
+                    close_status: null
+                    request_approval_at: null
+                    close_approval_reason: null
+  /inventory/usages:
+    post:
+      tags:
+        - default
+      summary: inventory usage - create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                originalData:
+                  increment_group: '202210'
+                  date: '2022-10-07 13:51:46'
+                  warehouse_id: null
+                  warehouse_name: null
+                  employee_id: null
+                  employee_name: null
+                  request_approval_to: null
+                  approver_name: null
+                  approver_email: null
+                  notes: null
+                  items:
+                    - item_id: 7
+                      item_name: kopi janji manis
+                      item_label: kopi janji manis
+                      chart_of_account_id: 123
+                      chart_of_account_name: '[51107] ADMINISTRASI BANK'
+                      require_expiry_date: 0
+                      require_production_number: 0
+                      unit: PCS
+                      converter: 1
+                      quantity: '2'
+                      allocation_id: 1
+                      allocation_name: promosi
+                      notes: null
+                      more: false
+                      units:
+                        - id: 7
+                          label: PCS
+                          name: PCS
+                          converter: 1
+                          disabled: 0
+                          item_id: 7
+                          created_by: 1
+                          updated_by: 1
+                          created_at: '2022-09-30 09:03:42'
+                          updated_at: '2022-09-30 09:03:42'
+                          prices: []
+                        - id: 8
+                          label: box
+                          name: box
+                          converter: 24
+                          disabled: 0
+                          item_id: 7
+                          created_by: 1
+                          updated_by: 1
+                          created_at: '2022-09-30 09:03:42'
+                          updated_at: '2022-09-30 09:03:42'
+                          prices: []
+                      item:
+                        index: 0
+                        id: 7
+                        name: kopi janji manis
+                        label: kopi janji manis
+                        require_expiry_date: 0
+                        require_production_number: 0
+                        unit_default: 7
+                        unit_default_purchase: 7
+                        unit_default_sales: 7
+                        units:
+                          - id: 7
+                            label: PCS
+                            name: PCS
+                            converter: 1
+                            disabled: 0
+                            item_id: 7
+                            created_by: 1
+                            updated_by: 1
+                            created_at: '2022-09-30 09:03:42'
+                            updated_at: '2022-09-30 09:03:42'
+                            prices: []
+                          - id: 8
+                            label: box
+                            name: box
+                            converter: 24
+                            disabled: 0
+                            item_id: 7
+                            created_by: 1
+                            updated_by: 1
+                            created_at: '2022-09-30 09:03:42'
+                            updated_at: '2022-09-30 09:03:42'
+                            prices: []
+                        unit:
+                          id: 7
+                          label: PCS
+                          name: PCS
+                          converter: 1
+                          disabled: 0
+                          item_id: 7
+                          created_by: 1
+                          updated_by: 1
+                          created_at: '2022-09-30 09:03:42'
+                          updated_at: '2022-09-30 09:03:42'
+                          prices: []
+                    - item_id: null
+                      item_name: null
+                      item_label: null
+                      chart_of_account_id: null
+                      chart_of_account_name: null
+                      require_expiry_date: null
+                      require_production_number: null
+                      unit: null
+                      converter: null
+                      quantity: null
+                      allocation_id: null
+                      allocation_name: null
+                      notes: null
+                      more: false
+                      units:
+                        - label: ''
+                          name: ''
+                          converter: null
+                increment_group: '202210'
+                date: '2022-10-07 13:51:46'
+                warehouse_id: 1
+                warehouse_name: CENTRAL WAREHOUSE
+                employee_id: 1
+                employee_name: Jhon Doe
+                request_approval_to: 1
+                approver_name: admin admin
+                approver_email: rockydocky007@yahoo.com
+                notes: null
+                items:
+                  - item_id: 7
+                    item_name: kopi janji manis
+                    item_label: kopi janji manis
+                    chart_of_account_id: 123
+                    chart_of_account_name: '[51107] ADMINISTRASI BANK'
+                    require_expiry_date: 0
+                    require_production_number: 0
+                    unit: PCS
+                    converter: 1
+                    quantity: '2'
+                    allocation_id: 1
+                    allocation_name: promosi
+                    notes: null
+                    more: false
+                    units:
+                      - id: 7
+                        label: PCS
+                        name: PCS
+                        converter: 1
+                        disabled: 0
+                        item_id: 7
+                        created_by: 1
+                        updated_by: 1
+                        created_at: '2022-09-30 09:03:42'
+                        updated_at: '2022-09-30 09:03:42'
+                        prices: []
+                      - id: 8
+                        label: box
+                        name: box
+                        converter: 24
+                        disabled: 0
+                        item_id: 7
+                        created_by: 1
+                        updated_by: 1
+                        created_at: '2022-09-30 09:03:42'
+                        updated_at: '2022-09-30 09:03:42'
+                        prices: []
+                    item:
+                      index: 0
+                      id: 7
+                      name: kopi janji manis
+                      label: kopi janji manis
+                      require_expiry_date: 0
+                      require_production_number: 0
+                      unit_default: 7
+                      unit_default_purchase: 7
+                      unit_default_sales: 7
+                      units:
+                        - id: 7
+                          label: PCS
+                          name: PCS
+                          converter: 1
+                          disabled: 0
+                          item_id: 7
+                          created_by: 1
+                          updated_by: 1
+                          created_at: '2022-09-30 09:03:42'
+                          updated_at: '2022-09-30 09:03:42'
+                          prices: []
+                        - id: 8
+                          label: box
+                          name: box
+                          converter: 24
+                          disabled: 0
+                          item_id: 7
+                          created_by: 1
+                          updated_by: 1
+                          created_at: '2022-09-30 09:03:42'
+                          updated_at: '2022-09-30 09:03:42'
+                          prices: []
+                      unit:
+                        id: 7
+                        label: PCS
+                        name: PCS
+                        converter: 1
+                        disabled: 0
+                        item_id: 7
+                        created_by: 1
+                        updated_by: 1
+                        created_at: '2022-09-30 09:03:42'
+                        updated_at: '2022-09-30 09:03:42'
+                        prices: []
+                errors:
+                  errors: {}
+      parameters:
+        - name: Tenant
+          in: header
+          schema:
+            type: string
+          example: '{{tenant}}'
+        - name: Timezone
+          in: header
+          schema:
+            type: string
+          example: '{{timezone}}'
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{auth_token}}'
+      responses:
+        '201':
+          description: Created
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.22.0
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 07 Oct 2022 06:52:49 GMT
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '300'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '299'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+                example: GET, POST, PUT, PATCH, DELETE, OPTIONS
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+                example: >-
+                  Tenant, Authorization, Content-Type, X-Requested-With, Origin,
+                  Timezone
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            Access-Control-Max-Age:
+              schema:
+                type: integer
+                example: '86400'
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  warehouse_id: 1
+                  employee_id: 1
+                  id: 47
+                  warehouse:
+                    id: 1
+                    code: null
+                    name: CENTRAL WAREHOUSE
+                    address: null
+                    phone: null
+                    notes: null
+                    branch_id: 1
+                    created_by: null
+                    updated_by: null
+                    archived_by: null
+                    created_at: '2022-09-26 08:14:40'
+                    updated_at: '2022-09-26 08:14:40'
+                    archived_at: null
+                    label: CENTRAL WAREHOUSE
+                  form:
+                    id: 39
+                    branch_id: 1
+                    date: '2022-10-07 13:51:46'
+                    number: IU22100008
+                    edited_number: null
+                    edited_notes: null
+                    notes: null
+                    created_by: 1
+                    updated_by: 1
+                    done: 0
+                    increment: 8
+                    increment_group: 202210
+                    formable_id: 47
+                    formable_type: InventoryUsage
+                    request_approval_to:
+                      id: 1
+                      name: admin
+                      first_name: admin
+                      last_name: admin
+                      address: null
+                      phone: null
+                      email: rockydocky007@yahoo.com
+                      created_at: '2022-09-26 08:14:36'
+                      updated_at: '2022-09-26 08:14:36'
+                      branch_id: null
+                      warehouse_id: null
+                      full_name: admin admin
+                    approval_by: null
+                    approval_at: null
+                    approval_reason: null
+                    approval_status: 0
+                    request_cancellation_to: null
+                    request_cancellation_by: null
+                    request_cancellation_at: null
+                    request_cancellation_reason: null
+                    cancellation_approval_at: null
+                    cancellation_approval_by: null
+                    cancellation_approval_reason: null
+                    cancellation_status: null
+                    created_at: '2022-10-07 13:52:49'
+                    updated_at: '2022-10-07 13:52:49'
+                    request_close_to: null
+                    request_close_by: null
+                    request_close_at: null
+                    request_close_reason: null
+                    close_approval_at: null
+                    close_approval_by: null
+                    close_status: null
+                    request_approval_at: null
+                    close_approval_reason: null
+                  items:
+                    - id: 27
+                      inventory_usage_id: 47
+                      item_id: 7
+                      allocation_id: 1
+                      chart_of_account_id: 123
+                      quantity: 2
+                      expiry_date: '2022-10-07 13:52:49'
+                      production_number: null
+                      unit: PCS
+                      converter: 1
+                      notes: null
+                      allocation:
+                        id: 1
+                        code: null
+                        name: promosi
+                        notes: null
+                        branch_id: null
+                        created_by: 1
+                        updated_by: 1
+                        archived_by: null
+                        created_at: '2022-09-27 08:53:50'
+                        updated_at: '2022-09-27 08:53:50'
+                        archived_at: null
+                        label: promosi
+    get:
+      tags:
+        - default
+      summary: inventory usage
+      parameters:
+        - name: Tenant
+          in: header
+          schema:
+            type: string
+          example: '{{tenant}}'
+        - name: Timezone
+          in: header
+          schema:
+            type: string
+          example: '{{timezone}}'
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{auth_token}}'
+        - name: join
+          in: query
+          schema:
+            type: string
+          example: form,warehouse,items,item
+        - name: fields
+          in: query
+          schema:
+            type: string
+          example: inventory_usage.*
+        - name: sort_by
+          in: query
+          schema:
+            type: string
+          example: '-form.number'
+        - name: filter_form
+          in: query
+          schema:
+            type: string
+          example: notArchived;null
+        - name: filter_like
+          in: query
+          schema:
+            type: string
+          example: '{}'
+        - name: filter_date_min
+          in: query
+          schema:
+            type: string
+          example: '{"form.date":"2022-10-01+00:00:00"}'
+        - name: filter_date_max
+          in: query
+          schema:
+            type: string
+          example: '{"form.date":"2022-10-07+23:59:59"}'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: includes
+          in: query
+          schema:
+            type: string
+          example: form;warehouse;items;items.item
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.22.0
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 07 Oct 2022 06:49:37 GMT
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '300'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '299'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+                example: GET, POST, PUT, PATCH, DELETE, OPTIONS
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+                example: >-
+                  Tenant, Authorization, Content-Type, X-Requested-With, Origin,
+                  Timezone
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            Access-Control-Max-Age:
+              schema:
+                type: integer
+                example: '86400'
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  - id: 45
+                    warehouse_id: 1
+                    employee_id: 1
+                    form:
+                      id: 37
+                      branch_id: 1
+                      date: '2022-10-04 22:42:48'
+                      number: IU22100006
+                      edited_number: null
+                      edited_notes: null
+                      notes: null
+                      created_by: 1
+                      updated_by: 1
+                      done: 0
+                      increment: 6
+                      increment_group: 202210
+                      formable_id: 45
+                      formable_type: InventoryUsage
+                      request_approval_to: 1
+                      approval_by: null
+                      approval_at: null
+                      approval_reason: null
+                      approval_status: 0
+                      request_cancellation_to: null
+                      request_cancellation_by: null
+                      request_cancellation_at: null
+                      request_cancellation_reason: null
+                      cancellation_approval_at: null
+                      cancellation_approval_by: null
+                      cancellation_approval_reason: null
+                      cancellation_status: null
+                      created_at: '2022-10-04 22:42:09'
+                      updated_at: '2022-10-04 22:42:09'
+                      request_close_to: null
+                      request_close_by: null
+                      request_close_at: null
+                      request_close_reason: null
+                      close_approval_at: null
+                      close_approval_by: null
+                      close_status: null
+                      request_approval_at: null
+                      close_approval_reason: null
+                    warehouse:
+                      id: 1
+                      code: null
+                      name: CENTRAL WAREHOUSE
+                      address: null
+                      phone: null
+                      notes: null
+                      branch_id: 1
+                      created_by: null
+                      updated_by: null
+                      archived_by: null
+                      created_at: '2022-09-26 08:14:40'
+                      updated_at: '2022-09-26 08:14:40'
+                      archived_at: null
+                      label: CENTRAL WAREHOUSE
+                    items:
+                      - id: 25
+                        inventory_usage_id: 45
+                        item_id: 7
+                        allocation_id: 1
+                        chart_of_account_id: 128
+                        quantity: 11
+                        expiry_date: '2022-10-07 13:49:37'
+                        production_number: null
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        item:
+                          id: 7
+                          chart_of_account_id: 14
+                          code: null
+                          barcode: null
+                          name: kopi janji manis
+                          size: null
+                          color: null
+                          weight: null
+                          notes: null
+                          taxable: 1
+                          require_production_number: 0
+                          require_expiry_date: 0
+                          stock: 541
+                          stock_reminder: 0
+                          unit_default: 7
+                          unit_default_purchase: 7
+                          unit_default_sales: 7
+                          created_by: 1
+                          updated_by: 1
+                          archived_by: null
+                          created_at: '2022-09-30 09:03:42'
+                          updated_at: '2022-10-03 12:14:15'
+                          archived_at: null
+                          label: kopi janji manis
+                  - id: 44
+                    warehouse_id: 1
+                    employee_id: 1
+                    form:
+                      id: 36
+                      branch_id: 1
+                      date: '2022-10-04 22:41:41'
+                      number: IU22100005
+                      edited_number: null
+                      edited_notes: null
+                      notes: null
+                      created_by: 1
+                      updated_by: 1
+                      done: 0
+                      increment: 5
+                      increment_group: 202210
+                      formable_id: 44
+                      formable_type: InventoryUsage
+                      request_approval_to: 1
+                      approval_by: null
+                      approval_at: null
+                      approval_reason: null
+                      approval_status: 0
+                      request_cancellation_to: null
+                      request_cancellation_by: null
+                      request_cancellation_at: null
+                      request_cancellation_reason: null
+                      cancellation_approval_at: null
+                      cancellation_approval_by: null
+                      cancellation_approval_reason: null
+                      cancellation_status: null
+                      created_at: '2022-10-04 22:41:29'
+                      updated_at: '2022-10-04 22:41:29'
+                      request_close_to: null
+                      request_close_by: null
+                      request_close_at: null
+                      request_close_reason: null
+                      close_approval_at: null
+                      close_approval_by: null
+                      close_status: null
+                      request_approval_at: null
+                      close_approval_reason: null
+                    warehouse:
+                      id: 1
+                      code: null
+                      name: CENTRAL WAREHOUSE
+                      address: null
+                      phone: null
+                      notes: null
+                      branch_id: 1
+                      created_by: null
+                      updated_by: null
+                      archived_by: null
+                      created_at: '2022-09-26 08:14:40'
+                      updated_at: '2022-09-26 08:14:40'
+                      archived_at: null
+                      label: CENTRAL WAREHOUSE
+                    items:
+                      - id: 24
+                        inventory_usage_id: 44
+                        item_id: 7
+                        allocation_id: 1
+                        chart_of_account_id: 126
+                        quantity: 12
+                        expiry_date: '2022-10-07 13:49:37'
+                        production_number: null
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        item:
+                          id: 7
+                          chart_of_account_id: 14
+                          code: null
+                          barcode: null
+                          name: kopi janji manis
+                          size: null
+                          color: null
+                          weight: null
+                          notes: null
+                          taxable: 1
+                          require_production_number: 0
+                          require_expiry_date: 0
+                          stock: 541
+                          stock_reminder: 0
+                          unit_default: 7
+                          unit_default_purchase: 7
+                          unit_default_sales: 7
+                          created_by: 1
+                          updated_by: 1
+                          archived_by: null
+                          created_at: '2022-09-30 09:03:42'
+                          updated_at: '2022-10-03 12:14:15'
+                          archived_at: null
+                          label: kopi janji manis
+                  - id: 43
+                    warehouse_id: 1
+                    employee_id: 1
+                    form:
+                      id: 35
+                      branch_id: 1
+                      date: '2022-10-03 12:10:18'
+                      number: IU22100004
+                      edited_number: null
+                      edited_notes: null
+                      notes: null
+                      created_by: 1
+                      updated_by: 2
+                      done: 0
+                      increment: 4
+                      increment_group: 202210
+                      formable_id: 43
+                      formable_type: InventoryUsage
+                      request_approval_to: 1
+                      approval_by: 2
+                      approval_at: '2022-10-03 05:14:15'
+                      approval_reason: null
+                      approval_status: 1
+                      request_cancellation_to: null
+                      request_cancellation_by: null
+                      request_cancellation_at: null
+                      request_cancellation_reason: null
+                      cancellation_approval_at: null
+                      cancellation_approval_by: null
+                      cancellation_approval_reason: null
+                      cancellation_status: null
+                      created_at: '2022-10-03 12:10:53'
+                      updated_at: '2022-10-03 12:14:15'
+                      request_close_to: null
+                      request_close_by: null
+                      request_close_at: null
+                      request_close_reason: null
+                      close_approval_at: null
+                      close_approval_by: null
+                      close_status: null
+                      request_approval_at: null
+                      close_approval_reason: null
+                    warehouse:
+                      id: 1
+                      code: null
+                      name: CENTRAL WAREHOUSE
+                      address: null
+                      phone: null
+                      notes: null
+                      branch_id: 1
+                      created_by: null
+                      updated_by: null
+                      archived_by: null
+                      created_at: '2022-09-26 08:14:40'
+                      updated_at: '2022-09-26 08:14:40'
+                      archived_at: null
+                      label: CENTRAL WAREHOUSE
+                    items:
+                      - id: 23
+                        inventory_usage_id: 43
+                        item_id: 7
+                        allocation_id: 1
+                        chart_of_account_id: 124
+                        quantity: 12
+                        expiry_date: '2022-10-07 13:49:37'
+                        production_number: null
+                        unit: PCS
+                        converter: 1
+                        notes: demo
+                        item:
+                          id: 7
+                          chart_of_account_id: 14
+                          code: null
+                          barcode: null
+                          name: kopi janji manis
+                          size: null
+                          color: null
+                          weight: null
+                          notes: null
+                          taxable: 1
+                          require_production_number: 0
+                          require_expiry_date: 0
+                          stock: 541
+                          stock_reminder: 0
+                          unit_default: 7
+                          unit_default_purchase: 7
+                          unit_default_sales: 7
+                          created_by: 1
+                          updated_by: 1
+                          archived_by: null
+                          created_at: '2022-09-30 09:03:42'
+                          updated_at: '2022-10-03 12:14:15'
+                          archived_at: null
+                          label: kopi janji manis
+                  - id: 42
+                    warehouse_id: 1
+                    employee_id: 1
+                    form:
+                      id: 34
+                      branch_id: 1
+                      date: '2022-10-03 09:35:38'
+                      number: IU22100003
+                      edited_number: null
+                      edited_notes: null
+                      notes: null
+                      created_by: 1
+                      updated_by: 2
+                      done: 0
+                      increment: 3
+                      increment_group: 202210
+                      formable_id: 42
+                      formable_type: InventoryUsage
+                      request_approval_to: 1
+                      approval_by: 2
+                      approval_at: '2022-10-03 02:40:37'
+                      approval_reason: null
+                      approval_status: 1
+                      request_cancellation_to: null
+                      request_cancellation_by: null
+                      request_cancellation_at: null
+                      request_cancellation_reason: null
+                      cancellation_approval_at: null
+                      cancellation_approval_by: null
+                      cancellation_approval_reason: null
+                      cancellation_status: null
+                      created_at: '2022-10-03 09:37:35'
+                      updated_at: '2022-10-03 09:40:37'
+                      request_close_to: null
+                      request_close_by: null
+                      request_close_at: null
+                      request_close_reason: null
+                      close_approval_at: null
+                      close_approval_by: null
+                      close_status: null
+                      request_approval_at: null
+                      close_approval_reason: null
+                    warehouse:
+                      id: 1
+                      code: null
+                      name: CENTRAL WAREHOUSE
+                      address: null
+                      phone: null
+                      notes: null
+                      branch_id: 1
+                      created_by: null
+                      updated_by: null
+                      archived_by: null
+                      created_at: '2022-09-26 08:14:40'
+                      updated_at: '2022-09-26 08:14:40'
+                      archived_at: null
+                      label: CENTRAL WAREHOUSE
+                    items:
+                      - id: 22
+                        inventory_usage_id: 42
+                        item_id: 7
+                        allocation_id: 1
+                        chart_of_account_id: 150
+                        quantity: 11
+                        expiry_date: '2022-10-07 13:49:37'
+                        production_number: null
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        item:
+                          id: 7
+                          chart_of_account_id: 14
+                          code: null
+                          barcode: null
+                          name: kopi janji manis
+                          size: null
+                          color: null
+                          weight: null
+                          notes: null
+                          taxable: 1
+                          require_production_number: 0
+                          require_expiry_date: 0
+                          stock: 541
+                          stock_reminder: 0
+                          unit_default: 7
+                          unit_default_purchase: 7
+                          unit_default_sales: 7
+                          created_by: 1
+                          updated_by: 1
+                          archived_by: null
+                          created_at: '2022-09-30 09:03:42'
+                          updated_at: '2022-10-03 12:14:15'
+                          archived_at: null
+                          label: kopi janji manis
+                  - id: 41
+                    warehouse_id: 1
+                    employee_id: 1
+                    form:
+                      id: 33
+                      branch_id: 1
+                      date: '2022-10-03 09:32:27'
+                      number: IU22100002
+                      edited_number: null
+                      edited_notes: null
+                      notes: null
+                      created_by: 1
+                      updated_by: 1
+                      done: 0
+                      increment: 2
+                      increment_group: 202210
+                      formable_id: 41
+                      formable_type: InventoryUsage
+                      request_approval_to: 2
+                      approval_by: 1
+                      approval_at: '2022-10-03 02:33:25'
+                      approval_reason: null
+                      approval_status: 1
+                      request_cancellation_to: null
+                      request_cancellation_by: null
+                      request_cancellation_at: null
+                      request_cancellation_reason: null
+                      cancellation_approval_at: null
+                      cancellation_approval_by: null
+                      cancellation_approval_reason: null
+                      cancellation_status: null
+                      created_at: '2022-10-03 09:33:17'
+                      updated_at: '2022-10-03 09:33:25'
+                      request_close_to: null
+                      request_close_by: null
+                      request_close_at: null
+                      request_close_reason: null
+                      close_approval_at: null
+                      close_approval_by: null
+                      close_status: null
+                      request_approval_at: null
+                      close_approval_reason: null
+                    warehouse:
+                      id: 1
+                      code: null
+                      name: CENTRAL WAREHOUSE
+                      address: null
+                      phone: null
+                      notes: null
+                      branch_id: 1
+                      created_by: null
+                      updated_by: null
+                      archived_by: null
+                      created_at: '2022-09-26 08:14:40'
+                      updated_at: '2022-09-26 08:14:40'
+                      archived_at: null
+                      label: CENTRAL WAREHOUSE
+                    items:
+                      - id: 21
+                        inventory_usage_id: 41
+                        item_id: 7
+                        allocation_id: 1
+                        chart_of_account_id: 124
+                        quantity: 1
+                        expiry_date: '2022-10-07 13:49:37'
+                        production_number: null
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        item:
+                          id: 7
+                          chart_of_account_id: 14
+                          code: null
+                          barcode: null
+                          name: kopi janji manis
+                          size: null
+                          color: null
+                          weight: null
+                          notes: null
+                          taxable: 1
+                          require_production_number: 0
+                          require_expiry_date: 0
+                          stock: 541
+                          stock_reminder: 0
+                          unit_default: 7
+                          unit_default_purchase: 7
+                          unit_default_sales: 7
+                          created_by: 1
+                          updated_by: 1
+                          archived_by: null
+                          created_at: '2022-09-30 09:03:42'
+                          updated_at: '2022-10-03 12:14:15'
+                          archived_at: null
+                          label: kopi janji manis
+                  - id: 40
+                    warehouse_id: 1
+                    employee_id: 1
+                    form:
+                      id: 32
+                      branch_id: 1
+                      date: '2022-10-02 13:55:25'
+                      number: IU22100001
+                      edited_number: null
+                      edited_notes: null
+                      notes: null
+                      created_by: 2
+                      updated_by: 2
+                      done: 0
+                      increment: 1
+                      increment_group: 202210
+                      formable_id: 40
+                      formable_type: InventoryUsage
+                      request_approval_to: 1
+                      approval_by: null
+                      approval_at: null
+                      approval_reason: null
+                      approval_status: 0
+                      request_cancellation_to: null
+                      request_cancellation_by: null
+                      request_cancellation_at: null
+                      request_cancellation_reason: null
+                      cancellation_approval_at: null
+                      cancellation_approval_by: null
+                      cancellation_approval_reason: null
+                      cancellation_status: null
+                      created_at: '2022-10-02 13:56:23'
+                      updated_at: '2022-10-02 13:56:23'
+                      request_close_to: null
+                      request_close_by: null
+                      request_close_at: null
+                      request_close_reason: null
+                      close_approval_at: null
+                      close_approval_by: null
+                      close_status: null
+                      request_approval_at: null
+                      close_approval_reason: null
+                    warehouse:
+                      id: 1
+                      code: null
+                      name: CENTRAL WAREHOUSE
+                      address: null
+                      phone: null
+                      notes: null
+                      branch_id: 1
+                      created_by: null
+                      updated_by: null
+                      archived_by: null
+                      created_at: '2022-09-26 08:14:40'
+                      updated_at: '2022-09-26 08:14:40'
+                      archived_at: null
+                      label: CENTRAL WAREHOUSE
+                    items:
+                      - id: 20
+                        inventory_usage_id: 40
+                        item_id: 7
+                        allocation_id: 1
+                        chart_of_account_id: 124
+                        quantity: 12
+                        expiry_date: '2022-10-07 13:49:37'
+                        production_number: null
+                        unit: PCS
+                        converter: 1
+                        notes: null
+                        item:
+                          id: 7
+                          chart_of_account_id: 14
+                          code: null
+                          barcode: null
+                          name: kopi janji manis
+                          size: null
+                          color: null
+                          weight: null
+                          notes: null
+                          taxable: 1
+                          require_production_number: 0
+                          require_expiry_date: 0
+                          stock: 541
+                          stock_reminder: 0
+                          unit_default: 7
+                          unit_default_purchase: 7
+                          unit_default_sales: 7
+                          created_by: 1
+                          updated_by: 1
+                          archived_by: null
+                          created_at: '2022-09-30 09:03:42'
+                          updated_at: '2022-10-03 12:14:15'
+                          archived_at: null
+                          label: kopi janji manis
+                links:
+                  first: https://project-cendekia.site/api/v1/inventory/usages?page=1
+                  last: https://project-cendekia.site/api/v1/inventory/usages?page=1
+                  prev: null
+                  next: null
+                meta:
+                  current_page: 1
+                  from: 1
+                  last_page: 1
+                  path: https://project-cendekia.site/api/v1/inventory/usages
+                  per_page: '10'
+                  to: 6
+                  total: 6
+  /inventory/usages/43/histories:
+    get:
+      tags:
+        - default
+      summary: inventory usage - histories
+      parameters:
+        - name: Tenant
+          in: header
+          schema:
+            type: string
+          example: '{{tenant}}'
+        - name: Timezone
+          in: header
+          schema:
+            type: string
+          example: '{{timezone}}'
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{auth_token}}'
+        - name: sort_by
+          in: query
+          schema:
+            type: string
+          example: '-user_activities.date'
+        - name: includes
+          in: query
+          schema:
+            type: string
+          example: user
+        - name: filter_like
+          in: query
+          schema:
+            type: string
+          example: '{}'
+        - name: or_filter_where_has_like[]
+          in: query
+          schema:
+            type: string
+          example: '{"user":{}}'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.22.0
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 07 Oct 2022 07:01:51 GMT
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '300'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '299'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+                example: GET, POST, PUT, PATCH, DELETE, OPTIONS
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+                example: >-
+                  Tenant, Authorization, Content-Type, X-Requested-With, Origin,
+                  Timezone
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            Access-Control-Max-Age:
+              schema:
+                type: integer
+                example: '86400'
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  - id: 43
+                    table_type: InventoryUsage
+                    table_id: 43
+                    number: IU22100004
+                    date: '2022-10-03 12:14:15'
+                    user_id: 2
+                    activity: Approved
+                    formable_id: 43
+                    user:
+                      id: 2
+                      name: test123
+                      first_name: test123
+                      last_name: test123
+                      address: null
+                      phone: null
+                      email: test123@point
+                      created_at: '2022-09-26 08:14:25'
+                      updated_at: '2022-09-26 08:14:25'
+                      branch_id: null
+                      warehouse_id: null
+                      full_name: test123 test123
+                  - id: 42
+                    table_type: InventoryUsage
+                    table_id: 43
+                    number: IU22100004
+                    date: '2022-10-03 12:10:53'
+                    user_id: 1
+                    activity: Created
+                    formable_id: 43
+                    user:
+                      id: 1
+                      name: admin
+                      first_name: admin
+                      last_name: admin
+                      address: null
+                      phone: null
+                      email: rockydocky007@yahoo.com
+                      created_at: '2022-09-26 08:14:36'
+                      updated_at: '2022-09-26 08:14:36'
+                      branch_id: null
+                      warehouse_id: null
+                      full_name: admin admin
+                links:
+                  first: >-
+                    https://project-cendekia.site/api/v1/inventory/usages/43/histories?page=1
+                  last: >-
+                    https://project-cendekia.site/api/v1/inventory/usages/43/histories?page=1
+                  prev: null
+                  next: null
+                meta:
+                  current_page: 1
+                  from: 1
+                  last_page: 1
+                  path: >-
+                    https://project-cendekia.site/api/v1/inventory/usages/43/histories
+                  per_page: '10'
+                  to: 2
+                  total: 2

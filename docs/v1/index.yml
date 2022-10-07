@@ -47,6 +47,14 @@ paths:
     $ref: './inventory/transfer-items/receive-items-by-id.yml'
   /inventory/receive-items/export:
     $ref: './inventory/transfer-items/receive-items-export.yml'
+  /inventory/usages:
+    $ref: ./inventory/inventory-usage/inventory_usages.yaml
+  /inventory/usages/{id}/histories:
+    $ref: ./inventory/inventory-usage/inventory_usages_id_histories.yaml
+  /inventory/usages/{id}/approve:
+    $ref: ./inventory/inventory-usage/inventory_usages_id_approve.yaml
+  /inventory/usages/{id}/reject:
+    $ref: ./inventory/inventory-usage/inventory_usages_id_reject.yaml
   /api/v1/finance/cash-advances:
     $ref: './finance/cash-advances/cash-advances.yml'
   /api/v1/finance/cash-advances/{id}:

@@ -1,0 +1,139 @@
+post:
+  tags:
+    - Inventory Usage
+  summary: inventory usage - approve
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - id
+          properties:
+            id:
+              type: integer
+          example:
+            id: '46'
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '46'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              warehouse_id:
+                type: integer
+              employee_id:
+                type: integer
+              form:
+                $ref: '../../sales/delivery-orders/components/responses/properties/form.yaml'
+          example:
+            data:
+              id: 46
+              warehouse_id: 1
+              employee_id: 1
+              form:
+                id: 38
+                branch_id: 1
+                date: '2022-10-07 13:51:46'
+                number: IU22100007
+                edited_number: null
+                edited_notes: null
+                notes: null
+                created_by: 1
+                updated_by: 1
+                done: 0
+                increment: 7
+                increment_group: 202210
+                formable_id: 46
+                formable_type: InventoryUsage
+                request_approval_to: 1
+                approval_by: 1
+                approval_at: '2022-10-07T06:57:27.659339Z'
+                approval_reason: null
+                approval_status: 1
+                request_cancellation_to: null
+                request_cancellation_by: null
+                request_cancellation_at: null
+                request_cancellation_reason: null
+                cancellation_approval_at: null
+                cancellation_approval_by: null
+                cancellation_approval_reason: null
+                cancellation_status: null
+                created_at: '2022-10-07 13:52:29'
+                updated_at: '2022-10-07 13:57:27'
+                request_close_to: null
+                request_close_by: null
+                request_close_at: null
+                request_close_reason: null
+                close_approval_at: null
+                close_approval_by: null
+                close_status: null
+                request_approval_at: null
+                close_approval_reason: null
+              items:
+                - id: 26
+                  inventory_usage_id: 46
+                  item_id: 7
+                  allocation_id: 1
+                  chart_of_account_id: 123
+                  quantity: 2
+                  expiry_date: '2022-10-07 13:57:27'
+                  production_number: null
+                  unit: PCS
+                  converter: 1
+                  notes: null
+                  item:
+                    id: 7
+                    chart_of_account_id: 14
+                    code: null
+                    barcode: null
+                    name: kopi janji manis
+                    size: null
+                    color: null
+                    weight: null
+                    notes: null
+                    taxable: 1
+                    require_production_number: 0
+                    require_expiry_date: 0
+                    stock: 541
+                    stock_reminder: 0
+                    unit_default: 7
+                    unit_default_purchase: 7
+                    unit_default_sales: 7
+                    created_by: 1
+                    updated_by: 1
+                    archived_by: null
+                    created_at: '2022-09-30 09:03:42'
+                    updated_at: '2022-10-03 12:14:15'
+                    archived_at: null
+                    label: kopi janji manis
+                  inventory_usage:
+                    id: 46
+                    warehouse_id: 1
+                    employee_id: 1
+                    warehouse:
+                      id: 1
+                      code: null
+                      name: CENTRAL WAREHOUSE
+                      address: null
+                      phone: null
+                      notes: null
+                      branch_id: 1
+                      created_by: null
+                      updated_by: null
+                      archived_by: null
+                      created_at: '2022-09-26 08:14:40'
+                      updated_at: '2022-09-26 08:14:40'
+                      archived_at: null
+                      label: CENTRAL WAREHOUSE

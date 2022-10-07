@@ -1,0 +1,24 @@
+type: object
+properties:
+  increment_group:
+    type: string
+  date:
+    type: string
+  warehouse_id:
+    type: integer
+  warehouse_name:
+    type: string
+  employee_id:
+    type: integer
+  employee_name:
+    type: string
+  request_approval_to:
+    type: integer
+  approver_name:
+    type: string
+  approver_email:
+    type: string
+  notes:
+    type: string
+  items:
+    type: array
