@@ -1,0 +1,540 @@
+post:
+  tags:
+    - Inventory Usage
+  summary: inventory usage - create
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - warehouse_id
+            - employee_id
+            - request_approval_to
+            - items
+          properties:
+            originalData:
+              $ref: './components/requests/properties/inventory-usage-original-data.yaml'
+            $ref: './components/requests/properties/inventory-usage-form.yaml'
+            items:
+              type: array
+              items:
+                type: object
+                requred:
+                  - item_id
+                  - chart_of_account_id
+                  - quantity
+                  - unit
+                  - converter
+                  - allocation_id
+                properties:
+                  $ref: './components/requests/properties/inventory-usage-item.yaml'
+          example:
+            originalData:
+              increment_group: '202210'
+              date: '2022-10-07 13:51:46'
+              warehouse_id: null
+              warehouse_name: null
+              employee_id: null
+              employee_name: null
+              request_approval_to: null
+              approver_name: null
+              approver_email: null
+              notes: null
+              items:
+                - item_id: 7
+                  item_name: kopi janji manis
+                  item_label: kopi janji manis
+                  chart_of_account_id: 123
+                  chart_of_account_name: '[51107] ADMINISTRASI BANK'
+                  require_expiry_date: 0
+                  require_production_number: 0
+                  unit: PCS
+                  converter: 1
+                  quantity: '2'
+                  allocation_id: 1
+                  allocation_name: promosi
+                  notes: null
+                  more: false
+                  units:
+                    - id: 7
+                      label: PCS
+                      name: PCS
+                      converter: 1
+                      disabled: 0
+                      item_id: 7
+                      created_by: 1
+                      updated_by: 1
+                      created_at: '2022-09-30 09:03:42'
+                      updated_at: '2022-09-30 09:03:42'
+                      prices: []
+                    - id: 8
+                      label: box
+                      name: box
+                      converter: 24
+                      disabled: 0
+                      item_id: 7
+                      created_by: 1
+                      updated_by: 1
+                      created_at: '2022-09-30 09:03:42'
+                      updated_at: '2022-09-30 09:03:42'
+                      prices: []
+                  item:
+                    index: 0
+                    id: 7
+                    name: kopi janji manis
+                    label: kopi janji manis
+                    require_expiry_date: 0
+                    require_production_number: 0
+                    unit_default: 7
+                    unit_default_purchase: 7
+                    unit_default_sales: 7
+                    units:
+                      - id: 7
+                        label: PCS
+                        name: PCS
+                        converter: 1
+                        disabled: 0
+                        item_id: 7
+                        created_by: 1
+                        updated_by: 1
+                        created_at: '2022-09-30 09:03:42'
+                        updated_at: '2022-09-30 09:03:42'
+                        prices: []
+                      - id: 8
+                        label: box
+                        name: box
+                        converter: 24
+                        disabled: 0
+                        item_id: 7
+                        created_by: 1
+                        updated_by: 1
+                        created_at: '2022-09-30 09:03:42'
+                        updated_at: '2022-09-30 09:03:42'
+                        prices: []
+                    unit:
+                      id: 7
+                      label: PCS
+                      name: PCS
+                      converter: 1
+                      disabled: 0
+                      item_id: 7
+                      created_by: 1
+                      updated_by: 1
+                      created_at: '2022-09-30 09:03:42'
+                      updated_at: '2022-09-30 09:03:42'
+                      prices: []
+            increment_group: '202210'
+            date: '2022-10-07 13:51:46'
+            warehouse_id: 1
+            warehouse_name: CENTRAL WAREHOUSE
+            employee_id: 1
+            employee_name: Jhon Doe
+            request_approval_to: 1
+            approver_name: admin admin
+            approver_email: rockydocky007@yahoo.com
+            notes: null
+            items:
+              - item_id: 7
+                item_name: kopi janji manis
+                item_label: kopi janji manis
+                chart_of_account_id: 123
+                chart_of_account_name: '[51107] ADMINISTRASI BANK'
+                require_expiry_date: 0
+                require_production_number: 0
+                unit: PCS
+                converter: 1
+                quantity: '2'
+                allocation_id: 1
+                allocation_name: promosi
+                notes: null
+                more: false
+                units:
+                  - id: 7
+                    label: PCS
+                    name: PCS
+                    converter: 1
+                    disabled: 0
+                    item_id: 7
+                    created_by: 1
+                    updated_by: 1
+                    created_at: '2022-09-30 09:03:42'
+                    updated_at: '2022-09-30 09:03:42'
+                    prices: []
+                  - id: 8
+                    label: box
+                    name: box
+                    converter: 24
+                    disabled: 0
+                    item_id: 7
+                    created_by: 1
+                    updated_by: 1
+                    created_at: '2022-09-30 09:03:42'
+                    updated_at: '2022-09-30 09:03:42'
+                    prices: []
+                item:
+                  index: 0
+                  id: 7
+                  name: kopi janji manis
+                  label: kopi janji manis
+                  require_expiry_date: 0
+                  require_production_number: 0
+                  unit_default: 7
+                  unit_default_purchase: 7
+                  unit_default_sales: 7
+                  units:
+                    - id: 7
+                      label: PCS
+                      name: PCS
+                      converter: 1
+                      disabled: 0
+                      item_id: 7
+                      created_by: 1
+                      updated_by: 1
+                      created_at: '2022-09-30 09:03:42'
+                      updated_at: '2022-09-30 09:03:42'
+                      prices: []
+                    - id: 8
+                      label: box
+                      name: box
+                      converter: 24
+                      disabled: 0
+                      item_id: 7
+                      created_by: 1
+                      updated_by: 1
+                      created_at: '2022-09-30 09:03:42'
+                      updated_at: '2022-09-30 09:03:42'
+                      prices: []
+                  unit:
+                    id: 7
+                    label: PCS
+                    name: PCS
+                    converter: 1
+                    disabled: 0
+                    item_id: 7
+                    created_by: 1
+                    updated_by: 1
+                    created_at: '2022-09-30 09:03:42'
+                    updated_at: '2022-09-30 09:03:42'
+                    prices: []
+            errors:
+              errors: {}
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              $ref: './components/responses/properties/inventory-usages.yaml'
+          example:
+            data:
+              warehouse_id: 1
+              employee_id: 1
+              id: 47
+              warehouse:
+                id: 1
+                code: null
+                name: CENTRAL WAREHOUSE
+                address: null
+                phone: null
+                notes: null
+                branch_id: 1
+                created_by: null
+                updated_by: null
+                archived_by: null
+                created_at: '2022-09-26 08:14:40'
+                updated_at: '2022-09-26 08:14:40'
+                archived_at: null
+                label: CENTRAL WAREHOUSE
+              form:
+                id: 39
+                branch_id: 1
+                date: '2022-10-07 13:51:46'
+                number: IU22100008
+                edited_number: null
+                edited_notes: null
+                notes: null
+                created_by: 1
+                updated_by: 1
+                done: 0
+                increment: 8
+                increment_group: 202210
+                formable_id: 47
+                formable_type: InventoryUsage
+                request_approval_to:
+                  id: 1
+                  name: admin
+                  first_name: admin
+                  last_name: admin
+                  address: null
+                  phone: null
+                  email: rockydocky007@yahoo.com
+                  created_at: '2022-09-26 08:14:36'
+                  updated_at: '2022-09-26 08:14:36'
+                  branch_id: null
+                  warehouse_id: null
+                  full_name: admin admin
+                approval_by: null
+                approval_at: null
+                approval_reason: null
+                approval_status: 0
+                request_cancellation_to: null
+                request_cancellation_by: null
+                request_cancellation_at: null
+                request_cancellation_reason: null
+                cancellation_approval_at: null
+                cancellation_approval_by: null
+                cancellation_approval_reason: null
+                cancellation_status: null
+                created_at: '2022-10-07 13:52:49'
+                updated_at: '2022-10-07 13:52:49'
+                request_close_to: null
+                request_close_by: null
+                request_close_at: null
+                request_close_reason: null
+                close_approval_at: null
+                close_approval_by: null
+                close_status: null
+                request_approval_at: null
+                close_approval_reason: null
+              items:
+                - id: 27
+                  inventory_usage_id: 47
+                  item_id: 7
+                  allocation_id: 1
+                  chart_of_account_id: 123
+                  quantity: 2
+                  expiry_date: '2022-10-07 13:52:49'
+                  production_number: null
+                  unit: PCS
+                  converter: 1
+                  notes: null
+                  allocation:
+                    id: 1
+                    code: null
+                    name: promosi
+                    notes: null
+                    branch_id: null
+                    created_by: 1
+                    updated_by: 1
+                    archived_by: null
+                    created_at: '2022-09-27 08:53:50'
+                    updated_at: '2022-09-27 08:53:50'
+                    archived_at: null
+                    label: promosi
+get:
+  tags:
+    - Inventory Usage
+  summary: inventory usage - all
+  parameters:
+    - name: join
+      in: query
+      schema:
+        type: string
+      example: form,warehouse,items,item
+    - name: fields
+      in: query
+      schema:
+        type: string
+      example: inventory_usage.*
+    - name: sort_by
+      in: query
+      schema:
+        type: string
+      example: '-form.number'
+    - name: filter_form
+      in: query
+      schema:
+        type: string
+      example: notArchived;null
+    - name: filter_like
+      in: query
+      schema:
+        type: string
+      example: '{}'
+    - name: filter_date_min
+      in: query
+      schema:
+        type: string
+      example: '{"form.date":"2022-10-01+00:00:00"}'
+    - name: filter_date_max
+      in: query
+      schema:
+        type: string
+      example: '{"form.date":"2022-10-07+23:59:59"}'
+    - name: limit
+      in: query
+      schema:
+        type: integer
+      example: '10'
+    - name: includes
+      in: query
+      schema:
+        type: string
+      example: form;warehouse;items;items.item
+    - name: page
+      in: query
+      schema:
+        type: integer
+      example: '1'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              meta:
+                $ref: ./components/responses/properties/meta.yaml
+              links:
+                $ref: ./components/responses/properties/links.yaml
+              data:
+                $ref: ./components/responses/properties/inventory-usages.yaml            
+          example:
+            data:
+              - id: 45
+                warehouse_id: 1
+                employee_id: 1
+                form:
+                  id: 37
+                  branch_id: 1
+                  date: '2022-10-04 22:42:48'
+                  number: IU22100006
+                  edited_number: null
+                  edited_notes: null
+                  notes: null
+                  created_by: 1
+                  updated_by: 1
+                  done: 0
+                  increment: 6
+                  increment_group: 202210
+                  formable_id: 45
+                  formable_type: InventoryUsage
+                  request_approval_to: 1
+                  approval_by: null
+                  approval_at: null
+                  approval_reason: null
+                  approval_status: 0
+                  request_cancellation_to: null
+                  request_cancellation_by: null
+                  request_cancellation_at: null
+                  request_cancellation_reason: null
+                  cancellation_approval_at: null
+                  cancellation_approval_by: null
+                  cancellation_approval_reason: null
+                  cancellation_status: null
+                  created_at: '2022-10-04 22:42:09'
+                  updated_at: '2022-10-04 22:42:09'
+                  request_close_to: null
+                  request_close_by: null
+                  request_close_at: null
+                  request_close_reason: null
+                  close_approval_at: null
+                  close_approval_by: null
+                  close_status: null
+                  request_approval_at: null
+                  close_approval_reason: null
+                warehouse:
+                  id: 1
+                  code: null
+                  name: CENTRAL WAREHOUSE
+                  address: null
+                  phone: null
+                  notes: null
+                  branch_id: 1
+                  created_by: null
+                  updated_by: null
+                  archived_by: null
+                  created_at: '2022-09-26 08:14:40'
+                  updated_at: '2022-09-26 08:14:40'
+                  archived_at: null
+                  label: CENTRAL WAREHOUSE
+                items:
+                  - id: 25
+                    inventory_usage_id: 45
+                    item_id: 7
+                    allocation_id: 1
+                    chart_of_account_id: 128
+                    quantity: 11
+                    expiry_date: '2022-10-07 13:49:37'
+                    production_number: null
+                    unit: PCS
+                    converter: 1
+                    notes: null
+                    item:
+                      id: 7
+                      chart_of_account_id: 14
+                      code: null
+                      barcode: null
+                      name: kopi janji manis
+                      size: null
+                      color: null
+                      weight: null
+                      notes: null
+                      taxable: 1
+                      require_production_number: 0
+                      require_expiry_date: 0
+                      stock: 541
+                      stock_reminder: 0
+                      unit_default: 7
+                      unit_default_purchase: 7
+                      unit_default_sales: 7
+                      created_by: 1
+                      updated_by: 1
+                      archived_by: null
+                      created_at: '2022-09-30 09:03:42'
+                      updated_at: '2022-10-03 12:14:15'
+                      archived_at: null
+                      label: kopi janji manis
+                  - id: 20
+                    inventory_usage_id: 40
+                    item_id: 7
+                    allocation_id: 1
+                    chart_of_account_id: 124
+                    quantity: 12
+                    expiry_date: '2022-10-07 13:49:37'
+                    production_number: null
+                    unit: PCS
+                    converter: 1
+                    notes: null
+                    item:
+                      id: 7
+                      chart_of_account_id: 14
+                      code: null
+                      barcode: null
+                      name: kopi janji manis
+                      size: null
+                      color: null
+                      weight: null
+                      notes: null
+                      taxable: 1
+                      require_production_number: 0
+                      require_expiry_date: 0
+                      stock: 541
+                      stock_reminder: 0
+                      unit_default: 7
+                      unit_default_purchase: 7
+                      unit_default_sales: 7
+                      created_by: 1
+                      updated_by: 1
+                      archived_by: null
+                      created_at: '2022-09-30 09:03:42'
+                      updated_at: '2022-10-03 12:14:15'
+                      archived_at: null
+                      label: kopi janji manis
+            links:
+              first: https://project-cendekia.site/api/v1/inventory/usages?page=1
+              last: https://project-cendekia.site/api/v1/inventory/usages?page=1
+              prev: null
+              next: null
+            meta:
+              current_page: 1
+              from: 1
+              last_page: 1
+              path: https://project-cendekia.site/api/v1/inventory/usages
+              per_page: '10'
+              to: 6
+              total: 6

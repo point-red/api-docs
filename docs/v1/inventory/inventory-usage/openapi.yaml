@@ -1,0 +1,15 @@
+openapi: 3.0.0
+info:
+  title: point_inventory-usage_p1
+  version: 1.0.0
+servers:
+  - url: http://{{base_url}}
+paths:
+  /inventory/usages/46/approve:
+    $ref: paths/inventory_usages_46_approve.yaml
+  /inventory/usages/47/reject:
+    $ref: paths/inventory_usages_47_reject.yaml
+  /inventory/usages:
+    $ref: paths/inventory_usages.yaml
+  /inventory/usages/43/histories:
+    $ref: paths/inventory_usages_43_histories.yaml

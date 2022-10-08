@@ -1,0 +1,88 @@
+post:
+  tags:
+    - Inventory Usage
+  summary: inventory usage - reject
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - id
+            - reason
+          properties:
+            id:
+              type: integer
+            reason:
+              type: string
+              required: true          
+          example:
+            id: 47
+            reason: reject with note
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      example: 47
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              warehouse_id:
+                type: integer
+              employee_id:
+                type: integer
+              form:
+                $ref: '../../sales/delivery-orders/components/responses/properties/form.yaml'
+          example:
+            data:
+              id: 47
+              warehouse_id: 1
+              employee_id: 1
+              form:
+                id: 39
+                branch_id: 1
+                date: '2022-10-07 13:51:46'
+                number: IU22100008
+                edited_number: null
+                edited_notes: null
+                notes: null
+                created_by: 1
+                updated_by: 1
+                done: 0
+                increment: 8
+                increment_group: 202210
+                formable_id: 47
+                formable_type: InventoryUsage
+                request_approval_to: 1
+                approval_by: 1
+                approval_at: '2022-10-07T06:59:50.484977Z'
+                approval_reason: reject with note
+                approval_status: -1
+                request_cancellation_to: null
+                request_cancellation_by: null
+                request_cancellation_at: null
+                request_cancellation_reason: null
+                cancellation_approval_at: null
+                cancellation_approval_by: null
+                cancellation_approval_reason: null
+                cancellation_status: null
+                created_at: '2022-10-07 13:52:49'
+                updated_at: '2022-10-07 13:59:50'
+                request_close_to: null
+                request_close_by: null
+                request_close_at: null
+                request_close_reason: null
+                close_approval_at: null
+                close_approval_by: null
+                close_status: null
+                request_approval_at: null
+                close_approval_reason: null

@@ -1,0 +1,155 @@
+get:
+  tags:
+    - Inventory Usage
+  summary: inventory usage - histories
+  parameters:
+    - name: sort_by
+      in: query
+      schema:
+        type: string
+      example: '-user_activities.date'
+    - name: includes
+      in: query
+      schema:
+        type: string
+      example: user
+    - name: filter_like
+      in: query
+      schema:
+        type: string
+      example: '{}'
+    - name: or_filter_where_has_like[]
+      in: query
+      schema:
+        type: string
+      example: '{"user":{}}'
+    - name: limit
+      in: query
+      schema:
+        type: integer
+      example: '10'
+    - name: page
+      in: query
+      schema:
+        type: integer
+      example: '1'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    table_type:
+                      type: string
+                    table_id:
+                      type: integer
+                    number:
+                      type: string
+                    date:
+                      type: string
+                    user_id:
+                      type: integer
+                    activity:
+                      type: string
+                    formable_id:
+                      type: integer
+                    user:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        address:
+                          type: string
+                        phone:
+                          type: string
+                        email:
+                          type: string
+                        created_at:
+                          type: string
+                        updated_at:
+                          type: string
+                        branch_id:
+                          type: integer
+                        warehouse_id:
+                          type: integer
+                        full_name:
+                          type: string
+              links:
+                $ref: './components/responses/properties/links.yaml'
+              meta:
+                $ref: './components/responses/properties/meta.yaml'
+          example:
+            data:
+              - id: 43
+                table_type: InventoryUsage
+                table_id: 43
+                number: IU22100004
+                date: '2022-10-03 12:14:15'
+                user_id: 2
+                activity: Approved
+                formable_id: 43
+                user:
+                  id: 2
+                  name: test123
+                  first_name: test123
+                  last_name: test123
+                  address: null
+                  phone: null
+                  email: test123@point
+                  created_at: '2022-09-26 08:14:25'
+                  updated_at: '2022-09-26 08:14:25'
+                  branch_id: null
+                  warehouse_id: null
+                  full_name: test123 test123
+              - id: 42
+                table_type: InventoryUsage
+                table_id: 43
+                number: IU22100004
+                date: '2022-10-03 12:10:53'
+                user_id: 1
+                activity: Created
+                formable_id: 43
+                user:
+                  id: 1
+                  name: admin
+                  first_name: admin
+                  last_name: admin
+                  address: null
+                  phone: null
+                  email: rockydocky007@yahoo.com
+                  created_at: '2022-09-26 08:14:36'
+                  updated_at: '2022-09-26 08:14:36'
+                  branch_id: null
+                  warehouse_id: null
+                  full_name: admin admin
+            links:
+              first: >-
+                https://project-cendekia.site/api/v1/inventory/usages/43/histories?page=1
+              last: >-
+                https://project-cendekia.site/api/v1/inventory/usages/43/histories?page=1
+              prev: null
+              next: null
+            meta:
+              current_page: 1
+              from: 1
+              last_page: 1
+              path: >-
+                https://project-cendekia.site/api/v1/inventory/usages/43/histories
+              per_page: '10'
+              to: 2
+              total: 2
