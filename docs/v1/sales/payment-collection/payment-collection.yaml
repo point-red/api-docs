@@ -192,7 +192,9 @@ post:
             - request_approval_to
             - details
           properties:
-            $ref: './components/requests/properties/payment-collection.yaml'
+            originalData:
+              $ref: './components/requests/properties/payment-collection-original-data.yaml'
+            $ref: './components/requests/properties/payment-collection-form.yaml'
           example:
             originalData:
               customer_id: null

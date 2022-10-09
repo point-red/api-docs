@@ -1,0 +1,88 @@
+customer_id:
+  type: integer
+customer_name:
+  type: string
+customer_label:
+  type: string
+customer_address:
+  type: string
+customer_phone:
+  type: string
+increment_group:
+  type: string
+date:
+  type: string
+due_date:
+  type: string
+payment_type:
+  type: string
+request_approval_to:
+  type: integer
+approver_name:
+  type: string
+approver_email:
+  type: string
+notes:
+  type: string
+amount:
+  type: integer
+total_invoice:
+  type: integer
+total_down_payment:
+  type: integer
+total_return:
+  type: integer
+total_other:
+  type: integer
+total_amount:
+  type: integer
+pricing_group_id:
+  type: integer
+others:
+  type: array
+  items:
+    type: object
+    properties:
+      chart_of_account_id:
+        type: integer
+      chart_of_account_name:
+        type: string
+      amount:
+        type: integer
+      allocation_id:
+        type: integer
+      allocation_name:
+        type: string
+      notes:
+        type: string
+      is_debit:
+        type: integer
+details:
+  type: array
+  items:
+    type: object
+    properties:
+      date:
+        type: string
+      chart_of_account_id:  
+        type: integer
+      chart_of_account_name:
+        type: string
+      available:
+        type: integer
+      amount:
+        type: integer
+      allocation_id:
+        type: integer
+      allocation_name:
+        type: string
+      referenceable_form_date:
+        type: string
+      referenceable_form_number:
+        type: string
+      referenceable_form_notes:
+        type: string
+      referenceable_id:
+        type: integer
+      referenceable_type:
+        type: string

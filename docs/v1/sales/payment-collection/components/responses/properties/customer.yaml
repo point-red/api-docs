@@ -1,0 +1,52 @@
+type: object
+properties:
+  id:
+    type: integer
+  code:
+    type: string
+  tax_identification_number:
+    type: string
+  name:
+    type: string
+  address:
+    type: string
+  city:
+    type: integer
+  state:
+    type: integer
+  country:
+    type: integer
+  zip_code:
+    type: string
+  latitude:
+    type: string
+  longitude:
+    type: string
+  phone:
+    type: string
+  phone_cc:
+    type: string
+  email:
+    type: string
+  notes:
+    type: string
+  credit_limit:
+    type: string
+  branch_id:
+    type: integer
+  created_by:
+    type: integer
+  updated_by:
+    type: integer
+  archived_by:
+    type: integer
+  pricing_group_id:
+    type: integer
+  created_at:
+    type: string
+  updated_at:
+    type: string
+  archived_at:
+    type: string
+  label:
+    type: string

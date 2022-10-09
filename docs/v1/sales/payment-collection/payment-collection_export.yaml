@@ -8,19 +8,19 @@ get:
         schema:
           type: object
           properties:
-          data:
-            type: object
-            properties:
-              ids:
-                type: array
-                items:
-                  type: integer
-              date_start:
-                type: string
-              date_end:
-                type: string
-              tenant_name:
-                type: string
+            data:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: integer
+                date_start:
+                  type: string
+                date_end:
+                  type: string
+                tenant_name:
+                  type: string
   responses:
     '200':
       description: OK

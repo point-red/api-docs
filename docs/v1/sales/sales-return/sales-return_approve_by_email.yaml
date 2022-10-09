@@ -1,0 +1,35 @@
+post:
+  tags:
+    - Sales Return
+  summary: sales return - approve by email
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - ids
+            - token
+            - approver_id
+          properties:
+            ids:
+              type: array
+              required: true
+              items:
+                type: integer
+            token:
+              type: string
+              required: true
+            approver_id:
+              type: string
+              required: true
+          example:
+            ids:
+              - 14
+            token: 4a004ce7706e2d35555ce75898bc3f0b
+            approver_id: '1'
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json: {}

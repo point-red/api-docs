@@ -1,0 +1,168 @@
+post:
+  tags:
+    - Sales Return
+  summary: sales return - cancel approve
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required: 
+            - id
+          properties:
+            id:
+              type: integer
+          example:
+            id: 16
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      example: 16      
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  customer_id:
+                    type: integer
+                  warehouse_id:
+                    type: integer
+                  sales_invoice_id:
+                    type: integer
+                  customer_name:
+                    type: string
+                  customer_address:
+                    type: string
+                  customer_phone:
+                    type: string
+                  tax:
+                    type: integer
+                  amount:
+                    type: integer
+                  items:
+                    $ref: './components/requests/properties/sales-return-item.yaml'
+                  form:
+                    $ref: './components/responses/properties/form.yaml'
+                  sales_invoice:
+                    $ref: './components/responses/properties/sales-invoice.yaml'  
+          example:
+            data:
+              id: 32
+              sales_invoice_id: 42
+              customer_id: 2
+              customer_name: CUSTOMER 2
+              customer_address:
+              customer_phone:
+              tax: 98800
+              amount: 1086800
+              warehouse_id: 1
+              form:
+                id: 471
+                branch_id: 1
+                date: '2022-09-13 14:31:01'
+                number: SR22090028
+                edited_number:
+                edited_notes:
+                notes:
+                created_by: 1
+                updated_by: 1
+                done: 0
+                increment: 28
+                increment_group: 202209
+                formable_id: 32
+                formable_type: SalesReturn
+                request_approval_at:
+                request_approval_to: 1
+                approval_by: 1
+                approval_at: '2022-09-13 06:31:36'
+                approval_reason:
+                approval_status: 1
+                request_cancellation_to: 1
+                request_cancellation_by: 1
+                request_cancellation_at: '2022-10-09 08:16:04'
+                request_cancellation_reason: cancel
+                cancellation_approval_at: '2022-10-09T08:17:09.680299Z'
+                cancellation_approval_by: 1
+                cancellation_approval_reason:
+                cancellation_status: 1
+                created_at: '2022-09-13 14:31:34'
+                updated_at: '2022-10-09 16:17:09'
+                request_close_to:
+                request_close_by:
+                request_close_at:
+                request_close_reason:
+                close_approval_at:
+                close_approval_by:
+                close_status:
+              sales_invoice:
+                id: 42
+                customer_id: 2
+                customer_name: CUSTOMER 2
+                customer_address: ''
+                customer_phone: ''
+                billing_address:
+                billing_phone:
+                billing_email:
+                shipping_address:
+                shipping_phone:
+                shipping_email:
+                referenceable_id: 70
+                referenceable_type: SalesDeliveryNote
+                due_date: '2022-09-13 12:23:26'
+                delivery_fee: 0
+                discount_percent: 0
+                discount_value: 12022
+                type_of_tax: exclude
+                tax: 591597.8
+                amount: 6507575.8
+                remaining: 6507575.8
+                items:
+                - id: 44
+                  sales_invoice_id: 42
+                  referenceable_id: 70
+                  referenceable_type: SalesDeliveryNote
+                  item_referenceable_id: 71
+                  item_referenceable_type: SalesDeliveryNoteItem
+                  item_id: 2
+                  item_name: kopibara
+                  quantity: 60
+                  quantity_returned: -10
+                  quantity_remaining: 70
+                  price: 100000
+                  discount_percent: 0
+                  discount_value: 1200
+                  taxable: 1
+                  unit: PCS
+                  converter: 1
+                  expiry_date:
+                  production_number:
+                  notes:
+                  allocation_id:
+              items:
+              - id: 37
+                sales_return_id: 32
+                sales_invoice_item_id: 44
+                item_id: 2
+                item_name: kopibara
+                quantity_sales: 60
+                quantity: 10
+                price: 100000
+                discount_percent: 0
+                discount_value: 1200
+                unit: PCS
+                converter: 1
+                expiry_date:
+                production_number:
+                notes:
+                allocation_id: 2

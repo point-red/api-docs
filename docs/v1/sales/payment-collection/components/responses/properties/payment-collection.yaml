@@ -1,0 +1,20 @@
+id:
+  type: integer
+customer_id:
+  type: integer
+customer_name:
+  type: string
+payment_type:
+  type: string
+payment_id:
+  type: integer
+due_date:
+  type: string
+amount:
+  type: integer
+form:
+  $ref: './form.yaml'
+customer:
+  $ref: './customer.yaml'
+details:
+  $ref: './details.yaml'

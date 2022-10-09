@@ -60,5 +60,5 @@ get:
                 approval_status: 0
             links:
                 $ref: './components/responses/properties/links.yaml'
-              meta:
-                $ref: './components/responses/properties/meta.yaml'
+            meta:
+              $ref: './components/responses/properties/meta.yaml'

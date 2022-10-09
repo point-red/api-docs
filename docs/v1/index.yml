@@ -131,3 +131,47 @@ paths:
     $ref: './accounting/memo-journals/memo-journals-by-id.yml'
   /accounting/memo-journals/export:
     $ref: './accounting/memo-journals/memo-journals-export.yml'
+  /sales/payment-collection:
+    $ref: sales/payment-collection/payment-collection.yaml
+  /sales/payment-collection/export:
+    $ref: sales/payment-collection/payment-collection_export.yaml
+  /sales/approval/payment-collection:
+    $ref: sales/payment-collection/payment-collection_approval.yaml
+  /sales/payment-collection/{id}:
+    $ref: sales/payment-collection/payment-collection_id.yaml
+  /sales/payment-collection/{id}/histories:
+    $ref: sales/payment-collection/payment-collection_id_histories.yaml
+  /sales/payment-collection/{id}/approve:
+    $ref: sales/payment-collection/payment-collection_id_approve.yaml
+  /sales/payment-collection/{id}/reject:
+    $ref: sales/payment-collection/payment-collection_id_reject.yaml
+  /sales/payment-collection/{id}/cancellation-approve:
+    $ref: sales/payment-collection/payment-collection_id_cancellation-approve.yaml
+  /sales/payment-collection/{id}/cancellation-reject:
+    $ref: sales/payment-collection/payment-collection_id_cancellation-reject.yaml
+  /sales/approval/payment-collection/send:
+    $ref: sales/payment-collection/payment-collection_approval_send.yaml
+  /sales/payment-collection/approve:
+    $ref: sales/payment-collection/payment-collection_approve_by_email.yaml
+  /sales/payment-collection/{customerId}/references:
+    $ref: sales/payment-collection/payment-collection_references.yaml
+  /sales/sales-return:
+    $ref: sales/sales-return/sales-return.yaml
+  /sales/sales-return/approval:
+    $ref: sales/sales-return/sales-return_approval.yaml
+  /sales/sales-return/{id}:
+    $ref: sales/sales-return/sales-return_id.yaml
+  /sales/sales-return/{id}/histories:
+    $ref: sales/sales-return/sales-return_id_histories.yaml
+  /sales/sales-return/{id}/approve:
+    $ref: sales/sales-return/sales-return_id_approve.yaml
+  /sales/sales-return/{id}/reject:
+    $ref: sales/sales-return/sales-return_id_reject.yaml
+  /sales/sales-return/{id}/cancellation-approve:
+    $ref: sales/sales-return/sales-return_id_cancellation-approve.yaml
+  /sales/sales-return/{id}/cancellation-reject:
+    $ref: sales/sales-return/sales-return_id_cancellation-reject.yaml
+  /sales/sales-return/approval/send:
+    $ref: sales/sales-return/sales-return_approval_send.yaml
+  /sales/sales-return/approve:
+    $ref: sales/sales-return/sales-return_approve_by_email.yaml

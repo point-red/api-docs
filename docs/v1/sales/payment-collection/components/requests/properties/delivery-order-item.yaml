@@ -1,0 +1,30 @@
+sales_order_item_id:
+  type: integer
+item_id:
+  type: integer
+item_name:
+  type: string
+price:
+  type: string
+discount_percent:
+  type: string
+discount_value:
+  type: string
+unit:
+  type: string
+converter:
+  type: integer
+quantity_requested:
+  type: integer
+quantity_delivered:
+  type: integer
+quantity_remaining:
+  type: integer
+more:
+  type: boolean
+total:
+  type: integer
+item_label:
+  type: string
+is_quantity_over:
+  type: boolean

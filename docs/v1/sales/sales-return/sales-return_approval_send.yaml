@@ -1,0 +1,27 @@
+post:
+  tags:
+    - Sales Return
+  summary: sales return - send approval email
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - ids
+          properties:
+            ids:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+          example:
+            ids:
+              - id: 14
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json: {}

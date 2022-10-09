@@ -241,39 +241,37 @@ patch:
             $ref: './components/requests/properties/payment-collection-form.yaml'
             details:
               type: array
-                items:
-                  type: object
-                  properties:
-                    date:
-                      type: date
-                    chart_of_account_id:
-                      type: integer
-                    chart_of_account_name:
-                      type: string
-                    amount:
-                      type: integer
-                    allocation_id:
-                      type: integer
-                    allocation_name:
-                      type: string
-                    notes:
-                      type: string
-                    is_debit:
-                      type: integer
-                    available:
-                      type: integer
-                    amount:
-                      type: integer
-                    referenceable_form_date:
-                      type: date
-                    referenceable_form_number:
-                      type: string
-                    referenceable_form_notes:
-                      type: string
-                    referenceable_id:
-                      type: integer
-                    referenceable_type:
-                      type: string
+              items:
+                type: object
+                properties:
+                  date:
+                    type: date
+                  chart_of_account_id:
+                    type: integer
+                  chart_of_account_name:
+                    type: string
+                  amount:
+                    type: integer
+                  allocation_id:
+                    type: integer
+                  allocation_name:
+                    type: string
+                  notes:
+                    type: string
+                  is_debit:
+                    type: integer
+                  available:
+                    type: integer
+                  referenceable_form_date:
+                    type: date
+                  referenceable_form_number:
+                    type: string
+                  referenceable_form_notes:
+                    type: string
+                  referenceable_id:
+                    type: integer
+                  referenceable_type:
+                    type: string
             customer_id:
               type: integer
             customer_name:

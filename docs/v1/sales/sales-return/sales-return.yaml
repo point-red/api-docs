@@ -37,12 +37,12 @@ get:
       in: query
       schema:
         type: string
-      example: '{'form.date':'2022-05-01 00:00:00'}'
+      example: '{"form.date":"2022-05-01 00:00:00"}'
     - name: filter_date_max
       in: query
       schema:
         type: string
-      example: '{'form.date':'2022-06-08 23:59:59'}'
+      example: '{"form.date":"2022-06-08 23:59:59"}'
     - name: limit
       in: query
       schema:
@@ -222,8 +222,8 @@ post:
             - items
           properties:
             originalData:
-              $ref: './components/requests/properties/original-data.yaml'
-              $ref: './components/requests/properties/sales-return-form.yaml'
+              $ref: './components/requests/properties/sales-return-original-data.yaml'
+            $ref: './components/requests/properties/sales-return-form.yaml'
             items:
               type: array
               items:
@@ -309,7 +309,7 @@ post:
               data:
                 type: object
                 properties:
-                  $ref: './components/responses/properties/sales_return.yaml'
+                  $ref: './components/responses/properties/sales-return.yaml'
           example:
             data:
               sales_invoice_id: 33

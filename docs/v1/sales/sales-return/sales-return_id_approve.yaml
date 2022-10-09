@@ -1,0 +1,252 @@
+post:
+  tags:
+    - Sales Return
+  summary: sales return - approve
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - id
+          properties:
+            id:
+              type: string
+          example:
+            id: '14'
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      example: 14
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              customer_id:
+                type: integer
+              warehouse_id:
+                type: integer
+              sales_invoice_id:
+                type: integer
+              customer_name:
+                type: string
+              customer_address:
+                type: string
+              customer_phone:
+                type: string
+              tax:
+                type: integer
+              amount:
+                type: integer
+              items:
+                $ref: './components/requests/properties/sales-return-item.yaml'
+              form:
+                $ref: './components/responses/properties/form.yaml'
+              sales_invoice:
+                $ref: './components/responses/properties/sales-invoice.yaml'
+          example:
+            data:
+              id: 29
+              sales_invoice_id: 42
+              customer_id: 2
+              customer_name: CUSTOMER 2
+              customer_address:
+              customer_phone:
+              tax: 98800
+              amount: 1086800
+              warehouse_id: 1
+              items:
+              - id: 34
+                sales_return_id: 29
+                sales_invoice_item_id: 44
+                item_id: 2
+                item_name: kopibara
+                quantity_sales: 60
+                quantity: 10
+                price: 100000
+                discount_percent: 0
+                discount_value: 1200
+                unit: PCS
+                converter: 1
+                expiry_date:
+                production_number:
+                notes:
+                allocation_id: 2
+                item:
+                  id: 2
+                  chart_of_account_id: 14
+                  code: code-12031
+                  barcode:
+                  name: kopibara
+                  size:
+                  color:
+                  weight:
+                  notes:
+                  taxable: 1
+                  require_production_number: 0
+                  require_expiry_date: 0
+                  stock: 8712
+                  stock_reminder: 0
+                  unit_default: 1
+                  unit_default_purchase: 1
+                  unit_default_sales: 1
+                  created_by: 1
+                  updated_by: 1
+                  archived_by:
+                  created_at: '2022-06-23 16:55:17'
+                  updated_at: '2022-10-08 21:58:18'
+                  archived_at:
+                  label: "[code-12031] kopibara"
+                sales_return:
+                  id: 29
+                  sales_invoice_id: 42
+                  customer_id: 2
+                  customer_name: CUSTOMER 2
+                  customer_address:
+                  customer_phone:
+                  tax: 98800
+                  amount: 1086800
+                  warehouse_id: 1
+                  warehouse:
+                    id: 1
+                    code:
+                    name: CENTRAL WAREHOUSE
+                    address:
+                    phone:
+                    notes:
+                    branch_id: 1
+                    created_by:
+                    updated_by:
+                    archived_by:
+                    created_at: '2022-06-07 10:07:38'
+                    updated_at: '2022-06-07 10:07:38'
+                    archived_at:
+                    label: CENTRAL WAREHOUSE
+              sales_invoice:
+                id: 42
+                customer_id: 2
+                customer_name: CUSTOMER 2
+                customer_address: ''
+                customer_phone: ''
+                billing_address:
+                billing_phone:
+                billing_email:
+                shipping_address:
+                shipping_phone:
+                shipping_email:
+                referenceable_id: 70
+                referenceable_type: SalesDeliveryNote
+                due_date: '2022-09-13 12:23:26'
+                delivery_fee: 0
+                discount_percent: 0
+                discount_value: 12022
+                type_of_tax: exclude
+                tax: 591597.8
+                amount: 6507575.8
+                remaining: 6507575.8
+                items:
+                - id: 44
+                  sales_invoice_id: 42
+                  referenceable_id: 70
+                  referenceable_type: SalesDeliveryNote
+                  item_referenceable_id: 71
+                  item_referenceable_type: SalesDeliveryNoteItem
+                  item_id: 2
+                  item_name: kopibara
+                  quantity: 60
+                  quantity_returned: 0
+                  quantity_remaining: 60
+                  price: 100000
+                  discount_percent: 0
+                  discount_value: 1200
+                  taxable: 1
+                  unit: PCS
+                  converter: 1
+                  expiry_date:
+                  production_number:
+                  notes:
+                  allocation_id:
+                  item:
+                    id: 2
+                    chart_of_account_id: 14
+                    code: code-12031
+                    barcode:
+                    name: kopibara
+                    size:
+                    color:
+                    weight:
+                    notes:
+                    taxable: 1
+                    require_production_number: 0
+                    require_expiry_date: 0
+                    stock: 8712
+                    stock_reminder: 0
+                    unit_default: 1
+                    unit_default_purchase: 1
+                    unit_default_sales: 1
+                    created_by: 1
+                    updated_by: 1
+                    archived_by:
+                    created_at: '2022-06-23 16:55:17'
+                    updated_at: '2022-10-08 21:58:18'
+                    archived_at:
+                    label: "[code-12031] kopibara"
+                    smallest_unit:
+                      id: 2
+                      label: PCS
+                      name: PCS
+                      converter: 1
+                      disabled: 0
+                      item_id: 2
+                      created_by: 1
+                      updated_by: 1
+                      created_at: '2022-06-23 16:55:17'
+                      updated_at: '2022-06-23 16:55:17'
+              form:
+                id: 468
+                branch_id: 1
+                date: '2022-09-13 14:24:54'
+                number: SR22090025
+                edited_number:
+                edited_notes:
+                notes:
+                created_by: 1
+                updated_by: 1
+                done: 0
+                increment: 25
+                increment_group: 202209
+                formable_id: 29
+                formable_type: SalesReturn
+                request_approval_at:
+                request_approval_to: 1
+                approval_by: 1
+                approval_at: '2022-10-09T08:36:33.033335Z'
+                approval_reason:
+                approval_status: 1
+                request_cancellation_to:
+                request_cancellation_by:
+                request_cancellation_at:
+                request_cancellation_reason:
+                cancellation_approval_at:
+                cancellation_approval_by:
+                cancellation_approval_reason:
+                cancellation_status:
+                created_at: '2022-09-13 14:25:34'
+                updated_at: '2022-10-09 16:36:33'
+                request_close_to:
+                request_close_by:
+                request_close_at:
+                request_close_reason:
+                close_approval_at:
+                close_approval_by:
+                close_status:
+
