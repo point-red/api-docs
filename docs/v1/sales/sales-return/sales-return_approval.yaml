@@ -1,0 +1,207 @@
+get:
+  tags:
+    - Sales Return
+  summary: sales return - all approval
+  parameters:
+    - name: join
+      in: query
+      schema:
+        type: string
+      example: form,customer,items,item
+    - name: fields
+      in: query
+      schema:
+        type: string
+      example: sales_return.*
+    - name: sort_by
+      in: query
+      schema:
+        type: string
+      example: '-form.number'
+    - name: group_by
+      in: query
+      schema:
+        type: string
+      example: form.id
+    - name: filter_form
+      in: query
+      schema:
+        type: string
+      example: notArchived;null
+    - name: filter_like
+      in: query
+      schema:
+        type: string
+      example: '{}'
+    - name: filter_date_min
+      in: query
+      schema:
+        type: string
+      example: '{"form.date":"2022-05-01 00:00:00"}'
+    - name: filter_date_max
+      in: query
+      schema:
+        type: string
+      example: '{"form.date":"2022-05-17 23:59:59"}'
+    - name: limit
+      in: query
+      schema:
+        type: integer
+      example: '10'
+    - name: includes
+      in: query
+      schema:
+        type: string
+      example: form;customer;items.item;items.allocation
+    - name: page
+      in: query
+      schema:
+        type: integer
+      example: '1'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: './components/responses/properties/sales-return.yaml'
+              meta:
+                $ref: './components/responses/properties/meta.yaml'
+              links:
+                $ref: './components/responses/properties/links.yaml'
+          example:
+            data:
+              - id: 15
+                sales_invoice_id: 34
+                customer_id: 2
+                warehouse_id: 1
+                customer_name: CUSTOMER
+                customer_address: null
+                customer_phone: null
+                tax: 3000
+                amount: 33000
+                form:
+                  id: 352
+                  branch_id: 1
+                  date: '2022-09-10 18:16:14'
+                  number: 'SR22090011'
+                  edited_number: null
+                  edited_notes: null
+                  notes: 'rusak'
+                  created_by: 1
+                  updated_by: 1
+                  done: 0
+                  increment: 11
+                  increment_group: 202209
+                  formable_id: 15
+                  formable_type: 'SalesReturn'
+                  request_approval_at: null
+                  request_approval_to: 1
+                  approval_by: 1
+                  approval_at: '2022-09-10 10:16:45'
+                  approval_reason: 'barang masih bagus'
+                  approval_status: -1
+                  request_cancellation_to: null
+                  request_cancellation_by: null
+                  request_cancellation_at: null
+                  request_cancellation_reason: null
+                  cancellation_approval_at: null
+                  cancellation_approval_by: null
+                  cancellation_approval_reason: null
+                  cancellation_status: null
+                  created_at: '2022-09-10 18:16:34'
+                  updated_at: '2022-09-10 18:16:45'
+                  request_close_to: null
+                  request_close_by: null
+                  request_close_at: null
+                  request_close_reason: null
+                  close_approval_at: null
+                  close_approval_by: null
+                  close_status: null
+                customer:
+                  id: 2
+                  code: null
+                  tax_identification_number: null
+                  name: 'CUSTOMER'
+                  address: null
+                  city: null
+                  state: null
+                  country: null
+                  zip_code: null
+                  latitude: null
+                  longitude: null
+                  phone: null
+                  phone_cc: null
+                  email: null
+                  notes: null
+                  credit_limit: 0
+                  branch_id: 1
+                  created_by: 1
+                  updated_by: 1
+                  archived_by: null
+                  pricing_group_id: 1
+                  created_at: '2022-06-23 17:40:47'
+                  updated_at: '2022-06-23 17:40:47'
+                  archived_at: null
+                  label: 'CUSTOMER'
+                items:
+                  - id: 13
+                    sales_return_id: 15
+                    sales_invoice_item_id: 33
+                    item_id: 1
+                    item_name: 'Kopi'
+                    quantity_sales: 5
+                    quantity: 5
+                    price: 540
+                    discount_percent: 0
+                    discount_value: 100
+                    unit: 'PCS'
+                    converter: 1
+                    expiry_date: null
+                    production_number: null
+                    notes: null
+                    allocation_id: 1
+                    item:
+                      id: 1
+                      chart_of_account_id: 14
+                      code: 'BNF01'
+                      barcode: null
+                      name: 'Kopi'
+                      size: null
+                      color: null
+                      weight: null
+                      notes: null
+                      taxable: 1
+                      require_production_number: 0
+                      require_expiry_date: 0
+                      stock: 35496
+                      stock_reminder: 0
+                      unit_default: 1
+                      unit_default_purchase: 1
+                      unit_default_sales: 1
+                      created_by: 1
+                      updated_by: 1
+                      archived_by: null
+                      created_at: '2022-06-13 18:39:26'
+                      updated_at: '2022-09-10 18:16:10'
+                      archived_at: null
+                      label: '[BNF01] Kopi'
+            links:
+              first: >-
+                https://api.point.red/api/v1/sales/return/approval?page=1
+              last: >-
+                https://api.point.red/api/v1/sales/return/approval?page=1
+              prev: null
+              next: null
+            meta:
+              current_page: 1
+              from: 1
+              last_page: 1
+              path: >-
+                https://api.point.red/api/v1/sales/return/approval
+              per_page: '10'
+              to: 1
+              total: 1

@@ -15734,6 +15734,3607 @@ paths:
                 properties:
                   url:
                     type: string
+  /sales/payment-collection:
+    get:
+      tags:
+        - Payment Collection
+      summary: payment collection - all
+      parameters:
+        - name: join
+          in: query
+          schema:
+            type: string
+          example: formcustomer
+        - name: fields
+          in: query
+          schema:
+            type: string
+          example: sales_payment_collection.*
+        - name: sort_by
+          in: query
+          schema:
+            type: string
+          example: '-form.number'
+        - name: group_by
+          in: query
+          schema:
+            type: string
+          example: form.id
+        - name: filter_form
+          in: query
+          schema:
+            type: string
+          example: notArchived;null
+        - name: filter_like
+          in: query
+          schema:
+            type: string
+          example: '{}'
+        - name: filter_date_min
+          in: query
+          schema:
+            type: string
+          example: '{form.date:2022-05-01 00:00:00}'
+        - name: filter_date_max
+          in: query
+          schema:
+            type: string
+          example: '{form.date:2022-06-08 23:59:59}'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: includes
+          in: query
+          schema:
+            type: string
+          example: >-
+            form;customer;details;details.referenceable;details.referenceable.form
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/meta'
+                  links:
+                    $ref: '#/components/schemas/links'
+                  data:
+                    $ref: '#/components/schemas/payment-collections'
+              example:
+                data:
+                  - id: 87
+                    payment_type: cash
+                    due_date: '2022-07-29 20:06:27'
+                    payment_account_id: null
+                    amount: 100000
+                    supplier_id: 0
+                    supplier_name: ''
+                    payment_id: null
+                    customer_id: 1
+                    customer_name: Chasity Gutkowski
+                    form:
+                      id: 333
+                      branch_id: 1
+                      date: '2022-07-29 20:06:27'
+                      number: PC22070027
+                      edited_number: null
+                      edited_notes: null
+                      notes: Some notes
+                      created_by: 1
+                      updated_by: 1
+                      done: 0
+                      increment: 27
+                      increment_group: 202207
+                      formable_id: 87
+                      formable_type: PaymentCollection
+                      request_approval_to: 2
+                      approval_by: 1
+                      approval_at: '2022-07-29 15:37:22'
+                      approval_reason: Some reason
+                      approval_status: -1
+                      request_cancellation_to: null
+                      request_cancellation_by: null
+                      request_cancellation_at: null
+                      request_cancellation_reason: null
+                      cancellation_approval_at: null
+                      cancellation_approval_by: null
+                      cancellation_approval_reason: null
+                      cancellation_status: null
+                      created_at: '2022-07-29 20:06:42'
+                      updated_at: '2022-07-29 23:37:22'
+                      request_close_to: null
+                      request_close_by: null
+                      request_close_at: null
+                      request_close_reason: null
+                      close_approval_at: null
+                      close_approval_by: null
+                      close_status: null
+                    customer:
+                      id: 1
+                      code: C-1
+                      tax_identification_number: null
+                      name: Customer
+                      address: null
+                      city: null
+                      state: null
+                      country: null
+                      zip_code: null
+                      latitude: null
+                      longitude: null
+                      phone: null
+                      phone_cc: null
+                      email: null
+                      notes: null
+                      credit_limit: 0
+                      branch_id: 1
+                      created_by: 1
+                      updated_by: 1
+                      archived_by: null
+                      pricing_group_id: 1
+                      created_at: '2022-06-13 18:40:45'
+                      updated_at: '2022-06-13 18:40:45'
+                      archived_at: null
+                      label: '[C-1] Customer'
+                    details:
+                      - id: 159
+                        sales_payment_collection_id: 87
+                        chart_of_account_id: null
+                        allocation_id: null
+                        available: 100000
+                        amount: 100000
+                        notes: null
+                        referenceable_form_date: '2022-07-22 19:16:08'
+                        referenceable_form_number: SI2207015
+                        referenceable_form_notes: some notes
+                        referenceable_id: 1
+                        referenceable_type: SalesInvoice
+                        referenceable: null
+                links:
+                  first: https://example.com/api/v1/sales/payment-collection?page=1
+                  last: https://example.com/api/v1/sales/payment-collection?page=4
+                  prev: null
+                  next: https://example.com/api/v1/sales/payment-collection?page=2
+                meta:
+                  current_page: 1
+                  from: 1
+                  last_page: 4
+                  path: https://example.com/api/v1/sales/payment-collection
+                  per_page: '10'
+                  to: 10
+                  total: 27
+    post:
+      tags:
+        - Payment Collection
+      summary: payment collection - create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - customer_id
+                - payment_type
+                - request_approval_to
+                - details
+              properties:
+                originalData:
+                  $ref: '#/components/schemas/payment-collection-original-data'
+                customer_id:
+                  type: integer
+                customer_name:
+                  type: string
+                customer_label:
+                  type: string
+                customer_address:
+                  type: string
+                customer_phone:
+                  type: string
+                increment_group:
+                  type: string
+                date:
+                  type: string
+                due_date:
+                  type: string
+                payment_type:
+                  type: string
+                request_approval_to:
+                  type: integer
+                approver_name:
+                  type: string
+                approver_email:
+                  type: string
+                notes:
+                  type: string
+                amount:
+                  type: integer
+                total_invoice:
+                  type: integer
+                total_down_payment:
+                  type: integer
+                total_return:
+                  type: integer
+                total_other:
+                  type: integer
+                total_amount:
+                  type: integer
+                pricing_group_id:
+                  type: integer
+                others:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      chart_of_account_id:
+                        type: integer
+                      chart_of_account_name:
+                        type: string
+                      amount:
+                        type: integer
+                      allocation_id:
+                        type: integer
+                      allocation_name:
+                        type: string
+                      notes:
+                        type: string
+                      is_debit:
+                        type: integer
+                details:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      date:
+                        type: string
+                      chart_of_account_id:
+                        type: integer
+                      chart_of_account_name:
+                        type: string
+                      available:
+                        type: integer
+                      amount:
+                        type: integer
+                      allocation_id:
+                        type: integer
+                      allocation_name:
+                        type: string
+                      referenceable_form_date:
+                        type: string
+                      referenceable_form_number:
+                        type: string
+                      referenceable_form_notes:
+                        type: string
+                      referenceable_id:
+                        type: integer
+                      referenceable_type:
+                        type: string
+              example:
+                originalData:
+                  customer_id: null
+                  customer_name: null
+                  customer_label: null
+                  customer_address: null
+                  customer_phone: null
+                  customer_email: null
+                  references: null
+                  increment_group: '202208'
+                  date: '2022-08-01 10:18:22'
+                  due_date: '2022-08-01 10:18:22'
+                  payment_type: cash
+                  request_approval_to: null
+                  approver_name: null
+                  approver_email: null
+                  notes: ''
+                  amount: 0
+                  total_invoice: 0
+                  total_down_payment: 0
+                  total_return: 0
+                  total_other: 0
+                  total_amount: 0
+                  others:
+                    - chart_of_account_id: null
+                      chart_of_account_name: null
+                      amount: null
+                      allocation_id: null
+                      allocation_name: null
+                      notes: null
+                      is_debit: 0
+                  details:
+                    - date: null
+                      chart_of_account_id: null
+                      chart_of_account_name: null
+                      available: null
+                      amount: null
+                      allocation_id: null
+                      allocation_name: null
+                      referenceable_form_date: null
+                      referenceable_form_number: null
+                      referenceable_form_notes: null
+                      referenceable_id: null
+                      referenceable_type: null
+                    - date: '2022-06-23 17:57:39'
+                      chart_of_account_id: null
+                      chart_of_account_name: null
+                      available: '1123000'
+                      amount: '1123000'
+                      allocation_id: null
+                      allocation_name: null
+                      referenceable_form_date: '2022-06-23 17:57:39'
+                      referenceable_form_number: SI2206010
+                      referenceable_form_notes: null
+                      referenceable_id: 12
+                      referenceable_type: SalesInvoice
+                customer_id: 4
+                customer_name: CUSTOMER TEST MIRNA
+                customer_label: '[003] CUSTOMER TEST MIRNA'
+                customer_address: JALAN MUSI 21
+                customer_phone: '087851858365'
+                increment_group: '202208'
+                date: '2022-08-01 01:11:12'
+                due_date: '2022-08-01 01:11:12'
+                payment_type: cash
+                request_approval_to: 1
+                approver_name: admin admin
+                approver_email: admin@point.com
+                notes: notes
+                amount: 36760
+                total_invoice: 0
+                total_down_payment: 0
+                total_return: 0
+                total_other: 30000
+                total_amount: 0
+                details:
+                  - chart_of_account_id: 87
+                    chart_of_account_name: '[41106] PENDAPATAN LAIN-LAIN'
+                    amount: 50000
+                    allocation_id: 1
+                    allocation_name: test
+                    notes: null
+                    is_debit: 0
+                  - chart_of_account_id: 88
+                    chart_of_account_name: '[41200] BEBAN POKOK PENJUALAN'
+                    amount: 20000
+                    allocation_id: 1
+                    allocation_name: test
+                    notes: null
+                    is_debit: 1
+                  - date: '2022-07-21 12:28:36'
+                    chart_of_account_id: null
+                    chart_of_account_name: null
+                    available: 56760
+                    amount: 56760
+                    allocation_id: null
+                    allocation_name: null
+                    referenceable_form_date: '2022-07-21 12:28:36'
+                    referenceable_form_number: SI2207012
+                    referenceable_form_notes: MIRNA TEST PAYMENT COLLECTION
+                    referenceable_id: 28
+                    referenceable_type: SalesInvoice
+                  - date: '2022-08-01 00:52:42'
+                    chart_of_account_id: null
+                    chart_of_account_name: null
+                    available: 200000
+                    amount: 50000
+                    allocation_id: null
+                    allocation_name: null
+                    referenceable_form_date: '2022-08-01 00:52:42'
+                    referenceable_form_number: DP22080001
+                    referenceable_form_notes: '-'
+                    referenceable_id: '16'
+                    referenceable_type: SalesDownPayment
+                errors:
+                  errors: {}
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      customer_id:
+                        type: integer
+                      customer_name:
+                        type: string
+                      payment_type:
+                        type: string
+                      payment_id:
+                        type: integer
+                      due_date:
+                        type: string
+                      amount:
+                        type: integer
+                      form:
+                        $ref: '#/components/schemas/form'
+                      customer:
+                        $ref: '#/components/schemas/customer'
+                      details:
+                        $ref: '#/components/schemas/details'
+              example:
+                data:
+                  customer_id: 4
+                  customer_name: CUSTOMER TEST MIRNA
+                  due_date: '2022-08-01 01:11:12'
+                  payment_type: cash
+                  amount: 36760
+                  id: 88
+                  form:
+                    id: 342
+                    branch_id: 1
+                    date: '2022-08-01 01:11:12'
+                    number: PC22080001
+                    edited_number: null
+                    edited_notes: null
+                    notes: notes
+                    created_by: 1
+                    updated_by: 1
+                    done: 0
+                    increment: 1
+                    increment_group: '202208'
+                    formable_id: 88
+                    formable_type: PaymentCollection
+                    request_approval_to: 1
+                    approval_by: null
+                    approval_at: null
+                    approval_reason: null
+                    approval_status: 0
+                    request_cancellation_to: null
+                    request_cancellation_by: null
+                    request_cancellation_at: null
+                    request_cancellation_reason: null
+                    cancellation_approval_at: null
+                    cancellation_approval_by: null
+                    cancellation_approval_reason: null
+                    cancellation_status: null
+                    created_at: '2022-08-01 01:12:17'
+                    updated_at: '2022-08-01 01:12:17'
+                    request_close_to: null
+                    request_close_by: null
+                    request_close_at: null
+                    request_close_reason: null
+                    close_approval_at: null
+                    close_approval_by: null
+                    close_status: null
+  /sales/payment-collection/export:
+    get:
+      tags:
+        - Payment Collection
+      summary: payment collection - export
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    ids:
+                      type: array
+                      items:
+                        type: integer
+                    date_start:
+                      type: string
+                    date_end:
+                      type: string
+                    tenant_name:
+                      type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+              example:
+                data:
+                  url: https://example.com/download?key=d5spyNjujUdFYBM0
+  /sales/approval/payment-collection:
+    get:
+      tags:
+        - Payment Collection
+      summary: payment collection - all approval
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      date:
+                        type: string
+                      number:
+                        type: string
+                      customer:
+                        type: string
+                      amount:
+                        type: integer
+                      last_request_date:
+                        type: string
+                      approval_status:
+                        type: integer
+                  meta:
+                    $ref: '#/components/schemas/meta'
+                  links:
+                    $ref: '#/components/schemas/links'
+              example:
+                data:
+                  - id: 81
+                    date: '2022-07-22 19:17:39'
+                    number: PC22070023
+                    customer: Customer
+                    amount: 1155000
+                    last_request_date: '2022-07-28 09:25:08'
+                    approval_status: 0
+                  - id: 79
+                    date: '2022-07-21 22:00:24'
+                    number: PC22070021
+                    customer: CUSTOMER 2
+                    amount: 33000
+                    last_request_date: '2022-07-28 09:22:39'
+                    approval_status: 0
+                links:
+                  $ref: ./components/responses/properties/links.yaml
+                meta:
+                  $ref: ./components/responses/properties/meta.yaml
+  /sales/payment-collection/{id}:
+    get:
+      tags:
+        - Payment Collection
+      summary: payment collection - show
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: payment collection id
+        - name: with_archives
+          in: query
+          schema:
+            type: boolean
+          example: 'true'
+        - name: with_origin
+          in: query
+          schema:
+            type: boolean
+          example: 'true'
+        - name: includes
+          in: query
+          schema:
+            type: string
+          example: >-
+            form;customer;details;details.chartOfAccount;details.chartOfAccount.type;details.allocation;form.createdBy;form.requestApprovalTo;form.branch
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      customer_id:
+                        type: integer
+                      customer_name:
+                        type: string
+                      payment_type:
+                        type: string
+                      payment_id:
+                        type: integer
+                      due_date:
+                        type: string
+                      amount:
+                        type: integer
+                      form:
+                        $ref: '#/components/schemas/form'
+                      customer:
+                        $ref: '#/components/schemas/customer'
+                      details:
+                        $ref: '#/components/schemas/details'
+              example:
+                data:
+                  id: 88
+                  payment_type: cash
+                  due_date: '2022-08-01 01:11:12'
+                  payment_account_id: null
+                  amount: 36760
+                  supplier_id: 0
+                  supplier_name: null
+                  payment_id: null
+                  customer_id: 4
+                  customer_name: CUSTOMER TEST MIRNA
+                  form:
+                    - id: 342
+                      branch_id: 1
+                      date: '2022-08-01 01:11:12'
+                      number: PC22080001
+                      edited_number: null
+                      edited_notes: null
+                      notes: notes
+                      created_by:
+                        id: 1
+                        name: admin
+                        first_name: admin
+                        last_name: admin
+                        address: null
+                        phone: null
+                        email: admin@point.com
+                        created_at: '2022-06-07 10:07:29'
+                        updated_at: '2022-06-07 10:07:29'
+                        branch_id: 1
+                        warehouse_id: 1
+                        full_name: admin admin
+                      updated_by: 1
+                      done: 0
+                      increment: 1
+                      increment_group: '202208'
+                      formable_id: 88
+                      formable_type: PaymentCollection
+                      request_approval_to:
+                        id: 1
+                        name: admin
+                        first_name: admin
+                        last_name: admin
+                        address: null
+                        phone: null
+                        email: admin@point.com
+                        created_at: '2022-06-07 10:07:29'
+                        updated_at: '2022-06-07 10:07:29'
+                        branch_id: 1
+                        warehouse_id: 1
+                        full_name: admin admin
+                      approval_by: null
+                      approval_at: null
+                      approval_reason: null
+                      approval_status: 0
+                      request_cancellation_to: null
+                      request_cancellation_by: null
+                      request_cancellation_at: null
+                      request_cancellation_reason: null
+                      cancellation_approval_at: null
+                      cancellation_approval_by: null
+                      cancellation_approval_reason: null
+                      cancellation_status: null
+                      created_at: '2022-08-01 01:12:17'
+                      updated_at: '2022-08-01 01:12:17'
+                      request_close_to: null
+                      request_close_by: null
+                      request_close_at: null
+                      request_close_reason: null
+                      close_approval_at: null
+                      close_approval_by: null
+                      close_status: null
+                      branch:
+                        id: 1
+                        name: CENTRAL
+                        address: null
+                        phone: null
+                        created_by: null
+                        updated_by: null
+                        archived_by: null
+                        created_at: '2022-06-07 10:07:38'
+                        updated_at: '2022-06-07 10:07:38'
+                        archived_at: null
+                  customer:
+                    id: 4
+                    code: '003'
+                    tax_identification_number: null
+                    name: CUSTOMER TEST MIRNA
+                    address: JALAN MUSI 21
+                    city: null
+                    state: null
+                    country: null
+                    zip_code: null
+                    latitude: null
+                    longitude: null
+                    phone: '087851858365'
+                    phone_cc: null
+                    email: AAINFO.24@GMAIL.COM
+                    notes: null
+                    credit_limit: 0
+                    branch_id: 1
+                    created_by: 1
+                    updated_by: 1
+                    archived_by: null
+                    pricing_group_id: 1
+                    created_at: '2022-06-30 12:14:36'
+                    updated_at: '2022-06-30 12:14:36'
+                    archived_at: null
+                    label: '[003] CUSTOMER TEST MIRNA'
+                  details:
+                    - id: 160
+                      sales_payment_collection_id: 88
+                      chart_of_account_id: 87
+                      allocation_id: 1
+                      available: null
+                      amount: 50000
+                      notes: null
+                      referenceable_form_date: null
+                      referenceable_form_number: null
+                      referenceable_form_notes: null
+                      referenceable_id: null
+                      referenceable_type: null
+                      chart_of_account:
+                        id: 87
+                        type_id: 29
+                        group_id: null
+                        is_sub_ledger: 0
+                        sub_ledger: null
+                        position: CREDIT
+                        is_locked: 0
+                        cash_flow: ''
+                        cash_flow_position: ''
+                        number: 41106
+                        name: OTHER INCOME
+                        alias: PENDAPATAN LAIN-LAIN
+                        created_by: 1
+                        updated_by: 1
+                        archived_by: null
+                        created_at: '2022-06-12 18:42:47'
+                        updated_at: '2022-06-12 18:42:47'
+                        archived_at: null
+                        label: '[41106] PENDAPATAN LAIN-LAIN'
+                        type:
+                          id: 29
+                          name: OTHER INCOME
+                          alias: PENDAPATAN LAIN-LAIN
+                          is_debit: 0
+                          created_by: null
+                          updated_by: null
+                          created_at: '2022-06-07 10:07:38'
+                          updated_at: '2022-06-07 10:07:38'
+                      allocation:
+                        id: 1
+                        code: null
+                        name: test
+                        notes: null
+                        branch_id: null
+                        created_by: 1
+                        updated_by: 1
+                        archived_by: null
+                        created_at: '2022-06-12 18:43:35'
+                        updated_at: '2022-06-12 18:43:35'
+                        archived_at: null
+                        label: test
+                    - id: 162
+                      sales_payment_collection_id: 88
+                      chart_of_account_id: null
+                      allocation_id: null
+                      available: 56760
+                      amount: 56760
+                      notes: null
+                      referenceable_form_date: '2022-07-21 12:28:36'
+                      referenceable_form_number: SI2207012
+                      referenceable_form_notes: MIRNA TEST PAYMENT COLLECTION
+                      referenceable_id: 28
+                      referenceable_type: SalesInvoice
+                      chart_of_account: null
+                      allocation: null
+    patch:
+      tags:
+        - Payment Collection
+      summary: payment collection - update
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 59
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - customer_id
+                - payment_type
+                - request_approval_to
+                - details
+              properties:
+                originalData:
+                  $ref: ./components/requests/properties/original-data.yaml
+                details:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      date:
+                        type: string
+                      chart_of_account_id:
+                        type: integer
+                      chart_of_account_name:
+                        type: string
+                      available:
+                        type: integer
+                      amount:
+                        type: integer
+                      allocation_id:
+                        type: integer
+                      allocation_name:
+                        type: string
+                      referenceable_form_date:
+                        type: string
+                      referenceable_form_number:
+                        type: string
+                      referenceable_form_notes:
+                        type: string
+                      referenceable_id:
+                        type: integer
+                      referenceable_type:
+                        type: string
+                customer_id:
+                  type: integer
+                customer_name:
+                  type: string
+                customer_label:
+                  type: string
+                customer_address:
+                  type: string
+                customer_phone:
+                  type: string
+                increment_group:
+                  type: string
+                date:
+                  type: string
+                due_date:
+                  type: string
+                payment_type:
+                  type: string
+                request_approval_to:
+                  type: integer
+                approver_name:
+                  type: string
+                approver_email:
+                  type: string
+                notes:
+                  type: string
+                amount:
+                  type: integer
+                total_invoice:
+                  type: integer
+                total_down_payment:
+                  type: integer
+                total_return:
+                  type: integer
+                total_other:
+                  type: integer
+                total_amount:
+                  type: integer
+                pricing_group_id:
+                  type: integer
+                others:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      chart_of_account_id:
+                        type: integer
+                      chart_of_account_name:
+                        type: string
+                      amount:
+                        type: integer
+                      allocation_id:
+                        type: integer
+                      allocation_name:
+                        type: string
+                      notes:
+                        type: string
+                      is_debit:
+                        type: integer
+              example:
+                customer_id: 4
+                customer_name: CUSTOMER TEST MIRNA
+                customer_label: '[003] CUSTOMER TEST MIRNA'
+                customer_address: JALAN MUSI 21
+                customer_phone: '087851858365'
+                increment_group: '202208'
+                date: '2022-08-01 01:11:12'
+                due_date: '2022-08-01 01:11:12'
+                payment_type: cash
+                request_approval_to: 1
+                approver_name: admin admin
+                approver_email: admin@point.com
+                notes: notes
+                amount: 36760
+                total_invoice: 0
+                total_down_payment: 0
+                total_return: 0
+                total_other: 30000
+                total_amount: 0
+                details:
+                  - chart_of_account_id: 87
+                    chart_of_account_name: '[41106] PENDAPATAN LAIN-LAIN'
+                    amount: 50000
+                    allocation_id: 1
+                    allocation_name: test
+                    notes: null
+                    is_debit: 0
+                  - chart_of_account_id: 88
+                    chart_of_account_name: '[41200] BEBAN POKOK PENJUALAN'
+                    amount: 20000
+                    allocation_id: 1
+                    allocation_name: test
+                    notes: null
+                    is_debit: 1
+                  - date: '2022-07-21 12:28:36'
+                    chart_of_account_id: null
+                    chart_of_account_name: null
+                    available: 56760
+                    amount: 56760
+                    allocation_id: null
+                    allocation_name: null
+                    referenceable_form_date: '2022-07-21 12:28:36'
+                    referenceable_form_number: SI2207012
+                    referenceable_form_notes: MIRNA TEST PAYMENT COLLECTION
+                    referenceable_id: 28
+                    referenceable_type: SalesInvoice
+                  - date: '2022-08-01 00:52:42'
+                    chart_of_account_id: null
+                    chart_of_account_name: null
+                    available: 200000
+                    amount: 50000
+                    allocation_id: null
+                    allocation_name: null
+                    referenceable_form_date: '2022-08-01 00:52:42'
+                    referenceable_form_number: DP22080001
+                    referenceable_form_notes: '-'
+                    referenceable_id: '16'
+                    referenceable_type: SalesDownPayment
+                errors:
+                  errors: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/payment-collection-patch'
+              example:
+                customer_id: 4
+                customer_name: CUSTOMER TEST MIRNA
+                due_date: '2022-08-01 02:02:31'
+                payment_type: cash
+                amount: 56760
+                id: 89
+                form:
+                  id: 343
+                  branch_id: 1
+                  date: '2022-08-01 02:02:31'
+                  number: PC22080001
+                  edited_number: null
+                  edited_notes: null
+                  notes: notes update
+                  created_by: 1
+                  updated_by: 1
+                  done: 0
+                  increment: 1
+                  increment_group: '202208'
+                  formable_id: 89
+                  formable_type: PaymentCollection
+                  request_approval_to: 1
+                  approval_by: null
+                  approval_at: null
+                  approval_reason: null
+                  approval_status: 0
+                  request_cancellation_to: null
+                  request_cancellation_by: null
+                  request_cancellation_at: null
+                  request_cancellation_reason: null
+                  cancellation_approval_at: null
+                  cancellation_approval_by: null
+                  cancellation_approval_reason: null
+                  cancellation_status: null
+                  created_at: '2022-08-01 02:03:00'
+                  updated_at: '2022-08-01 02:03:00'
+                  request_close_to: null
+                  request_close_by: null
+                  request_close_at: null
+                  request_close_reason: null
+                  close_approval_at: null
+                  close_approval_by: null
+                  close_status: null
+    delete:
+      tags:
+        - Payment Collection
+      summary: payment collection - cancel
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: payment collection id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - reason
+              properties:
+                reason:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /sales/payment-collection/{id}/histories:
+    get:
+      tags:
+        - Payment Collection
+      summary: payment collection - show histories
+      parameters:
+        - name: sort_by
+          in: query
+          schema:
+            type: string
+          example: '-user_activities.date'
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: '66'
+        - name: includes
+          in: query
+          schema:
+            type: string
+          example: user
+        - name: filter_like
+          in: query
+          schema:
+            type: string
+          example: '{}'
+        - name: or_filter_where_has_like[]
+          in: query
+          schema:
+            type: string
+          example: '{user:{}}'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: 10
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        table_type:
+                          type: string
+                        table_id:
+                          type: integer
+                        number:
+                          type: string
+                        date:
+                          type: string
+                        user_id:
+                          type: integer
+                        activity:
+                          type: string
+                        formable_id:
+                          type: integer
+                        user:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                            first_name:
+                              type: string
+                            last_name:
+                              type: string
+                            address:
+                              type: string
+                            phone:
+                              type: string
+                            email:
+                              type: string
+                            created_at:
+                              type: string
+                            updated_at:
+                              type: string
+                            branch_id:
+                              type: integer
+                            warehouse_id:
+                              type: integer
+                            full_name:
+                              type: string
+                  links:
+                    $ref: '#/components/schemas/links'
+                  meta:
+                    $ref: '#/components/schemas/meta'
+              example:
+                data:
+                  - id: 180
+                    table_type: PaymentCollection
+                    table_id: 91
+                    number: PC22080003
+                    date: '2022-08-01 02:25:21'
+                    user_id: 1
+                    activity: Created
+                    formable_id: 5
+                    user:
+                      id: 1
+                      name: admin
+                      first_name: admin
+                      last_name: admin
+                      address: null
+                      phone: null
+                      email: admin@point.com
+                      created_at: '2022-06-07 10:07:29'
+                      updated_at: '2022-06-07 10:07:29'
+                      branch_id: 1
+                      warehouse_id: 1
+                      full_name: admin admin
+              links:
+                first: >-
+                  http://example.com/api/v1/sales/payment-collection/91/histories?page=1
+                last: >-
+                  http://example.com/api/v1/sales/payment-collection/91/histories?page=1
+                prev: null
+                next: null
+              meta:
+                current_page: 1
+                from: 1
+                last_page: 1
+                path: >-
+                  http://example.com/api/v1/sales/payment-collection/91/histories
+                per_page: 10
+                to: 1
+                total: 1
+    post:
+      tags:
+        - Payment Collection
+      summary: payment collection - create history
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+                - activity
+              properties:
+                id:
+                  type: integer
+                activity:
+                  type: string
+              example:
+                id: 66
+                activity: Approved
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      table_type:
+                        type: string
+                      table_id:
+                        type: integer
+                      number:
+                        type: string
+                      date:
+                        type: string
+                      user_id:
+                        type: integer
+                      activity:
+                        type: string
+                      id:
+                        type: integer
+              example:
+                data:
+                  table_type: forms
+                  table_id: 110
+                  number: null
+                  date: '2022-08-01 02:25:21'
+                  user_id: 1
+                  activity: Approved
+                  id: 66
+  /sales/payment-collection/{id}/approve:
+    post:
+      tags:
+        - Payment Collection
+      summary: payment collection - approve
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+              properties:
+                id:
+                  type: string
+              example:
+                id: '79'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 79
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  customer_id:
+                    type: integer
+                  customer_name:
+                    type: string
+                  due_date:
+                    type: string
+                  payment_type:
+                    type: string
+                  amount:
+                    type: integer
+                  form:
+                    $ref: '#/components/schemas/form'
+                  details:
+                    $ref: '#/components/schemas/details'
+              example:
+                id: 79
+                payment_type: cash
+                due_date: '2022-07-21 22:00:24'
+                payment_account_id: null
+                amount: 33000
+                supplier_id: 0
+                supplier_name: null
+                payment_id: null
+                customer_id: 2
+                customer_name: CUSTOMER 2
+                details:
+                  - id: 148
+                    sales_payment_collection_id: 79
+                    chart_of_account_id: null
+                    allocation_id: null
+                    available: 33000
+                    amount: 33000
+                    notes: null
+                    referenceable_form_date: '2022-06-30 12:28:14'
+                    referenceable_form_number: SI2206013
+                    referenceable_form_notes: null
+                    referenceable_id: 15
+                    referenceable_type: SalesInvoice
+                form:
+                  id: 317
+                  branch_id: 1
+                  date: '2022-07-21 22:00:24'
+                  number: PC22070021
+                  edited_number: null
+                  edited_notes: null
+                  notes: null
+                  created_by: 1
+                  updated_by: 1
+                  done: 0
+                  increment: 21
+                  increment_group: '202207'
+                  formable_id: 79
+                  formable_type: PaymentCollection
+                  request_approval_to: 2
+                  approval_by: 1
+                  approval_at: '2022-08-01T01:27:47.414193Z'
+                  approval_reason: null
+                  approval_status: 0
+                  request_cancellation_to: null
+                  request_cancellation_by: null
+                  request_cancellation_at: null
+                  request_cancellation_reason: null
+                  cancellation_approval_at: null
+                  cancellation_approval_by: null
+                  cancellation_approval_reason: null
+                  cancellation_status: null
+                  created_at: '2022-07-21 22:00:58'
+                  updated_at: '2022-08-01 09:27:47'
+                  request_close_to: null
+                  request_close_by: null
+                  request_close_at: null
+                  request_close_reason: null
+                  close_approval_at: null
+                  close_approval_by: null
+                  close_status: null
+  /sales/payment-collection/{id}/reject:
+    post:
+      tags:
+        - Payment Collection
+      summary: payment collection - reject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+                - reason
+              properties:
+                id:
+                  type: string
+                reason:
+                  type: string
+              example:
+                id: 69
+                reason: payment collection rejected
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 69
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      customer_id:
+                        type: integer
+                      customer_name:
+                        type: string
+                      due_date:
+                        type: string
+                      payment_type:
+                        type: string
+                      amount:
+                        type: integer
+                      form:
+                        $ref: '#/components/schemas/form'
+              example:
+                data:
+                  id: 90
+                  payment_type: cash
+                  due_date: '2022-08-01 02:13:04'
+                  payment_account_id: null
+                  amount: 36760
+                  supplier_id: 0
+                  supplier_name: ''
+                  payment_id: null
+                  customer_id: 4
+                  customer_name: CUSTOMER TEST MIRNA
+                  form:
+                    id: 344
+                    branch_id: 1
+                    date: '2022-08-01 02:13:04'
+                    number: PC22080002
+                    edited_number: null
+                    edited_notes: null
+                    notes: tes
+                    created_by: 1
+                    updated_by: 1
+                    done: 0
+                    increment: 2
+                    increment_group: 202208
+                    formable_id: 90
+                    formable_type: PaymentCollection
+                    request_approval_to: 2
+                    approval_by: 1
+                    approval_at: '2022-07-31T18:17:15.177783Z'
+                    approval_reason: reject
+                    approval_status: -1
+                    request_cancellation_to: null
+                    request_cancellation_by: null
+                    request_cancellation_at: null
+                    request_cancellation_reason: null
+                    cancellation_approval_at: null
+                    cancellation_approval_by: null
+                    cancellation_approval_reason: null
+                    cancellation_status: null
+                    created_at: '2022-08-01 02:14:10'
+                    updated_at: '2022-08-01 02:17:15'
+                    request_close_to: null
+                    request_close_by: null
+                    request_close_at: null
+                    request_close_reason: null
+                    close_approval_at: null
+                    close_approval_by: null
+                    close_status: null
+  /sales/payment-collection/{id}/cancellation-approve:
+    post:
+      tags:
+        - Payment Collection
+      summary: payment collection - cancel approve
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+              properties:
+                id:
+                  type: integer
+              example:
+                id: 69
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 69
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      customer_id:
+                        type: integer
+                      customer_name:
+                        type: string
+                      due_date:
+                        type: string
+                      payment_type:
+                        type: string
+                      amount:
+                        type: integer
+                      form:
+                        $ref: '#/components/schemas/form'
+              example:
+                id: 88
+                payment_type: bank
+                due_date: '2022-08-01 07:56:44'
+                payment_account_id: null
+                amount: 43000
+                supplier_id: 0
+                supplier_name: null
+                payment_id: null
+                customer_id: 2
+                customer_name: CUSTOMER 2
+                form:
+                  id: 334
+                  branch_id: 1
+                  date: '2022-08-01 07:56:44'
+                  number: PC22080001
+                  edited_number: null
+                  edited_notes: null
+                  notes: test
+                  created_by: 1
+                  updated_by: 1
+                  done: 0
+                  increment: 1
+                  increment_group: '202208'
+                  formable_id: 88
+                  formable_type: PaymentCollection
+                  request_approval_to: 1
+                  approval_by: null
+                  approval_at: null
+                  approval_reason: null
+                  approval_status: 0
+                  request_cancellation_to: 1
+                  request_cancellation_by: 1
+                  request_cancellation_at: '2022-08-01 00:04:56'
+                  request_cancellation_reason: cancel
+                  cancellation_approval_at: '2022-08-01T00:05:05.136293Z'
+                  cancellation_approval_by: 1
+                  cancellation_approval_reason: null
+                  cancellation_status: 1
+                  created_at: '2022-08-01 07:57:35'
+                  updated_at: '2022-08-01 08:05:05'
+                  request_close_to: null
+                  request_close_by: null
+                  request_close_at: null
+                  request_close_reason: null
+                  close_approval_at: null
+                  close_approval_by: null
+                  close_status: null
+  /sales/payment-collection/{id}/cancellation-reject:
+    post:
+      tags:
+        - Payment Collection
+      summary: payment collection - cancel reject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+                - reason
+              properties:
+                id:
+                  type: integer
+                reason:
+                  type: string
+                  required: true
+              example:
+                id: 67
+                reason: cancellation reject reason
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 67
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  customer_id:
+                    type: integer
+                  customer_name:
+                    type: string
+                  due_date:
+                    type: string
+                  payment_type:
+                    type: string
+                  amount:
+                    type: integer
+                  form:
+                    $ref: '#/components/schemas/form'
+              example:
+                id: 67
+                payment_type: bank
+                due_date: '2022-08-01 07:56:44'
+                payment_account_id: null
+                amount: 43000
+                supplier_id: 0
+                supplier_name: ''
+                payment_id: null
+                customer_id: 2
+                customer_name: CUSTOMER 2
+                form:
+                  id: 334
+                  branch_id: 1
+                  date: '2022-08-01 07:56:44'
+                  number: PC22080001
+                  edited_number: null
+                  edited_notes: null
+                  notes: test
+                  created_by: 1
+                  updated_by: 1
+                  done: 0
+                  increment: 1
+                  increment_group: '202208'
+                  formable_id: 88
+                  formable_type: PaymentCollection
+                  request_approval_to: 1
+                  approval_by: null
+                  approval_at: null
+                  approval_reason: null
+                  approval_status: 0
+                  request_cancellation_to: 1
+                  request_cancellation_by: 1
+                  request_cancellation_at: '2022-07-31 23:57:56'
+                  request_cancellation_reason: cancel
+                  cancellation_approval_at: '2022-07-31T23:58:10.445559Z'
+                  cancellation_approval_by: 1
+                  cancellation_approval_reason: reject
+                  cancellation_status: -1
+                  created_at: '2022-08-01 07:57:35'
+                  updated_at: '2022-08-01 07:58:10'
+                  request_close_to: null
+                  request_close_by: null
+                  request_close_at: null
+                  request_close_reason: null
+                  close_approval_at: null
+                  close_approval_by: null
+                  close_status: null
+  /sales/approval/payment-collection/send:
+    post:
+      tags:
+        - Payment Collection
+      summary: payment collection - send approval email
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - ids
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+              example:
+                ids:
+                  - id: 31
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /sales/payment-collection/approve:
+    post:
+      tags:
+        - Payment Collection
+      summary: payment collection - approve by email
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - ids
+                - token
+                - approver_id
+              properties:
+                ids:
+                  type: array
+                  required: true
+                  items:
+                    type: integer
+                token:
+                  type: string
+                  required: true
+                approver_id:
+                  type: string
+                  required: true
+              example:
+                ids:
+                  - 59
+                token: 1d3c927edc7339345ee77fd64e9beeba
+                approver_id: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /sales/payment-collection/{customerId}/references:
+    post:
+      tags:
+        - Payment Collection
+      summary: payment collection - get references
+      parameters:
+        - name: customer_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 2
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      salesInvoice:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            date:
+                              type: string
+                            number:
+                              type: string
+                            notes:
+                              type: string
+                            id:
+                              type: integer
+                            amount:
+                              type: integer
+                            collected:
+                              type: integer
+                            toCollect:
+                              type: integer
+                      salesDownPayment:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            date:
+                              type: string
+                            number:
+                              type: string
+                            notes:
+                              type: string
+                            id:
+                              type: integer
+                            amount:
+                              type: integer
+                            collected:
+                              type: integer
+                            toCollect:
+                              type: integer
+                      salesReturn:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            date:
+                              type: string
+                            number:
+                              type: string
+                            notes:
+                              type: string
+                            id:
+                              type: integer
+                            amount:
+                              type: integer
+                            collected:
+                              type: integer
+                            toCollect:
+                              type: integer
+              example:
+                data:
+                  salesInvoice:
+                    - date: '2022-06-23 17:57:39'
+                      number: SI2206010
+                      notes: null
+                      id: 12
+                      amount: 2673000
+                      collected: 1550000
+                      toCollect: 1123000
+                  salesDownPayment:
+                    - date: '2022-06-23 17:57:39'
+                      number: DP2206010
+                      notes: null
+                      id: 12
+                      amount: 2673000
+                      collected: 1550000
+                      toCollect: 1123000
+                  salesReturn:
+                    - date: '2022-06-23 17:57:39'
+                      number: SR2206010
+                      notes: null
+                      id: 12
+                      amount: 2673000
+                      collected: 1550000
+                      toCollect: 1123000
+  /sales/sales-return:
+    get:
+      tags:
+        - Sales Return
+      summary: sales return - all
+      parameters:
+        - name: join
+          in: query
+          schema:
+            type: string
+          example: form,customer,items,item
+        - name: fields
+          in: query
+          schema:
+            type: string
+          example: sales_return.*
+        - name: sort_by
+          in: query
+          schema:
+            type: string
+          example: '-form.number'
+        - name: group_by
+          in: query
+          schema:
+            type: string
+          example: form.id
+        - name: filter_form
+          in: query
+          schema:
+            type: string
+          example: notArchived;null
+        - name: filter_like
+          in: query
+          schema:
+            type: string
+          example: '{}'
+        - name: filter_date_min
+          in: query
+          schema:
+            type: string
+          example: '{"form.date":"2022-05-01 00:00:00"}'
+        - name: filter_date_max
+          in: query
+          schema:
+            type: string
+          example: '{"form.date":"2022-06-08 23:59:59"}'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: includes
+          in: query
+          schema:
+            type: string
+          example: form;customer;items.item;items.allocation
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/meta'
+                  links:
+                    $ref: '#/components/schemas/links'
+                  data:
+                    $ref: '#/components/schemas/sales-return'
+              example:
+                data:
+                  - id: 15
+                    sales_invoice_id: 34
+                    customer_id: 2
+                    warehouse_id: 1
+                    customer_name: CUSTOMER
+                    customer_address: null
+                    customer_phone: null
+                    tax: 3000
+                    amount: 33000
+                    form:
+                      id: 352
+                      branch_id: 1
+                      date: '2022-09-10 18:16:14'
+                      number: SR22090011
+                      edited_number: null
+                      edited_notes: null
+                      notes: rusak
+                      created_by: 1
+                      updated_by: 1
+                      done: 0
+                      increment: 11
+                      increment_group: 202209
+                      formable_id: 15
+                      formable_type: SalesReturn
+                      request_approval_at: null
+                      request_approval_to: 1
+                      approval_by: 1
+                      approval_at: '2022-09-10 10:16:45'
+                      approval_reason: barang masih bagus
+                      approval_status: -1
+                      request_cancellation_to: null
+                      request_cancellation_by: null
+                      request_cancellation_at: null
+                      request_cancellation_reason: null
+                      cancellation_approval_at: null
+                      cancellation_approval_by: null
+                      cancellation_approval_reason: null
+                      cancellation_status: null
+                      created_at: '2022-09-10 18:16:34'
+                      updated_at: '2022-09-10 18:16:45'
+                      request_close_to: null
+                      request_close_by: null
+                      request_close_at: null
+                      request_close_reason: null
+                      close_approval_at: null
+                      close_approval_by: null
+                      close_status: null
+                    customer:
+                      id: 2
+                      code: null
+                      tax_identification_number: null
+                      name: CUSTOMER
+                      address: null
+                      city: null
+                      state: null
+                      country: null
+                      zip_code: null
+                      latitude: null
+                      longitude: null
+                      phone: null
+                      phone_cc: null
+                      email: null
+                      notes: null
+                      credit_limit: 0
+                      branch_id: 1
+                      created_by: 1
+                      updated_by: 1
+                      archived_by: null
+                      pricing_group_id: 1
+                      created_at: '2022-06-23 17:40:47'
+                      updated_at: '2022-06-23 17:40:47'
+                      archived_at: null
+                      label: CUSTOMER
+                    items:
+                      - id: 13
+                        sales_return_id: 15
+                        sales_invoice_item_id: 33
+                        item_id: 1
+                        item_name: Kopi
+                        quantity_sales: 5
+                        quantity: 5
+                        price: 540
+                        discount_percent: 0
+                        discount_value: 100
+                        unit: PCS
+                        converter: 1
+                        expiry_date: null
+                        production_number: null
+                        notes: null
+                        allocation_id: 1
+                        item:
+                          id: 1
+                          chart_of_account_id: 14
+                          code: BNF01
+                          barcode: null
+                          name: Kopi
+                          size: null
+                          color: null
+                          weight: null
+                          notes: null
+                          taxable: 1
+                          require_production_number: 0
+                          require_expiry_date: 0
+                          stock: 35496
+                          stock_reminder: 0
+                          unit_default: 1
+                          unit_default_purchase: 1
+                          unit_default_sales: 1
+                          created_by: 1
+                          updated_by: 1
+                          archived_by: null
+                          created_at: '2022-06-13 18:39:26'
+                          updated_at: '2022-09-10 18:16:10'
+                          archived_at: null
+                          label: '[BNF01] Kopi'
+                links:
+                  first: https://api.point.red/api/v1/sales/return?page=1
+                  last: https://api.point.red/api/v1/sales/return?page=4
+                  prev: null
+                  next: https://api.point.red/api/v1/sales/return?page=2
+                meta:
+                  current_page: 1
+                  from: 1
+                  last_page: 4
+                  path: https://api.point.red/api/v1/sales/return
+                  per_page: '10'
+                  to: 10
+                  total: 36
+    post:
+      tags:
+        - Sales Return
+      summary: sales return - create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - sales_invoice_id
+                - warehouse_id
+                - customer_id
+                - request_approval_to
+                - items
+              properties:
+                originalData:
+                  $ref: '#/components/schemas/sales-return-original-data'
+                items:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - sales_invoice_id
+                      - quantity_sales
+                      - quantity
+                      - unit
+                      - converter
+                    properties:
+                      units:
+                        $ref: '#/components/schemas/units'
+                      sales_invoice_item_id:
+                        type: integer
+                      item_id:
+                        type: integer
+                      item_name:
+                        type: string
+                      price:
+                        type: string
+                      discount_percent:
+                        type: string
+                      discount_value:
+                        type: string
+                      unit:
+                        type: string
+                      converter:
+                        type: integer
+                      quantity_sales:
+                        type: integer
+                      quantity:
+                        type: integer
+                      more:
+                        type: boolean
+                      total:
+                        type: integer
+                      allocation_id:
+                        type: integer
+                      notes:
+                        type: string
+                request_approval_at:
+                  type: string
+                increment_group:
+                  type: string
+                date:
+                  type: string
+                warehouse_id:
+                  type: integer
+                customer_id:
+                  type: integer
+                customer_name:
+                  type: string
+                customer_label:
+                  type: string
+                customer_address:
+                  type: string
+                customer_phone:
+                  type: string
+                customer_email:
+                  type: string
+                request_approval_to:
+                  type: string
+                approver_name:
+                  type: string
+                approver_email:
+                  type: string
+                sales_invoice_id:
+                  type: integer
+                errors:
+                  type: object
+                  properties:
+                    errors:
+                      type: object
+              example:
+                originalData:
+                  amount: null
+                  approver_email: null
+                  approver_name: null
+                  customer_address: null
+                  customer_code: null
+                  customer_email: null
+                  customer_id: null
+                  customer_name: null
+                  customer_phone: null
+                  date: '2022-09-11 12:36:14'
+                  increment_group: '202209'
+                  items: []
+                  notes: null
+                  request_approval_to: null
+                  sales_invoice_id: null
+                  tax: null
+                  type_of_tax: null
+                  warehouse_id: null
+                increment_group: '202209'
+                date: '2022-09-11 12:36:14'
+                amount: 5500
+                approver_email: admin@point.com
+                approver_name: admin admin
+                customer_address: null
+                customer_email: null
+                customer_id: 1
+                customer_name: Customer
+                customer_phone: null
+                request_approval_to: 1
+                sales_invoice_id: 33
+                tax: 500
+                type_of_tax: exclude
+                warehouse_id: 1
+                notes: rusak
+                items:
+                  - allocation_id: 1
+                    allocation_name: test
+                    converter: 1
+                    discount_percent: 0
+                    discount_value: 0
+                    expiry_date: null
+                    item_id: 1
+                    item_label: Kopi
+                    item_name: Kopi
+                    more: false
+                    notes: null
+                    price: 5000
+                    price_sales: 5000
+                    production_number: null
+                    quantity: '1'
+                    quantity_sales: '7'
+                    sales_invoice_item_id: 32
+                    total: 5000
+                    unit: PCS
+                errors:
+                  errors: {}
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      sales_invoice_id:
+                        type: integer
+                      warehouse_id:
+                        type: integer
+                      customer_id:
+                        type: integer
+                      customer_name:
+                        type: string
+                      customer_address:
+                        type: string
+                      customer_phone:
+                        type: string
+                      tax:
+                        type: integer
+                      amount:
+                        type: integer
+                      form:
+                        $ref: '#/components/schemas/form'
+                      customer:
+                        $ref: '#/components/schemas/customer'
+                      items:
+                        $ref: '#/components/schemas/sales-return-items'
+              example:
+                data:
+                  sales_invoice_id: 33
+                  warehouse_id: 1
+                  customer_id: 1
+                  customer_name: Customer
+                  customer_address: null
+                  customer_phone: null
+                  tax: 500
+                  amount: 5500
+                  id: 14
+                  form:
+                    id: 351
+                    branch_id: 1
+                    date: '2022-09-11 12:36:14'
+                    number: SR22090010
+                    edited_number: null
+                    edited_notes: null
+                    notes: null
+                    created_by: 1
+                    updated_by: 1
+                    done: 0
+                    increment: 10
+                    increment_group: 202209
+                    formable_id: 14
+                    formable_type: SalesReturn
+                    request_approval_at: null
+                    request_approval_to: 1
+                    approval_by: null
+                    approval_at: null
+                    approval_reason: null
+                    approval_status: 0
+                    request_cancellation_to: null
+                    request_cancellation_by: null
+                    request_cancellation_at: null
+                    request_cancellation_reason: null
+                    cancellation_approval_at: null
+                    cancellation_approval_by: null
+                    cancellation_approval_reason: null
+                    cancellation_status: null
+                    created_at: '2022-09-11 12:36:42'
+                    updated_at: '2022-09-11 12:36:42'
+                    request_close_to: null
+                    request_close_by: null
+                    request_close_at: null
+                    request_close_reason: null
+                    close_approval_at: null
+                    close_approval_by: null
+                    close_status: null
+                  customer:
+                    id: 1
+                    code: C-1
+                    tax_identification_number: null
+                    name: Customer
+                    address: null
+                    city: null
+                    state: null
+                    country: null
+                    zip_code: null
+                    latitude: null
+                    longitude: null
+                    phone: null
+                    phone_cc: null
+                    email: null
+                    notes: null
+                    credit_limit: 0
+                    branch_id: 1
+                    created_by: 1
+                    updated_by: 1
+                    archived_by: null
+                    pricing_group_id: 1
+                    created_at: '2022-06-13 18:40:45'
+                    updated_at: '2022-06-13 18:40:45'
+                    archived_at: null
+                    label: '[C-1] Customer'
+                  items:
+                    - id: 12
+                      sales_return_id: 14
+                      sales_invoice_item_id: 32
+                      item_id: 1
+                      item_name: Kopi
+                      quantity_sales: 7
+                      quantity: 1
+                      price: 5000
+                      discount_percent: 0
+                      discount_value: 0
+                      unit: PCS
+                      converter: 1
+                      expiry_date: null
+                      production_number: null
+                      notes: null
+                      allocation_id: 1
+  /sales/sales-return/approval:
+    get:
+      tags:
+        - Sales Return
+      summary: sales return - all approval
+      parameters:
+        - name: join
+          in: query
+          schema:
+            type: string
+          example: form,customer,items,item
+        - name: fields
+          in: query
+          schema:
+            type: string
+          example: sales_return.*
+        - name: sort_by
+          in: query
+          schema:
+            type: string
+          example: '-form.number'
+        - name: group_by
+          in: query
+          schema:
+            type: string
+          example: form.id
+        - name: filter_form
+          in: query
+          schema:
+            type: string
+          example: notArchived;null
+        - name: filter_like
+          in: query
+          schema:
+            type: string
+          example: '{}'
+        - name: filter_date_min
+          in: query
+          schema:
+            type: string
+          example: '{"form.date":"2022-05-01 00:00:00"}'
+        - name: filter_date_max
+          in: query
+          schema:
+            type: string
+          example: '{"form.date":"2022-05-17 23:59:59"}'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: includes
+          in: query
+          schema:
+            type: string
+          example: form;customer;items.item;items.allocation
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/sales-return'
+                  meta:
+                    $ref: '#/components/schemas/meta'
+                  links:
+                    $ref: '#/components/schemas/links'
+              example:
+                data:
+                  - id: 15
+                    sales_invoice_id: 34
+                    customer_id: 2
+                    warehouse_id: 1
+                    customer_name: CUSTOMER
+                    customer_address: null
+                    customer_phone: null
+                    tax: 3000
+                    amount: 33000
+                    form:
+                      id: 352
+                      branch_id: 1
+                      date: '2022-09-10 18:16:14'
+                      number: SR22090011
+                      edited_number: null
+                      edited_notes: null
+                      notes: rusak
+                      created_by: 1
+                      updated_by: 1
+                      done: 0
+                      increment: 11
+                      increment_group: 202209
+                      formable_id: 15
+                      formable_type: SalesReturn
+                      request_approval_at: null
+                      request_approval_to: 1
+                      approval_by: 1
+                      approval_at: '2022-09-10 10:16:45'
+                      approval_reason: barang masih bagus
+                      approval_status: -1
+                      request_cancellation_to: null
+                      request_cancellation_by: null
+                      request_cancellation_at: null
+                      request_cancellation_reason: null
+                      cancellation_approval_at: null
+                      cancellation_approval_by: null
+                      cancellation_approval_reason: null
+                      cancellation_status: null
+                      created_at: '2022-09-10 18:16:34'
+                      updated_at: '2022-09-10 18:16:45'
+                      request_close_to: null
+                      request_close_by: null
+                      request_close_at: null
+                      request_close_reason: null
+                      close_approval_at: null
+                      close_approval_by: null
+                      close_status: null
+                    customer:
+                      id: 2
+                      code: null
+                      tax_identification_number: null
+                      name: CUSTOMER
+                      address: null
+                      city: null
+                      state: null
+                      country: null
+                      zip_code: null
+                      latitude: null
+                      longitude: null
+                      phone: null
+                      phone_cc: null
+                      email: null
+                      notes: null
+                      credit_limit: 0
+                      branch_id: 1
+                      created_by: 1
+                      updated_by: 1
+                      archived_by: null
+                      pricing_group_id: 1
+                      created_at: '2022-06-23 17:40:47'
+                      updated_at: '2022-06-23 17:40:47'
+                      archived_at: null
+                      label: CUSTOMER
+                    items:
+                      - id: 13
+                        sales_return_id: 15
+                        sales_invoice_item_id: 33
+                        item_id: 1
+                        item_name: Kopi
+                        quantity_sales: 5
+                        quantity: 5
+                        price: 540
+                        discount_percent: 0
+                        discount_value: 100
+                        unit: PCS
+                        converter: 1
+                        expiry_date: null
+                        production_number: null
+                        notes: null
+                        allocation_id: 1
+                        item:
+                          id: 1
+                          chart_of_account_id: 14
+                          code: BNF01
+                          barcode: null
+                          name: Kopi
+                          size: null
+                          color: null
+                          weight: null
+                          notes: null
+                          taxable: 1
+                          require_production_number: 0
+                          require_expiry_date: 0
+                          stock: 35496
+                          stock_reminder: 0
+                          unit_default: 1
+                          unit_default_purchase: 1
+                          unit_default_sales: 1
+                          created_by: 1
+                          updated_by: 1
+                          archived_by: null
+                          created_at: '2022-06-13 18:39:26'
+                          updated_at: '2022-09-10 18:16:10'
+                          archived_at: null
+                          label: '[BNF01] Kopi'
+                links:
+                  first: https://api.point.red/api/v1/sales/return/approval?page=1
+                  last: https://api.point.red/api/v1/sales/return/approval?page=1
+                  prev: null
+                  next: null
+                meta:
+                  current_page: 1
+                  from: 1
+                  last_page: 1
+                  path: https://api.point.red/api/v1/sales/return/approval
+                  per_page: '10'
+                  to: 1
+                  total: 1
+  /sales/sales-return/{id}:
+    get:
+      tags:
+        - Sales Return
+      summary: sales return - show
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: sales return id
+        - name: with_archives
+          in: query
+          schema:
+            type: boolean
+          example: 'true'
+        - name: with_origin
+          in: query
+          schema:
+            type: boolean
+          example: 'true'
+        - name: includes
+          in: query
+          schema:
+            type: string
+          example: >-
+            customer;items.item;items.allocation;items.salesInvoiceItem;salesInvoice.form;form.createdBy;form.requestApprovalTo;form.branch
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      sales_invoice_id:
+                        type: integer
+                      warehouse_id:
+                        type: integer
+                      customer_id:
+                        type: integer
+                      customer_name:
+                        type: string
+                      customer_address:
+                        type: string
+                      customer_phone:
+                        type: string
+                      tax:
+                        type: integer
+                      amount:
+                        type: integer
+                      form:
+                        $ref: '#/components/schemas/form'
+                      customer:
+                        $ref: '#/components/schemas/customer'
+                      items:
+                        $ref: '#/components/schemas/sales-return-items'
+              example:
+                data:
+                  id: 14
+                  sales_invoice_id: 33
+                  customer_id: 1
+                  customer_name: Customer
+                  customer_address: null
+                  customer_phone: null
+                  tax: 500
+                  amount: 5500
+                  warehouse_id: 1
+                  archives: []
+                  customer:
+                    id: 1
+                    code: C-1
+                    tax_identification_number: null
+                    name: Customer
+                    address: null
+                    city: null
+                    state: null
+                    country: null
+                    zip_code: null
+                    latitude: null
+                    longitude: null
+                    phone: null
+                    phone_cc: null
+                    email: null
+                    notes: null
+                    credit_limit: 0
+                    branch_id: 1
+                    created_by: 1
+                    updated_by: 1
+                    archived_by: null
+                    pricing_group_id: 1
+                    created_at: '2022-06-13 18:40:45'
+                    updated_at: '2022-06-13 18:40:45'
+                    archived_at: null
+                    label: '[C-1] Customer'
+                  items:
+                    - id: 12
+                      sales_return_id: 14
+                      sales_invoice_item_id: 32
+                      item_id: 1
+                      item_name: Kopi
+                      quantity_sales: 7
+                      quantity: 1
+                      price: 5000
+                      discount_percent: 0
+                      discount_value: 0
+                      unit: PCS
+                      converter: 1
+                      expiry_date: null
+                      production_number: null
+                      notes: null
+                      allocation_id: 1
+                      item:
+                        id: 1
+                        chart_of_account_id: 14
+                        code: BNF01
+                        barcode: null
+                        name: Kopi
+                        size: null
+                        color: null
+                        weight: null
+                        notes: null
+                        taxable: 1
+                        require_production_number: 0
+                        require_expiry_date: 0
+                        stock: 35493
+                        stock_reminder: 0
+                        unit_default: 1
+                        unit_default_purchase: 1
+                        unit_default_sales: 1
+                        created_by: 1
+                        updated_by: 1
+                        archived_by: null
+                        created_at: '2022-06-13 18:39:26'
+                        updated_at: '2022-09-07 22:45:50'
+                        archived_at: null
+                        label: '[BNF01] Kopi'
+                  form:
+                    id: 351
+                    branch_id: 1
+                    date: '2022-09-11 12:36:14'
+                    number: SR22090010
+                    edited_number: null
+                    edited_notes: null
+                    notes: null
+                    created_by:
+                      id: 1
+                      name: admin
+                      first_name: admin
+                      last_name: admin
+                      address: null
+                      phone: null
+                      email: admin@point.com
+                      created_at: '2022-05-12 11:32:41'
+                      updated_at: '2022-05-12 11:32:41'
+                      branch_id: null
+                      warehouse_id: null
+                      full_name: admin admin
+                    updated_by: 1
+                    done: 0
+                    increment: 10
+                    increment_group: 202209
+                    formable_id: 14
+                    formable_type: SalesReturn
+                    request_approval_to:
+                      id: 1
+                      name: admin
+                      first_name: admin
+                      last_name: admin
+                      address: null
+                      phone: null
+                      email: admin@point.com
+                      created_at: '2022-05-12 11:32:41'
+                      updated_at: '2022-05-12 11:32:41'
+                      branch_id: null
+                      warehouse_id: null
+                      full_name: admin admin
+                    approval_by: null
+                    approval_at: null
+                    approval_reason: null
+                    approval_status: 0
+                    request_cancellation_to: null
+                    request_cancellation_by: null
+                    request_cancellation_at: null
+                    request_cancellation_reason: null
+                    cancellation_approval_at: null
+                    cancellation_approval_by: null
+                    cancellation_approval_reason: null
+                    cancellation_status: null
+                    created_at: '2022-09-11 12:36:42'
+                    updated_at: '2022-09-11 12:36:42'
+                    request_approval_at: '2022-09-11 12:36:42'
+                    request_close_to: null
+                    request_close_by: null
+                    request_close_at: null
+                    request_close_reason: null
+                    close_approval_at: null
+                    close_approval_by: null
+                    close_approval_reason: null
+                    close_status: null
+                    branch:
+                      id: 1
+                      name: CENTRAL
+                      address: null
+                      phone: null
+                      created_by: null
+                      updated_by: null
+                      archived_by: null
+                      created_at: '2022-06-07 10:07:38'
+                      updated_at: '2022-06-07 10:07:38'
+                      archived_at: null
+  /sales/sales-return/{id}/histories:
+    get:
+      tags:
+        - Sales Return
+      summary: sales return - show histories
+      parameters:
+        - name: sort_by
+          in: query
+          schema:
+            type: string
+          example: '-user_activities.date'
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: '16'
+        - name: includes
+          in: query
+          schema:
+            type: string
+          example: user
+        - name: filter_like
+          in: query
+          schema:
+            type: string
+          example: '{}'
+        - name: or_filter_where_has_like[]
+          in: query
+          schema:
+            type: string
+          example: '{"user":{}}'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: 10
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        table_type:
+                          type: string
+                        table_id:
+                          type: integer
+                        number:
+                          type: string
+                        date:
+                          type: string
+                        user_id:
+                          type: integer
+                        activity:
+                          type: string
+                        formable_id:
+                          type: integer
+                        user:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                            first_name:
+                              type: string
+                            last_name:
+                              type: string
+                            address:
+                              type: string
+                            phone:
+                              type: string
+                            email:
+                              type: string
+                            created_at:
+                              type: string
+                            updated_at:
+                              type: string
+                            branch_id:
+                              type: integer
+                            warehouse_id:
+                              type: integer
+                            full_name:
+                              type: string
+                  links:
+                    $ref: '#/components/schemas/links'
+                  meta:
+                    $ref: '#/components/schemas/meta'
+              example:
+                data:
+                  - id: 327
+                    table_type: SalesReturn
+                    table_id: 31
+                    number: SR22090027
+                    date: '2022-09-13 14:28:52'
+                    user_id: 3
+                    activity: Approved
+                    formable_id: 31
+                    user:
+                      id: 3
+                      name: user1
+                      first_name: user1
+                      last_name: user1
+                      address: null
+                      phone: null
+                      email: aininr13@gmail.com
+                      created_at: '2022-07-11 06:49:44'
+                      updated_at: '2022-07-11 06:49:47'
+                      branch_id: 1
+                      warehouse_id: 1
+                      full_name: user1 user1
+                  - id: 326
+                    table_type: SalesReturn
+                    table_id: 31
+                    number: SR22090027
+                    date: '2022-09-13 14:28:46'
+                    user_id: 3
+                    activity: Created
+                    formable_id: 31
+                    user:
+                      id: 3
+                      name: user1
+                      first_name: user1
+                      last_name: user1
+                      address: null
+                      phone: null
+                      email: aininr13@gmail.com
+                      created_at: '2022-07-11 06:49:44'
+                      updated_at: '2022-07-11 06:49:47'
+                      branch_id: 1
+                      warehouse_id: 1
+                      full_name: user1 user1
+                links:
+                  first: http://api.pont.red/api/v1/sales/return/31/histories?page=1
+                  last: http://api.pont.red/api/v1/sales/return/31/histories?page=1
+                  prev: null
+                  next: null
+                meta:
+                  current_page: 1
+                  from: 1
+                  last_page: 1
+                  path: http://api.pont.red/api/v1/sales/return/31/histories
+                  per_page: '10'
+                  to: 2
+                  total: 2
+  /sales/sales-return/{id}/approve:
+    post:
+      tags:
+        - Sales Return
+      summary: sales return - approve
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+              properties:
+                id:
+                  type: string
+              example:
+                id: '14'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 14
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  customer_id:
+                    type: integer
+                  warehouse_id:
+                    type: integer
+                  sales_invoice_id:
+                    type: integer
+                  customer_name:
+                    type: string
+                  customer_address:
+                    type: string
+                  customer_phone:
+                    type: string
+                  tax:
+                    type: integer
+                  amount:
+                    type: integer
+                  items:
+                    $ref: '#/components/schemas/sales-return-item'
+                  form:
+                    $ref: '#/components/schemas/form'
+                  sales_invoice:
+                    $ref: '#/components/schemas/sales-invoice'
+              example:
+                data:
+                  id: 29
+                  sales_invoice_id: 42
+                  customer_id: 2
+                  customer_name: CUSTOMER 2
+                  customer_address: null
+                  customer_phone: null
+                  tax: 98800
+                  amount: 1086800
+                  warehouse_id: 1
+                  items:
+                    - id: 34
+                      sales_return_id: 29
+                      sales_invoice_item_id: 44
+                      item_id: 2
+                      item_name: kopibara
+                      quantity_sales: 60
+                      quantity: 10
+                      price: 100000
+                      discount_percent: 0
+                      discount_value: 1200
+                      unit: PCS
+                      converter: 1
+                      expiry_date: null
+                      production_number: null
+                      notes: null
+                      allocation_id: 2
+                      item:
+                        id: 2
+                        chart_of_account_id: 14
+                        code: code-12031
+                        barcode: null
+                        name: kopibara
+                        size: null
+                        color: null
+                        weight: null
+                        notes: null
+                        taxable: 1
+                        require_production_number: 0
+                        require_expiry_date: 0
+                        stock: 8712
+                        stock_reminder: 0
+                        unit_default: 1
+                        unit_default_purchase: 1
+                        unit_default_sales: 1
+                        created_by: 1
+                        updated_by: 1
+                        archived_by: null
+                        created_at: '2022-06-23 16:55:17'
+                        updated_at: '2022-10-08 21:58:18'
+                        archived_at: null
+                        label: '[code-12031] kopibara'
+                      sales_return:
+                        id: 29
+                        sales_invoice_id: 42
+                        customer_id: 2
+                        customer_name: CUSTOMER 2
+                        customer_address: null
+                        customer_phone: null
+                        tax: 98800
+                        amount: 1086800
+                        warehouse_id: 1
+                        warehouse:
+                          id: 1
+                          code: null
+                          name: CENTRAL WAREHOUSE
+                          address: null
+                          phone: null
+                          notes: null
+                          branch_id: 1
+                          created_by: null
+                          updated_by: null
+                          archived_by: null
+                          created_at: '2022-06-07 10:07:38'
+                          updated_at: '2022-06-07 10:07:38'
+                          archived_at: null
+                          label: CENTRAL WAREHOUSE
+                  sales_invoice:
+                    id: 42
+                    customer_id: 2
+                    customer_name: CUSTOMER 2
+                    customer_address: ''
+                    customer_phone: ''
+                    billing_address: null
+                    billing_phone: null
+                    billing_email: null
+                    shipping_address: null
+                    shipping_phone: null
+                    shipping_email: null
+                    referenceable_id: 70
+                    referenceable_type: SalesDeliveryNote
+                    due_date: '2022-09-13 12:23:26'
+                    delivery_fee: 0
+                    discount_percent: 0
+                    discount_value: 12022
+                    type_of_tax: exclude
+                    tax: 591597.8
+                    amount: 6507575.8
+                    remaining: 6507575.8
+                    items:
+                      - id: 44
+                        sales_invoice_id: 42
+                        referenceable_id: 70
+                        referenceable_type: SalesDeliveryNote
+                        item_referenceable_id: 71
+                        item_referenceable_type: SalesDeliveryNoteItem
+                        item_id: 2
+                        item_name: kopibara
+                        quantity: 60
+                        quantity_returned: 0
+                        quantity_remaining: 60
+                        price: 100000
+                        discount_percent: 0
+                        discount_value: 1200
+                        taxable: 1
+                        unit: PCS
+                        converter: 1
+                        expiry_date: null
+                        production_number: null
+                        notes: null
+                        allocation_id: null
+                        item:
+                          id: 2
+                          chart_of_account_id: 14
+                          code: code-12031
+                          barcode: null
+                          name: kopibara
+                          size: null
+                          color: null
+                          weight: null
+                          notes: null
+                          taxable: 1
+                          require_production_number: 0
+                          require_expiry_date: 0
+                          stock: 8712
+                          stock_reminder: 0
+                          unit_default: 1
+                          unit_default_purchase: 1
+                          unit_default_sales: 1
+                          created_by: 1
+                          updated_by: 1
+                          archived_by: null
+                          created_at: '2022-06-23 16:55:17'
+                          updated_at: '2022-10-08 21:58:18'
+                          archived_at: null
+                          label: '[code-12031] kopibara'
+                          smallest_unit:
+                            id: 2
+                            label: PCS
+                            name: PCS
+                            converter: 1
+                            disabled: 0
+                            item_id: 2
+                            created_by: 1
+                            updated_by: 1
+                            created_at: '2022-06-23 16:55:17'
+                            updated_at: '2022-06-23 16:55:17'
+                  form:
+                    id: 468
+                    branch_id: 1
+                    date: '2022-09-13 14:24:54'
+                    number: SR22090025
+                    edited_number: null
+                    edited_notes: null
+                    notes: null
+                    created_by: 1
+                    updated_by: 1
+                    done: 0
+                    increment: 25
+                    increment_group: 202209
+                    formable_id: 29
+                    formable_type: SalesReturn
+                    request_approval_at: null
+                    request_approval_to: 1
+                    approval_by: 1
+                    approval_at: '2022-10-09T08:36:33.033335Z'
+                    approval_reason: null
+                    approval_status: 1
+                    request_cancellation_to: null
+                    request_cancellation_by: null
+                    request_cancellation_at: null
+                    request_cancellation_reason: null
+                    cancellation_approval_at: null
+                    cancellation_approval_by: null
+                    cancellation_approval_reason: null
+                    cancellation_status: null
+                    created_at: '2022-09-13 14:25:34'
+                    updated_at: '2022-10-09 16:36:33'
+                    request_close_to: null
+                    request_close_by: null
+                    request_close_at: null
+                    request_close_reason: null
+                    close_approval_at: null
+                    close_approval_by: null
+                    close_status: null
+  /sales/sales-return/{id}/reject:
+    post:
+      tags:
+        - Sales Return
+      summary: sales return - reject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+                - reason
+              properties:
+                id:
+                  type: string
+                reason:
+                  type: string
+              example:
+                id: 16
+                reason: reason sales return rejected
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 16
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      customer_id:
+                        type: integer
+                      warehouse_id:
+                        type: integer
+                      sales_invoice_id:
+                        type: integer
+                      customer_name:
+                        type: string
+                      customer_address:
+                        type: string
+                      customer_phone:
+                        type: string
+                      tax:
+                        type: integer
+                      amount:
+                        type: integer
+                        form:
+                          $ref: ./components/responses/properties/form.yaml
+              example:
+                data:
+                  id: 25
+                  sales_invoice_id: 44
+                  customer_id: 6
+                  customer_name: AINI
+                  customer_address: null
+                  customer_phone: null
+                  tax: 900
+                  amount: 9900
+                  warehouse_id: 1
+                  form:
+                    id: 448
+                    branch_id: 1
+                    date: '2022-09-13 12:38:26'
+                    number: SR22090021
+                    edited_number: null
+                    edited_notes: null
+                    notes: null
+                    created_by: 1
+                    updated_by: 1
+                    done: 0
+                    increment: 21
+                    increment_group: 202209
+                    formable_id: 25
+                    formable_type: SalesReturn
+                    request_approval_at: null
+                    request_approval_to: 3
+                    approval_by: 1
+                    approval_at: '2022-10-09T08:48:52.956104Z'
+                    approval_reason: rejecy
+                    approval_status: -1
+                    request_cancellation_to: null
+                    request_cancellation_by: null
+                    request_cancellation_at: null
+                    request_cancellation_reason: null
+                    cancellation_approval_at: null
+                    cancellation_approval_by: null
+                    cancellation_approval_reason: null
+                    cancellation_status: null
+                    created_at: '2022-09-13 12:39:14'
+                    updated_at: '2022-10-09 16:48:52'
+                    request_close_to: null
+                    request_close_by: null
+                    request_close_at: null
+                    request_close_reason: null
+                    close_approval_at: null
+                    close_approval_by: null
+                    close_status: null
+  /sales/sales-return/{id}/cancellation-approve:
+    post:
+      tags:
+        - Sales Return
+      summary: sales return - cancel approve
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+              properties:
+                id:
+                  type: integer
+              example:
+                id: 16
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 16
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      customer_id:
+                        type: integer
+                      warehouse_id:
+                        type: integer
+                      sales_invoice_id:
+                        type: integer
+                      customer_name:
+                        type: string
+                      customer_address:
+                        type: string
+                      customer_phone:
+                        type: string
+                      tax:
+                        type: integer
+                      amount:
+                        type: integer
+                      items:
+                        $ref: '#/components/schemas/sales-return-item'
+                      form:
+                        $ref: '#/components/schemas/form'
+                      sales_invoice:
+                        $ref: '#/components/schemas/sales-invoice'
+              example:
+                data:
+                  id: 32
+                  sales_invoice_id: 42
+                  customer_id: 2
+                  customer_name: CUSTOMER 2
+                  customer_address: null
+                  customer_phone: null
+                  tax: 98800
+                  amount: 1086800
+                  warehouse_id: 1
+                  form:
+                    id: 471
+                    branch_id: 1
+                    date: '2022-09-13 14:31:01'
+                    number: SR22090028
+                    edited_number: null
+                    edited_notes: null
+                    notes: null
+                    created_by: 1
+                    updated_by: 1
+                    done: 0
+                    increment: 28
+                    increment_group: 202209
+                    formable_id: 32
+                    formable_type: SalesReturn
+                    request_approval_at: null
+                    request_approval_to: 1
+                    approval_by: 1
+                    approval_at: '2022-09-13 06:31:36'
+                    approval_reason: null
+                    approval_status: 1
+                    request_cancellation_to: 1
+                    request_cancellation_by: 1
+                    request_cancellation_at: '2022-10-09 08:16:04'
+                    request_cancellation_reason: cancel
+                    cancellation_approval_at: '2022-10-09T08:17:09.680299Z'
+                    cancellation_approval_by: 1
+                    cancellation_approval_reason: null
+                    cancellation_status: 1
+                    created_at: '2022-09-13 14:31:34'
+                    updated_at: '2022-10-09 16:17:09'
+                    request_close_to: null
+                    request_close_by: null
+                    request_close_at: null
+                    request_close_reason: null
+                    close_approval_at: null
+                    close_approval_by: null
+                    close_status: null
+                  sales_invoice:
+                    id: 42
+                    customer_id: 2
+                    customer_name: CUSTOMER 2
+                    customer_address: ''
+                    customer_phone: ''
+                    billing_address: null
+                    billing_phone: null
+                    billing_email: null
+                    shipping_address: null
+                    shipping_phone: null
+                    shipping_email: null
+                    referenceable_id: 70
+                    referenceable_type: SalesDeliveryNote
+                    due_date: '2022-09-13 12:23:26'
+                    delivery_fee: 0
+                    discount_percent: 0
+                    discount_value: 12022
+                    type_of_tax: exclude
+                    tax: 591597.8
+                    amount: 6507575.8
+                    remaining: 6507575.8
+                    items:
+                      - id: 44
+                        sales_invoice_id: 42
+                        referenceable_id: 70
+                        referenceable_type: SalesDeliveryNote
+                        item_referenceable_id: 71
+                        item_referenceable_type: SalesDeliveryNoteItem
+                        item_id: 2
+                        item_name: kopibara
+                        quantity: 60
+                        quantity_returned: -10
+                        quantity_remaining: 70
+                        price: 100000
+                        discount_percent: 0
+                        discount_value: 1200
+                        taxable: 1
+                        unit: PCS
+                        converter: 1
+                        expiry_date: null
+                        production_number: null
+                        notes: null
+                        allocation_id: null
+                  items:
+                    - id: 37
+                      sales_return_id: 32
+                      sales_invoice_item_id: 44
+                      item_id: 2
+                      item_name: kopibara
+                      quantity_sales: 60
+                      quantity: 10
+                      price: 100000
+                      discount_percent: 0
+                      discount_value: 1200
+                      unit: PCS
+                      converter: 1
+                      expiry_date: null
+                      production_number: null
+                      notes: null
+                      allocation_id: 2
+  /sales/sales-return/{id}/cancellation-reject:
+    post:
+      tags:
+        - Sales Return
+      summary: sales return - cancel reject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+                - reason
+              properties:
+                id:
+                  type: integer
+                reason:
+                  type: string
+                  required: true
+              example:
+                id: 16
+                reason: cancellation reject reason
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 16
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  customer_id:
+                    type: integer
+                  warehouse_id:
+                    type: integer
+                  sales_invoice_id:
+                    type: integer
+                  customer_name:
+                    type: string
+                  customer_address:
+                    type: string
+                  customer_phone:
+                    type: string
+                  tax:
+                    type: integer
+                  amount:
+                    type: integer
+                  form:
+                    $ref: '#/components/schemas/form'
+              example: null
+              data:
+                id: 40
+                sales_invoice_id: 48
+                customer_id: 2
+                customer_name: CUSTOMER 2
+                customer_address: null
+                customer_phone: null
+                tax: 29640
+                amount: 326040
+                warehouse_id: 1
+                form:
+                  id: 524
+                  branch_id: 1
+                  date: '2022-09-15 20:20:14'
+                  number: SR22090036
+                  edited_number: null
+                  edited_notes: null
+                  notes: null
+                  created_by: 1
+                  updated_by: 1
+                  done: 0
+                  increment: 36
+                  increment_group: 202209
+                  formable_id: 40
+                  formable_type: SalesReturn
+                  request_approval_at: null
+                  request_approval_to: 1
+                  approval_by: 1
+                  approval_at: '2022-09-15 12:23:33'
+                  approval_reason: reject
+                  approval_status: -1
+                  request_cancellation_to: 1
+                  request_cancellation_by: 1
+                  request_cancellation_at: '2022-10-08 09:30:36'
+                  request_cancellation_reason: di reject
+                  cancellation_approval_at: '2022-10-09T08:44:57.685740Z'
+                  cancellation_approval_by: 1
+                  cancellation_approval_reason: reject
+                  cancellation_status: -1
+                  created_at: '2022-09-15 20:20:26'
+                  updated_at: '2022-10-09 16:44:57'
+                  request_close_to: null
+                  request_close_by: null
+                  request_close_at: null
+                  request_close_reason: null
+                  close_approval_at: null
+                  close_approval_by: null
+                  close_status: null
+  /sales/sales-return/approval/send:
+    post:
+      tags:
+        - Sales Return
+      summary: sales return - send approval email
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - ids
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+              example:
+                ids:
+                  - id: 14
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /sales/sales-return/approve:
+    post:
+      tags:
+        - Sales Return
+      summary: sales return - approve by email
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - ids
+                - token
+                - approver_id
+              properties:
+                ids:
+                  type: array
+                  required: true
+                  items:
+                    type: integer
+                token:
+                  type: string
+                  required: true
+                approver_id:
+                  type: string
+                  required: true
+              example:
+                ids:
+                  - 14
+                token: 4a004ce7706e2d35555ce75898bc3f0b
+                approver_id: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
 components:
   schemas:
     meta:
@@ -16480,3 +20081,445 @@ components:
                 type: string
         sales_order:
           $ref: '#/components/schemas/sales-order'
+    payment-collection:
+      id:
+        type: integer
+      customer_id:
+        type: integer
+      customer_name:
+        type: string
+      payment_type:
+        type: string
+      payment_id:
+        type: integer
+      due_date:
+        type: string
+      amount:
+        type: integer
+      form:
+        $ref: '#/components/schemas/form'
+      customer:
+        $ref: '#/components/schemas/customer'
+      details:
+        $ref: '#/components/schemas/details'
+    payment-collections:
+      type: array
+      items:
+        $ref: '#/components/schemas/payment-collection'
+    payment-collection-original-data:
+      customer_id:
+        type: integer
+      customer_name:
+        type: string
+      customer_label:
+        type: string
+      customer_address:
+        type: string
+      customer_phone:
+        type: string
+      increment_group:
+        type: string
+      date:
+        type: string
+      due_date:
+        type: string
+      payment_type:
+        type: string
+      request_approval_to:
+        type: integer
+      approver_name:
+        type: string
+      approver_email:
+        type: string
+      notes:
+        type: string
+      amount:
+        type: integer
+      total_invoice:
+        type: integer
+      total_down_payment:
+        type: integer
+      total_return:
+        type: integer
+      total_other:
+        type: integer
+      total_amount:
+        type: integer
+      pricing_group_id:
+        type: integer
+      others:
+        type: array
+        items:
+          type: object
+          properties:
+            chart_of_account_id:
+              type: integer
+            chart_of_account_name:
+              type: string
+            amount:
+              type: integer
+            allocation_id:
+              type: integer
+            allocation_name:
+              type: string
+            notes:
+              type: string
+            is_debit:
+              type: integer
+      details:
+        type: array
+        items:
+          type: object
+          properties:
+            date:
+              type: string
+            chart_of_account_id:
+              type: integer
+            chart_of_account_name:
+              type: string
+            available:
+              type: integer
+            amount:
+              type: integer
+            allocation_id:
+              type: integer
+            allocation_name:
+              type: string
+            referenceable_form_date:
+              type: string
+            referenceable_form_number:
+              type: string
+            referenceable_form_notes:
+              type: string
+            referenceable_id:
+              type: integer
+            referenceable_type:
+              type: string
+    details:
+      details:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+            sales_payment_collection_id:
+              type: integer
+            chart_of_account_id:
+              type: integer
+            allocation_id:
+              type: integer
+            available:
+              type: integer
+            amount:
+              type: integer
+            notes:
+              type: string
+            referenceable_form_date:
+              type: string
+            referenceable_form_number:
+              type: string
+            referenceable_form_notes:
+              type: string
+            referenceable_id:
+              type: integer
+            referenceable_type:
+              type: string
+            chart_of_account:
+              $ref: ./chart_of_account.yaml
+            allocation:
+              $ref: ./allocation.yaml
+    payment-collection-patch:
+      type: object
+      properties:
+        id:
+          type: integer
+        customer_id:
+          type: integer
+        customer_name:
+          type: string
+        due_date:
+          type: string
+        payment_type:
+          type: string
+        amount:
+          type: integer
+        form:
+          $ref: '#/components/schemas/form'
+    sales-return-items:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          sales_return_id:
+            type: integer
+          sales_invoice_item_id:
+            type: integer
+          item_id:
+            type: integer
+          item_name:
+            type: string
+          quantity_sales:
+            type: integer
+          quantity:
+            type: integer
+          price:
+            type: integer
+          discount_percent:
+            type: integer
+          discount_value:
+            type: integer
+          unit:
+            type: string
+          converter:
+            type: integer
+          expiry_date:
+            type: date
+          production_number:
+            type: string
+          notes:
+            type: string
+          allocation_id:
+            type: integer
+          item:
+            type: object
+            properties:
+              id:
+                type: integer
+              chart_of_account_id:
+                type: integer
+              code:
+                type: string
+              barcode:
+                type: string
+              name:
+                type: string
+              size:
+                type: string
+              color:
+                type: string
+              weight:
+                type: string
+              notes:
+                type: string
+              taxable:
+                type: string
+              require_production_number:
+                type: string
+              require_expiry_date:
+                type: string
+              stock:
+                type: integer
+              stock_reminder:
+                type: integer
+              unit_default:
+                type: string
+              unit_default_purchase:
+                type: string
+              unit_default_sales:
+                type: string
+              created_by:
+                type: integer
+              updated_by:
+                type: integer
+              archived_by:
+                type: integer
+              created_at:
+                type: string
+              updated_at:
+                type: string
+              archived_at:
+                type: string
+              label:
+                type: string
+            allocation:
+              type: string
+    sales-return:
+      id:
+        type: integer
+      sales_invoice_id:
+        type: integer
+      warehouse_id:
+        type: integer
+      customer_id:
+        type: integer
+      customer_name:
+        type: string
+      customer_address:
+        type: string
+      customer_phone:
+        type: string
+      tax:
+        type: integer
+      amount:
+        type: integer
+      form:
+        $ref: '#/components/schemas/form'
+      customer:
+        $ref: '#/components/schemas/customer'
+      items:
+        $ref: '#/components/schemas/sales-return-items'
+    sales-return-original-data:
+      type: object
+      properties:
+        increment_group:
+          type: string
+        date:
+          type: string
+        warehouse_id:
+          type: integer
+        customer_id:
+          type: integer
+        customer_name:
+          type: string
+        customer_label:
+          type: string
+        customer_address:
+          type: string
+        customer_phone:
+          type: string
+        customer_email:
+          type: string
+        pricing_group_id:
+          type: integer
+        notes:
+          type: string
+        items:
+          type: array
+        request_approval_to:
+          type: integer
+        approver_name:
+          type: string
+        approver_email:
+          type: string
+        sales_invoice_id:
+          type: integer
+    sales-return-item:
+      sales_invoice_item_id:
+        type: integer
+      item_id:
+        type: integer
+      item_name:
+        type: string
+      price:
+        type: string
+      discount_percent:
+        type: string
+      discount_value:
+        type: string
+      unit:
+        type: string
+      converter:
+        type: integer
+      quantity_sales:
+        type: integer
+      quantity:
+        type: integer
+      more:
+        type: boolean
+      total:
+        type: integer
+      allocation_id:
+        type: integer
+      notes:
+        type: string
+    sales-invoice-item:
+      type: object
+      properties:
+        id:
+          type: string
+        sales_invoice_id:
+          type: integer
+        referenceable_id:
+          type: integer
+        referenceable_type:
+          type: string
+        item_referenceable_id:
+          type: integer
+        item_referenceable_type:
+          type: string
+        item_id:
+          type: integer
+        item_name:
+          type: string
+        quantity:
+          type: integer
+        quantity_returned:
+          type: integer
+        quantity_remaining:
+          type: integer
+        price:
+          type: integer
+        discount_percent:
+          type: integer
+        discount_value:
+          type: integer
+        taxable:
+          type: integer
+        unit:
+          type: string
+        converter:
+          type: integer
+        expiry_date:
+          type: string
+        production_number:
+          type: string
+        notes:
+          type: string
+        allocation_id:
+          type: integer
+    sales-invoice-items:
+      type: array
+      items:
+        $ref: '#/components/schemas/sales-invoice-item'
+    sales-invoice:
+      type: object
+      properties:
+        id:
+          type: integer
+        customer_id:
+          type: integer
+        customer_name:
+          type: string
+        customer_address:
+          type: string
+        customer_phone:
+          type: string
+        billing_address:
+          type: string
+        billing_phone:
+          type: string
+        billing_email:
+          type: string
+        shipping_address:
+          type: string
+        shipping_phone:
+          type: string
+        shipping_email:
+          type: string
+        referenceable_id:
+          type: integer
+        referenceable_type:
+          type: string
+        due_date:
+          type: string
+        delivery_fee:
+          type: integer
+        discount_percent:
+          type: integer
+        discount_value:
+          type: integer
+        type_of_tax:
+          type: string
+        tax:
+          type: integer
+        amount:
+          type: integer
+        remaining:
+          type: integer
+        form:
+          $ref: '#/components/schemas/form'
+        items:
+          $ref: '#/components/schemas/sales-invoice-items'

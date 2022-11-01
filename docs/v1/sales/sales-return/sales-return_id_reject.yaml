@@ -1,0 +1,108 @@
+post:
+  tags:
+    - Sales Return
+  summary: sales return - reject
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - id
+            - reason
+          properties:
+            id:
+              type: string
+            reason:
+              type: string
+          example:
+            id: 16
+            reason: reason sales return rejected
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      example: 16
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  customer_id:
+                    type: integer
+                  warehouse_id:
+                    type: integer
+                  sales_invoice_id:
+                    type: integer
+                  customer_name:
+                    type: string
+                  customer_address:
+                    type: string
+                  customer_phone:
+                    type: string
+                  tax:
+                    type: integer
+                  amount:
+                    type: integer
+                    form:
+                      $ref: './components/responses/properties/form.yaml'
+          example:
+            data:
+              id: 25
+              sales_invoice_id: 44
+              customer_id: 6
+              customer_name: AINI
+              customer_address:
+              customer_phone:
+              tax: 900
+              amount: 9900
+              warehouse_id: 1
+              form:
+                id: 448
+                branch_id: 1
+                date: '2022-09-13 12:38:26'
+                number: SR22090021
+                edited_number:
+                edited_notes:
+                notes:
+                created_by: 1
+                updated_by: 1
+                done: 0
+                increment: 21
+                increment_group: 202209
+                formable_id: 25
+                formable_type: SalesReturn
+                request_approval_at:
+                request_approval_to: 3
+                approval_by: 1
+                approval_at: '2022-10-09T08:48:52.956104Z'
+                approval_reason: rejecy
+                approval_status: -1
+                request_cancellation_to:
+                request_cancellation_by:
+                request_cancellation_at:
+                request_cancellation_reason:
+                cancellation_approval_at:
+                cancellation_approval_by:
+                cancellation_approval_reason:
+                cancellation_status:
+                created_at: '2022-09-13 12:39:14'
+                updated_at: '2022-10-09 16:48:52'
+                request_close_to:
+                request_close_by:
+                request_close_at:
+                request_close_reason:
+                close_approval_at:
+                close_approval_by:
+                close_status:
+

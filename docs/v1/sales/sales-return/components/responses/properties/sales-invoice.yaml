@@ -1,0 +1,48 @@
+type: object
+properties:
+  id:
+    type: integer
+  customer_id:
+    type: integer
+  customer_name:
+    type: string
+  customer_address:
+    type: string
+  customer_phone:
+    type: string
+  billing_address:
+    type: string
+  billing_phone:
+    type: string
+  billing_email:
+    type: string
+  shipping_address:
+    type: string
+  shipping_phone:
+    type: string
+  shipping_email:
+    type: string
+  referenceable_id:
+    type: integer
+  referenceable_type:
+    type: string
+  due_date:
+    type: string
+  delivery_fee:
+    type: integer
+  discount_percent:
+    type: integer
+  discount_value:
+    type: integer
+  type_of_tax:
+    type: string
+  tax:
+    type: integer
+  amount:
+    type: integer
+  remaining:
+    type: integer
+  form:
+    $ref: './form.yaml'
+  items:
+    $ref: './sales-invoice-items.yaml'

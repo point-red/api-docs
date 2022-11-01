@@ -1,0 +1,44 @@
+type: object
+properties:
+  id:
+    type: string
+  sales_invoice_id:
+    type: integer
+  referenceable_id:
+    type: integer
+  referenceable_type:
+    type: string
+  item_referenceable_id:
+    type: integer
+  item_referenceable_type:
+    type: string
+  item_id:
+    type: integer
+  item_name:
+    type: string
+  quantity:
+    type: integer
+  quantity_returned:
+    type: integer
+  quantity_remaining:
+    type: integer
+  price:
+    type: integer
+  discount_percent:
+    type: integer
+  discount_value:
+    type: integer
+  taxable:
+    type: integer
+  unit:
+    type: string
+  converter:
+    type: integer
+  expiry_date:
+    type: string
+  production_number:
+    type: string
+  notes:
+    type: string
+  allocation_id:
+    type: integer
