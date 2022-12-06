@@ -19335,6 +19335,463 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/v1/finance/payments:
+    get:
+      tags:
+        - Cash Out
+      summary: Read all cash out
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: join
+          in: query
+          schema:
+            type: string
+            example: form,payment_account,details,account,allocation
+        - name: sort_by
+          in: query
+          schema:
+            type: string
+            example: '-form.date'
+        - name: group_by
+          in: query
+          schema:
+            type: string
+            example: payment.id
+        - name: fields
+          in: query
+          schema:
+            type: string
+            example: payment.*
+        - name: filter_form
+          in: query
+          schema:
+            type: string
+            example: notArchived;null
+        - name: filter_like
+          in: query
+          schema:
+            type: object
+            properties:
+              form.number:
+                type: string
+              payment.paymentable_name:
+                type: string
+              account.alias:
+                type: string
+              payment_details.notes:
+                type: string
+              allocation.name:
+                type: string
+        - name: filter_date_min
+          in: query
+          schema:
+            type: string
+            example: '{"form.date":"2022-05-01 00:00:00"}'
+        - name: filter_date_max
+          in: query
+          schema:
+            type: string
+            example: '{"form.date":"2022-05-14 23:59:59"}'
+        - name: filter_equal
+          in: query
+          schema:
+            type: object
+            properties:
+              payment.payment_type:
+                type: string
+                default: cash
+              payment.payment_disbursed:
+                type: integer
+                default: 1
+              payment.paymentable_name:
+                type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            example: '10'
+        - name: includes
+          in: query
+          schema:
+            type: string
+            example: >-
+              form;details.chartOfAccount;paymentAccount;details.allocation;paymentable;details.referenceable.form;cashAdvance.cashAdvance.form;form.createdBy;form.approvalBy;
+        - name: page
+          in: query
+          schema:
+            type: integer
+            example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                      last:
+                        type: string
+                      prev:
+                        type: string
+                        format: nullable
+                      next:
+                        type: string
+                        format: nullable
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        format: int32
+                      from:
+                        type: integer
+                        format: int32
+                      last_page:
+                        type: integer
+                        format: int32
+                      path:
+                        type: string
+                      per_page:
+                        type: string
+                      to:
+                        type: integer
+                        format: int32
+                      total:
+                        type: integer
+                        format: int32
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        payment_type:
+                          type: string
+                        payment_account_id:
+                          type: integer
+                        disbursed:
+                          type: integer
+                        amount:
+                          type: double
+                        paymentable_id:
+                          type: integer
+                        paymentable_type:
+                          type: string
+                        paymentable_name:
+                          type: string
+                        form:
+                          type: object
+                        details:
+                          type: object
+                        paymentable:
+                          type: object
+                        cash_advance:
+                          type: object
+                        payment_account:
+                          type: object
+    post:
+      tags:
+        - Cash Out
+      summary: Make cash out
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                increment_group:
+                  type: integer
+                  example: '202205'
+                  description: 'Format: Ym'
+                date:
+                  type: string
+                  example: '2022-05-15 09:22:15'
+                amount:
+                  type: double
+                  example: 100000
+                payment_type:
+                  type: string
+                  default: cash
+                disbursed:
+                  type: integer
+                  default: 1
+                payment_account_id:
+                  type: integer
+                  example: 1
+                payment_account_name:
+                  type: string
+                  example: KAS
+                paymentable_type:
+                  type: string
+                  example: Supplier
+                paymentable_id:
+                  type: integer
+                  example: 1
+                referenceable_type:
+                  type: string
+                  example: PaymentOrder
+                referenceable_id:
+                  type: integer
+                  example: 1
+                details:
+                  type: object
+                  properties:
+                    chart_of_account_id:
+                      type: integer
+                      example: 1
+                    chart_of_account_label:
+                      type: string
+                      example: '[10599] PIUTANG LAIN'
+                    amount:
+                      type: double
+                      example: 600000
+                    allocation_id:
+                      type: integer
+                      example: 1
+                      description: optional
+                    allocation_name:
+                      type: string
+                      description: optional
+                    notes:
+                      type: string
+                      description: optional
+                cash_advance:
+                  type: object
+                  description: optional. Use this key to make cash out with cash advance
+                  properties:
+                    id:
+                      type: integer
+                    reference_number:
+                      type: string
+                    notes:
+                      type: string
+                    amount:
+                      type: double
+                    amount_remaining:
+                      type: double
+                    close:
+                      type: boolean
+      security:
+        - bearerAuth: []
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      disbursed:
+                        type: integer
+                      payment_account_id:
+                        type: integer
+                      paymentable_type:
+                        type: string
+                      paymentable_id:
+                        type: integer
+                      payment_type:
+                        type: string
+                        default: CASH
+                      paymentable_name:
+                        type: string
+                      amount:
+                        type: double
+                      id:
+                        type: integer
+                      payment_account:
+                        type: object
+                      paymentable:
+                        type: object
+                      form:
+                        type: object
+                      details:
+                        type: object
+                      cash_advance:
+                        type: object
+  /api/v1/finance/payments/{id}:
+    get:
+      tags:
+        - Cash Out
+      summary: Read cash out by id
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: '7'
+      parameters:
+        - name: includes
+          in: query
+          schema:
+            type: string
+          example: >-
+            form.branch;paymentAccount;details.chartOfAccount;details.allocation;cashAdvance.cashAdvance.form
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      payment_type:
+                        type: string
+                      payment_account_id:
+                        type: integer
+                      disbursed:
+                        type: integer
+                      amount:
+                        type: double
+                      paymentable_id:
+                        type: integer
+                      paymentable_type:
+                        type: string
+                      paymentable_name:
+                        type: string
+                      form:
+                        type: object
+                      details:
+                        type: object
+                      payment_account:
+                        type: object
+                      cash_advance:
+                        type: object
+    delete:
+      tags:
+        - Cash Out
+      summary: Request cancellation cash out
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: '7'
+                reason:
+                  type: string
+                  example: Reason
+      responses:
+        '204':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/finance/payments/{id}/cancellation-approve:
+    post:
+      tags:
+        - Cash Out
+      summary: Cancellation approve cash out
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: '7'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      payment_type:
+                        type: string
+                      payment_account_id:
+                        type: integer
+                      disbursed:
+                        type: integer
+                      amount:
+                        type: double
+                      paymentable_id:
+                        type: integer
+                      paymentable_type:
+                        type: string
+                      paymentable_name:
+                        type: string
+                      form:
+                        type: object
+  /api/v1/finance/payments/{id}/cancellation-reject:
+    post:
+      tags:
+        - Cash Out
+      summary: Cancellation reject cash out
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: '7'
+                reason:
+                  type: string
+                  example: Reason
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      payment_type:
+                        type: string
+                      payment_account_id:
+                        type: integer
+                      disbursed:
+                        type: integer
+                      amount:
+                        type: double
+                      paymentable_id:
+                        type: integer
+                      paymentable_type:
+                        type: string
+                      paymentable_name:
+                        type: string
+                      form:
+                        type: object
 components:
   schemas:
     meta:
