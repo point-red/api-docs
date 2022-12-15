@@ -50,12 +50,8 @@ post:
                     type: integer
                   amount:
                     type: integer
-                  items:
-                    $ref: './components/requests/properties/sales-return-item.yaml'
                   form:
-                    $ref: './components/responses/properties/form.yaml'
-                  sales_invoice:
-                    $ref: './components/responses/properties/sales-invoice.yaml'  
+                    $ref: './components/responses/properties/form.yaml'                  
           example:
             data:
               id: 32
@@ -96,8 +92,6 @@ post:
                 cancellation_approval_by: 1
                 cancellation_approval_reason:
                 cancellation_status: 1
-                created_at: '2022-09-13 14:31:34'
-                updated_at: '2022-10-09 16:17:09'
                 request_close_to:
                 request_close_by:
                 request_close_at:
@@ -105,64 +99,3 @@ post:
                 close_approval_at:
                 close_approval_by:
                 close_status:
-              sales_invoice:
-                id: 42
-                customer_id: 2
-                customer_name: CUSTOMER 2
-                customer_address: ''
-                customer_phone: ''
-                billing_address:
-                billing_phone:
-                billing_email:
-                shipping_address:
-                shipping_phone:
-                shipping_email:
-                referenceable_id: 70
-                referenceable_type: SalesDeliveryNote
-                due_date: '2022-09-13 12:23:26'
-                delivery_fee: 0
-                discount_percent: 0
-                discount_value: 12022
-                type_of_tax: exclude
-                tax: 591597.8
-                amount: 6507575.8
-                remaining: 6507575.8
-                items:
-                - id: 44
-                  sales_invoice_id: 42
-                  referenceable_id: 70
-                  referenceable_type: SalesDeliveryNote
-                  item_referenceable_id: 71
-                  item_referenceable_type: SalesDeliveryNoteItem
-                  item_id: 2
-                  item_name: kopibara
-                  quantity: 60
-                  quantity_returned: -10
-                  quantity_remaining: 70
-                  price: 100000
-                  discount_percent: 0
-                  discount_value: 1200
-                  taxable: 1
-                  unit: PCS
-                  converter: 1
-                  expiry_date:
-                  production_number:
-                  notes:
-                  allocation_id:
-              items:
-              - id: 37
-                sales_return_id: 32
-                sales_invoice_item_id: 44
-                item_id: 2
-                item_name: kopibara
-                quantity_sales: 60
-                quantity: 10
-                price: 100000
-                discount_percent: 0
-                discount_value: 1200
-                unit: PCS
-                converter: 1
-                expiry_date:
-                production_number:
-                notes:
-                allocation_id: 2

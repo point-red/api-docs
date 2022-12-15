@@ -189,3 +189,193 @@ get:
                   created_at: '2022-06-07 10:07:38'
                   updated_at: '2022-06-07 10:07:38'
                   archived_at: null
+patch:
+  tags:
+    - Sales Return
+  summary: sales return - update
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      example: 59
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - sales_invoice_id
+            - warehouse_id
+            - customer_id
+            - request_approval_to
+            - items
+          properties:
+            originalData:
+              $ref: './components/requests/properties/sales-return-original-data.yaml'
+            $ref: './components/requests/properties/sales-return-form.yaml'
+            items:
+              type: array
+              items:
+                type: object
+                required:
+                  - sales_invoice_id
+                  - quantity_sales
+                  - quantity
+                  - unit
+                  - converter
+                properties:
+                  $ref: './components/requests/properties/sales-return-item.yaml'
+                  units:
+                    $ref: './components/requests/properties/units.yaml'
+            request_approval_at:
+              type: string
+          example:
+            originalData:
+              amount: null
+              approver_email: null
+              approver_name: null
+              customer_address: null
+              customer_code: null
+              customer_email: null
+              customer_id: null
+              customer_name: null
+              customer_phone: null
+              date: '2022-09-11 12:36:14'
+              increment_group: '202209'
+              items: []
+              notes: null
+              request_approval_to: null
+              sales_invoice_id: null
+              tax: null
+              type_of_tax: null
+              warehouse_id: null
+            increment_group: '202209'
+            date: '2022-09-11 12:36:14'
+            amount: 5500
+            approver_email: 'admin@point.com'
+            approver_name: 'admin admin'
+            customer_address: null
+            customer_email: null
+            customer_id: 1
+            customer_name: 'Customer'
+            customer_phone: null
+            request_approval_to: 1
+            sales_invoice_id: 33
+            tax: 500
+            type_of_tax: 'exclude'
+            warehouse_id: 1
+            notes: 'rusak'
+            items:
+              - allocation_id: 1
+                allocation_name: 'test'
+                converter: 1
+                discount_percent: 0
+                discount_value: 0
+                expiry_date: null
+                item_id: 1
+                item_label: 'Kopi'
+                item_name: 'Kopi'
+                more: false
+                notes: null
+                price: 5000
+                price_sales: 5000
+                production_number: null
+                quantity: '1'
+                quantity_sales: '7'
+                sales_invoice_item_id: 32
+                total: 5000
+                unit: 'PCS'
+            errors:
+              errors: {}
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  $ref: './components/responses/properties/sales-return.yaml'
+          example:
+            data:
+              sales_invoice_id: 33
+              warehouse_id: 1
+              customer_id: 1
+              customer_name: 'Customer'
+              customer_address: null
+              customer_phone: null
+              tax: 500
+              amount: 5500
+              id: 14
+              form:
+                id: 351
+                branch_id: 1
+                date: '2022-09-11 12:36:14'
+                number: 'SR22090010'
+                edited_number: null
+                edited_notes: null
+                notes: null
+                created_by: 1
+                updated_by: 1
+                done: 0
+                increment: 10
+                increment_group: 202209
+                formable_id: 14
+                formable_type: 'SalesReturn'
+                request_approval_at: null
+                request_approval_to: 1
+                approval_by: null
+                approval_at: null
+                approval_reason: null
+                approval_status: 0
+                request_cancellation_to: null
+                request_cancellation_by: null
+                request_cancellation_at: null
+                request_cancellation_reason: null
+                cancellation_approval_at: null
+                cancellation_approval_by: null
+                cancellation_approval_reason: null
+                cancellation_status: null
+                request_close_to: null
+                request_close_by: null
+                request_close_at: null
+                request_close_reason: null
+                close_approval_at: null
+                close_approval_by: null
+                close_status: null
+              items:
+                - id: 12
+                  sales_return_id: 14
+                  sales_invoice_item_id: 32
+                  item_id: 1
+                  item_name: 'Kopi'
+                  quantity_sales: 7
+                  quantity: 1
+                  price: 5000
+                  discount_percent: 0
+                  discount_value: 0
+                  unit: 'PCS'
+                  converter: 1
+                  expiry_date: null
+                  production_number: null
+                  notes: null
+                  allocation_id: 1
+delete:
+  tags:
+    - Sales Return
+  summary: sales return - delete
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      example: 59
+  responses:
+    '204':
+      description: Deleted
