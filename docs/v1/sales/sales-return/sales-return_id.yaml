@@ -311,6 +311,11 @@ patch:
             - customer_id
             - request_approval_to
             - items
+            - type_of_tax
+            - sub_total
+            - tax_base
+            - tax
+            - amount
           properties:
             originalData:
               $ref: './components/requests/properties/sales-return-original-data.yaml'
