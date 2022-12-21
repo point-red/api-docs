@@ -32,4 +32,79 @@ post:
     '200':
       description: Successful response
       content:
-        application/json: {}
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    customer_id:
+                      type: integer
+                    warehouse_id:
+                      type: integer
+                    sales_invoice_id:
+                      type: integer
+                    customer_name:
+                      type: string
+                    customer_address:
+                      type: string
+                    customer_phone:
+                      type: string
+                    tax:
+                      type: integer
+                    amount:
+                      type: integer
+                    form:
+                      $ref: './components/responses/properties/form.yaml'
+          example:
+            data:
+              - id: 29
+                sales_invoice_id: 42
+                customer_id: 2
+                customer_name: CUSTOMER 2
+                customer_address:
+                customer_phone:
+                tax: 98800
+                amount: 1086800
+                warehouse_id: 1
+                form:
+                  id: 468
+                  branch_id: 1
+                  date: '2022-09-13 14:24:54'
+                  number: SR22090025
+                  edited_number:
+                  edited_notes:
+                  notes:
+                  created_by: 1
+                  updated_by: 1
+                  done: 0
+                  increment: 25
+                  increment_group: 202209
+                  formable_id: 29
+                  formable_type: SalesReturn
+                  request_approval_at:
+                  request_approval_to: 1
+                  approval_by: 1
+                  approval_at: '2022-10-09T08:36:33.033335Z'
+                  approval_reason:
+                  approval_status: 1
+                  request_cancellation_to:
+                  request_cancellation_by:
+                  request_cancellation_at:
+                  request_cancellation_reason:
+                  cancellation_approval_at:
+                  cancellation_approval_by:
+                  cancellation_approval_reason:
+                  cancellation_status:
+                  request_close_to:
+                  request_close_by:
+                  request_close_at:
+                  request_close_reason:
+                  close_approval_at:
+                  close_approval_by:
+                  close_status:

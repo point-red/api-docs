@@ -220,6 +220,11 @@ post:
             - customer_id
             - request_approval_to
             - items
+            - type_of_tax
+            - sub_total
+            - tax_base
+            - tax
+            - amount
           properties:
             originalData:
               $ref: './components/requests/properties/sales-return-original-data.yaml'
@@ -234,6 +239,7 @@ post:
                   - quantity
                   - unit
                   - converter
+                  - total
                 properties:
                   $ref: './components/requests/properties/sales-return-item.yaml'
                   units:
@@ -350,8 +356,6 @@ post:
                 cancellation_approval_by: null
                 cancellation_approval_reason: null
                 cancellation_status: null
-                created_at: '2022-09-11 12:36:42'
-                updated_at: '2022-09-11 12:36:42'
                 request_close_to: null
                 request_close_by: null
                 request_close_at: null
@@ -359,32 +363,6 @@ post:
                 close_approval_at: null
                 close_approval_by: null
                 close_status: null
-              customer:
-                id: 1
-                code: 'C-1'
-                tax_identification_number: null
-                name: 'Customer'
-                address: null
-                city: null
-                state: null
-                country: null
-                zip_code: null
-                latitude: null
-                longitude: null
-                phone: null
-                phone_cc: null
-                email: null
-                notes: null
-                credit_limit: 0
-                branch_id: 1
-                created_by: 1
-                updated_by: 1
-                archived_by: null
-                pricing_group_id: 1
-                created_at: '2022-06-13 18:40:45'
-                updated_at: '2022-06-13 18:40:45'
-                archived_at: null
-                label: '[C-1] Customer'
               items:
                 - id: 12
                   sales_return_id: 14

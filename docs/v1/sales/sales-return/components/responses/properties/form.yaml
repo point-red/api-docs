@@ -54,10 +54,6 @@ properties:
     type: string
   cancellation_status:
     type: integer
-  created_at:
-    type: integer
-  updated_at:
-    type: string
   request_approval_at:
     type: string
   request_close_to:

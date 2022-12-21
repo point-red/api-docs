@@ -24,6 +24,16 @@ approver_email:
   type: string
 sales_invoice_id:
   type: integer
+type_of_tax:
+  type: string
+sub_total:
+  type: integer
+tax_base:
+  type: integer
+tax:
+  type: integer
+amount:
+  type: integer
 errors:
   type: object
   properties:
