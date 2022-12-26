@@ -175,3 +175,11 @@ paths:
     $ref: sales/sales-return/sales-return_approval_send.yaml
   /sales/sales-return/approve:
     $ref: sales/sales-return/sales-return_approve_by_email.yaml
+  /api/v1/finance/payments:
+    $ref: finance/cash-out/cash-out.yml
+  /api/v1/finance/payments/{id}:
+    $ref: './finance/cash-out/cash-out-by-id.yml'
+  /api/v1/finance/payments/{id}/cancellation-approve:
+    $ref: './finance/cash-out/cash-out-cancellation-approve.yml'
+  /api/v1/finance/payments/{id}/cancellation-reject:
+    $ref: './finance/cash-out/cash-out-cancellation-reject.yml'

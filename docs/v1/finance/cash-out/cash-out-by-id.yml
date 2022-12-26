@@ -1,0 +1,79 @@
+get:
+  tags:
+    - Cash Out
+  summary: Read cash out by id
+  security:
+    - bearerAuth: []
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: '7'
+  parameters:
+    - name: includes
+      in: query
+      schema:
+        type: string
+      example: form.branch;paymentAccount;details.chartOfAccount;details.allocation;cashAdvance.cashAdvance.form
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json: 
+          schema:
+            type: object
+            properties:
+              data: 
+                type: object
+                properties: 
+                  id: 
+                    type: integer
+                  payment_type: 
+                    type: string
+                  payment_account_id: 
+                    type: integer
+                  disbursed: 
+                    type: integer
+                  amount: 
+                    type: double
+                  paymentable_id:
+                    type: integer
+                  paymentable_type:
+                    type: string
+                  paymentable_name:
+                    type: string
+                  form:
+                    type: object
+                  details:
+                    type: object
+                  payment_account:
+                    type: object
+                  cash_advance:
+                    type: object
+delete:
+  tags:
+    - Cash Out
+  summary: Request cancellation cash out
+  security:
+    - bearerAuth: []
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: '7'
+            reason:
+              type: string
+              example: 'Reason'
+  responses:
+    '204':
+      description: Successful response
+      content:
+        application/json: {}
