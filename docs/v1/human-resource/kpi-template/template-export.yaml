@@ -1,0 +1,32 @@
+post:
+  tags:
+    - KPI Template
+  summary: KPI Template - Export
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - id
+          properties:
+            id:
+              type: integer
+          example:
+            id: "1"
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  url:
+                    type: string
+          example:
+            data:
+              url: https://point.red/download?key=1si6l5jPGzrW9isA

@@ -1,0 +1,149 @@
+type: object
+required:
+  - comment
+  - template
+properties:
+  comment:
+    type: string
+  template:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      created_by:
+        type: integer
+      updated_by:
+        type: integer
+      archived_by:
+        type: integer
+      created_at:
+        type: date
+      updated_at:
+        type: date
+      archived_at:
+        type: date
+      target:
+        type: integer
+      weight:
+        type: string
+      groups:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+            kpi_template_id:
+              type: integer
+            name:
+              type: string
+            created_by:
+              type: integer
+            updated_by:
+              type: integer
+            created_at:
+              type: date
+            updated_at:
+              type: date
+            target:
+              type: integer
+            weight:
+              type: integer
+            indicators:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  kpi_template_group_id:
+                    type: integer
+                  name:
+                    type: string
+                  weight:
+                    type: string
+                  target:
+                    type: integer
+                  automated_code:
+                    type: integer
+                  created_by:
+                    type: integer
+                  updated_by:
+                    type: integer
+                  created_at:
+                    type: date
+                  updated_at:
+                    type: date
+                    scores:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          kpi_template_indicator_id:
+                            type: integer
+                          description:
+                            type: string
+                          score:
+                            type: integer
+                          created_by:
+                            type: integer
+                          updated_by:
+                            type: integer
+                          created_at:
+                            type: date
+                          updated_at:
+                            type: date
+                    selected:
+                      type: object
+                      properties:
+                        notes:
+                          type: string
+example:
+  comment: lorem ipsum
+  template:
+    id: 71
+    name: template
+    created_by: 1
+    updated_by: 1
+    archived_by: null
+    created_at: '2022-12-24 16:55:39'
+    updated_at: '2022-12-24 16:55:39'
+    archived_at: null
+    target: 0
+    weight: '0.00'
+    groups:
+      - id: 71
+        kpi_template_id: 71
+        name: gr
+        created_by: 1
+        updated_by: 1
+        created_at: '2022-12-24 20:44:49'
+        updated_at: '2022-12-24 20:44:49'
+        target: 0
+        weight: 0
+        indicators:
+          - id: 67
+            kpi_template_group_id: 71
+            name: Irma Robertson
+            weight: '0.00'
+            target: 0
+            automated_code: null
+            created_by: 1
+            updated_by: 1
+            created_at: '2022-12-24 21:39:24'
+            updated_at: '2022-12-24 21:39:24'
+            scores:
+              - id: 13
+                kpi_template_indicator_id: 67
+                description: Ea corrupti recusan
+                score: 0
+                created_by: 1
+                updated_by: 1
+                created_at: '2022-12-24 21:59:21'
+                updated_at: '2022-12-24 21:59:21'
+            selected:
+              notes: lorem ipsum

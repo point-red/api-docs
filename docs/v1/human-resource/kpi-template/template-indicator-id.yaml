@@ -1,0 +1,85 @@
+get:
+  tags:
+    - KPI Template Indicator
+  summary: KPI Template Indicator - Detail
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: kpi tempalte indicator id
+      example: 2
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../components/properties/templates/indicator-single.yaml'
+          example:
+            $ref: '../components/example/templates/indicator.yaml'
+patch:
+  tags:
+  - KPI Template Indicator
+  summary: KPI Template Indicator - Update
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: kpi tempalte indicator id
+      example: 2
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+            - kpi_template_group_id
+            - weight
+            - target
+          properties:
+            name:
+              type: string
+            kpi_template_group_id:
+              type: integer
+            weight:
+              type: string
+            target:
+              type: string
+          example:
+            name: template
+            kpi_template_group_id: 1
+            weight: '100'
+            target: '100'
+  responses:
+    '200':
+      description: Ok
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../components/properties/templates/indicator-single.yaml'
+          example:
+            $ref: '../components/example/templates/indicator.yaml'
+delete:
+  tags:
+    - KPI Template Indicator
+  summary: KPI Template Indicator - Delete
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: kpi tempalte indicator id
+      example: 2
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json: {}
