@@ -1,0 +1,66 @@
+get:
+  tags:
+    - KPI Assessment
+  summary: KPI Assessment - Detail
+  parameters:
+    - name: assessment-id
+      in: path
+      required: true
+      description: kpi assessment id
+      example: 2
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../components/properties/assessment/assessment.yaml'
+          example:
+            $ref: '../components/example/assessment/assessment.yaml'
+patch:
+  tags:
+  - KPI Assessment
+  summary: KPI Assessment - Update
+  parameters:
+    - name: assessment-id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: kpi assessment id
+      example: 2
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/properties/assessment/assessment-update.yaml'
+  responses:
+    '200':
+      description: Ok
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../components/properties/assessment/assessment.yaml'
+          example:
+            $ref: '../components/example/assessment/assessment.yaml'
+delete:
+  tags:
+    - KPI Assessment
+  summary: KPI Assessment - Delete
+  parameters:
+    - name: assessment-id
+      in: path
+      required: true
+      description: kpi assessment id
+      example: 2
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json: {}

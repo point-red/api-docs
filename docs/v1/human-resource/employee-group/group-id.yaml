@@ -1,0 +1,73 @@
+get:
+  tags:
+    - Employee Group
+  summary: Employee Group - Detail
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: employee group id
+      example: 2
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../components/properties/employee/group.yaml'
+          example:
+            $ref: '../components/example/employee/group.yaml'
+patch:
+  tags:
+  - Employee Group
+  summary: Employee Group - Update
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: employee group id
+      example: 2
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+          properties:
+            name:
+              type: string
+          example:
+            name: group update
+  responses:
+    '200':
+      description: Ok
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../components/properties/employee/group.yaml'
+          example:
+            $ref: '../components/example/employee/group.yaml'
+delete:
+  tags:
+    - Employee Group
+  summary: Employee Group - Delete
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: employee group id
+      example: 2
+  responses:
+    '204':
+      description: Successful response
+      content:
+        application/json: {}

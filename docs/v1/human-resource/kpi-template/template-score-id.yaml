@@ -1,0 +1,79 @@
+get:
+  tags:
+    - KPI Template Score
+  summary: KPI Template Score - Detail
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: kpi tempalte score id
+      example: 2
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../components/properties/templates/indicator-single.yaml'
+          example:
+            $ref: '../components/example/templates/indicator.yaml'
+patch:
+  tags:
+  - KPI Template Score
+  summary: KPI Template Score - Update
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: kpi tempalte score id
+      example: 2
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - kpi_template_indicator_id
+          properties:
+            kpi_template_indicator_id:
+              type: integer
+            score:
+              type: string
+            description:
+              type: string
+          example:
+            kpi_template_indicator_id: 1
+            score: '100'
+            description: 'lorem ipsum'
+  responses:
+    '200':
+      description: Ok
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../components/properties/templates/indicator-single.yaml'
+          example:
+            $ref: '../components/example/templates/indicator.yaml'
+delete:
+  tags:
+    - KPI Template Score
+  summary: KPI Template Score - Delete
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: kpi tempalte score id
+      example: 2
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json: {}

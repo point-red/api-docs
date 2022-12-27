@@ -1,0 +1,203 @@
+type: object
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  comment:
+    type: string
+  date:
+    type: date
+  weight:
+    type: string
+  target:
+    type: string
+  score:
+    type: string
+  status:
+    type: string
+  score_percentage:
+    type: integer
+  employee:
+    type: object
+    properties:
+      id:
+        type: integer
+      code:
+        type: string
+      tax_identification_number:
+        type: string
+      name:
+        type: string
+      address:
+        type: string
+      city:
+        type: string
+      state:
+        type: string
+      country:
+        type: string
+      zip_code:
+        type: string
+      latitude:
+        type: string
+      longitude:
+        type: string
+      phone:
+        type: string
+      phone_cc:
+        type: string
+      email:
+        type: string
+      bpjs:
+        type: string
+      resign_date:
+        type: date
+      personal_identity:
+        type: string
+      last_education:
+        type: string
+      birth_date:
+        type: date
+      birth_place:
+        type: string
+      employee_gender_id:
+        type: integer
+      employee_marital_status_id:
+        type: integer
+      married_with:
+        type: string
+      employee_religion_id:
+        type: integer
+      employee_group_id:
+        type: integer
+      employee_status_id:
+        type: integer
+      employee_job_location_id:
+        type: integer
+      join_date:
+        type: date
+      job_title:
+        type: string
+      kpi_template_id:
+        type: integer
+      notes:
+        type: string
+      daily_transport_allowance:
+        type: string
+      functional_allowance:
+        type: string
+      communication_allowance:
+        type: string
+      branch_id:
+        type: string
+      user_id:
+        type: integer
+      created_by:
+        type: integer
+      updated_by:
+        type: integer
+      archived_by:
+        type: integer
+      created_at:
+        type: date
+      updated_at:
+        type: date
+      archived_at:
+        type: string
+      label:
+        type: string
+  scorer:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      address:
+        type: string
+      phone:
+        type: string
+      email:
+        type: string
+      created_at:
+        type: date
+      updated_at:
+        type: date
+      branch_id:
+        type: integer
+      warehouse_id:
+        type: integer
+      full_name:
+        type: string
+  groups:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        kpi_id:
+          type: integer
+        name:
+          type: string
+        weight:
+          type: integer
+        target:
+          type: integer
+        score:
+          type: integer
+        score_percentage:
+          type: integer
+        indicators:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              kpi_group_id:
+                type: integer
+              name:
+                type: string
+              weight:
+                type: string
+              target:
+                type: integer
+              score:
+                type: integer
+              notes:
+                type: string
+              comment:
+                type: string
+              score_percentage:
+                type: integer
+              score_description:
+                type: string
+              automated_code:
+                type: string
+              attachment:
+                type: binary
+              scores:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    kpi_indicator_id:
+                      type: integer
+                    description:
+                      type: string
+                    score:
+                      type: integer
+                    created_at:
+                      type: date
+                    updated_at:
+                      type: date
+                    status:
+                      type: string

@@ -1,0 +1,22 @@
+put:
+  tags:
+    - KPI Template
+  summary: KPI Template - Activate
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: kpi tempalte id
+      example: 2
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../components/properties/templates/template-single.yaml'
+          example:
+            $ref: '../components/example/templates/template.yaml'
