@@ -1,0 +1,99 @@
+id: 7
+name: cuy
+comment: ''
+date: '2022-12-26 00:00:00'
+employee:
+  id: 1
+  code: dev-01
+  tax_identification_number: '000000000000000'
+  name: employee one
+  address: null
+  city: null
+  state: null
+  country: null
+  zip_code: null
+  latitude: null
+  longitude: null
+  phone: null
+  phone_cc: null
+  email: null
+  bpjs: '000000000000000'
+  resign_date: '2022-01-01 00:00:00'
+  personal_identity: em01
+  last_education: S1
+  birth_date: '1992-08-05'
+  birth_place: lamongan
+  employee_gender_id: 1
+  employee_marital_status_id: 1
+  married_with: null
+  employee_religion_id: 3
+  employee_group_id: 1
+  employee_status_id: null
+  employee_job_location_id: null
+  join_date: '2022-01-01 00:00:00'
+  job_title: developer
+  kpi_template_id: 71
+  notes: null
+  daily_transport_allowance: 0
+  functional_allowance: 0
+  communication_allowance: 0
+  branch_id: null
+  user_id: 1
+  created_by: 1
+  updated_by: 1
+  archived_by: null
+  created_at: '2022-10-11 12:12:45'
+  updated_at: '2022-12-26 08:44:06'
+  archived_at: null
+  label: '[dev-01] employee one'
+weight: '0.000000'
+target: 0
+score: 0
+status: DRAFT
+score_percentage: 0
+scorer:
+  id: 1
+  name: admin
+  first_name: admin
+  last_name: admin
+  address: null
+  phone: null
+  email: ans.cool.06@gmail.com
+  created_at: '2022-07-17 21:33:57'
+  updated_at: '2022-07-17 21:33:57'
+  branch_id: null
+  warehouse_id: null
+  full_name: admin admin
+groups:
+  - id: 22
+    kpi_id: 7
+    name: gr
+    weight: 0
+    target: 0
+    score: 0
+    score_percentage: 0
+    indicators:
+      - id: 52
+        kpi_group_id: 22
+        name: Irma Robertson
+        weight: '0.00'
+        target: 0
+        score: 0
+        notes: ''
+        comment: kljn
+        score_percentage: 0
+        score_description: ''
+        automated_code: null
+        attachment: ''
+        scores:
+          - id: 51
+            kpi_indicator_id: 52
+            description: Ea corrupti recusan
+            score: 0
+            created_at: '2022-12-26T01:27:07.000000Z'
+            updated_at: '2022-12-26T01:27:07.000000Z'
+            status: DRAFT
+        selected:
+          comment: kljn
+          attachment: ''
+          notes: cxzcxzcxzcxz

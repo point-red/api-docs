@@ -1,0 +1,221 @@
+data:
+  id: 14
+  code: '121314'
+  tax_identification_number: null
+  name: John Doe
+  address: null
+  city: null
+  state: null
+  country: null
+  zip_code: null
+  latitude: null
+  longitude: null
+  phone: null
+  phone_cc: null
+  email: null
+  bpjs: null
+  resign_date: null
+  personal_identity: A001
+  last_education: null
+  birth_date: '2021-11-11'
+  birth_place: Lorem Ipsum
+  employee_gender_id: 1
+  employee_marital_status_id: 1
+  married_with: null
+  employee_religion_id: 1
+  employee_group_id: 1
+  employee_status_id: 1
+  employee_job_location_id: 1
+  join_date: '2022-11-11 00:00:00'
+  job_title: HR
+  kpi_template_id: 17
+  notes: null
+  daily_transport_allowance: 0
+  functional_allowance: 0
+  communication_allowance: 0
+  branch_id: null
+  user_id: 1
+  created_by: 1
+  updated_by: 1
+  archived_by: null
+  created_at: '2022-11-11 00:50:50'
+  updated_at: '2022-12-27 02:12:48'
+  archived_at: null
+  label: '[121314] John Doe'
+  group:
+    id: 1
+    name: devOps
+    created_by: 1
+    updated_by: 1
+    created_at: '2022-10-11 05:06:46'
+    updated_at: '2022-10-11 05:06:46'
+  gender:
+    id: 1
+    name: Male
+    created_by: null
+    updated_by: null
+    created_at: '2022-12-27 02:17:58'
+    updated_at: '2022-12-27 02:17:58'
+  religion:
+    id: 1
+    name: Christian
+    created_by: null
+    updated_by: null
+    created_at: '2022-12-27 02:17:58'
+    updated_at: '2022-12-27 02:17:58'
+  marital_status:
+    id: 1
+    name: Single
+    created_by: null
+    updated_by: null
+    created_at: '2022-12-27 02:17:58'
+    updated_at: '2022-12-27 02:17:58'
+  company_emails:
+    - id: 13
+      employee_id: 14
+      email: john.doe@mail.com
+      is_main: 0
+      created_by: 1
+      updated_by: 1
+      created_at: '2022-11-11 00:50:50'
+      updated_at: '2022-11-11 00:50:50'
+  social_media:
+    - id: 1
+      employee_id: 14
+      type: Facebook
+      account: fb
+      created_by: 1
+      updated_by: 1
+      created_at: '2022-12-27 02:12:48'
+      updated_at: '2022-12-27 02:12:48'
+  contracts:
+    - id: 13
+      employee_id: 14
+      contract_begin: '2021-11-10 17:00:00'
+      contract_end: '2022-11-10 17:00:00'
+      contract_due_date: '2022-11-03 17:00:00'
+      link: ''
+      notes: call my name JD
+      created_by: 1
+      updated_by: 1
+      created_at: '2022-11-11 00:50:50'
+      updated_at: '2022-11-11 00:50:50'
+  salary_histories:
+    - id: 1
+      employee_id: 14
+      date: '2022-12-30 00:00:00'
+      salary: 10000000
+      created_by: 1
+      updated_by: 1
+      created_at: '2022-12-27 02:12:48'
+      updated_at: '2022-12-27 02:12:48'
+  kpi_template:
+    id: 17
+    name: shxlQaW
+    created_by: 1
+    updated_by: 1
+    archived_by: null
+    created_at: '2022-11-07 14:12:40'
+    updated_at: '2022-11-07 14:12:40'
+    archived_at: null
+  scorers:
+    - id: 1
+      name: admin
+      first_name: admin
+      last_name: admin
+      address: null
+      phone: null
+      email: ans.cool.06@gmail.com
+      created_at: '2022-07-17 14:33:57'
+      updated_at: '2022-07-17 14:33:57'
+      branch_id: null
+      warehouse_id: null
+      full_name: admin admin
+      pivot:
+        employee_id: 14
+        user_id: 1
+  reviewers:
+    - id: 1
+      name: admin
+      first_name: admin
+      last_name: admin
+      address: null
+      phone: null
+      email: ans.cool.06@gmail.com
+      created_at: '2022-07-17 14:33:57'
+      updated_at: '2022-07-17 14:33:57'
+      branch_id: null
+      warehouse_id: null
+      full_name: admin admin
+      pivot:
+        employee_id: 14
+        user_id: 1
+  emails:
+    - id: 36
+      label: null
+      email: john.doe@mail.com
+      is_main: 0
+      emailable_id: 14
+      emailable_type: Employee
+      created_by: 1
+      updated_by: 1
+      created_at: '2022-12-27 02:12:48'
+      updated_at: '2022-12-27 02:12:48'
+  addresses:
+    - id: 36
+      label: null
+      address: Lorem Ipsum
+      city: null
+      state: null
+      country: null
+      zip_code: null
+      latitude: null
+      longitude: null
+      is_main: 0
+      addressable_id: 14
+      addressable_type: Employee
+      created_by: 1
+      updated_by: 1
+      created_at: '2022-12-27 02:12:48'
+      updated_at: '2022-12-27 02:12:48'
+  phones:
+    - id: 36
+      label: null
+      country_code: null
+      number: 08123456789
+      is_main: 0
+      phoneable_id: 14
+      phoneable_type: Employee
+      created_by: 1
+      updated_by: 1
+      created_at: '2022-12-27 02:12:48'
+      updated_at: '2022-12-27 02:12:48'
+  status:
+    id: 1
+    name: ACTIVE
+    created_by: 1
+    updated_by: 1
+    created_at: '2022-10-11 05:10:58'
+    updated_at: '2022-10-11 05:10:58'
+  job_location:
+    id: 1
+    name: surabaya-21
+    base_salary: '21.000000000000000000000000000000'
+    multiplier_kpi: '1.000000000000000000000000000000'
+    created_by: 1
+    updated_by: 1
+    created_at: '2022-10-11 05:09:18'
+    updated_at: '2022-11-04 18:14:16'
+  user:
+    id: 1
+    name: admin
+    first_name: admin
+    last_name: admin
+    address: null
+    phone: null
+    email: ans.cool.06@gmail.com
+    created_at: '2022-07-17 14:33:57'
+    updated_at: '2022-07-17 14:33:57'
+    branch_id: null
+    warehouse_id: null
+    full_name: admin admin

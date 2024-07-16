@@ -1,0 +1,24 @@
+type: object
+properties:
+  id:
+    type: integer
+  kpi_template_id:
+    type: integer
+  name:
+    type: string
+  created_by:
+    type: integer
+  updated_by:
+    type: integer
+  created_at:
+    type: date
+  updated_at:
+    type: date
+  target:
+    type: integer
+  weight:
+    type: integer
+  indicators:
+    type: array
+    items:
+      $ref: 'indicators.yaml'

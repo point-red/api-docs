@@ -1,0 +1,28 @@
+post:
+  tags:
+    - KPI Template
+  summary: KPI Template - Duplicate
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - kpi_template_id
+          properties:
+            kpi_template_id:
+              type: integer
+          example:
+            kpi_template_id: "1"
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../components/properties/templates/template-single.yaml'
+          example:
+            $ref: '../components/example/templates/template.yaml'

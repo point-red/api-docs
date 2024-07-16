@@ -1,0 +1,450 @@
+get:
+  tags:
+    - Employee
+  summary: Employee - All
+  parameters:
+    - name: sort_by
+      in: query
+      schema:
+        type: string
+      example: "name"
+    - name: filter_like
+      in: query
+      schema:
+        type: string
+      example: {"name":"john"}
+    - name: limit
+      in: query
+      schema:
+        type: integer
+      example: "10"
+    - name: page
+      in: query
+      schema:
+        type: integer
+      example: "1"
+    - name: includes
+      in: query
+      schema:
+        type: string
+      example: scorers, reviewers
+    - name: additional
+      in: query
+      schema:
+        type: string
+      example: groups
+    - name: filter_status
+      in: query
+      schema:
+        type: string
+      example: 1
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              meta:
+                $ref: '../components/properties/meta.yaml'
+              links:
+                $ref: '../components/properties/links.yaml'
+              data:
+                type: array
+                items:
+                  $ref: '../components/properties/employee/employee.yaml'
+          example:
+            data:
+              - id: 14
+                code: '121314'
+                tax_identification_number: null
+                name: John Doe
+                address: null
+                city: null
+                state: null
+                country: null
+                zip_code: null
+                latitude: null
+                longitude: null
+                phone: null
+                phone_cc: null
+                email: null
+                bpjs: null
+                resign_date: null
+                personal_identity: A001
+                last_education: null
+                birth_date: '2021-11-11'
+                birth_place: Lorem Ipsum
+                employee_gender_id: 1
+                employee_marital_status_id: 1
+                married_with: null
+                employee_religion_id: 1
+                employee_group_id: 1
+                employee_status_id: 1
+                employee_job_location_id: 1
+                join_date: '2022-11-11 00:00:00'
+                job_title: HR
+                kpi_template_id: 17
+                notes: null
+                daily_transport_allowance: 0
+                functional_allowance: 0
+                communication_allowance: 0
+                branch_id: null
+                user_id: 1
+                created_by: 1
+                updated_by: 1
+                archived_by: null
+                created_at: '2022-11-11 00:50:50'
+                updated_at: '2022-12-27 02:12:48'
+                archived_at: null
+                label: '[121314] John Doe'
+                group:
+                  id: 1
+                  name: devOps
+                  created_by: 1
+                  updated_by: 1
+                  created_at: '2022-10-11 05:06:46'
+                  updated_at: '2022-10-11 05:06:46'
+                gender:
+                  id: 1
+                  name: Male
+                  created_by: null
+                  updated_by: null
+                  created_at: '2022-12-27 02:17:58'
+                  updated_at: '2022-12-27 02:17:58'
+                religion:
+                  id: 1
+                  name: Christian
+                  created_by: null
+                  updated_by: null
+                  created_at: '2022-12-27 02:17:58'
+                  updated_at: '2022-12-27 02:17:58'
+                marital_status:
+                  id: 1
+                  name: Single
+                  created_by: null
+                  updated_by: null
+                  created_at: '2022-12-27 02:17:58'
+                  updated_at: '2022-12-27 02:17:58'
+                company_emails:
+                  - id: 13
+                    employee_id: 14
+                    email: john.doe@mail.com
+                    is_main: 0
+                    created_by: 1
+                    updated_by: 1
+                    created_at: '2022-11-11 00:50:50'
+                    updated_at: '2022-11-11 00:50:50'
+                social_media:
+                  - id: 1
+                    employee_id: 14
+                    type: Facebook
+                    account: fb
+                    created_by: 1
+                    updated_by: 1
+                    created_at: '2022-12-27 02:12:48'
+                    updated_at: '2022-12-27 02:12:48'
+                contracts:
+                  - id: 13
+                    employee_id: 14
+                    contract_begin: '2021-11-10 17:00:00'
+                    contract_end: '2022-11-10 17:00:00'
+                    contract_due_date: '2022-11-10 17:00:00'
+                    link: ''
+                    notes: call my name JD
+                    created_by: 1
+                    updated_by: 1
+                    created_at: '2022-11-11 00:50:50'
+                    updated_at: '2022-11-11 00:50:50'
+                salary_histories:
+                  - id: 1
+                    employee_id: 14
+                    date: '2022-12-30 00:00:00'
+                    salary: 10000000
+                    created_by: 1
+                    updated_by: 1
+                    created_at: '2022-12-27 02:12:48'
+                    updated_at: '2022-12-27 02:12:48'
+                kpi_template:
+                  id: 17
+                  name: shxlQaW
+                  created_by: 1
+                  updated_by: 1
+                  archived_by: null
+                  created_at: '2022-11-07 14:12:40'
+                  updated_at: '2022-11-07 14:12:40'
+                  archived_at: null
+                scorers:
+                  - id: 1
+                    name: admin
+                    first_name: admin
+                    last_name: admin
+                    address: null
+                    phone: null
+                    email: ans.cool.06@gmail.com
+                    created_at: '2022-07-17 14:33:57'
+                    updated_at: '2022-07-17 14:33:57'
+                    branch_id: null
+                    warehouse_id: null
+                    full_name: admin admin
+                    pivot:
+                      employee_id: 14
+                      user_id: 1
+                reviewers:
+                  - id: 1
+                    name: admin
+                    first_name: admin
+                    last_name: admin
+                    address: null
+                    phone: null
+                    email: ans.cool.06@gmail.com
+                    created_at: '2022-07-17 14:33:57'
+                    updated_at: '2022-07-17 14:33:57'
+                    branch_id: null
+                    warehouse_id: null
+                    full_name: admin admin
+                    pivot:
+                      employee_id: 14
+                      user_id: 1
+                emails:
+                  - id: 36
+                    label: null
+                    email: john.doe@mail.com
+                    is_main: 0
+                    emailable_id: 14
+                    emailable_type: Employee
+                    created_by: 1
+                    updated_by: 1
+                    created_at: '2022-12-27 02:12:48'
+                    updated_at: '2022-12-27 02:12:48'
+                addresses:
+                  - id: 36
+                    label: null
+                    address: Lorem Ipsum
+                    city: null
+                    state: null
+                    country: null
+                    zip_code: null
+                    latitude: null
+                    longitude: null
+                    is_main: 0
+                    addressable_id: 14
+                    addressable_type: Employee
+                    created_by: 1
+                    updated_by: 1
+                    created_at: '2022-12-27 02:12:48'
+                    updated_at: '2022-12-27 02:12:48'
+                phones:
+                  - id: 36
+                    label: null
+                    country_code: null
+                    number: 08123456789
+                    is_main: 0
+                    phoneable_id: 14
+                    phoneable_type: Employee
+                    created_by: 1
+                    updated_by: 1
+                    created_at: '2022-12-27 02:12:48'
+                    updated_at: '2022-12-27 02:12:48'
+                status:
+                  id: 1
+                  name: ACTIVE
+                  created_by: 1
+                  updated_by: 1
+                  created_at: '2022-10-11 05:10:58'
+                  updated_at: '2022-10-11 05:10:58'
+                job_location:
+                  id: 1
+                  name: surabaya-21
+                  base_salary: '21.000000000000000000000000000000'
+                  multiplier_kpi: '1.000000000000000000000000000000'
+                  created_by: 1
+                  updated_by: 1
+                  created_at: '2022-10-11 05:09:18'
+                  updated_at: '2022-11-04 18:14:16'
+                user:
+                  id: 1
+                  name: admin
+                  first_name: admin
+                  last_name: admin
+                  address: null
+                  phone: null
+                  email: ans.cool.06@gmail.com
+                  created_at: '2022-07-17 14:33:57'
+                  updated_at: '2022-07-17 14:33:57'
+                  branch_id: null
+                  warehouse_id: null
+                  full_name: admin admin
+            links:
+              first: 'https://point.red/api/v1/human-resource/employee/employees?page=1'
+              last: 'https://point.red/api/v1/human-resource/employee/employees?page=2'
+              prev: null
+              next: 'https://point.red/api/v1/human-resource/employee/employees?page=2'
+            meta:
+              current_page: 1
+              from: 1
+              last_page: 2
+              path: 'https://point.red/api/v1/human-resource/employee/employees'
+              per_page: '10'
+              to: 10
+              total: 11
+post:
+  tags:
+  - Employee
+  summary: Employee - Create
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+          properties:
+            name:
+              type: string
+            tax_identification_number:
+              type: string
+            bpjs:
+              type: string
+            emails:
+              type: array
+              items:
+                type: object
+                properties:
+                  email:
+                    type: string
+            addresses:
+              type: array
+              items:
+                type: object
+                properties:
+                  address:
+                    type: string
+            phones:
+              type: array
+              items:
+                type: object
+                properties:
+                  number:
+                    type: string
+            birth_date:
+              type: date
+            birth_place:
+              type: string
+            personal_identity:
+              type: string
+            last_education:
+              type: string
+            employee_marital_status_id:
+              type: integer
+            marital_status:
+              type: string
+            married_with:
+              type: string
+            employee_group_id:
+              type: integer
+            employee_group_name:
+              type: string
+            job_title:
+              type: string
+            join_date:
+              type: date
+            resign_date:
+              type: date
+            code:
+              type: string
+            status:
+              type: string
+            job_location:
+              type: string
+            daily_transport_allowance:
+              type: string
+            functional_allowance:
+              type: string
+            communication_allowance:
+              type: string
+            company_emails:
+              type: array
+              items:
+                type: object
+                properties:
+                  email:
+                    type: string
+            social_media:
+              type: array
+              items:
+                type: object
+                properties:
+                  account:
+                    type: string
+                  type:
+                    type: string
+            contracts:
+              type: array
+              items:
+                type: object
+                properties:
+                  contract_begin:
+                    type: date
+                  contract_end:
+                    type: date
+                  contract_due_date:
+                    type: date
+                  notes:
+                    type: string
+            salary_histories:
+              type: array
+              items:
+                type: object
+                properties:
+                  date:
+                    type: date
+                  salary:
+                    type: integer
+            scorers:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+            reviewers:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+            attachments:
+              type: array
+              items:
+                type: object
+            errors:
+              type: array
+              items:
+                type: object
+            employee_gender_id:
+              type: integer
+            employee_religion_id:
+              type: integer
+            employee_status_id:
+              type: integer
+            user_id:
+              type: integer
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../components/properties/employee/employee.yaml'
+          example:
+            $ref: '../components/example/employee/employee.yaml'

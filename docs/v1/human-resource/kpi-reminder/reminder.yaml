@@ -1,0 +1,44 @@
+post:
+  tags:
+  - KPI Reminder
+  summary: KPI Reminder
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - to
+            - name
+            - employeeName
+            - startDate
+            - endDate
+          properties:
+            to:
+              type: string
+            name:
+              type: string
+            employeeName:
+              type: string
+            startDate:
+              type: date
+            endDate:
+              type: date
+          example:
+            to: staf-one@point.com
+            name: person one
+            employeeName: employee one
+            startDate: '2022-12-01'
+            endDate: '2022-12-07'
+  responses:
+    '200':
+      description: Success Sent KPI Reminder
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+          example:
+            message: Success Sent KPI Reminder

@@ -1,0 +1,26 @@
+type: object
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  created_by:
+    type: integer
+  updated_by:
+    type: integer
+  archived_by:
+    type: integer
+  created_at:
+    type: date
+  updated_at:
+    type: date
+  archived_at:
+    type: date
+  target:
+    type: date
+  weight:
+    type: date
+  groups:
+    type: array
+    items:
+      type: object

@@ -1,0 +1,12 @@
+data:
+  id: 74
+  name: template
+  created_by: 1
+  updated_by: 1
+  archived_by: null
+  created_at: '2022-12-26 06:30:39'
+  updated_at: '2022-12-26 06:30:39'
+  archived_at: null
+  target: '0'
+  weight: '0.00'
+  groups: []
