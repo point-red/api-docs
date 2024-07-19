@@ -1,0 +1,27 @@
+post:
+  tags:
+  - Employee Contract Reminder
+  summary: Employee Contract Reminder
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            date:
+              type: date
+              description: Date to check for contract end date [YYYY-MM-DD], If not provided, it will use today's date
+          example:
+            date: '2024-12-31'
+  responses:
+    '200':
+      description: Return Success Message
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+          example:
+            message: Found [count] employee(s) with contract end date on [date] +3 days And [count] employee(s) with contract end date on [date] +1 month. A reminder has been sent to each reviewers.

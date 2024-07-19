@@ -191,6 +191,8 @@ paths:
     $ref: human-resource/employee-status/status.yaml
   /human-resource/employee/statuses/{id}:
     $ref: human-resource/employee-status/status-id.yaml
+  /human-resource/employee/reminders/contract:
+    $ref: human-resource/employee-contract-reminder/reminder.yaml
   /human-resource/kpi/templates:
     $ref: human-resource/kpi-template/template.yaml
   /human-resource/kpi/templates/{id}:
