@@ -21474,13 +21474,15 @@ paths:
             schema:
               type: object
               properties:
-                date:
-                  type: date
-                  description: >-
-                    Date to check for contract end date [YYYY-MM-DD], If not
-                    provided, it will use today's date
+                employee_id:
+                  type: integer
+                  description: Employee ID
+                reviewer_id:
+                  type: integer
+                  description: Reviewer ID
               example:
-                date: '2024-12-31'
+                employee_id: 10
+                reviewer_id: 1
       responses:
         '200':
           description: Return Success Message
@@ -21493,9 +21495,8 @@ paths:
                     type: string
               example:
                 message: >-
-                  Found [count] employee(s) with contract end date on [date] +3
-                  days And [count] employee(s) with contract end date on [date]
-                  +1 month. A reminder has been sent to each reviewers.
+                  Reminder contract e-mail of [employee name] has been sent to
+                  [reviewer name].
   /human-resource/kpi/templates:
     get:
       tags:
