@@ -1,0 +1,26 @@
+type: object
+properties:
+  id:
+    type: integer
+  kpi_template_group_id:
+    type: integer
+  name:
+    type: integer
+  weight:
+    type: string
+  target:
+    type: integer
+  automated_code:
+    type: integer
+  score:
+    type: array
+    items:
+      type: object
+  created_by:
+    type: integer
+  updated_by:
+    type: date
+  created_at:
+    type: date
+  updated_at:
+    type: date

@@ -1,0 +1,28 @@
+post:
+  tags:
+    - KPI Template
+  summary: KPI Template - Import
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - file
+          properties:
+            file:
+              type: binary
+          example:
+            file: "folder-to/kpi-template.xlsx"
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+          example:
+            message: success

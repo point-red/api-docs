@@ -1,0 +1,31 @@
+post:
+  tags:
+  - Employee Contract Reminder
+  summary: Employee Contract Reminder
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            employee_id:
+              type: integer
+              description: Employee ID
+            reviewer_id:
+              type: integer
+              description: Reviewer ID
+          example:
+            employee_id: 10
+            reviewer_id: 1
+  responses:
+    '200':
+      description: Return Success Message
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+          example:
+            message: Reminder contract e-mail of [employee name] has been sent to [reviewer name].

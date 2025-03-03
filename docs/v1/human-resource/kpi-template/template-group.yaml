@@ -1,0 +1,102 @@
+get:
+  tags:
+    - KPI Template Group
+  summary: KPI Template Group - All
+  parameters:
+    - name: kpi_template_id
+      in: query
+      schema:
+        type: integer
+      example: "1"
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              meta:
+                $ref: '../components/properties/meta.yaml'
+              links:
+                $ref: '../components/properties/links.yaml'
+              data:
+                type: array
+                items:
+                  $ref: '../components/properties/templates/groups.yaml'
+          example:
+            data:
+              - id: 74
+                kpi_template_id: 74
+                name: gr
+                created_by: 1
+                updated_by: 1
+                created_at: '2022-12-26 06:30:39'
+                updated_at: '2022-12-26 06:30:39'
+                target: 0
+                weight: 0
+                indicators:
+                  - id: 70
+                    kpi_template_group_id: 74
+                    name: Irma Robertson
+                    weight: '0.00'
+                    target: 0
+                    automated_code: null
+                    created_by: 1
+                    updated_by: 1
+                    created_at: '2022-12-26 06:30:39'
+                    updated_at: '2022-12-26 06:30:39'
+                    scores:
+                      - id: 16
+                        kpi_template_indicator_id: 70
+                        description: Ea corrupti recusan
+                        score: 0
+                        created_by: 1
+                        updated_by: 1
+                        created_at: '2022-12-26 06:30:39'
+                        updated_at: '2022-12-26 06:30:39'
+            links:
+              first: 'https://point.red/api/v1/human-resource/kpi/template-groups?page=1'
+              last: 'https://point.red/api/v1/human-resource/kpi/template-groups?page=2'
+              prev: null
+              next: 'https://point.red/api/v1/human-resource/kpi/template-groups?page=2'
+            meta:
+              current_page: 1
+              from: 1
+              last_page: 2
+              path: 'https://point.red/api/v1/human-resource/kpi/template-groups'
+              per_page: '10'
+              to: 10
+              total: 11
+post:
+  tags:
+  - KPI Template Group
+  summary: KPI Template Group - Create
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+            - kpi_template_id
+          properties:
+            name:
+              type: string
+            kpi_template_id:
+              type: integer
+          example:
+            name: template
+            kpi_template_id: 1
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../components/properties/templates/group-single.yaml'
+          example:
+            $ref: '../components/example/templates/group.yaml'

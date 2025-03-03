@@ -1,0 +1,18 @@
+type: object
+properties:
+  id:
+    type: integer
+  kpi_template_indicator_id:
+    type: integer
+  description:
+    type: integer
+  score:
+    type: integer
+  created_by:
+    type: integer
+  updated_by:
+    type: date
+  created_at:
+    type: date
+  updated_at:
+    type: date

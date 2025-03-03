@@ -1,0 +1,193 @@
+get:
+  tags:
+    - Employee
+  summary: Employee - Detail
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: employee id
+      example: 2
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../components/properties/employee/employee.yaml'
+          example:
+            $ref: '../components/example/employee/employee.yaml'
+patch:
+  tags:
+  - Employee
+  summary: Employee - Update
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: employee id
+      example: 2
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+          properties:
+            name:
+              type: string
+            tax_identification_number:
+              type: string
+            bpjs:
+              type: string
+            emails:
+              type: array
+              items:
+                type: object
+                properties:
+                  email:
+                    type: string
+            addresses:
+              type: array
+              items:
+                type: object
+                properties:
+                  address:
+                    type: string
+            phones:
+              type: array
+              items:
+                type: object
+                properties:
+                  number:
+                    type: string
+            birth_date:
+              type: date
+            birth_place:
+              type: string
+            personal_identity:
+              type: string
+            last_education:
+              type: string
+            employee_marital_status_id:
+              type: integer
+            marital_status:
+              type: string
+            married_with:
+              type: string
+            employee_group_id:
+              type: integer
+            employee_group_name:
+              type: string
+            job_title:
+              type: string
+            join_date:
+              type: date
+            resign_date:
+              type: date
+            code:
+              type: string
+            status:
+              type: string
+            job_location:
+              type: string
+            daily_transport_allowance:
+              type: string
+            functional_allowance:
+              type: string
+            communication_allowance:
+              type: string
+            company_emails:
+              type: array
+              items:
+                type: object
+                properties:
+                  email:
+                    type: string
+            social_media:
+              type: array
+              items:
+                type: object
+                properties:
+                  account:
+                    type: string
+                  type:
+                    type: string
+            contracts:
+              type: array
+              items:
+                type: object
+                properties:
+                  contract_begin:
+                    type: date
+                  contract_end:
+                    type: date
+                  notes:
+                    type: string
+            salary_histories:
+              type: array
+              items:
+                type: object
+                properties:
+                  date:
+                    type: date
+                  salary:
+                    type: integer
+            scorers:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+            attachments:
+              type: array
+              items:
+                type: object
+            errors:
+              type: array
+              items:
+                type: object
+            employee_gender_id:
+              type: integer
+            employee_religion_id:
+              type: integer
+            employee_status_id:
+              type: integer
+            user_id:
+              type: integer
+  responses:
+    '200':
+      description: Ok
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../components/properties/employee/employee.yaml'
+          example:
+            $ref: '../components/example/employee/employee.yaml'
+delete:
+  tags:
+    - Employee
+  summary: Employee - Delete
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: employee id
+      example: 2
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json: {}
